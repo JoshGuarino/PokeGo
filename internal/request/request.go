@@ -2,11 +2,8 @@ package request
 
 import (
 	"encoding/json"
-	// "fmt"
 	"io"
 	"net/http"
-	// "os"
-	// pokego "github.com/JoshGuarino/PokeGo/pkg"
 )
 
 // Make GET request
@@ -30,16 +27,18 @@ func Get(url string) ([]byte, error) {
 }
 
 // Make GET request for list of resource
-// func GetResourceList(url string) pokego.ResourceList {
-// 	body := Get(url)
-// 	resourceList := pokego.ResourceList{}
-// 	err := json.Unmarshal(body, &resourceList)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 		os.Exit(1)
-// 	}
-// 	return resourceList
-// }
+func GetResourceList(url string) (ResourceList, error) {
+	resourceList := ResourceList{}
+	body, errReq := Get(url)
+	if errReq != nil {
+		return resourceList, errReq
+	}
+	errJson := json.Unmarshal(body, &resourceList)
+	if errJson != nil {
+		return resourceList, errJson
+	}
+	return resourceList, nil
+}
 
 // Make GET request for a specifc resource
 func GetSpecificResource[T any](url string) (*T, error) {

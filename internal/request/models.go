@@ -1,4 +1,4 @@
-package pokego
+package request
 
 // Resource list for an endpoint
 type ResourceList struct {
