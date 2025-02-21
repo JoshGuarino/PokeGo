@@ -10,7 +10,7 @@ const (
 	BerryFlavorEndpoint   = BaseUrl + "/berry-flavor/"
 
 	// Contests group resource endpoints
-	contestTypeEndpoint        = BaseUrl + "/contest-type/"
-	contestEffectEndpoint      = BaseUrl + "/contest-effect/"
-	superContestEffectEndpoint = BaseUrl + "/super-contest-effect/"
+	ContestTypeEndpoint        = BaseUrl + "/contest-type/"
+	ContestEffectEndpoint      = BaseUrl + "/contest-effect/"
+	SuperContestEffectEndpoint = BaseUrl + "/super-contest-effect/"
 )

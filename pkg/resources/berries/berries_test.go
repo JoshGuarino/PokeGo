@@ -18,9 +18,9 @@ func TestGetBerry(t *testing.T) {
 }
 
 func TestGetBerryList(t *testing.T) {
-	r, _ := berries.GetBerryList()
+	rList, _ := berries.GetBerryList()
 	// _, err := berries.GetBerryList()
-	assert.Equal(t, "cheri", r.Results[0].Name, "")
+	assert.Equal(t, "cheri", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
 }
 
@@ -34,9 +34,9 @@ func TestGetBerryFirmness(t *testing.T) {
 }
 
 func TestGetBerryFirmnessList(t *testing.T) {
-	r, _ := berries.GetBerryFirmnessList()
+	rList, _ := berries.GetBerryFirmnessList()
 	// _, err := berries.GetBerryFirmnessList()
-	assert.Equal(t, "very-soft", r.Results[0].Name, "")
+	assert.Equal(t, "very-soft", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
 }
 
