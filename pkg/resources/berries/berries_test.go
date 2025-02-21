@@ -50,8 +50,8 @@ func TestGetBerryFlavor(t *testing.T) {
 }
 
 func TestGetBerryFlavorList(t *testing.T) {
-	r, _ := berries.GetBerryFlavorList()
+	rList, _ := berries.GetBerryFlavorList()
 	// _, err := berries.GetBerryFlavorList()
-	assert.Equal(t, "spicy", r.Results[0].Name, "")
+	assert.Equal(t, "spicy", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
 }
