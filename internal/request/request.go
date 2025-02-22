@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
 
 // Make GET request
@@ -27,8 +29,8 @@ func Get(url string) ([]byte, error) {
 }
 
 // Make GET request for list of resource
-func GetResourceList(url string) (ResourceList, error) {
-	resourceList := ResourceList{}
+func GetResourceList(url string) (models.ResourceList, error) {
+	resourceList := models.ResourceList{}
 	body, errReq := Get(url)
 	if errReq != nil {
 		return resourceList, errReq

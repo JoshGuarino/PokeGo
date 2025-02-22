@@ -1,4 +1,4 @@
-package contests
+package models
 
 // ContestType is a single contest type.
 type ContestType struct {

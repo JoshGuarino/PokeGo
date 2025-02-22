@@ -1,4 +1,4 @@
-package berries
+package models
 
 // Represents a single Berry resource
 type Berry struct {

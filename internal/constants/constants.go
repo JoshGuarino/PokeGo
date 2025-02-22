@@ -13,4 +13,9 @@ const (
 	ContestTypeEndpoint        = BaseUrl + "/contest-type/"
 	ContestEffectEndpoint      = BaseUrl + "/contest-effect/"
 	SuperContestEffectEndpoint = BaseUrl + "/super-contest-effect/"
+
+	// Encounters group resource endpoints
+	EncounterMethodEndpoint         = BaseUrl + "/encounter-method/"
+	EncounterConditionEndpoint      = BaseUrl + "/encounter-condition/"
+	EncounterConditionEndpointValue = BaseUrl + "/encounter-condition-value/"
 )

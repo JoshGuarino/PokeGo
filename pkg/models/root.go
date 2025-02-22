@@ -1,4 +1,8 @@
-package request
+package models
+
+// Root is a list of availble resource endpoints
+type Root struct {
+}
 
 // Resource list for an endpoint
 type ResourceList struct {

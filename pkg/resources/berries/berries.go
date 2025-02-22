@@ -3,16 +3,17 @@ package berries
 import (
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
 
 // Berries group interface
 type IBerries interface {
-	GetBerry(nameOrId string) (*Berry, error)
-	GetBerryList() (*request.ResourceList, error)
-	GetBerryFirmness(nameOrId string) (*BerryFirmness, error)
-	GetBerryFirmnessList() (*request.ResourceList, error)
-	GetBerryFlavor(nameOrId string) (*BerryFlavor, error)
-	GetBerryFlavorList() (*request.ResourceList, error)
+	GetBerry(nameOrId string) (*models.Berry, error)
+	GetBerryList() (*models.ResourceList, error)
+	GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error)
+	GetBerryFirmnessList() (*models.ResourceList, error)
+	GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error)
+	GetBerryFlavorList() (*models.ResourceList, error)
 }
 
 // Berries group struct
@@ -24,8 +25,8 @@ func NewBerriesGroup() Berries {
 }
 
 // Return a single Berry resource by name or ID
-func (b Berries) GetBerry(nameOrId string) (*Berry, error) {
-	berry, err := request.GetSpecificResource[Berry](constants.BerryEndpoint + nameOrId)
+func (b Berries) GetBerry(nameOrId string) (*models.Berry, error) {
+	berry, err := request.GetSpecificResource[models.Berry](constants.BerryEndpoint + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +34,7 @@ func (b Berries) GetBerry(nameOrId string) (*Berry, error) {
 }
 
 // Return a list of Berry resource
-func (b Berries) GetBerryList() (*request.ResourceList, error) {
+func (b Berries) GetBerryList() (*models.ResourceList, error) {
 	berryList, err := request.GetResourceList(constants.BerryEndpoint)
 	if err != nil {
 		return nil, err
@@ -42,8 +43,8 @@ func (b Berries) GetBerryList() (*request.ResourceList, error) {
 }
 
 // Return a single BerryFirmness resource by name or ID
-func (b Berries) GetBerryFirmness(nameOrId string) (*BerryFirmness, error) {
-	berryFirmness, err := request.GetSpecificResource[BerryFirmness](constants.BerryFirmnessEndpoint + nameOrId)
+func (b Berries) GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error) {
+	berryFirmness, err := request.GetSpecificResource[models.BerryFirmness](constants.BerryFirmnessEndpoint + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +52,7 @@ func (b Berries) GetBerryFirmness(nameOrId string) (*BerryFirmness, error) {
 }
 
 // Return a list of BerryFirmness resource
-func (b Berries) GetBerryFirmnessList() (*request.ResourceList, error) {
+func (b Berries) GetBerryFirmnessList() (*models.ResourceList, error) {
 	berryFirmnessList, err := request.GetResourceList(constants.BerryFirmnessEndpoint)
 	if err != nil {
 		return nil, err
@@ -61,8 +62,8 @@ func (b Berries) GetBerryFirmnessList() (*request.ResourceList, error) {
 }
 
 // Return a single BerryFlavor resource by name or ID
-func (b Berries) GetBerryFlavor(nameOrId string) (*BerryFlavor, error) {
-	berryFlavor, err := request.GetSpecificResource[BerryFlavor](constants.BerryFlavorEndpoint + nameOrId)
+func (b Berries) GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error) {
+	berryFlavor, err := request.GetSpecificResource[models.BerryFlavor](constants.BerryFlavorEndpoint + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +71,7 @@ func (b Berries) GetBerryFlavor(nameOrId string) (*BerryFlavor, error) {
 }
 
 // Return a list of BerryFlavor resource
-func (b Berries) GetBerryFlavorList() (*request.ResourceList, error) {
+func (b Berries) GetBerryFlavorList() (*models.ResourceList, error) {
 	berryFlavorList, err := request.GetResourceList(constants.BerryFlavorEndpoint)
 	if err != nil {
 		return nil, err

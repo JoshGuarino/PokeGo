@@ -3,29 +3,30 @@ package contests
 import (
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
 
 // Contests group interface
 type IContests interface {
-	GetContestType(nameOrId string) (*ContestType, error)
-	GetContestTypeList() (*request.ResourceList, error)
-	GetContestEffect(id string) (*ContestEffect, error)
-	GetContestEffectList() (*request.ResourceList, error)
-	GetSuperContestEffect(id string) (*SuperContestEffect, error)
-	GetSuperContestEffectList() (*request.ResourceList, error)
+	GetContestType(nameOrId string) (*models.ContestType, error)
+	GetContestTypeList() (*models.ResourceList, error)
+	GetContestEffect(id string) (*models.ContestEffect, error)
+	GetContestEffectList() (*models.ResourceList, error)
+	GetSuperContestEffect(id string) (*models.SuperContestEffect, error)
+	GetSuperContestEffectList() (*models.ResourceList, error)
 }
 
 // Contests group struct
 type Contests struct{}
 
-// Return an instance of Berry resource group struct
+// Return an instance of Contests resource group struct
 func NewContestsGroup() Contests {
 	return Contests{}
 }
 
 // Return a single ContestsType resource by name or ID
-func (c Contests) GetContestType(nameOrId string) (*ContestType, error) {
-	contestType, err := request.GetSpecificResource[ContestType](constants.ContestTypeEndpoint + nameOrId)
+func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
+	contestType, err := request.GetSpecificResource[models.ContestType](constants.ContestTypeEndpoint + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +34,7 @@ func (c Contests) GetContestType(nameOrId string) (*ContestType, error) {
 }
 
 // Return a list of Berry resource
-func (c Contests) GetContestTypeList() (*request.ResourceList, error) {
+func (c Contests) GetContestTypeList() (*models.ResourceList, error) {
 	contestTypeList, err := request.GetResourceList(constants.ContestTypeEndpoint)
 	if err != nil {
 		return nil, err
@@ -42,8 +43,8 @@ func (c Contests) GetContestTypeList() (*request.ResourceList, error) {
 }
 
 // Return a single ContestsEffect resource by ID
-func (c Contests) GetContestEffect(id string) (*ContestEffect, error) {
-	contestEffect, err := request.GetSpecificResource[ContestEffect](constants.ContestEffectEndpoint + id)
+func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
+	contestEffect, err := request.GetSpecificResource[models.ContestEffect](constants.ContestEffectEndpoint + id)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +52,7 @@ func (c Contests) GetContestEffect(id string) (*ContestEffect, error) {
 }
 
 // Return a list of Berry resource
-func (c Contests) GetContestEffectList() (*request.ResourceList, error) {
+func (c Contests) GetContestEffectList() (*models.ResourceList, error) {
 	contestEffectList, err := request.GetResourceList(constants.ContestEffectEndpoint)
 	if err != nil {
 		return nil, err
@@ -60,8 +61,8 @@ func (c Contests) GetContestEffectList() (*request.ResourceList, error) {
 }
 
 // Return a single SuperContestsEffect resource by ID
-func (c Contests) GetSuperContestEffect(id string) (*SuperContestEffect, error) {
-	superContestEffect, err := request.GetSpecificResource[SuperContestEffect](constants.SuperContestEffectEndpoint + id)
+func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, error) {
+	superContestEffect, err := request.GetSpecificResource[models.SuperContestEffect](constants.SuperContestEffectEndpoint + id)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +70,7 @@ func (c Contests) GetSuperContestEffect(id string) (*SuperContestEffect, error) 
 }
 
 // Return a list of Berry resource
-func (c Contests) GetSuperContestEffectList() (*request.ResourceList, error) {
+func (c Contests) GetSuperContestEffectList() (*models.ResourceList, error) {
 	superContestEffectList, err := request.GetResourceList(constants.SuperContestEffectEndpoint)
 	if err != nil {
 		return nil, err
