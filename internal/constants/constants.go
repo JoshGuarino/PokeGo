@@ -17,5 +17,5 @@ const (
 	// Encounters group resource endpoints
 	EncounterMethodEndpoint         = BaseUrl + "/encounter-method/"
 	EncounterConditionEndpoint      = BaseUrl + "/encounter-condition/"
-	EncounterConditionEndpointValue = BaseUrl + "/encounter-condition-value/"
+	EncounterConditionValueEndpoint = BaseUrl + "/encounter-condition-value/"
 )

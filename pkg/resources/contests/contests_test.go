@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// Contests struct instance for testing
 var contests IContests = Contests{}
 
 func TestGetContestType(t *testing.T) {
