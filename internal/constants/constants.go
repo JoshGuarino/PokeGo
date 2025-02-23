@@ -18,4 +18,8 @@ const (
 	EncounterMethodEndpoint         = BaseUrl + "/encounter-method/"
 	EncounterConditionEndpoint      = BaseUrl + "/encounter-condition/"
 	EncounterConditionValueEndpoint = BaseUrl + "/encounter-condition-value/"
+
+	// Evolution group resource endpoints
+	EvolutionChainEndpoint   = BaseUrl + "/evolution-chain/"
+	EvolutionTriggerEndpoint = BaseUrl + "/evolution-trigger/"
 )
