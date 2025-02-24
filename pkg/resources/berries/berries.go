@@ -9,11 +9,11 @@ import (
 // Berries group interface
 type IBerries interface {
 	GetBerry(nameOrId string) (*models.Berry, error)
-	GetBerryList() (*models.ResourceList, error)
+	GetBerryList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error)
-	GetBerryFirmnessList() (*models.ResourceList, error)
+	GetBerryFirmnessList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error)
-	GetBerryFlavorList() (*models.ResourceList, error)
+	GetBerryFlavorList(options models.PaginationOptions) (*models.ResourceList, error)
 }
 
 // Berries group struct
@@ -34,8 +34,8 @@ func (b Berries) GetBerry(nameOrId string) (*models.Berry, error) {
 }
 
 // Return a list of Berry resource
-func (b Berries) GetBerryList() (*models.ResourceList, error) {
-	berryList, err := request.GetResourceList(constants.BerryEndpoint)
+func (b Berries) GetBerryList(options models.PaginationOptions) (*models.ResourceList, error) {
+	berryList, err := request.GetResourceList(constants.BerryEndpoint, options)
 	if err != nil {
 		return nil, err
 	}
@@ -52,8 +52,8 @@ func (b Berries) GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error
 }
 
 // Return a list of BerryFirmness resource
-func (b Berries) GetBerryFirmnessList() (*models.ResourceList, error) {
-	berryFirmnessList, err := request.GetResourceList(constants.BerryFirmnessEndpoint)
+func (b Berries) GetBerryFirmnessList(options models.PaginationOptions) (*models.ResourceList, error) {
+	berryFirmnessList, err := request.GetResourceList(constants.BerryFirmnessEndpoint, options)
 	if err != nil {
 		return nil, err
 	}
@@ -71,8 +71,8 @@ func (b Berries) GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error) {
 }
 
 // Return a list of BerryFlavor resource
-func (b Berries) GetBerryFlavorList() (*models.ResourceList, error) {
-	berryFlavorList, err := request.GetResourceList(constants.BerryFlavorEndpoint)
+func (b Berries) GetBerryFlavorList(options models.PaginationOptions) (*models.ResourceList, error) {
+	berryFlavorList, err := request.GetResourceList(constants.BerryFlavorEndpoint, options)
 	if err != nil {
 		return nil, err
 	}

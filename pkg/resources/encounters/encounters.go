@@ -9,11 +9,11 @@ import (
 // Encounters group interface
 type IEncounters interface {
 	GetEncounterMethod(nameOrId string) (*models.EncounterMethod, error)
-	GetEncounterMethodList() (*models.ResourceList, error)
+	GetEncounterMethodList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetEncounterCondition(nameOrId string) (*models.EncounterCondition, error)
-	GetEncounterConditionList() (*models.ResourceList, error)
+	GetEncounterConditionList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetEncounterConditionValue(nameOrId string) (*models.EncounterConditionValue, error)
-	GetEncounterConditionValueList() (*models.ResourceList, error)
+	GetEncounterConditionValueList(options models.PaginationOptions) (*models.ResourceList, error)
 }
 
 // Encounters group struct
@@ -34,8 +34,8 @@ func (e Encounters) GetEncounterMethod(nameOrId string) (*models.EncounterMethod
 }
 
 // Return a list of EncounterMethod resource
-func (e Encounters) GetEncounterMethodList() (*models.ResourceList, error) {
-	encounterMethodList, err := request.GetResourceList(constants.EncounterMethodEndpoint)
+func (e Encounters) GetEncounterMethodList(options models.PaginationOptions) (*models.ResourceList, error) {
+	encounterMethodList, err := request.GetResourceList(constants.EncounterMethodEndpoint, options)
 	if err != nil {
 		return nil, err
 	}
@@ -52,8 +52,8 @@ func (e Encounters) GetEncounterCondition(nameOrId string) (*models.EncounterCon
 }
 
 // Return a list of EncounterCondition resource
-func (e Encounters) GetEncounterConditionList() (*models.ResourceList, error) {
-	encounterConditionList, err := request.GetResourceList(constants.EncounterConditionEndpoint)
+func (e Encounters) GetEncounterConditionList(options models.PaginationOptions) (*models.ResourceList, error) {
+	encounterConditionList, err := request.GetResourceList(constants.EncounterConditionEndpoint, options)
 	if err != nil {
 		return nil, err
 	}
@@ -70,8 +70,8 @@ func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.Encount
 }
 
 // Return a list of EncounterCondition resource
-func (e Encounters) GetEncounterConditionValueList() (*models.ResourceList, error) {
-	encounterConditionValueList, err := request.GetResourceList(constants.EncounterConditionValueEndpoint)
+func (e Encounters) GetEncounterConditionValueList(options models.PaginationOptions) (*models.ResourceList, error) {
+	encounterConditionValueList, err := request.GetResourceList(constants.EncounterConditionValueEndpoint, options)
 	if err != nil {
 		return nil, err
 	}

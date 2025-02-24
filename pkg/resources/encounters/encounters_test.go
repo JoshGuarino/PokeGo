@@ -3,6 +3,7 @@ package encounters
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -18,7 +19,7 @@ func TestGetEncounterMethod(t *testing.T) {
 }
 
 func TestGetEncounterMethodList(t *testing.T) {
-	rList, _ := encounters.GetEncounterMethodList()
+	rList, _ := encounters.GetEncounterMethodList(models.PaginationOptions{})
 	// _, err := encounters.GetEncounterMethodList()
 	assert.Equal(t, "walk", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -34,7 +35,7 @@ func TestGetEncounterCondition(t *testing.T) {
 }
 
 func TestGetEncounterConditionList(t *testing.T) {
-	rList, _ := encounters.GetEncounterConditionList()
+	rList, _ := encounters.GetEncounterConditionList(models.PaginationOptions{})
 	// _, err := encounters.GetEncounterConditionList()
 	assert.Equal(t, "swarm", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -50,7 +51,7 @@ func TestGetEncounterConditionValue(t *testing.T) {
 }
 
 func TestGetEncounterConditionValueList(t *testing.T) {
-	rList, _ := encounters.GetEncounterConditionValueList()
+	rList, _ := encounters.GetEncounterConditionValueList(models.PaginationOptions{})
 	// _, err := encounters.GetEncounterConditionList()
 	assert.Equal(t, "swarm-yes", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")

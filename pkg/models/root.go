@@ -17,3 +17,9 @@ type Result struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
+
+// Pagination options
+type PaginationOptions struct {
+	Limit  int
+	Offest int
+}

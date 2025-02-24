@@ -3,6 +3,7 @@ package berries
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -18,7 +19,7 @@ func TestGetBerry(t *testing.T) {
 }
 
 func TestGetBerryList(t *testing.T) {
-	rList, _ := berries.GetBerryList()
+	rList, _ := berries.GetBerryList(models.PaginationOptions{})
 	// _, err := berries.GetBerryList()
 	assert.Equal(t, "cheri", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -34,7 +35,7 @@ func TestGetBerryFirmness(t *testing.T) {
 }
 
 func TestGetBerryFirmnessList(t *testing.T) {
-	rList, _ := berries.GetBerryFirmnessList()
+	rList, _ := berries.GetBerryFirmnessList(models.PaginationOptions{})
 	// _, err := berries.GetBerryFirmnessList()
 	assert.Equal(t, "very-soft", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -50,7 +51,7 @@ func TestGetBerryFlavor(t *testing.T) {
 }
 
 func TestGetBerryFlavorList(t *testing.T) {
-	rList, _ := berries.GetBerryFlavorList()
+	rList, _ := berries.GetBerryFlavorList(models.PaginationOptions{})
 	// _, err := berries.GetBerryFlavorList()
 	assert.Equal(t, "spicy", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")

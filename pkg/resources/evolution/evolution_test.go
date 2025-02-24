@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -17,7 +18,7 @@ func TestGetEvolutionChain(t *testing.T) {
 }
 
 func TestGetEvolutionChainList(t *testing.T) {
-	rList, _ := evolution.GetEvolutionChainList()
+	rList, _ := evolution.GetEvolutionChainList(models.PaginationOptions{})
 	// _, err := evolution.GetEvolutionChainList()
 	assert.Equal(t, constants.EvolutionChainEndpoint+"1/", rList.Results[0].URL, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -33,7 +34,7 @@ func TestGetEvolutionTrigger(t *testing.T) {
 }
 
 func TestGetEvolutionTriggerList(t *testing.T) {
-	rList, _ := evolution.GetEvolutionTriggerList()
+	rList, _ := evolution.GetEvolutionTriggerList(models.PaginationOptions{})
 	// _, err := evolution.GetEvolutionTriggerList()
 	assert.Equal(t, "level-up", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")

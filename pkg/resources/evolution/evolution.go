@@ -9,9 +9,9 @@ import (
 // Evolution group interface
 type IEvolution interface {
 	GetEvolutionChain(id string) (*models.EvolutionChain, error)
-	GetEvolutionChainList() (*models.ResourceList, error)
+	GetEvolutionChainList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigger, error)
-	GetEvolutionTriggerList() (*models.ResourceList, error)
+	GetEvolutionTriggerList(options models.PaginationOptions) (*models.ResourceList, error)
 }
 
 // Evolution group struct
@@ -32,8 +32,8 @@ func (e Evolution) GetEvolutionChain(id string) (*models.EvolutionChain, error) 
 }
 
 // Return a list of EvolutionChain resource
-func (e Evolution) GetEvolutionChainList() (*models.ResourceList, error) {
-	evolutionChainList, err := request.GetResourceList(constants.EvolutionChainEndpoint)
+func (e Evolution) GetEvolutionChainList(options models.PaginationOptions) (*models.ResourceList, error) {
+	evolutionChainList, err := request.GetResourceList(constants.EvolutionChainEndpoint, options)
 	if err != nil {
 		return nil, err
 	}
@@ -50,8 +50,8 @@ func (e Evolution) GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigge
 }
 
 // Return a list of EvolutionTrigger resource
-func (e Evolution) GetEvolutionTriggerList() (*models.ResourceList, error) {
-	evolutionTriggerList, err := request.GetResourceList(constants.EvolutionTriggerEndpoint)
+func (e Evolution) GetEvolutionTriggerList(options models.PaginationOptions) (*models.ResourceList, error) {
+	evolutionTriggerList, err := request.GetResourceList(constants.EvolutionTriggerEndpoint, options)
 	if err != nil {
 		return nil, err
 	}

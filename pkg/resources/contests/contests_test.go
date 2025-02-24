@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -20,7 +21,7 @@ func TestGetContestType(t *testing.T) {
 }
 
 func TestGetContestTypeList(t *testing.T) {
-	rList, _ := contests.GetContestTypeList()
+	rList, _ := contests.GetContestTypeList(models.PaginationOptions{})
 	// _, err := contests.GetContestTypeList()
 	assert.Equal(t, "cool", rList.Results[0].Name, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -34,7 +35,7 @@ func TestGetContestEffect(t *testing.T) {
 }
 
 func TestGetContestEffectList(t *testing.T) {
-	rList, _ := contests.GetContestEffectList()
+	rList, _ := contests.GetContestEffectList(models.PaginationOptions{})
 	// _, err := contests.GetContestEffectList()
 	assert.Equal(t, constants.ContestEffectEndpoint+"1/", rList.Results[0].URL, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")
@@ -48,7 +49,7 @@ func TestGetSuperContestEffect(t *testing.T) {
 }
 
 func TestGetSuperContestEffectList(t *testing.T) {
-	rList, _ := contests.GetSuperContestEffectList()
+	rList, _ := contests.GetSuperContestEffectList(models.PaginationOptions{})
 	// _, err := contests.GetContestEffectList()
 	assert.Equal(t, constants.SuperContestEffectEndpoint+"1/", rList.Results[0].URL, "")
 	// assert.Error(t, err, "Expected an error to be thrown.")

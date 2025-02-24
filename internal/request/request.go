@@ -2,6 +2,7 @@ package request
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 
@@ -29,9 +30,12 @@ func Get(url string) ([]byte, error) {
 }
 
 // Make GET request for list of resource
-func GetResourceList(url string) (models.ResourceList, error) {
+func GetResourceList(url string, options models.PaginationOptions) (models.ResourceList, error) {
 	resourceList := models.ResourceList{}
-	body, errReq := Get(url)
+	if options.Limit == 0 {
+		options.Limit = 20
+	}
+	body, errReq := Get(fmt.Sprintf("%s?offset=%d&limit=%d", url, options.Offest, options.Limit))
 	if errReq != nil {
 		return resourceList, errReq
 	}
