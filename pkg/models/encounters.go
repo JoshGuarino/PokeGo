@@ -1,6 +1,6 @@
 package models
 
-// EncounterMethod is a single encounter method.
+// Represents a single EncounterMethod resource
 type EncounterMethod struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
@@ -14,7 +14,7 @@ type EncounterMethod struct {
 	Order int `json:"order"`
 }
 
-// EncounterCondition is a single encounter condition.
+// Represents a single EncounterCondition resource
 type EncounterCondition struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
@@ -31,7 +31,7 @@ type EncounterCondition struct {
 	} `json:"values"`
 }
 
-// EncounterConditionValue is a single encounter condition value.
+// Represents a single EncounterConditionValue resource
 type EncounterConditionValue struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`

@@ -1,6 +1,6 @@
 package models
 
-// EvolutionChain is a single evolution chain.
+// Represents a single EvolutionChain resource
 type EvolutionChain struct {
 	BabyTriggerItem interface{} `json:"baby_trigger_item"`
 	Chain           struct {
@@ -75,7 +75,7 @@ type EvolutionChain struct {
 	ID int `json:"id"`
 }
 
-// EvolutionTrigger is a single evolution trigger.
+// Represents a single EvolutionTrigger resource
 type EvolutionTrigger struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`

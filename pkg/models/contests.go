@@ -1,6 +1,6 @@
 package models
 
-// ContestType is a single contest type.
+// Represents a single ContestType.
 type ContestType struct {
 	BerryFlavor struct {
 		Name string `json:"name"`
@@ -18,7 +18,7 @@ type ContestType struct {
 	} `json:"names"`
 }
 
-// ContestEffect is a single contest effect.
+// Represents a single ContestEffect resource
 type ContestEffect struct {
 	Appeal        int `json:"appeal"`
 	EffectEntries []struct {
@@ -39,7 +39,7 @@ type ContestEffect struct {
 	Jam int `json:"jam"`
 }
 
-// SuperContestEffect is a single super contest effect.
+// Represents a single SuperContest resource
 type SuperContestEffect struct {
 	Appeal            int `json:"appeal"`
 	FlavorTextEntries []struct {
