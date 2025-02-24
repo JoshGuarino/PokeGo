@@ -13,29 +13,31 @@ var evolution IEvolution = Evolution{}
 func TestGetEvolutionChain(t *testing.T) {
 	rById, _ := evolution.GetEvolutionChain("1")
 	_, err := evolution.GetEvolutionChain("test")
-	assert.Equal(t, 1, rById.ID, "")
+	assert.Equal(t, 1, rById.ID, "Unexpected ID for EvolutionChain resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
 func TestGetEvolutionChainList(t *testing.T) {
 	rList, _ := evolution.GetEvolutionChainList(models.PaginationOptions{})
-	// _, err := evolution.GetEvolutionChainList()
-	assert.Equal(t, constants.EvolutionChainEndpoint+"1/", rList.Results[0].URL, "")
-	// assert.Error(t, err, "Expected an error to be thrown.")
+	rPage, _ := evolution.GetEvolutionChainList(models.PaginationOptions{Limit: 1, Offest: 1})
+	assert.Equal(t, constants.EvolutionChainEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for EvolutionChain resource")
+	assert.Equal(t, constants.EvolutionChainEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for EvolutionChain resource")
+	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 
 func TestGetEvolutionTrigger(t *testing.T) {
 	rById, _ := evolution.GetEvolutionTrigger("1")
 	rByName, _ := evolution.GetEvolutionTrigger("level-up")
 	_, err := evolution.GetEvolutionTrigger("test")
-	assert.Equal(t, 1, rById.ID, "")
-	assert.Equal(t, "level-up", rByName.Name, "")
+	assert.Equal(t, 1, rById.ID, "Unexpected ID for EvolutionTrigger resource")
+	assert.Equal(t, "level-up", rByName.Name, "Unexpected Name for EvolutionTrigger resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
 func TestGetEvolutionTriggerList(t *testing.T) {
 	rList, _ := evolution.GetEvolutionTriggerList(models.PaginationOptions{})
-	// _, err := evolution.GetEvolutionTriggerList()
-	assert.Equal(t, "level-up", rList.Results[0].Name, "")
-	// assert.Error(t, err, "Expected an error to be thrown.")
+	rPage, _ := evolution.GetEvolutionTriggerList(models.PaginationOptions{Limit: 1, Offest: 1})
+	assert.Equal(t, "level-up", rList.Results[0].Name, "Unexpected Name for EvolutionTrigger resource")
+	assert.Equal(t, "trade", rPage.Results[0].Name, "Unexpected Name for EvolutionTrigger resource")
+	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
