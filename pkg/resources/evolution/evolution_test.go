@@ -10,6 +10,11 @@ import (
 
 var evolution IEvolution = Evolution{}
 
+func TestNewEvolutionGroup(t *testing.T) {
+	evolution := NewEvolutionGroup()
+	assert.IsType(t, Evolution{}, evolution, "Expected Evolution instance to be returned")
+}
+
 func TestGetEvolutionChain(t *testing.T) {
 	rById, _ := evolution.GetEvolutionChain("1")
 	_, err := evolution.GetEvolutionChain("test")

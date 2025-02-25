@@ -9,6 +9,11 @@ import (
 
 var encounters IEncounters = Encounters{}
 
+func TestNewEncountersGroup(t *testing.T) {
+	encounters := NewEncountersGroup()
+	assert.IsType(t, Encounters{}, encounters, "Expected Encounters instance to be returned")
+}
+
 func TestGetEncounterMethod(t *testing.T) {
 	rById, _ := encounters.GetEncounterMethod("1")
 	rByName, _ := encounters.GetEncounterMethod("walk")

@@ -10,6 +10,11 @@ import (
 
 var contests IContests = Contests{}
 
+func TestNewContestsGroup(t *testing.T) {
+	contests := NewContestsGroup()
+	assert.IsType(t, Contests{}, contests, "Expected Contests instance to be returned")
+}
+
 func TestGetContestType(t *testing.T) {
 	rById, _ := contests.GetContestType("1")
 	rByName, _ := contests.GetContestType("cool")

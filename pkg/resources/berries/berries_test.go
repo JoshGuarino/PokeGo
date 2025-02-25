@@ -9,6 +9,11 @@ import (
 
 var berries IBerries = Berries{}
 
+func TestNewBerriesGroup(t *testing.T) {
+	berries := NewBerriesGroup()
+	assert.IsType(t, Berries{}, berries, "Expected Berries instance to be returned")
+}
+
 func TestGetBerry(t *testing.T) {
 	rById, _ := berries.GetBerry("1")
 	rByName, _ := berries.GetBerry("cheri")
