@@ -39,7 +39,7 @@ func (c Contests) GetContestTypeList(options models.PaginationOptions) (*models.
 	if err != nil {
 		return nil, err
 	}
-	return &contestTypeList, nil
+	return contestTypeList, nil
 }
 
 // Return a single ContestsEffect resource by ID
@@ -57,7 +57,7 @@ func (c Contests) GetContestEffectList(options models.PaginationOptions) (*model
 	if err != nil {
 		return nil, err
 	}
-	return &contestEffectList, nil
+	return contestEffectList, nil
 }
 
 // Return a single SuperContestsEffect resource by ID
@@ -75,5 +75,5 @@ func (c Contests) GetSuperContestEffectList(options models.PaginationOptions) (*
 	if err != nil {
 		return nil, err
 	}
-	return &superContestEffectList, nil
+	return superContestEffectList, nil
 }

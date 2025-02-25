@@ -39,7 +39,7 @@ func (e Encounters) GetEncounterMethodList(options models.PaginationOptions) (*m
 	if err != nil {
 		return nil, err
 	}
-	return &encounterMethodList, nil
+	return encounterMethodList, nil
 }
 
 // Return a single EncounterCondition resource by name or ID
@@ -57,7 +57,7 @@ func (e Encounters) GetEncounterConditionList(options models.PaginationOptions) 
 	if err != nil {
 		return nil, err
 	}
-	return &encounterConditionList, nil
+	return encounterConditionList, nil
 }
 
 // Return a single EncounterCondition resource by name or ID
@@ -75,5 +75,5 @@ func (e Encounters) GetEncounterConditionValueList(options models.PaginationOpti
 	if err != nil {
 		return nil, err
 	}
-	return &encounterConditionValueList, nil
+	return encounterConditionValueList, nil
 }

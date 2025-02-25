@@ -30,20 +30,20 @@ func Get(url string) ([]byte, error) {
 }
 
 // Make GET request for list of resource
-func GetResourceList(url string, options models.PaginationOptions) (models.ResourceList, error) {
+func GetResourceList(url string, options models.PaginationOptions) (*models.ResourceList, error) {
 	resourceList := models.ResourceList{}
 	if options.Limit == 0 {
 		options.Limit = 20
 	}
 	body, errReq := Get(fmt.Sprintf("%s?offset=%d&limit=%d", url, options.Offest, options.Limit))
 	if errReq != nil {
-		return resourceList, errReq
+		return nil, errReq
 	}
 	errJson := json.Unmarshal(body, &resourceList)
 	if errJson != nil {
-		return resourceList, errJson
+		return nil, errJson
 	}
-	return resourceList, nil
+	return &resourceList, nil
 }
 
 // Make GET request for a specifc resource

@@ -37,7 +37,7 @@ func (e Evolution) GetEvolutionChainList(options models.PaginationOptions) (*mod
 	if err != nil {
 		return nil, err
 	}
-	return &evolutionChainList, nil
+	return evolutionChainList, nil
 }
 
 // Return a single EvolutionTrigger resource by name or ID
@@ -55,5 +55,5 @@ func (e Evolution) GetEvolutionTriggerList(options models.PaginationOptions) (*m
 	if err != nil {
 		return nil, err
 	}
-	return &evolutionTriggerList, nil
+	return evolutionTriggerList, nil
 }

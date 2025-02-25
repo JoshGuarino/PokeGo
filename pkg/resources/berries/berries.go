@@ -39,7 +39,7 @@ func (b Berries) GetBerryList(options models.PaginationOptions) (*models.Resourc
 	if err != nil {
 		return nil, err
 	}
-	return &berryList, nil
+	return berryList, nil
 }
 
 // Return a single BerryFirmness resource by name or ID
@@ -57,7 +57,7 @@ func (b Berries) GetBerryFirmnessList(options models.PaginationOptions) (*models
 	if err != nil {
 		return nil, err
 	}
-	return &berryFirmnessList, nil
+	return berryFirmnessList, nil
 
 }
 
@@ -76,6 +76,6 @@ func (b Berries) GetBerryFlavorList(options models.PaginationOptions) (*models.R
 	if err != nil {
 		return nil, err
 	}
-	return &berryFlavorList, nil
+	return berryFlavorList, nil
 
 }
