@@ -1,5 +1,10 @@
 package games
 
+import (
+	"github.com/JoshGuarino/PokeGo/internal/request"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
+)
+
 // Games group interface
 type IGames interface {
 }
