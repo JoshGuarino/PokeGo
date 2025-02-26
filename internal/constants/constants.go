@@ -22,4 +22,10 @@ const (
 	// Evolution group resource endpoints
 	EvolutionChainEndpoint   = BaseUrl + "/evolution-chain/"
 	EvolutionTriggerEndpoint = BaseUrl + "/evolution-trigger/"
+
+	// Games group resource endpoints
+	GenerationEndpoint   = BaseUrl + "/generation/"
+	PokedexEndpoint      = BaseUrl + "/pokedex/"
+	VersionEndpoint      = BaseUrl + "/version/"
+	VersionGroupEndpoint = BaseUrl + "/version-group/"
 )
