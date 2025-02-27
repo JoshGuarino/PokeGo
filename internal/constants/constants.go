@@ -28,4 +28,11 @@ const (
 	PokedexEndpoint      = BaseUrl + "/pokedex/"
 	VersionEndpoint      = BaseUrl + "/version/"
 	VersionGroupEndpoint = BaseUrl + "/version-group/"
+
+	// Items group resource endpoints
+	ItemEndpoint            = BaseUrl + "/item/"
+	ItemAttributeEndpoint   = BaseUrl + "/item-attribute/"
+	ItemCategoryEndpoint    = BaseUrl + "/item-category/"
+	ItemFlingEffectEndpoint = BaseUrl + "/item-fling-effect/"
+	ItemPocketEndpoint      = BaseUrl + "/item-pocket/"
 )

@@ -9,6 +9,7 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/resources/encounters"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/evolution"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/games"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/items"
 )
 
 // PokeGo API wrapper interface
@@ -23,6 +24,7 @@ type PokeGo struct {
 	Encounters encounters.Encounters
 	Evolution  evolution.Evolution
 	Games      games.Games
+	Items      items.Items
 }
 
 // Return an instance of the PokeGo API wrapper client
@@ -33,6 +35,7 @@ func NewClient() PokeGo {
 		Encounters: encounters.NewEncountersGroup(),
 		Evolution:  evolution.NewEvolutionGroup(),
 		Games:      games.NewGamesGroup(),
+		Items:      items.NewItemsGroup(),
 	}
 }
 

@@ -14,7 +14,7 @@ func TestGetGeneration(t *testing.T) {
 	rByName, _ := games.GetGeneration("generation-i")
 	_, err := games.GetGeneration("test")
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Generation resource")
-	assert.Equal(t, "generation-i", rByName.Name, "Unexpected ID for Generation resource")
+	assert.Equal(t, "generation-i", rByName.Name, "Unexpected Name for Generation resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
@@ -31,7 +31,7 @@ func TestGetPokedex(t *testing.T) {
 	rByName, _ := games.GetPokedex("national")
 	_, err := games.GetPokedex("test")
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Pokedex resource")
-	assert.Equal(t, "national", rByName.Name, "Unexpected ID for Pokedex resource")
+	assert.Equal(t, "national", rByName.Name, "Unexpected Name for Pokedex resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
@@ -48,7 +48,7 @@ func TestGetVersion(t *testing.T) {
 	rByName, _ := games.GetVersion("red")
 	_, err := games.GetVersion("test")
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Version resource")
-	assert.Equal(t, "red", rByName.Name, "Unexpected ID for Version resource")
+	assert.Equal(t, "red", rByName.Name, "Unexpected Name for Version resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
@@ -65,7 +65,7 @@ func TestGetVersionGroup(t *testing.T) {
 	rByName, _ := games.GetVersionGroup("red-blue")
 	_, err := games.GetVersionGroup("test")
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for VersionGroup resource")
-	assert.Equal(t, "red-blue", rByName.Name, "Unexpected ID for VersionGroup resource")
+	assert.Equal(t, "red-blue", rByName.Name, "Unexpected Name for VersionGroup resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
 }
 
