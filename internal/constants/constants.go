@@ -35,4 +35,13 @@ const (
 	ItemCategoryEndpoint    = BaseUrl + "/item-category/"
 	ItemFlingEffectEndpoint = BaseUrl + "/item-fling-effect/"
 	ItemPocketEndpoint      = BaseUrl + "/item-pocket/"
+
+	// Locations group resource endpoints
+	LocationEndpoint     = BaseUrl + "/location/"
+	LocationAreaEndpoint = BaseUrl + "/location-area/"
+	PalParkAreaEndpoint  = BaseUrl + "/pal-park-area/"
+	RegionEndpoint       = BaseUrl + "/region/"
+
+	// Machines group resource endpoints
+	MachineEndpoint = BaseUrl + "/machine/"
 )
