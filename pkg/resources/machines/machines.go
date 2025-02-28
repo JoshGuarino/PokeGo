@@ -16,7 +16,7 @@ type IMachines interface {
 type Machines struct{}
 
 // Return an instance of Items resource group struct
-func NewMachines() Machines {
+func NewMachinesGroup() Machines {
 	return Machines{}
 }
 

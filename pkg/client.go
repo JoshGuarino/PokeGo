@@ -10,6 +10,8 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/resources/evolution"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/games"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/items"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/locations"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/machines"
 )
 
 // PokeGo API wrapper interface
@@ -25,6 +27,8 @@ type PokeGo struct {
 	Evolution  evolution.Evolution
 	Games      games.Games
 	Items      items.Items
+	Locations  locations.Locations
+	Machines   machines.Machines
 }
 
 // Return an instance of the PokeGo API wrapper client
@@ -36,6 +40,8 @@ func NewClient() PokeGo {
 		Evolution:  evolution.NewEvolutionGroup(),
 		Games:      games.NewGamesGroup(),
 		Items:      items.NewItemsGroup(),
+		Locations:  locations.NewLocationsGroup(),
+		Machines:   machines.NewMachinesGroup(),
 	}
 }
 
