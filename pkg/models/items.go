@@ -1,6 +1,6 @@
 package models
 
-// Item is a single item.
+// Represents a single Item resource
 type Item struct {
 	Attributes []struct {
 		Name string `json:"name"`
@@ -56,7 +56,7 @@ type Item struct {
 	} `json:"sprites"`
 }
 
-// ItemAttribute is a single item attribute.
+// Represents a single ItemAttribute resource
 type ItemAttribute struct {
 	Descriptions []struct {
 		Description string `json:"description"`
@@ -80,7 +80,7 @@ type ItemAttribute struct {
 	} `json:"names"`
 }
 
-// ItemCategory is a single item category.
+// Represents a single ItemCategory resource
 type ItemCategory struct {
 	ID    int `json:"id"`
 	Items []struct {
@@ -101,7 +101,7 @@ type ItemCategory struct {
 	} `json:"pocket"`
 }
 
-// ItemFlingEffect is a single item fling effect.
+// Represents a single ItemFlingEffect resource
 type ItemFlingEffect struct {
 	EffectEntries []struct {
 		Effect   string `json:"effect"`
@@ -118,7 +118,7 @@ type ItemFlingEffect struct {
 	Name string `json:"name"`
 }
 
-// ItemPocket is a single item pocket.
+// Represents a single ItemPocket resource
 type ItemPocket struct {
 	Categories []struct {
 		Name string `json:"name"`

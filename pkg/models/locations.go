@@ -1,6 +1,6 @@
 package models
 
-// Location is a single location.
+// Represents a single Location resource
 type Location struct {
 	Areas []struct {
 		Name string `json:"name"`
@@ -28,7 +28,7 @@ type Location struct {
 	} `json:"region"`
 }
 
-// LocationArea is a single location area.
+// Represents a single LocationArea resource
 type LocationArea struct {
 	EncounterMethodRates []struct {
 		EncounterMethod struct {
@@ -82,7 +82,7 @@ type LocationArea struct {
 	} `json:"pokemon_encounters"`
 }
 
-// PalParkArea is a single Pal Park area.
+// Represents a single PalParkArea resource
 type PalParkArea struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
@@ -103,7 +103,7 @@ type PalParkArea struct {
 	} `json:"pokemon_encounters"`
 }
 
-// Region is a single region.
+// Represents a single Region resource
 type Region struct {
 	ID        int `json:"id"`
 	Locations []struct {

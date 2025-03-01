@@ -1,6 +1,6 @@
 package models
 
-// Machine is a single machine.
+// Represents a single Machine resource
 type Machine struct {
 	ID   int `json:"id"`
 	Item struct {

@@ -52,7 +52,7 @@ type Root struct {
 	VersionGroup            string `json:"version-group"`
 }
 
-// Resource list for an endpoint
+// Represents a ResourceList for an endpoint
 type ResourceList struct {
 	Count    int      `json:"count"`
 	Next     *string  `json:"next"`
@@ -60,13 +60,13 @@ type ResourceList struct {
 	Results  []Result `json:"results"`
 }
 
-// Resource list result
+// Represents a ResourceList Result
 type Result struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
 
-// Pagination options
+// Represents PaginationOptions for a list endpoint
 type PaginationOptions struct {
 	Limit  int
 	Offest int
