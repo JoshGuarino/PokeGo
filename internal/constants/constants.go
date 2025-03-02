@@ -44,4 +44,33 @@ const (
 
 	// Machines group resource endpoints
 	MachineEndpoint = BaseUrl + "/machine/"
+
+	// Moves group resource endpoints
+	MoveEndpoint            = BaseUrl + "/move/"
+	MoveAilmentEndpoint     = BaseUrl + "/move-ailment/"
+	MoveBattleStyleEndpoint = BaseUrl + "/move-battle-style/"
+	MoveCategoryEndpoint    = BaseUrl + "/move-category/"
+	MoveDamageClassEndpoint = BaseUrl + "/move-damage-class/"
+	MoveLearnMethodEndpoint = BaseUrl + "/move-learn-method/"
+	MoveTargetEndpoint      = BaseUrl + "/move-target/"
+
+	// Pokemon group resource endpoints
+	AbilityEndpoint        = BaseUrl + "/ability/"
+	CharacteristicEndpoint = BaseUrl + "/characteristic/"
+	EggGroupEndpoint       = BaseUrl + "/egg-group/"
+	GenderEndpoint         = BaseUrl + "/gender/"
+	GrowthRateEndpoint     = BaseUrl + "/growth-rate/"
+	NatureEndpoint         = BaseUrl + "/nature/"
+	PokeathlonStatEndpoint = BaseUrl + "/pokeathlon-stat/"
+	PokemonEndpoint        = BaseUrl + "/pokemon/"
+	PokemonColorEndpoint   = BaseUrl + "/pokemon-color/"
+	PokemonFormEndpoint    = BaseUrl + "/pokemon-form/"
+	PokemonHabitatEndpoint = BaseUrl + "/pokemon-habitat/"
+	PokemonShapeEndpoint   = BaseUrl + "/pokemon-shape/"
+	PokemonSpeciesEndpoint = BaseUrl + "/pokemon-species/"
+	StatEndpoint           = BaseUrl + "/stat/"
+	TypeEndpoint           = BaseUrl + "/type/"
+
+	// Utility group resource endpoints
+	LanguageEndpoint = BaseUrl + "/language/"
 )

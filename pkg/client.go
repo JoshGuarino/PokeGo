@@ -12,6 +12,9 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/resources/items"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/locations"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/machines"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/moves"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
+	"github.com/JoshGuarino/PokeGo/pkg/resources/utility"
 )
 
 // PokeGo API wrapper interface
@@ -29,6 +32,9 @@ type PokeGo struct {
 	Items      items.Items
 	Locations  locations.Locations
 	Machines   machines.Machines
+	Moves      moves.Moves
+	Pokemon    pokemon.Pokemon
+	Utility    utility.Utility
 }
 
 // Return an instance of the PokeGo API wrapper client
@@ -42,6 +48,9 @@ func NewClient() PokeGo {
 		Items:      items.NewItemsGroup(),
 		Locations:  locations.NewLocationsGroup(),
 		Machines:   machines.NewMachinesGroup(),
+		Moves:      moves.NewMovesGroup(),
+		Pokemon:    pokemon.NewPokemonGroup(),
+		Utility:    utility.NewUtilityGroup(),
 	}
 }
 
