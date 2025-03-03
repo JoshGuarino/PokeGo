@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var machines IMachines = Machines{}
+var machines IMachines = NewMachinesGroup()
 
 func TestGetMachine(t *testing.T) {
 	rById, _ := machines.GetMachine("1")

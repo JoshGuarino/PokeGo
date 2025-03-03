@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var encounters IEncounters = Encounters{}
+var encounters IEncounters = NewEncountersGroup()
 
 func TestNewEncountersGroup(t *testing.T) {
 	encounters := NewEncountersGroup()

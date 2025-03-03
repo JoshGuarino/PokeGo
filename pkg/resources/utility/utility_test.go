@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var utility IUtility = Utility{}
+var utility IUtility = NewUtilityGroup()
 
 func TestGetLanguage(t *testing.T) {
 	rById, _ := utility.GetLanguage("1")

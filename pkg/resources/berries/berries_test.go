@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var berries IBerries = Berries{}
+var berries IBerries = NewBerriesGroup()
 
 func TestNewBerriesGroup(t *testing.T) {
 	berries := NewBerriesGroup()

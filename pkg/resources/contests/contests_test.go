@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var contests IContests = Contests{}
+var contests IContests = NewContestsGroup()
 
 func TestNewContestsGroup(t *testing.T) {
 	contests := NewContestsGroup()

@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var evolution IEvolution = Evolution{}
+var evolution IEvolution = NewEvolutionGroup()
 
 func TestNewEvolutionGroup(t *testing.T) {
 	evolution := NewEvolutionGroup()

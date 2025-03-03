@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var items IItems = Items{}
+var items IItems = NewItemsGroup()
 
 func TestGetItem(t *testing.T) {
 	rById, _ := items.GetItem("1")

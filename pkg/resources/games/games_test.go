@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var games IGames = Games{}
+var games IGames = NewGamesGroup()
 
 func TestGetGeneration(t *testing.T) {
 	rById, _ := games.GetGeneration("1")
