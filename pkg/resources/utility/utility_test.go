@@ -9,6 +9,11 @@ import (
 
 var utility IUtility = NewUtilityGroup()
 
+func TestNewUtilityGroup(t *testing.T) {
+	utility := NewUtilityGroup()
+	assert.IsType(t, Utility{}, utility, "Expected Utility instance to be returned")
+}
+
 func TestGetLanguage(t *testing.T) {
 	rById, _ := utility.GetLanguage("1")
 	rByname, _ := utility.GetLanguage("en")

@@ -1,7 +1,7 @@
 test:
 	go test ./...
 
-test verbose:
+test-verbose:
 	go test -v ./...
 
 tidy:

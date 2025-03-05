@@ -10,6 +10,11 @@ import (
 
 var pokemon IPokemon = NewPokemonGroup()
 
+func TestNewPokemonGroup(t *testing.T) {
+	pokemon := NewPokemonGroup()
+	assert.IsType(t, Pokemon{}, pokemon, "Expected Pokemon instance to be returned")
+}
+
 func TestGetAbility(t *testing.T) {
 	rById, _ := pokemon.GetAbility("1")
 	rByName, _ := pokemon.GetAbility("stench")

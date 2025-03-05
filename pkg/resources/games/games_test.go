@@ -9,6 +9,11 @@ import (
 
 var games IGames = NewGamesGroup()
 
+func TestNewGamesGroup(t *testing.T) {
+	games := NewGamesGroup()
+	assert.IsType(t, Games{}, games, "Expected Games instance to be returned")
+}
+
 func TestGetGeneration(t *testing.T) {
 	rById, _ := games.GetGeneration("1")
 	rByName, _ := games.GetGeneration("generation-i")

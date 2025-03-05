@@ -10,6 +10,11 @@ import (
 
 var machines IMachines = NewMachinesGroup()
 
+func TestNewMachinesGroup(t *testing.T) {
+	machines := NewMachinesGroup()
+	assert.IsType(t, Machines{}, machines, "Expected Machines instance to be returned")
+}
+
 func TestGetMachine(t *testing.T) {
 	rById, _ := machines.GetMachine("1")
 	_, err := machines.GetMachine("test")

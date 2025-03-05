@@ -9,6 +9,11 @@ import (
 
 var items IItems = NewItemsGroup()
 
+func TestNewItemsGroup(t *testing.T) {
+	items := NewItemsGroup()
+	assert.IsType(t, Items{}, items, "Expected Items instance to be returned")
+}
+
 func TestGetItem(t *testing.T) {
 	rById, _ := items.GetItem("1")
 	rByName, _ := items.GetItem("master-ball")

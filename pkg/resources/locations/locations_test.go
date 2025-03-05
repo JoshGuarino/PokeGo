@@ -9,6 +9,11 @@ import (
 
 var locations ILocations = NewLocationsGroup()
 
+func TestNewLocationsGroup(t *testing.T) {
+	locations := NewLocationsGroup()
+	assert.IsType(t, Locations{}, locations, "Expected Locations instance to be returned")
+}
+
 func TestGetLocation(t *testing.T) {
 	rById, _ := locations.GetLocation("1")
 	rByName, _ := locations.GetLocation("canalave-city")

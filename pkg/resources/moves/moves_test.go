@@ -9,6 +9,11 @@ import (
 
 var moves IMoves = NewMovesGroup()
 
+func TestNewMovesGroup(t *testing.T) {
+	moves := NewMovesGroup()
+	assert.IsType(t, Moves{}, moves, "Expected Moves instance to be returned")
+}
+
 func TestGetMove(t *testing.T) {
 	rById, _ := moves.GetMove("1")
 	rByName, _ := moves.GetMove("pound")
