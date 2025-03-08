@@ -1,6 +1,7 @@
 package pokemon
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -41,11 +42,15 @@ type IPokemon interface {
 }
 
 // Pokemon group struct
-type Pokemon struct{}
+type Pokemon struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Pokmon resource group struct
 func NewPokemonGroup() Pokemon {
-	return Pokemon{}
+	return Pokemon{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Ability resource by name or ID

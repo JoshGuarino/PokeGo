@@ -1,6 +1,7 @@
 package evolution
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -15,11 +16,15 @@ type IEvolution interface {
 }
 
 // Evolution group struct
-type Evolution struct{}
+type Evolution struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Evolution resource group struct
 func NewEvolutionGroup() Evolution {
-	return Evolution{}
+	return Evolution{
+		Cache: cache.C,
+	}
 }
 
 // Return a single EvolutionChain resource by ID

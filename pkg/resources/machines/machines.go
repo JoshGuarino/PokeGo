@@ -1,6 +1,7 @@
 package machines
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -13,11 +14,15 @@ type IMachines interface {
 }
 
 // Machines group struct
-type Machines struct{}
+type Machines struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Items resource group struct
 func NewMachinesGroup() Machines {
-	return Machines{}
+	return Machines{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Machine resource by  ID

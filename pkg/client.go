@@ -3,6 +3,7 @@ package pokego
 import (
 	"fmt"
 
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -37,6 +38,7 @@ type PokeGo struct {
 	Moves      moves.Moves
 	Pokemon    pokemon.Pokemon
 	Utility    utility.Utility
+	Cache      *cache.Cache
 }
 
 func init() {
@@ -57,6 +59,7 @@ func NewClient() PokeGo {
 		Moves:      moves.NewMovesGroup(),
 		Pokemon:    pokemon.NewPokemonGroup(),
 		Utility:    utility.NewUtilityGroup(),
+		Cache:      cache.C,
 	}
 }
 

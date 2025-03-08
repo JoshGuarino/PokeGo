@@ -1,6 +1,7 @@
 package utility
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -13,11 +14,15 @@ type IUtility interface {
 }
 
 // Utility group struct
-type Utility struct{}
+type Utility struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Utility resource group struct
 func NewUtilityGroup() Utility {
-	return Utility{}
+	return Utility{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Language resource by name or ID

@@ -1,6 +1,7 @@
 package locations
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -19,11 +20,15 @@ type ILocations interface {
 }
 
 // Locations group struct
-type Locations struct{}
+type Locations struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Locations resource group struct
 func NewLocationsGroup() Locations {
-	return Locations{}
+	return Locations{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Location resource by name or ID

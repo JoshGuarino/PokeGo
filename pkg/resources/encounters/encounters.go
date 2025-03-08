@@ -1,6 +1,7 @@
 package encounters
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -17,11 +18,15 @@ type IEncounters interface {
 }
 
 // Encounters group struct
-type Encounters struct{}
+type Encounters struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Encounters resource group struct
 func NewEncountersGroup() Encounters {
-	return Encounters{}
+	return Encounters{
+		Cache: cache.C,
+	}
 }
 
 // Return a single EncounterMethod resource by name or ID

@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"fmt"
 	"sync"
 	"time"
 )
@@ -33,6 +34,15 @@ type Value struct {
 type Settings struct {
 	expiration time.Duration
 	active     bool
+}
+
+// Cache var
+var C *Cache
+
+// Initialize cache
+func init() {
+	C = NewCache()
+	fmt.Println("Cache initialized")
 }
 
 // Return an instance of Cache struct

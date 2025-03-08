@@ -1,6 +1,7 @@
 package items
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -21,11 +22,15 @@ type IItems interface {
 }
 
 // Items group struct
-type Items struct{}
+type Items struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Items resource group struct
 func NewItemsGroup() Items {
-	return Items{}
+	return Items{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Item resource by name or ID

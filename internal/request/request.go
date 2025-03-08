@@ -10,14 +10,6 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
 
-// Cache instance
-var c *cache.Cache
-
-// Initialize cache
-func init() {
-	c = cache.NewCache()
-}
-
 // Make GET request
 func Get(url string) ([]byte, error) {
 	// Create new GET request
@@ -59,7 +51,7 @@ func GetResourceList(url string, options models.PaginationOptions) (*models.Reso
 	resourceList := models.ResourceList{}
 
 	// Check for cached data and return if found
-	data, found := c.Get(url)
+	data, found := cache.C.Get(url)
 	if found {
 		return data.(*models.ResourceList), nil
 	}
@@ -77,8 +69,8 @@ func GetResourceList(url string, options models.PaginationOptions) (*models.Reso
 	}
 
 	// Cache ResourceList if active and return
-	if c.GetActive() {
-		c.Set(url, &resourceList)
+	if cache.C.GetActive() {
+		cache.C.Set(url, &resourceList)
 		return &resourceList, nil
 	}
 	return &resourceList, nil
@@ -87,7 +79,7 @@ func GetResourceList(url string, options models.PaginationOptions) (*models.Reso
 // Make GET request for a specifc resource
 func GetSpecificResource[T any](url string) (*T, error) {
 	// Check for cached data and return if found
-	data, found := c.Get(url)
+	data, found := cache.C.Get(url)
 	if found {
 		return data.(*T), nil
 	}
@@ -106,8 +98,8 @@ func GetSpecificResource[T any](url string) (*T, error) {
 	}
 
 	// Cache Resource if active and return
-	if c.GetActive() {
-		c.Set(url, resource)
+	if cache.C.GetActive() {
+		cache.C.Set(url, resource)
 		return resource, nil
 	}
 	return resource, nil

@@ -1,6 +1,7 @@
 package contests
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -17,11 +18,15 @@ type IContests interface {
 }
 
 // Contests group struct
-type Contests struct{}
+type Contests struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Contests resource group struct
 func NewContestsGroup() Contests {
-	return Contests{}
+	return Contests{
+		Cache: cache.C,
+	}
 }
 
 // Return a single ContestsType resource by name or ID

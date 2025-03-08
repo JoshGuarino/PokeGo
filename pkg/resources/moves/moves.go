@@ -1,6 +1,7 @@
 package moves
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -25,11 +26,15 @@ type IMoves interface {
 }
 
 // Moves group struct
-type Moves struct{}
+type Moves struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Moves resource group struct
 func NewMovesGroup() Moves {
-	return Moves{}
+	return Moves{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Move resource by name or ID

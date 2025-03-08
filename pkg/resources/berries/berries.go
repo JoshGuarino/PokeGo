@@ -1,6 +1,7 @@
 package berries
 
 import (
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -17,11 +18,15 @@ type IBerries interface {
 }
 
 // Berries group struct
-type Berries struct{}
+type Berries struct {
+	Cache *cache.Cache
+}
 
 // Return an instance of Berry resource group struct
 func NewBerriesGroup() Berries {
-	return Berries{}
+	return Berries{
+		Cache: cache.C,
+	}
 }
 
 // Return a single Berry resource by name or ID
