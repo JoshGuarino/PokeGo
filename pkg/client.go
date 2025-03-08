@@ -1,6 +1,9 @@
 package pokego
 
 import (
+	"fmt"
+
+	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
@@ -37,6 +40,10 @@ type PokeGo struct {
 	Utility    utility.Utility
 }
 
+func init() {
+	fmt.Println("PokeGo API wrapper initialized")
+}
+
 // Return an instance of the PokeGo API wrapper client
 func NewClient() PokeGo {
 	return PokeGo{
@@ -56,7 +63,7 @@ func NewClient() PokeGo {
 
 // Return an instance of API Root list of available resources
 func (p PokeGo) Root() (*models.Root, error) {
-	root, err := request.GetSpecificResource[models.Root](constants.BaseUrl)
+	root, err := request.GetSpecificResource[models.Root](constants.BaseUrl, p.Cache)
 	if err != nil {
 		return nil, err
 	}

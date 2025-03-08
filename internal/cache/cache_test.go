@@ -14,21 +14,43 @@ func TestNewCache(t *testing.T) {
 }
 
 func TestSet(t *testing.T) {
-	cache.Set("key", "value", 5*time.Second)
+	cache.Set("key", "value")
 	assert.Equal(t, "value", cache.data["key"].value, "Unexpected value in cache")
 }
 
 func TestGet(t *testing.T) {
-	cache.Set("key", "value", 5*time.Second)
+	cache.Set("key", "value")
 	value, ok := cache.Get("key")
 	assert.Equal(t, "value", value, "Unexpected value in cache")
 	assert.True(t, ok)
 }
 
 func TestCear(t *testing.T) {
-	cache.Set("key", "value", 100*time.Second)
+	cache.Set("key", "value")
 	cache.Clear()
 	value, ok := cache.Get("key")
 	assert.Equal(t, nil, value, "Expected value to be nil")
 	assert.False(t, ok)
+}
+
+func TestDelete(t *testing.T) {
+	cache.Set("key", "value")
+	cache.Delete("key")
+	value, ok := cache.Get("key")
+	assert.Equal(t, nil, value, "Expected value to be nil")
+	assert.False(t, ok)
+}
+
+func TestSetExpiration(t *testing.T) {
+	cache.SetExpiration(1 * time.Second)
+	cache.Set("key", "value")
+	time.Sleep(2 * time.Second)
+	value, ok := cache.Get("key")
+	assert.Equal(t, nil, value, "Expected value to be nil")
+	assert.False(t, ok)
+}
+
+func TestSetActive(t *testing.T) {
+	cache.SetActive(false)
+	assert.False(t, cache.settings.active)
 }

@@ -9,13 +9,18 @@ import (
 type ICache interface {
 	Get(key string) (any, bool)
 	Set(key string, value any, expiration time.Duration)
+	Delete(key string)
 	Clear()
+	SetExpiration(expiration time.Duration)
+	SetActive(active bool)
+	GetActive() bool
 }
 
 // Cache struct
 type Cache struct {
-	data map[string]Value
-	lock sync.Mutex
+	data     map[string]Value
+	settings Settings
+	lock     sync.Mutex
 }
 
 // Value struct
@@ -24,19 +29,29 @@ type Value struct {
 	expiration time.Time
 }
 
+// Cache settings
+type Settings struct {
+	expiration time.Duration
+	active     bool
+}
+
 // Return an instance of Cache struct
 func NewCache() *Cache {
 	return &Cache{
 		data: make(map[string]Value),
+		settings: Settings{
+			expiration: 6 * time.Hour,
+			active:     true,
+		},
 	}
 }
 
 // Set a key-value pair in the cache
-func (c *Cache) Set(key string, value any, expiration time.Duration) {
+func (c *Cache) Set(key string, value any) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	expirationTime := time.Now().Add(expiration)
+	expirationTime := time.Now().Add(c.settings.expiration)
 	c.data[key] = Value{
 		value:      value,
 		expiration: expirationTime,
@@ -57,10 +72,32 @@ func (c *Cache) Get(key string) (any, bool) {
 	return value.value, true
 }
 
+// Delete a key-value pair from the Cache
+func (c *Cache) Delete(key string) {
+	c.lock.Lock()
+	defer c.lock.Unlock()
+	delete(c.data, key)
+}
+
 // Clear the cache
 func (c *Cache) Clear() {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
 	c.data = make(map[string]Value)
+}
+
+// Set default expiration time for Cache
+func (c *Cache) SetExpiration(expiration time.Duration) {
+	c.settings.expiration = expiration
+}
+
+// Set active status of cache
+func (c *Cache) SetActive(active bool) {
+	c.settings.active = active
+}
+
+// Get active status of Cache
+func (c *Cache) GetActive() bool {
+	return c.settings.active
 }
