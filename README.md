@@ -3,7 +3,6 @@
 PokeGo is an Golang API wrapper for the PokéAPI.
 
 ## Todo
-- Integrate caching
 - Add documentation
 - Improve testing
 
