@@ -1,6 +1,8 @@
 package evolution
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -18,6 +20,11 @@ type IEvolution interface {
 // Evolution group struct
 type Evolution struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Evolution resource group initialized")
 }
 
 // Return an instance of Evolution resource group struct

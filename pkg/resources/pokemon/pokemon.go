@@ -1,6 +1,8 @@
 package pokemon
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -44,6 +46,11 @@ type IPokemon interface {
 // Pokemon group struct
 type Pokemon struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Pokemon resource group initialized")
 }
 
 // Return an instance of Pokmon resource group struct

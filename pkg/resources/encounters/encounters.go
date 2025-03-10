@@ -1,6 +1,8 @@
 package encounters
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -20,6 +22,11 @@ type IEncounters interface {
 // Encounters group struct
 type Encounters struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Encounters resource group initialized")
 }
 
 // Return an instance of Encounters resource group struct

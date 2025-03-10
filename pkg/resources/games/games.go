@@ -1,6 +1,8 @@
 package games
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -22,6 +24,11 @@ type IGames interface {
 // Games group struct
 type Games struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Games resource group initialized")
 }
 
 // Return an instance of Games resource group struct

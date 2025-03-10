@@ -1,6 +1,8 @@
 package contests
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -20,6 +22,11 @@ type IContests interface {
 // Contests group struct
 type Contests struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Contests resource group initialized")
 }
 
 // Return an instance of Contests resource group struct

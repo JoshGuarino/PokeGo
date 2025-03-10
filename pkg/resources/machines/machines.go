@@ -1,6 +1,8 @@
 package machines
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -16,6 +18,11 @@ type IMachines interface {
 // Machines group struct
 type Machines struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Machines resource group initialized")
 }
 
 // Return an instance of Items resource group struct

@@ -1,6 +1,8 @@
 package berries
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -20,6 +22,11 @@ type IBerries interface {
 // Berries group struct
 type Berries struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Berries resource group initialized")
 }
 
 // Return an instance of Berry resource group struct

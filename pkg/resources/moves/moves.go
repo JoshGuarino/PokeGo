@@ -1,6 +1,8 @@
 package moves
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -28,6 +30,11 @@ type IMoves interface {
 // Moves group struct
 type Moves struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Moves resource group initialized")
 }
 
 // Return an instance of Moves resource group struct

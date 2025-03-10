@@ -1,6 +1,8 @@
 package locations
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -22,6 +24,11 @@ type ILocations interface {
 // Locations group struct
 type Locations struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Locations resource group initialized")
 }
 
 // Return an instance of Locations resource group struct

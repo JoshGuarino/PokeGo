@@ -1,6 +1,8 @@
 package items
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -24,6 +26,11 @@ type IItems interface {
 // Items group struct
 type Items struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Items resource group initialized")
 }
 
 // Return an instance of Items resource group struct

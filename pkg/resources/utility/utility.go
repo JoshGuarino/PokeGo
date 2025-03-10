@@ -1,6 +1,8 @@
 package utility
 
 import (
+	"fmt"
+
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/constants"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -16,6 +18,11 @@ type IUtility interface {
 // Utility group struct
 type Utility struct {
 	Cache *cache.Cache
+}
+
+// Initialize function
+func init() {
+	fmt.Println("Utility resource group initialized")
 }
 
 // Return an instance of Utility resource group struct
