@@ -41,6 +41,7 @@ type PokeGo struct {
 	Cache      *cache.Cache
 }
 
+// Initialize function
 func init() {
 	fmt.Println("PokeGo API wrapper initialized")
 }
