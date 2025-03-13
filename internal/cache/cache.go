@@ -50,7 +50,7 @@ func NewCache() *Cache {
 	return &Cache{
 		data: make(map[string]Value),
 		settings: Settings{
-			expiration: 6 * time.Hour,
+			expiration: 24 * time.Hour,
 			active:     true,
 		},
 	}
