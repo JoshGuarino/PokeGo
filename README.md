@@ -1,6 +1,6 @@
 # PokeGo
 
-PokeGo is an Golang API wrapper for the PokéAPI.
+PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/).
 
 ## Setup
 There are 2 options for using PokeGo. You can either use the main client or create individual resource groups seperately. 
@@ -35,6 +35,9 @@ Only one instance of the cache is created and shared between the client and all 
 Any subsequent intializations will not create a new cache but reference the existing cache.
 A pointer reference to the initialized cache is stored in the client and each resource group.
 
+<details>
+<summary>Clear Cache</summary>
+
 ### Clearing cache
 The cache can be cleared by calling the `Clear()` method on the cache. 
 ```go
@@ -44,6 +47,10 @@ client.Cache.Clear()
 // Individual resource group example
 resourceGroup.Cache.Clear()
 ```
+</details>
+
+<details>
+<summary>Disabling Cache</summary>
 
 ### Disabling Cache
 The active status of the cache can be set by calling the `setActive()` method on the cache. 
@@ -54,6 +61,11 @@ client.Cache.SetActive(false)
 // Individual resource group example
 resourceGroup.Cache.SetActive(false)
 ```
+</details>
+
+<details>
+    <summary>Custom Expiration Time</summary>
+
 ### Custom expiration time
 The expiration time of the cache can be set by calling the `SetExpiration()` method on the cache. 
 ```go
@@ -63,3 +75,4 @@ client.Cache.SetExpiration(48 * time.Hour)
 // Individual resource group example
 resourceGroup.Cache.SetExpiration(48 * time.Hour)
 ```
+</details>
