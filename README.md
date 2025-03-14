@@ -7,6 +7,7 @@ There are 2 options for using PokeGo. You can either use the main client or crea
 The main client will initialize all resource groups for you. If you choose to use individual resource groups, 
 you will need to initialize each group separately.
 
+
 Main client setup:
 ```go 
 import (
@@ -38,7 +39,6 @@ A pointer reference to the initialized cache is stored in the client and each re
 <details>
 <summary>Clear Cache</summary>
 
-### Clearing cache
 The cache can be cleared by calling the `Clear()` method on the cache. 
 ```go
 // Main client example
@@ -52,7 +52,6 @@ resourceGroup.Cache.Clear()
 <details>
 <summary>Disabling Cache</summary>
 
-### Disabling Cache
 The active status of the cache can be set by calling the `setActive()` method on the cache. 
 ```go
 // Main client example
@@ -64,9 +63,21 @@ resourceGroup.Cache.SetActive(false)
 </details>
 
 <details>
+<summary>Cache Status</summary>
+
+The active status of the cache can be checked by calling the `GetActive()` method on the cache. 
+```go
+// Main client example
+client.Cache.GetActive()
+
+// Individual resource group example
+resourceGroup.Cache.GetActive()
+```
+</details>
+
+<details>
     <summary>Custom Expiration Time</summary>
 
-### Custom expiration time
 The expiration time of the cache can be set by calling the `SetExpiration()` method on the cache. 
 ```go
 // Main client example
