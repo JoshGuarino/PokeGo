@@ -86,6 +86,7 @@ func (c *Cache) Get(key string) (any, bool) {
 func (c *Cache) Delete(key string) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
+
 	delete(c.data, key)
 }
 
