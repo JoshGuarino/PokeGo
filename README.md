@@ -28,6 +28,17 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
+<details>
+<summary>Berries</summary>
+The berries resource group contains methods for interacting with the berries group resources. 'https://pokeapi.co/docs/v2#berries-section' 
+</details>
+
+<details>
+<summary>Contests</summary>
+The contests resource group contains methods for interacting with the contests group resources. 'https://pokeapi.co/docs/v2#contests-section'
+</details>
+
+
 ## Caching
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
 The cache is set to expire after 24 hours as resources in the PokeAPI are mostly static. 
