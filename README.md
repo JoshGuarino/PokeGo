@@ -33,65 +33,213 @@ The berries resource group contains methods for interacting with the berries gro
 <details>
 <summary>Berry</summary>
 </details>
+
 <details>
 <summary>Berry Firmness</summary>
 </details>
+
 <details>
-<summary>Berry Firmness</summary>
+<summary>Berry Flavor</summary>
 </details>
 
 ### [Contests group](https://pokeapi.co/docs/v2#contests-section)
-<details>
-<summary>Contests</summary>
 The contests resource group contains methods for interacting with the contests group resources. 
+<details>
+<summary>Contest Types</summary>
+</details>
+
+<details>
+<summary>Contest Effect</summary>
+</details>
+
+<details>
+<summary>Super Contest Effect</summary>
 </details>
 
 ### [Encounters group](https://pokeapi.co/docs/v2#encounters-section)
-<details>
-<summary>Encounters</summary>
 The encounters resource group contains methods for interacting with the Encounters group resources.
+<details>
+<summary>Encounter method</summary>
+</details>
+
+<details>
+<summary>Encounter Condition</summary>
+</details>
+
+<details>
+<summary>Encounter Condition Value</summary>
 </details>
 
 ### [Evolution group](https://pokeapi.co/docs/v2#evolution-section)
-<details>
-<summary>Evolution</summary>
 The evolution resource group contains methods for interacting with the evolution group resources.
+<details>
+<summary>Evolution Chain</summary>
+</details>
+
+<details>
+<summary>Evolution Trigger</summary>
 </details>
 
 ### [Games group](https://pokeapi.co/docs/v2#games-section)
-<details>
-<summary>Games</summary>
 The games resource group contains methods for interacting with the  group resources.
+<details>
+<summary>Generation</summary>
+</details>
+
+<details>
+<summary>Pokedex</summary>
+</details>
+
+<details>
+<summary>Version</summary>
+</details>
+
+<details>
+<summary>Version Group</summary>
 </details>
 
 ### [Items group](https://pokeapi.co/docs/v2#items-section)
-<details>
-<summary>Items</summary>
 The items resource group contains methods for interacting with the items group resources.
+<details>
+<summary>Item</summary>
+</details>
+
+<details>
+<summary>Item Attribute</summary>
+</details>
+
+<details>
+<summary>Item Category</summary>
+</details>
+
+<details>
+<summary>Item Fling Effect</summary>
+</details>
+
+<details>
+<summary>Item Pocket</summary>
 </details>
 
 ### [Locations group](https://pokeapi.co/docs/v2#locations-section)
-<details>
-<summary>Locations</summary>
 The locations resource group contains methods for interacting with the Locations group resources.
+<details>
+<summary>Location</summary>
+</details>
+
+<details>
+<summary>Location Area</summary>
+</details>
+
+<details>
+<summary>Pal Park Area</summary>
+</details>
+
+<details>
+<summary>Region</summary>
+</details>
+
+### [Machines group](https://pokeapi.co/docs/v2#machines-section)
+The machines resource group contains methods for interacting with the machines group resources.
+<details>
+<summary>Machine</summary>
 </details>
 
 ### [Moves group](https://pokeapi.co/docs/v2#moves-section)
-<details>
-<summary>Moves</summary>
 The moves resource group contains methods for interacting with the moves group resources.
+<details>
+<summary>Move</summary>
+</details>
+
+<details>
+<summary>Move Ailment</summary>
+</details>
+
+<details>
+<summary>Move Battle Style</summary>
+</details>
+
+<details>
+<summary>Move Category</summary>
+</details>
+
+<details>
+<summary>Move Damage Class</summary>
+</details>
+
+<details>
+<summary>Move Learn Method</summary>
+</details>
+
+<details>
+<summary>Move Target</summary>
 </details>
 
 ### [Pokemon group](https://pokeapi.co/docs/v2#pokemon-section)
+The pokemon resource group contains methods for interacting with the pokemon group resources.
+<details>
+<summary>Ability</summary>
+</details>
+
+<details>
+<summary>Characteristic</summary>
+</details>
+
+<details>
+<summary>Egg Group</summary>
+</details>
+
+<details>
+<summary>Gender</summary>
+</details>
+
+<details>
+<summary>Growth Rate</summary>
+</details>
+
+<details>
+<summary>Nature</summary>
+</details>
+
+<details>
+<summary>Pokeathlon Stat</summary>
+</details>
+
 <details>
 <summary>Pokemon</summary>
-The pokemon resource group contains methods for interacting with the pokemon group resources.
+</details>
+
+<details>
+<summary>Pokemon Color</summary>
+</details>
+
+<details>
+<summary>Pokemon Form</summary>
+</details>
+
+<details>
+<summary>Pokemon Habitat</summary>
+</details>
+
+<details>
+<summary>Pokemon Shape</summary>
+</details>
+
+<details>
+<summary>Pokemon Species</summary>
+</details>
+
+<details>
+<summary>Stat</summary>
+</details>
+
+<details>
+<summary>Type</summary>
 </details>
 
 ### [Utility group](https://pokeapi.co/docs/v2#utility-section)
-<details>
-<summary>Utility</summary>
 The utility resource group contains methods for interacting with the utility group resources.
+<details>
+<summary>language</summary>
 </details>
 
 ## Caching
