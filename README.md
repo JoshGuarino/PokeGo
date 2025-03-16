@@ -28,54 +28,64 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
+[Berries group](https://pokeapi.co/docs/v2#berries-section)
 <details>
 <summary>Berries</summary>
-The berries resource group contains methods for interacting with the [berries](https://pokeapi.co/docs/v2#berries-section) group resources. 
+The berries resource group contains methods for interacting with the berries group resources. 
 </details>
 
+[Contests group](https://pokeapi.co/docs/v2#contests-section)
 <details>
 <summary>Contests</summary>
-The contests resource group contains methods for interacting with the [contests](https://pokeapi.co/docs/v2#contests-section) group resources. 
+The contests resource group contains methods for interacting with the contests group resources. 
 </details>
 
+[Encounters group](https://pokeapi.co/docs/v2#encounters-section)
 <details>
 <summary>Encounters</summary>
-The encounters resource group contains methods for interacting with the [Encounters](https://pokeapi.co/docs/v2#encounters-section) group resources.
+The encounters resource group contains methods for interacting with the Encounters group resources.
 </details>
 
+[Evolution group](https://pokeapi.co/docs/v2#evolution-section)
 <details>
 <summary>Evolution</summary>
-The evolution resource group contains methods for interacting with the [evolution](https://pokeapi.co/docs/v2#evolution-section) group resources.
+The evolution resource group contains methods for interacting with the evolution group resources.
 </details>
 
+[Games group](https://pokeapi.co/docs/v2#games-section)
 <details>
 <summary>Games</summary>
-The games resource group contains methods for interacting with the [games](https://pokeapi.co/docs/v2#games-section) group resources.
+The games resource group contains methods for interacting with the  group resources.
 </details>
 
+[Items group](https://pokeapi.co/docs/v2#items-section)
 <details>
 <summary>Items</summary>
-The items resource group contains methods for interacting with the [items](https://pokeapi.co/docs/v2#items-section) group resources.
+The items resource group contains methods for interacting with the items group resources.
 </details>
 
+[Locations group](https://pokeapi.co/docs/v2#locations-section)
 <details>
 <summary>Locations</summary>
-The locations resource group contains methods for interacting with the [Locations](https://pokeapi.co/docs/v2#locations-section) group resources.
+The locations resource group contains methods for interacting with the Locations group resources.
 </details>
 
+[Moves group](https://pokeapi.co/docs/v2#moves-section)
 <details>
 <summary>Moves</summary>
-The moves resource group contains methods for interacting with the [moves](https://pokeapi.co/docs/v2#moves-section) group resources.
+The moves resource group contains methods for interacting with the moves group resources.
 </details>
 
+[Pokemon group](https://pokeapi.co/docs/v2#pokemon-section)
 <details>
 <summary>Pokemon</summary>
-The pokemon resource group contains methods for interacting with the [pokemon](https://pokeapi.co/docs/v2#pokemon-section) group resources.
+The pokemon resource group contains methods for interacting with the pokemon group resources.
 </details>
 
+[Utility group](https://pokeapi.co/docs/v2#utility-section)
 <details>
 <summary>Utility</summary>
-The utility resource group contains methods for interacting with the [utility](https://pokeapi.co/docs/v2#utility-section) group resources.
+The utility resource group contains methods for interacting with the utility group resources.
 </details>
 
 ## Caching
