@@ -30,14 +30,53 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 
 <details>
 <summary>Berries</summary>
-The berries resource group contains methods for interacting with the berries group resources. 'https://pokeapi.co/docs/v2#berries-section' 
+The berries resource group contains methods for interacting with the [berries](https://pokeapi.co/docs/v2#berries-section) group resources. 
 </details>
 
 <details>
 <summary>Contests</summary>
-The contests resource group contains methods for interacting with the contests group resources. 'https://pokeapi.co/docs/v2#contests-section'
+The contests resource group contains methods for interacting with the [contests](https://pokeapi.co/docs/v2#contests-section) group resources. 
 </details>
 
+<details>
+<summary>Encounters</summary>
+The encounters resource group contains methods for interacting with the [Encounters](https://pokeapi.co/docs/v2#encounters-section) group resources.
+</details>
+
+<details>
+<summary>Evolution</summary>
+The evolution resource group contains methods for interacting with the [evolution](https://pokeapi.co/docs/v2#evolution-section) group resources.
+</details>
+
+<details>
+<summary>Games</summary>
+The games resource group contains methods for interacting with the [games](https://pokeapi.co/docs/v2#games-section) group resources.
+</details>
+
+<details>
+<summary>Items</summary>
+The items resource group contains methods for interacting with the [items](https://pokeapi.co/docs/v2#items-section) group resources.
+</details>
+
+<details>
+<summary>Locations</summary>
+The locations resource group contains methods for interacting with the [Locations](https://pokeapi.co/docs/v2#locations-section) group resources.
+</details>
+
+<details>
+<summary>Moves</summary>
+The moves resource group contains methods for interacting with the [moves](https://pokeapi.co/docs/v2#moves-section) group resources.
+</details>
+
+<details>
+<summary>Pokemon</summary>
+The pokemon resource group contains methods for interacting with the [pokemon](https://pokeapi.co/docs/v2#pokemon-section) group resources.
+</details>
+
+<details>
+<summary>Utility</summary>
+The utility resource group contains methods for interacting with the [utility](https://pokeapi.co/docs/v2#utility-section) group resources.
+</details>
 
 ## Caching
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
