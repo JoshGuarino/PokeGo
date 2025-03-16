@@ -28,8 +28,7 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
-### [Berries group](https://pokeapi.co/docs/v2#berries-section)
-The berries resource group contains methods for interacting with the berries group resources. 
+### [Berries](https://pokeapi.co/docs/v2#berries-section)
 <details>
 <summary>Berry</summary>
 </details>
@@ -42,8 +41,7 @@ The berries resource group contains methods for interacting with the berries gro
 <summary>Berry Flavor</summary>
 </details>
 
-### [Contests group](https://pokeapi.co/docs/v2#contests-section)
-The contests resource group contains methods for interacting with the contests group resources. 
+### [Contests](https://pokeapi.co/docs/v2#contests-section)
 <details>
 <summary>Contest Types</summary>
 </details>
@@ -56,8 +54,7 @@ The contests resource group contains methods for interacting with the contests g
 <summary>Super Contest Effect</summary>
 </details>
 
-### [Encounters group](https://pokeapi.co/docs/v2#encounters-section)
-The encounters resource group contains methods for interacting with the Encounters group resources.
+### [Encounters](https://pokeapi.co/docs/v2#encounters-section)
 <details>
 <summary>Encounter method</summary>
 </details>
@@ -70,8 +67,7 @@ The encounters resource group contains methods for interacting with the Encounte
 <summary>Encounter Condition Value</summary>
 </details>
 
-### [Evolution group](https://pokeapi.co/docs/v2#evolution-section)
-The evolution resource group contains methods for interacting with the evolution group resources.
+### [Evolution](https://pokeapi.co/docs/v2#evolution-section)
 <details>
 <summary>Evolution Chain</summary>
 </details>
@@ -80,8 +76,7 @@ The evolution resource group contains methods for interacting with the evolution
 <summary>Evolution Trigger</summary>
 </details>
 
-### [Games group](https://pokeapi.co/docs/v2#games-section)
-The games resource group contains methods for interacting with the  group resources.
+### [Games](https://pokeapi.co/docs/v2#games-section)
 <details>
 <summary>Generation</summary>
 </details>
@@ -98,8 +93,7 @@ The games resource group contains methods for interacting with the  group resour
 <summary>Version Group</summary>
 </details>
 
-### [Items group](https://pokeapi.co/docs/v2#items-section)
-The items resource group contains methods for interacting with the items group resources.
+### [Items](https://pokeapi.co/docs/v2#items-section)
 <details>
 <summary>Item</summary>
 </details>
@@ -120,8 +114,7 @@ The items resource group contains methods for interacting with the items group r
 <summary>Item Pocket</summary>
 </details>
 
-### [Locations group](https://pokeapi.co/docs/v2#locations-section)
-The locations resource group contains methods for interacting with the Locations group resources.
+### [Locations](https://pokeapi.co/docs/v2#locations-section)
 <details>
 <summary>Location</summary>
 </details>
@@ -138,14 +131,12 @@ The locations resource group contains methods for interacting with the Locations
 <summary>Region</summary>
 </details>
 
-### [Machines group](https://pokeapi.co/docs/v2#machines-section)
-The machines resource group contains methods for interacting with the machines group resources.
+### [Machines](https://pokeapi.co/docs/v2#machines-section)
 <details>
 <summary>Machine</summary>
 </details>
 
-### [Moves group](https://pokeapi.co/docs/v2#moves-section)
-The moves resource group contains methods for interacting with the moves group resources.
+### [Moves](https://pokeapi.co/docs/v2#moves-section)
 <details>
 <summary>Move</summary>
 </details>
@@ -174,8 +165,7 @@ The moves resource group contains methods for interacting with the moves group r
 <summary>Move Target</summary>
 </details>
 
-### [Pokemon group](https://pokeapi.co/docs/v2#pokemon-section)
-The pokemon resource group contains methods for interacting with the pokemon group resources.
+### [Pokemon](https://pokeapi.co/docs/v2#pokemon-section)
 <details>
 <summary>Ability</summary>
 </details>
@@ -236,8 +226,7 @@ The pokemon resource group contains methods for interacting with the pokemon gro
 <summary>Type</summary>
 </details>
 
-### [Utility group](https://pokeapi.co/docs/v2#utility-section)
-The utility resource group contains methods for interacting with the utility group resources.
+### [Utility](https://pokeapi.co/docs/v2#utility-section)
 <details>
 <summary>language</summary>
 </details>
