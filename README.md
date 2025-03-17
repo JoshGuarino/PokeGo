@@ -28,14 +28,18 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
-<!--### [Berries](https://pokeapi.co/docs/v2#berries-section)-->
-### [Berries](pkg/resources/berries/README.md)
-#### Resources related to berries in the Pokémon world.
+### [Berries Group](pkg/resources/berries/README.md)
+The following are the resources available in the Berries group of the [PokeAPI](https://pokeapi.co/docs/v2#berries-section).
+<details>
+<summary>Resources</summary>
+
 - [Berry](pkg/resources/berries/README.md#Berry) 
 - [Berry Firmness](pkg/resources/berries/README.md#BerryFirmness)
 - [Berry Flavor](pkg/resources/berries/README.md#BerryFlavor)
 
-### [Contests](https://pokeapi.co/docs/v2#contests-section)
+</details>
+
+### [Contests Group](https://pokeapi.co/docs/v2#contests-section)
 <details>
 <summary>Contest Types</summary>
 </details>
@@ -48,7 +52,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Super Contest Effect</summary>
 </details>
 
-### [Encounters](https://pokeapi.co/docs/v2#encounters-section)
+### [Encounters Group](https://pokeapi.co/docs/v2#encounters-section)
 <details>
 <summary>Encounter method</summary>
 </details>
@@ -61,7 +65,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Encounter Condition Value</summary>
 </details>
 
-### [Evolution](https://pokeapi.co/docs/v2#evolution-section)
+### [Evolution Group](https://pokeapi.co/docs/v2#evolution-section)
 <details>
 <summary>Evolution Chain</summary>
 </details>
@@ -70,7 +74,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Evolution Trigger</summary>
 </details>
 
-### [Games](https://pokeapi.co/docs/v2#games-section)
+### [Games Group](https://pokeapi.co/docs/v2#games-section)
 <details>
 <summary>Generation</summary>
 </details>
@@ -87,7 +91,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Version Group</summary>
 </details>
 
-### [Items](https://pokeapi.co/docs/v2#items-section)
+### [Items Group](https://pokeapi.co/docs/v2#items-section)
 <details>
 <summary>Item</summary>
 </details>
@@ -108,7 +112,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Item Pocket</summary>
 </details>
 
-### [Locations](https://pokeapi.co/docs/v2#locations-section)
+### [Locations Group](https://pokeapi.co/docs/v2#locations-section)
 <details>
 <summary>Location</summary>
 </details>
@@ -125,12 +129,12 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Region</summary>
 </details>
 
-### [Machines](https://pokeapi.co/docs/v2#machines-section)
+### [Machines Group](https://pokeapi.co/docs/v2#machines-section)
 <details>
 <summary>Machine</summary>
 </details>
 
-### [Moves](https://pokeapi.co/docs/v2#moves-section)
+### [Moves Group](https://pokeapi.co/docs/v2#moves-section)
 <details>
 <summary>Move</summary>
 </details>
@@ -159,7 +163,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Move Target</summary>
 </details>
 
-### [Pokemon](https://pokeapi.co/docs/v2#pokemon-section)
+### [Pokemon Group](https://pokeapi.co/docs/v2#pokemon-section)
 <details>
 <summary>Ability</summary>
 </details>
@@ -220,7 +224,7 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 <summary>Type</summary>
 </details>
 
-### [Utility](https://pokeapi.co/docs/v2#utility-section)
+### [Utility Group](https://pokeapi.co/docs/v2#utility-section)
 <details>
 <summary>language</summary>
 </details>
