@@ -27,17 +27,17 @@ pokemonGroup := pokemon.NewPokemonGroup()
 
 ## Resource Groups
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
-- ### [Berries group](pkg/resources/berries/README.md)
-- ### [Contests Group](pkg/resources/contests/README.md)
-- ### [Encounters Group](pkg/resources/encounters/README.md)
-- ### [Evolution Group](pkg/resources/evolution/README.md)
-- ### [Games Group](pkg/resources/games/README.md)
-- ### [Items Group](pkg/resources/items/README.md)
-- ### [Locations Group](pkg/resources/locations/README.md)
-- ### [Machines Group](pkg/resources/machines/README.md)
-- ### [Moves Group](pkg/resources/moves/README.md)
-- ### [Pokemon Group](pkg/resources/pokemon/README.md)
-- ### [Utility Group](pkg/resources/utility/README.md)
+#### [Berries group](pkg/resources/berries/README.md)
+#### [Contests Group](pkg/resources/contests/README.md)
+#### [Encounters Group](pkg/resources/encounters/README.md)
+#### [Evolution Group](pkg/resources/evolution/README.md)
+#### [Games Group](pkg/resources/games/README.md)
+#### [Items Group](pkg/resources/items/README.md)
+#### [Locations Group](pkg/resources/locations/README.md)
+#### [Machines Group](pkg/resources/machines/README.md)
+#### [Moves Group](pkg/resources/moves/README.md)
+#### [Pokemon Group](pkg/resources/pokemon/README.md)
+#### [Utility Group](pkg/resources/utility/README.md)
 
 ## Pagination
 PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
