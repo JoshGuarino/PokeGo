@@ -1,4 +1,5 @@
-# Berries Group Resources
+# Berries Group
+The following are the resources available in the Berries group of the [PokeAPI](https://pokeapi.co/docs/v2#berries-section).
 
 ## Berry
 

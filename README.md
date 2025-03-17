@@ -30,21 +30,10 @@ Below is a list of all the resources available in PokeGo. Each resource group ha
 
 <!--### [Berries](https://pokeapi.co/docs/v2#berries-section)-->
 ### [Berries](pkg/resources/berries/README.md)
+#### Resources related to berries in the Pokémon world.
 - [Berry](pkg/resources/berries/README.md#Berry) 
 - [Berry Firmness](pkg/resources/berries/README.md#BerryFirmness)
 - [Berry Flavor](pkg/resources/berries/README.md#BerryFlavor)
-
-<details>
-<summary>Berry</summary>
-</details>
-
-<details>
-<summary>Berry Firmness</summary>
-</details>
-
-<details>
-<summary>Berry Flavor</summary>
-</details>
 
 ### [Contests](https://pokeapi.co/docs/v2#contests-section)
 <details>
