@@ -1,7 +1,7 @@
-# Berries Group
-The following are the resources available in the Berries group of the [PokeAPI](https://pokeapi.co/docs/v2#berries-section).
+# [Berries Group](https://pokeapi.co/docs/v2#berries-section)
+The following are the resources available in the Berries group of the [PokeAPI](https://pokeapi.co/).
 
-## Berry
+## [Berry](https://pokeapi.co/docs/v2#berries)
 
 ##### Get single Berry resource by name or ID
 ```go
@@ -21,7 +21,7 @@ berryList, err := client.Berries.GetBerryList(models.PaginationOptions{})
 berryList, err := berriesGroup.GetBerryList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
 
-## BerryFirmness
+## [BerryFirmness](https://pokeapi.co/docs/v2#berry-firmnesses)
 
 ##### Get single Berry Firmness resource by name or ID
 ```go
@@ -39,7 +39,7 @@ berryFirmnessList, err := client.Berries.GetBerryFirmnessList(models.PaginationO
 // Individual resource group example without pagination options
 berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(models.PaginationOptions{})
 ```
-## BerryFlavor
+## [BerryFlavor](https://pokeapi.co/docs/v2#berry-flavors)
 
 ##### Get single Berry Flavor resource by name or ID
 ```go
