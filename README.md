@@ -28,27 +28,14 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
-### [Berries](https://pokeapi.co/docs/v2#berries-section)
+<!--### [Berries](https://pokeapi.co/docs/v2#berries-section)-->
+### [Berries](pkg/resources/berries/README.md)
+- [Berry](pkg/resources/berries/README.md#Berry) 
+- [Berry Firmness](pkg/resources/berries/README.md#BerryFirmness)
+- [Berry Flavor](pkg/resources/berries/README.md#BerryFlavor)
+
 <details>
 <summary>Berry</summary>
-
-##### Get single berry resource by name or ID
-```go
-// Main client example with ID
-berry, err := client.Berries.GetBerry("1")
-
-// Individual resource group example with Name
-berry, err := berriesGroup.GetBerry("cheri")
-```
-
-##### Get list of berry resource
-```go
-// Main client example with no pagination options
-berryList, err := client.Berries.GetBerryList(options models.PaginationOptions{})
-
-// Individual resource group example with pagination options
-berryList, err := berriesGroup.GetBerryList(options models.PaginationOptions{Limit: 5, Offset: 22})
-```
 </details>
 
 <details>
@@ -248,6 +235,10 @@ berryList, err := berriesGroup.GetBerryList(options models.PaginationOptions{Lim
 <details>
 <summary>language</summary>
 </details>
+
+## Pagination
+PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
+The default limit is 20 results per page and the default offset is 0. This will return the first 20 results.
 
 ## Caching
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
