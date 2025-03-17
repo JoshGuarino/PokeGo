@@ -28,8 +28,8 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ## Resources
 Below is a list of all the resources available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 
-### [Berries Group](pkg/resources/berries/README.md)
-The following are the resources available in the Berries group of the [PokeAPI](https://pokeapi.co/docs/v2#berries-section).
+### Berries Group
+The following are the resources available in the [Berries group](pkg/resources/berries/README.md) of the [PokeAPI](https://pokeapi.co/docs/v2#berries-section).
 <details>
 <summary>Resources</summary>
 
