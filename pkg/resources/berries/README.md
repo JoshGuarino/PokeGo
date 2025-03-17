@@ -14,10 +14,10 @@ berry, err := berriesGroup.GetBerry("cheri")
 ##### Get list of Berry resource
 ```go
 // Main client example with no pagination options
-berryList, err := client.Berries.GetBerryList(options models.PaginationOptions{})
+berryList, err := client.Berries.GetBerryList(models.PaginationOptions{})
 
 // Individual resource group example with pagination options
-berryList, err := berriesGroup.GetBerryList(options models.PaginationOptions{Limit: 20, Offset: 20})
+berryList, err := berriesGroup.GetBerryList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
 
 ## BerryFirmness
@@ -33,10 +33,10 @@ berryFirmness, err := berriesGroup.GetBerryFirmness("1")
 ##### Get list of Berry Firmness resource
 ```go
 // Main client example with pagination options
-berryFirmnessList, err := client.Berries.GetBerryFirmnessList(options models.PaginationOptions{Limit: 20, Offset: 20})
+berryFirmnessList, err := client.Berries.GetBerryFirmnessList(models.PaginationOptions{Limit: 20, Offset: 20})
 
 // Individual resource group example without pagination options
-berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(options models.PaginationOptions{})
+berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(models.PaginationOptions{})
 ```
 ## BerryFlavor
 
@@ -52,8 +52,8 @@ berryFlavor, err := berriesGroup.GetBerryFlavor("1")
 ##### Get list of Berry Flavor resource
 ```go
 // Main client example with pagination options
-berryFlavorList, err := client.Berries.GetBerryFlavorList(options models.PaginationOptions{Limit: 20, Offset: 20})
+berryFlavorList, err := client.Berries.GetBerryFlavorList(models.PaginationOptions{Limit: 20, Offset: 20})
 
 // Individual resource group example without pagination options
-berryFlavorList, err := berriesGroup.GetBerryFlavorList(options models.PaginationOptions{})
+berryFlavorList, err := berriesGroup.GetBerryFlavorList(models.PaginationOptions{})
 ```
