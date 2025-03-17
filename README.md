@@ -27,17 +27,19 @@ pokemonGroup := pokemon.NewPokemonGroup()
 
 ## Resource Groups
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
-#### [Berries group](pkg/resources/berries/README.md)
-#### [Contests Group](pkg/resources/contests/README.md)
-#### [Encounters Group](pkg/resources/encounters/README.md)
-#### [Evolution Group](pkg/resources/evolution/README.md)
-#### [Games Group](pkg/resources/games/README.md)
-#### [Items Group](pkg/resources/items/README.md)
-#### [Locations Group](pkg/resources/locations/README.md)
-#### [Machines Group](pkg/resources/machines/README.md)
-#### [Moves Group](pkg/resources/moves/README.md)
-#### [Pokemon Group](pkg/resources/pokemon/README.md)
-#### [Utility Group](pkg/resources/utility/README.md)
+| Group | README | PokeAPI Docs |
+| - | - | - |
+| Berries | [README](pkg/resources/berries/README.md). | [Docs](https://pokeapi.co/docs/v2#berries-section) |
+| Contests | [README](pkg/resources/contests/README.md). | [Docs](https://pokeapi.co/docs/v2#contests-section) |
+| Encounters | [README](pkg/resources/encounters/README.md). | [Docs](https://pokeapi.co/docs/v2#encounters-section) |
+| Evolution | [README](pkg/resources/evolution/README.md). | [Docs](https://pokeapi.co/docs/v2#evolution-section) |
+| Games | [README](pkg/resources/games/README.md). | [Docs](https://pokeapi.co/docs/v2#games-section) |
+| Items | [README](pkg/resources/items/README.md). | [Docs](https://pokeapi.co/docs/v2#items-section) |
+| Locations | [README](pkg/resources/locations/README.md). | [Docs](https://pokeapi.co/docs/v2#locations-section) |
+| Machines | [README](pkg/resources/machines/README.md). | [Docs](https://pokeapi.co/docs/v2#machines-section) |
+| Moves | [README](pkg/resources/moves/README.md). | [Docs](https://pokeapi.co/docs/v2#moves-section) |
+| Pokemon | [README](pkg/resources/pokemon/README.md). | [Docs](https://pokeapi.co/docs/v2#pokemon-section) |
+| Utility | [README](pkg/resources/utility/README.md). | [Docs](https://pokeapi.co/docs/v2#utility-section) |
 
 ## Pagination
 PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
