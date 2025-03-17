@@ -8,7 +8,7 @@ The main client will initialize all resource groups for you. If you choose to us
 you will need to initialize each group separately.
 
 
-##### Main client setup
+##### Main client
 ```go 
 import (
     pokego "github.com/JoshGuarino/PokeGo/pkg"
@@ -16,7 +16,7 @@ import (
 
 client := pokego.NewClient()
 ```
-##### Individual resource group setup
+##### Individual resource group
 ```go
 import (
     "github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
@@ -27,7 +27,7 @@ pokemonGroup := pokemon.NewPokemonGroup()
 
 ## Resource Groups
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
-| Group | README | PokeAPI Docs |
+| Group | Usage Docs | PokeAPI Docs |
 | - | - | - |
 | Berries | [BERRIES.md](pkg/resources/berries/BERRIES.md) | https://pokeapi.co/docs/v2#berries-section |
 | Contests | [CONTESTS.md](pkg/resources/contests/CONTESTS.md) | https://pokeapi.co/docs/v2#contests-section |
