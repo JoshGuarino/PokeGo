@@ -29,17 +29,17 @@ pokemonGroup := pokemon.NewPokemonGroup()
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 | Group | README | PokeAPI Docs |
 | - | - | - |
-| Berries | [BERRIES.md](pkg/resources/berries/BERRIES.md). | https://pokeapi.co/docs/v2#berries-section |
-| Contests | [CONTESTS.md](pkg/resources/contests/CONTESTS.md). | https://pokeapi.co/docs/v2#contests-section |
-| Encounters | [ENCOUNTERS.md](pkg/resources/encounters/ENCOUNTERS.md). | https://pokeapi.co/docs/v2#encounters-section |
-| Evolution | [EVOLUTIUON.md](pkg/resources/evolution/EVOLUTIUON.md). | https://pokeapi.co/docs/v2#evolution-section |
-| Games | [GAMES.md](pkg/resources/games/GAMES.md). | https://pokeapi.co/docs/v2#games-section |
-| Items | [ITEMS.md](pkg/resources/items/ITEMS.md). | https://pokeapi.co/docs/v2#items-section |
-| Locations | [LOCATIONS.md](pkg/resources/locations/LOCATIONS.md). | https://pokeapi.co/docs/v2#locations-section |
-| Machines | [MACHINES.md](pkg/resources/machines/MACHINES.md). | https://pokeapi.co/docs/v2#machines-section |
-| Moves | [MOVES.md](pkg/resources/moves/MOVES.md). | https://pokeapi.co/docs/v2#moves-section |
-| Pokemon | [POKEMON.md](pkg/resources/pokemon/POKEMON.md). | https://pokeapi.co/docs/v2#pokemon-section |
-| Utility | [UTILITY.md](pkg/resources/utility/UTILITY.md). | https://pokeapi.co/docs/v2#utility-section |
+| Berries | [BERRIES.md](pkg/resources/berries/BERRIES.md) | https://pokeapi.co/docs/v2#berries-section |
+| Contests | [CONTESTS.md](pkg/resources/contests/CONTESTS.md) | https://pokeapi.co/docs/v2#contests-section |
+| Encounters | [ENCOUNTERS.md](pkg/resources/encounters/ENCOUNTERS.md) | https://pokeapi.co/docs/v2#encounters-section |
+| Evolution | [EVOLUTIUON.md](pkg/resources/evolution/EVOLUTIUON.md) | https://pokeapi.co/docs/v2#evolution-section |
+| Games | [GAMES.md](pkg/resources/games/GAMES.md) | https://pokeapi.co/docs/v2#games-section |
+| Items | [ITEMS.md](pkg/resources/items/ITEMS.md) | https://pokeapi.co/docs/v2#items-section |
+| Locations | [LOCATIONS.md](pkg/resources/locations/LOCATIONS.md) | https://pokeapi.co/docs/v2#locations-section |
+| Machines | [MACHINES.md](pkg/resources/machines/MACHINES.md) | https://pokeapi.co/docs/v2#machines-section |
+| Moves | [MOVES.md](pkg/resources/moves/MOVES.md) | https://pokeapi.co/docs/v2#moves-section |
+| Pokemon | [POKEMON.md](pkg/resources/pokemon/POKEMON.md) | https://pokeapi.co/docs/v2#pokemon-section |
+| Utility | [UTILITY.md](pkg/resources/utility/UTILITY.md) | https://pokeapi.co/docs/v2#utility-section |
 
 ## Pagination
 PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
