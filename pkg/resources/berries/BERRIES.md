@@ -31,6 +31,7 @@ berryFirmness, err := client.Berries.GetBerryFirmness("soft")
 // Individual resource group example with ID
 berryFirmness, err := berriesGroup.GetBerryFirmness("1")
 ```
+
 ##### Get list of Berry Firmness resource
 ```go
 // Main client example with pagination options
@@ -39,6 +40,7 @@ berryFirmnessList, err := client.Berries.GetBerryFirmnessList(models.PaginationO
 // Individual resource group example without pagination options
 berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(models.PaginationOptions{})
 ```
+
 ## [BerryFlavor](https://pokeapi.co/docs/v2#berry-flavors)
 
 ##### Get single Berry Flavor resource by name or ID
