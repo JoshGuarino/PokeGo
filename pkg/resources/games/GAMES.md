@@ -3,7 +3,7 @@ The following are the resources available in the Games group of the [PokeAPI](ht
 
 ## [Generation](https://pokeapi.co/docs/v2#generations)
 
-##### Get single Generation resource by ID
+##### Get single Generation resource by Name or ID
 ```go
 // Main client example with ID
 generation, err := client.Games.GetGeneration("1")
@@ -23,7 +23,7 @@ generationList, err := gamesGroup.GetGenerationList(models.PaginationOptions{Lim
 
 ## [Pokedex](https://pokeapi.co/docs/v2#pokedexes)
 
-##### Get single Pokedex resource by ID
+##### Get single Pokedex resource by Name or ID
 ```go
 // Main client example with ID
 pokedex, err := client.Games.GetPokedex("1")
@@ -43,7 +43,7 @@ pokedexList, err := gamesGroup.GetPokedexList(models.PaginationOptions{Limit: 20
 
 ## [Version](https://pokeapi.co/docs/v2#versions)
 
-##### Get single Version resource by ID
+##### Get single Version resource by Name or ID
 ```go
 // Main client example with ID
 version, err := client.Games.GetVersion("1")
@@ -63,7 +63,7 @@ versionList, err := gamesGroup.GetVersionList(models.PaginationOptions{Limit: 20
 
 ## [VersionGroup](https://pokeapi.co/docs/v2#version-groups)
 
-##### Get single Version Group resource by ID
+##### Get single Version Group resource by Name or ID
 ```go
 // Main client example with ID
 versionGroup, err := client.Games.GetVersionGroup("1")
