@@ -32,7 +32,7 @@ Below is a list of all the resource groups available in PokeGo. Each resource gr
 | Berries | [BERRIES.md](pkg/resources/berries/BERRIES.md) | https://pokeapi.co/docs/v2#berries-section |
 | Contests | [CONTESTS.md](pkg/resources/contests/CONTESTS.md) | https://pokeapi.co/docs/v2#contests-section |
 | Encounters | [ENCOUNTERS.md](pkg/resources/encounters/ENCOUNTERS.md) | https://pokeapi.co/docs/v2#encounters-section |
-| Evolution | [EVOLUTIUON.md](pkg/resources/evolution/EVOLUTIUON.md) | https://pokeapi.co/docs/v2#evolution-section |
+| Evolution | [EVOLUTION.md](pkg/resources/evolution/EVOLUTIUON.md) | https://pokeapi.co/docs/v2#evolution-section |
 | Games | [GAMES.md](pkg/resources/games/GAMES.md) | https://pokeapi.co/docs/v2#games-section |
 | Items | [ITEMS.md](pkg/resources/items/ITEMS.md) | https://pokeapi.co/docs/v2#items-section |
 | Locations | [LOCATIONS.md](pkg/resources/locations/LOCATIONS.md) | https://pokeapi.co/docs/v2#locations-section |
