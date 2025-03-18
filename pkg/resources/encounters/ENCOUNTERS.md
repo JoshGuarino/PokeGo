@@ -1,4 +1,4 @@
-# [Encounters Group](pkg/resources/encounters/ENCOUNTERS.md)
+# [Encounters Group](https://pokeapi.co/docs/v2#encounters-section)
 The following are the resources available in the Encounters group of the [PokeAPI](https://pokeapi.co/).
 
 ## [EncounterMethod](https://pokeapi.co/docs/v2#encounter-methods)
