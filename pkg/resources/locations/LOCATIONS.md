@@ -8,8 +8,8 @@ The following are the resources available in the Locations group of the [PokeAPI
 // Main client example with ID
 location, err := client.Locations.GetLocation("1")
 
-// Main client example with Name
-location, err := client.Locations.GetLocation("canalave-city")
+// Individual resource group example with Name
+location, err := locationsGroup.GetLocation("kanto")
 ```
 
 ##### Get list of Location resource 
@@ -17,8 +17,8 @@ location, err := client.Locations.GetLocation("canalave-city")
 // Main client example with no pagination options
 locationList, err := client.Locations.GetLocationList(models.PaginationOptions{})
 
-// Main client example with pagination options
-locationList, err := client.Locations.GetLocationList(models.PaginationOptions{Limit: 20, Offset: 20})
+// Individual resource group example with pagination options
+locationList, err := locationsGroup.GetLocationList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
 
 ## [Location Area](https://pokeapi.co/docs/v2#location-areas)
@@ -29,7 +29,7 @@ locationList, err := client.Locations.GetLocationList(models.PaginationOptions{L
 locationArea, err := client.Locations.GetLocationArea("1")
 
 // Individual resource group example with Name
-locationArea, err := client.Locations.GetLocationArea("canalave-city-area")
+locationArea, err := locationsGroup.GetLocationArea("canalave-city-area")
 ```
 
 ##### Get list of Location Area resource 
@@ -38,7 +38,7 @@ locationArea, err := client.Locations.GetLocationArea("canalave-city-area")
 locationAreaList, err := client.Locations.GetLocationAreaList(models.PaginationOptions{})
 
 // Individual resource group example with pagination options
-locationAreaList, err := client.Locations.GetLocationAreaList(models.PaginationOptions{Limit: 20, Offset: 20})
+locationAreaList, err := locationsGroup.GetLocationAreaList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
 
 ## [Pal Park Area](https://pokeapi.co/docs/v2#pal-park-areas)
@@ -49,7 +49,7 @@ locationAreaList, err := client.Locations.GetLocationAreaList(models.PaginationO
 palParkArea, err := client.Locations.GetPalParkArea("1")
 
 // Individual resource group example with Name
-palParkArea, err := client.Locations.GetPalParkArea("forest")
+palParkArea, err := locationsGroup.GetPalParkArea("forest")
 ```
 
 ##### Get list of Pal Park Area resource 
@@ -58,7 +58,7 @@ palParkArea, err := client.Locations.GetPalParkArea("forest")
 palParkAreaList, err := client.Locations.GetPalParkAreaList(models.PaginationOptions{})
 
 // Individual resource group example with pagination options
-palParkAreaList, err := client.Locations.GetPalParkAreaList(models.PaginationOptions{Limit: 20, Offset: 20})
+palParkAreaList, err := locationsGroup.GetPalParkAreaList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
 
 ## [Region](https://pokeapi.co/docs/v2#regions)
@@ -69,7 +69,7 @@ palParkAreaList, err := client.Locations.GetPalParkAreaList(models.PaginationOpt
 region, err := client.Locations.GetRegion("1")
 
 // Individual resource group example with Name
-region, err := regionsGroup.GetRegion("kanto")
+region, err := locationsGroup.GetRegion("kanto")
 ```
 
 ##### Get list of Region resource 
@@ -78,5 +78,5 @@ region, err := regionsGroup.GetRegion("kanto")
 regionList, err := client.Locations.GetRegionList(models.PaginationOptions{})
 
 // Individual resource group example with pagination options
-regionList, err := regionsGroup.GetRegionList(models.PaginationOptions{Limit: 20, Offset: 20})
+regionList, err := locationsGroup.GetRegionList(models.PaginationOptions{Limit: 20, Offset: 20})
 ```
