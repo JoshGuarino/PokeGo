@@ -3,12 +3,12 @@ The following are the resources available in the Machines group of the [PokeAPI]
 
 ## [Machine](https://pokeapi.co/docs/v2#machine)
 
-##### Get single Machine resource by Name or ID
+##### Get single Machine resource by ID
 ```go
 // Main client example with ID
 machine, err := client.Machines.GetMachine("1")
 
-// Individual resource group example with Name
+// Individual resource group example with ID 
 machine, err := machinesGroup.GetMachine("1")
 ```
 
