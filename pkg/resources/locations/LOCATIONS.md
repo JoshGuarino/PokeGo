@@ -9,7 +9,7 @@ The following are the resources available in the Locations group of the [PokeAPI
 location, err := client.Locations.GetLocation("1")
 
 // Individual resource group example with Name
-location, err := locationsGroup.GetLocation("kanto")
+location, err := locationsGroup.GetLocation("canalave-city")
 ```
 
 ##### Get list of Location resource 
