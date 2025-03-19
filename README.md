@@ -1,9 +1,9 @@
-# PokeGo <a href="https://pokeapi.co/api/v2/pokemon/charmander"><img src='https://veekun.com/dex/media/pokemon/global-link/4.png' height=50px/></a>
+# PokeGo <a href="https://pokeapi.co/api/v2/pokemon/charmander"><img src='https://veekun.com/dex/media/pokemon/global-link/4.png' height=100px/></a>
 
 PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/) v2.
 
 ## Setup
-There are 2 options for using PokeGo. You can either use the main client or create individual resource groups seperately. 
+There are two options for using PokeGo. You can either use the main client or create individual resource groups seperately. 
 The main client will initialize all resource groups for you. If you choose to use individual resource groups, 
 you will need to initialize each group separately.
 
