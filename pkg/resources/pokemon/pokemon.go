@@ -13,7 +13,7 @@ import (
 type IPokemon interface {
 	GetAbility(nameOrId string) (*models.Ability, error)
 	GetAbilityList(options models.PaginationOptions) (*models.ResourceList, error)
-	GetCharacteristic(nameOrId string) (*models.Characteristic, error)
+	GetCharacteristic(id string) (*models.Characteristic, error)
 	GetCharacteristicList(options models.PaginationOptions) (*models.ResourceList, error)
 	GetEggGroup(nameOrId string) (*models.EggGroup, error)
 	GetEggGroupList(options models.PaginationOptions) (*models.ResourceList, error)
