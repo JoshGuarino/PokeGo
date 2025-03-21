@@ -55,14 +55,14 @@ The pagination option is a struct that contains two fields: `Limit` and `Offset`
 return the default values of 20 for limit and 0 for offset and is a requried parameter for all list methods.
 
 <details>
-<summary>Exmpale with options</summary>
+<summary>Example with options</summary>
 
 ```go
-// Main client example
-pokemonList, err := client.Pokemon.GetPokemonList(models.Pagination{Limit: 10, Offset: 0}) // returns the first page of 10 results
+// Main client example returning the first page of 10 results
+pokemonList, err := client.Pokemon.GetPokemonList(models.Pagination{Limit: 10, Offset: 0})
 
-// Individual resource group example
-pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Offset: 10}) // returns the second page of 10 results
+// Individual resource group example returning the second page of 10 results
+pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Offset: 10}) 
 ```
 </details>
 
@@ -70,11 +70,11 @@ pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Off
 <summary>Example without options</summary>
 
 ```go
-// Main client example
-pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{}) // returns the first page of 20 results
+// Main client example returning the first page of 20 results
+pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{})
 
-// Individual resource group example
-pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{}) // returns the first page of 20 results
+// Individual resource group example returning the first page of 20 results
+pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{})
 ```
 </details>
 
