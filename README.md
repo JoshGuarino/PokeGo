@@ -52,7 +52,7 @@ PokeGo uses the PokeAPI's pagination system to limit the number of results retur
 The default limit is 20 results per page and the default offset is 0. This will return the first 20 results.
 Every list method has an pagination option that can be used to change the limit and offset of the results returned.
 The pagination option is a struct that contains two fields: `Limit` and `Offset`. An empty pagination struct will 
-return the default values of 20 for limit and 0 for offset and is a requried parameter for all list methods.
+return the default values of 20 for limit and 0 for offset. `PaginationOptions{}` is a requried parameter for all list methods.
 
 <details>
 <summary>Example with options</summary>
