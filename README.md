@@ -50,6 +50,32 @@ Below is a list of all the resource groups available in PokeGo. Each resource gr
 ## Pagination
 PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
 The default limit is 20 results per page and the default offset is 0. This will return the first 20 results.
+Every list method has an pagination option that can be used to change the limit and offset of the results returned.
+The pagination option is a struct that contains two fields: `Limit` and `Offset`. An empty pagination struct will 
+return the default values of 20 for limit and 0 for offset and is a requried parameter for all list methods.
+
+<details>
+<summary>Exmpale with options</summary>
+
+```go
+// Main client example
+pokemonList, err := client.Pokemon.GetPokemonList(models.Pagination{Limit: 10, Offset: 0}) // returns the first page of 10 results
+
+// Individual resource group example
+pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Offset: 10}) // returns the second page of 10 results
+```
+</details>
+
+<details>
+<summary>Example without options</summary>
+
+```go
+// Main client example
+pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{}) // returns the first page of 20 results
+
+// Individual resource group example
+pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{}) // returns the first page of 20 results
+```
 
 ## Caching
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
