@@ -2,6 +2,12 @@
 
 PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/) v2.
 
+## Installation
+PokeGo can be installed using the following command:
+```bash
+go get github.com/JoshGuarino/PokeGo
+```
+
 ## Setup
 There are two options for using PokeGo. You can either use the main client or create individual resource groups seperately. 
 The main client will initialize all resource groups for you. If you choose to use individual resource groups, 
