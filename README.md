@@ -76,6 +76,7 @@ pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{}) //
 // Individual resource group example
 pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{}) // returns the first page of 20 results
 ```
+</details>
 
 ## Caching
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
