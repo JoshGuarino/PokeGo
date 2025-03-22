@@ -55,7 +55,7 @@ The pagination option is a struct that contains two fields: `Limit` and `Offset`
 return the default values of 20 for limit and 0 for offset. `PaginationOptions{}` is a requried parameter for all list methods.
 
 <details>
-<summary>Example with options</summary>
+<summary>Pagination example with options</summary>
 
 ```go
 // Main client example returning the first page of 10 results
@@ -67,7 +67,7 @@ pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Off
 </details>
 
 <details>
-<summary>Example without options</summary>
+<summary>Pagination example without options</summary>
 
 ```go
 // Main client example returning the first page of 20 results
