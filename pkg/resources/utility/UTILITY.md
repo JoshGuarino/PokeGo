@@ -1,7 +1,7 @@
 # [Utility Group](https://pokeapi.co/docs/v2#utility-section)
 The following are the utility functions and features of the PokeGo API client.
 
-## [Language](https://pokeapi.co/docs/v2#languages
+## [Language](https://pokeapi.co/docs/v2#languages)
 
 ##### Get single Language resource by Name or ID
 ```go
