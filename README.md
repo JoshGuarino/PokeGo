@@ -59,10 +59,10 @@ return the default values of 20 for limit and 0 for offset. `PaginationOptions{}
 
 ```go
 // Main client example returning the first page of 10 results
-pokemonList, err := client.Pokemon.GetPokemonList(models.Pagination{Limit: 10, Offset: 0})
+pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{Limit: 10, Offset: 0})
 
 // Individual resource group example returning the second page of 10 results
-pokemonList, err := pokemonGroup.GetPokemonList(models.Pagination{Limit: 10, Offset: 10}) 
+pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{Limit: 10, Offset: 10}) 
 ```
 </details>
 
