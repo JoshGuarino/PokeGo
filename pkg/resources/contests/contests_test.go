@@ -3,7 +3,7 @@ package contests
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -41,8 +41,8 @@ func TestGetContestEffect(t *testing.T) {
 func TestGetContestEffectList(t *testing.T) {
 	rList, _ := contests.GetContestEffectList(20, 0)
 	rPage, _ := contests.GetContestEffectList(1, 1)
-	assert.Equal(t, constants.ContestEffectEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for ContestEffect resource")
-	assert.Equal(t, constants.ContestEffectEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for ContestEffect resource")
+	assert.Equal(t, endpoints.ContestEffect+"1/", rList.Results[0].URL, "Unexpected URL for ContestEffect resource")
+	assert.Equal(t, endpoints.ContestEffect+"2/", rPage.Results[0].URL, "Unexpected URL for ContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 
@@ -56,7 +56,7 @@ func TestGetSuperContestEffect(t *testing.T) {
 func TestGetSuperContestEffectList(t *testing.T) {
 	rList, _ := contests.GetSuperContestEffectList(20, 0)
 	rPage, _ := contests.GetSuperContestEffectList(1, 1)
-	assert.Equal(t, constants.SuperContestEffectEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
-	assert.Equal(t, constants.SuperContestEffectEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
+	assert.Equal(t, endpoints.SuperContestEffect+"1/", rList.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
+	assert.Equal(t, endpoints.SuperContestEffect+"2/", rPage.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }

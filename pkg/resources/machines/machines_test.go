@@ -3,7 +3,7 @@ package machines
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,7 +24,7 @@ func TestGetMachine(t *testing.T) {
 func TestGetMachineList(t *testing.T) {
 	rList, _ := machines.GetMachineList(20, 0)
 	rPage, _ := machines.GetMachineList(1, 1)
-	assert.Equal(t, constants.MachineEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for Machine resource")
-	assert.Equal(t, constants.MachineEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for Machine resource")
+	assert.Equal(t, endpoints.Machine+"1/", rList.Results[0].URL, "Unexpected URL for Machine resource")
+	assert.Equal(t, endpoints.Machine+"2/", rPage.Results[0].URL, "Unexpected URL for Machine resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }

@@ -3,7 +3,7 @@ package evolution
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +24,8 @@ func TestGetEvolutionChain(t *testing.T) {
 func TestGetEvolutionChainList(t *testing.T) {
 	rList, _ := evolution.GetEvolutionChainList(20, 0)
 	rPage, _ := evolution.GetEvolutionChainList(1, 1)
-	assert.Equal(t, constants.EvolutionChainEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for EvolutionChain resource")
-	assert.Equal(t, constants.EvolutionChainEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for EvolutionChain resource")
+	assert.Equal(t, endpoints.EvolutionChain+"1/", rList.Results[0].URL, "Unexpected URL for EvolutionChain resource")
+	assert.Equal(t, endpoints.EvolutionChain+"2/", rPage.Results[0].URL, "Unexpected URL for EvolutionChain resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 

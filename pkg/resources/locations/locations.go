@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
@@ -40,7 +40,7 @@ func NewLocationsGroup() Locations {
 
 // Return a single Location resource by name or ID
 func (l Locations) GetLocation(nameOrId string) (*models.Location, error) {
-	location, err := request.GetSpecificResource[models.Location](constants.LocationEndpoint + nameOrId)
+	location, err := request.GetSpecificResource[models.Location](endpoints.Location + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func (l Locations) GetLocation(nameOrId string) (*models.Location, error) {
 
 // Return a list of Location resource
 func (l Locations) GetLocationList(limit int, offset int) (*models.ResourceList, error) {
-	locationsList, err := request.GetResourceList(constants.LocationEndpoint, limit, offset)
+	locationsList, err := request.GetResourceList(endpoints.Location, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (l Locations) GetLocationList(limit int, offset int) (*models.ResourceList,
 
 // Return a single LocationArea resource by name or ID
 func (l Locations) GetLocationArea(nameOrId string) (*models.LocationArea, error) {
-	locationArea, err := request.GetSpecificResource[models.LocationArea](constants.LocationAreaEndpoint + nameOrId)
+	locationArea, err := request.GetSpecificResource[models.LocationArea](endpoints.LocationArea + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (l Locations) GetLocationArea(nameOrId string) (*models.LocationArea, error
 
 // Return a list of LocationArea resource
 func (l Locations) GetLocationAreaList(limit int, offset int) (*models.ResourceList, error) {
-	locationsAreaList, err := request.GetResourceList(constants.LocationAreaEndpoint, limit, offset)
+	locationsAreaList, err := request.GetResourceList(endpoints.LocationArea, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func (l Locations) GetLocationAreaList(limit int, offset int) (*models.ResourceL
 
 // Return a single PalParkArea resource by name or ID
 func (l Locations) GetPalParkArea(nameOrId string) (*models.PalParkArea, error) {
-	PalParkArea, err := request.GetSpecificResource[models.PalParkArea](constants.PalParkAreaEndpoint + nameOrId)
+	PalParkArea, err := request.GetSpecificResource[models.PalParkArea](endpoints.PalParkArea + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +85,7 @@ func (l Locations) GetPalParkArea(nameOrId string) (*models.PalParkArea, error) 
 
 // Return a list of PalParkArea resource
 func (l Locations) GetPalParkAreaList(limit int, offset int) (*models.ResourceList, error) {
-	palParkAreaList, err := request.GetResourceList(constants.PalParkAreaEndpoint, limit, offset)
+	palParkAreaList, err := request.GetResourceList(endpoints.PalParkArea, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,7 @@ func (l Locations) GetPalParkAreaList(limit int, offset int) (*models.ResourceLi
 
 // Return a single Region resource by name or ID
 func (l Locations) GetRegion(nameOrId string) (*models.Region, error) {
-	Region, err := request.GetSpecificResource[models.Region](constants.RegionEndpoint + nameOrId)
+	Region, err := request.GetSpecificResource[models.Region](endpoints.Region + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +103,7 @@ func (l Locations) GetRegion(nameOrId string) (*models.Region, error) {
 
 // Return a list of PalParkArea resource
 func (l Locations) GetRegionList(limit int, offset int) (*models.ResourceList, error) {
-	regionList, err := request.GetResourceList(constants.RegionEndpoint, limit, offset)
+	regionList, err := request.GetResourceList(endpoints.Region, limit, offset)
 	if err != nil {
 		return nil, err
 	}

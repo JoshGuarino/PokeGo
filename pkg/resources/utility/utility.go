@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
@@ -34,7 +34,7 @@ func NewUtilityGroup() Utility {
 
 // Return a single Language resource by name or ID
 func (u Utility) GetLanguage(nameOrId string) (*models.Language, error) {
-	language, err := request.GetSpecificResource[models.Language](constants.LanguageEndpoint + nameOrId)
+	language, err := request.GetSpecificResource[models.Language](endpoints.Language + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func (u Utility) GetLanguage(nameOrId string) (*models.Language, error) {
 
 // Return a list of Language resource
 func (u Utility) GetLanguageList(limit int, offset int) (*models.ResourceList, error) {
-	languageList, err := request.GetResourceList(constants.LanguageEndpoint, limit, offset)
+	languageList, err := request.GetResourceList(endpoints.Language, limit, offset)
 	if err != nil {
 		return nil, err
 	}

@@ -3,7 +3,7 @@ package pokemon
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -41,8 +41,8 @@ func TestGetCharacteristic(t *testing.T) {
 func TestGetCharacteristicList(t *testing.T) {
 	rList, _ := pokemon.GetCharacteristicList(20, 0)
 	rPage, _ := pokemon.GetCharacteristicList(1, 1)
-	assert.Equal(t, constants.CharacteristicEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for Characteristic resource")
-	assert.Equal(t, constants.CharacteristicEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for Characteristic resource")
+	assert.Equal(t, endpoints.Characteristic+"1/", rList.Results[0].URL, "Unexpected URL for Characteristic resource")
+	assert.Equal(t, endpoints.Characteristic+"2/", rPage.Results[0].URL, "Unexpected URL for Characteristic resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 

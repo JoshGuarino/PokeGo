@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/berries"
@@ -66,7 +66,7 @@ func NewClient() PokeGo {
 
 // Return an instance of API Root list of available resources
 func (p PokeGo) Root() (*models.Root, error) {
-	root, err := request.GetSpecificResource[models.Root](constants.BaseUrl)
+	root, err := request.GetSpecificResource[models.Root](endpoints.BaseUrl)
 	if err != nil {
 		return nil, err
 	}

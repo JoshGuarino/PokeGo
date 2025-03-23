@@ -5,19 +5,19 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/constants"
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestGet(t *testing.T) {
-	body, err := Get(constants.BaseUrl)
+	body, err := Get(endpoints.BaseUrl)
 	assert.IsType(t, []byte{}, body, "Expected slice of bytes to be returned")
 	assert.NoError(t, err, "Expected error to nil")
 }
 
 func TestGetResourceList(t *testing.T) {
-	url := constants.PokemonEndpoint
+	url := endpoints.Pokemon
 	key := fmt.Sprintf("%s?limit=%d&offset=%d", url, 20, 0)
 	list, err := GetResourceList(url, 20, 0)
 	data, _ := cache.C.Get(key)
@@ -27,7 +27,7 @@ func TestGetResourceList(t *testing.T) {
 }
 
 func TestGetSpecificResource(t *testing.T) {
-	url := constants.PokemonEndpoint + "1"
+	url := endpoints.Pokemon + "1"
 	key := url
 	resource, err := GetSpecificResource[models.Pokemon](url)
 	data, _ := cache.C.Get(key)
