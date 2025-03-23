@@ -63,7 +63,7 @@ is the number of results to skip. Both arugments are required as Golang does not
 
 ```go
 // Main client example returning the first page of 20 results
-pokemonList, err := client.Pokemon.GetPokemonList(20, 0})
+pokemonList, err := client.Pokemon.GetPokemonList(20, 0)
 
 // Individual resource group example returning the second page of 20 results
 pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
