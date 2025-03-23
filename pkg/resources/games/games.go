@@ -12,13 +12,13 @@ import (
 // Games group interface
 type IGames interface {
 	GetGeneration(nameOrId string) (*models.Generation, error)
-	GetGenerationList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetGenerationList(limit int, offest int) (*models.ResourceList, error)
 	GetPokedex(nameOrId string) (*models.Pokedex, error)
-	GetPokedexList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokedexList(limit int, offest int) (*models.ResourceList, error)
 	GetVersion(nameOrId string) (*models.Version, error)
-	GetVersionList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetVersionList(limit int, offest int) (*models.ResourceList, error)
 	GetVersionGroup(nameOrId string) (*models.VersionGroup, error)
-	GetVersionGroupList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetVersionGroupList(limit int, offest int) (*models.ResourceList, error)
 }
 
 // Games group struct
@@ -48,8 +48,8 @@ func (g Games) GetGeneration(nameOrId string) (*models.Generation, error) {
 }
 
 // Return a list of Generation resource
-func (g Games) GetGenerationList(options models.PaginationOptions) (*models.ResourceList, error) {
-	generationList, err := request.GetResourceList(constants.GenerationEndpoint, options)
+func (g Games) GetGenerationList(limit int, offest int) (*models.ResourceList, error) {
+	generationList, err := request.GetResourceList(constants.GenerationEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +66,8 @@ func (g Games) GetPokedex(nameOrId string) (*models.Pokedex, error) {
 }
 
 // Return a list of Pokedex resource
-func (g Games) GetPokedexList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokedexList, err := request.GetResourceList(constants.PokedexEndpoint, options)
+func (g Games) GetPokedexList(limit int, offest int) (*models.ResourceList, error) {
+	pokedexList, err := request.GetResourceList(constants.PokedexEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -84,8 +84,8 @@ func (g Games) GetVersion(nameOrId string) (*models.Version, error) {
 }
 
 // Return a list of Version resource
-func (g Games) GetVersionList(options models.PaginationOptions) (*models.ResourceList, error) {
-	versionList, err := request.GetResourceList(constants.VersionEndpoint, options)
+func (g Games) GetVersionList(limit int, offest int) (*models.ResourceList, error) {
+	versionList, err := request.GetResourceList(constants.VersionEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -102,8 +102,8 @@ func (g Games) GetVersionGroup(nameOrId string) (*models.VersionGroup, error) {
 }
 
 // Return a list of VersionGroup resource
-func (g Games) GetVersionGroupList(options models.PaginationOptions) (*models.ResourceList, error) {
-	versionGroupList, err := request.GetResourceList(constants.VersionGroupEndpoint, options)
+func (g Games) GetVersionGroupList(limit int, offest int) (*models.ResourceList, error) {
+	versionGroupList, err := request.GetResourceList(constants.VersionGroupEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}

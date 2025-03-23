@@ -3,7 +3,6 @@ package encounters
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetEncounterMethod(t *testing.T) {
 }
 
 func TestGetEncounterMethodList(t *testing.T) {
-	rList, _ := encounters.GetEncounterMethodList(models.PaginationOptions{})
-	rPage, _ := encounters.GetEncounterMethodList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := encounters.GetEncounterMethodList(20, 0)
+	rPage, _ := encounters.GetEncounterMethodList(1, 1)
 	assert.Equal(t, "walk", rList.Results[0].Name, "Unexpected Name for EncounterMethod resource")
 	assert.Equal(t, "old-rod", rPage.Results[0].Name, "Unexpected Name for EncounterMethod resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetEncounterCondition(t *testing.T) {
 }
 
 func TestGetEncounterConditionList(t *testing.T) {
-	rList, _ := encounters.GetEncounterConditionList(models.PaginationOptions{})
-	rPage, _ := encounters.GetEncounterConditionList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := encounters.GetEncounterConditionList(20, 0)
+	rPage, _ := encounters.GetEncounterConditionList(1, 1)
 	assert.Equal(t, "swarm", rList.Results[0].Name, "Unexpected Name for EncounterCondition resource")
 	assert.Equal(t, "time", rPage.Results[0].Name, "Unexpected Name for EncounterCondition resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetEncounterConditionValue(t *testing.T) {
 }
 
 func TestGetEncounterConditionValueList(t *testing.T) {
-	rList, _ := encounters.GetEncounterConditionValueList(models.PaginationOptions{})
-	rPage, _ := encounters.GetEncounterConditionValueList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := encounters.GetEncounterConditionValueList(20, 0)
+	rPage, _ := encounters.GetEncounterConditionValueList(1, 1)
 	assert.Equal(t, "swarm-yes", rList.Results[0].Name, "Unexpected Name for EncounterConditionValue resource")
 	assert.Equal(t, "swarm-no", rPage.Results[0].Name, "Unexpected Name for EncounterConditionValue resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

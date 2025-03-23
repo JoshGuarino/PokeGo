@@ -3,7 +3,6 @@ package items
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetItem(t *testing.T) {
 }
 
 func TestGetItemList(t *testing.T) {
-	rList, _ := items.GetItemList(models.PaginationOptions{})
-	rPage, _ := items.GetItemList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := items.GetItemList(20, 0)
+	rPage, _ := items.GetItemList(1, 1)
 	assert.Equal(t, "master-ball", rList.Results[0].Name, "Unexpected Name for Item resource")
 	assert.Equal(t, "ultra-ball", rPage.Results[0].Name, "Unexpected Name for Item resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetItemAttribute(t *testing.T) {
 }
 
 func TestGetItemAttributeList(t *testing.T) {
-	rList, _ := items.GetItemAttributeList(models.PaginationOptions{})
-	rPage, _ := items.GetItemAttributeList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := items.GetItemAttributeList(20, 0)
+	rPage, _ := items.GetItemAttributeList(1, 1)
 	assert.Equal(t, "countable", rList.Results[0].Name, "Unexpected Name for ItemAttribute resource")
 	assert.Equal(t, "consumable", rPage.Results[0].Name, "Unexpected Name for ItemAttribute resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetItemCategory(t *testing.T) {
 }
 
 func TestGetItemCategoryList(t *testing.T) {
-	rList, _ := items.GetItemCategoryList(models.PaginationOptions{})
-	rPage, _ := items.GetItemCategoryList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := items.GetItemCategoryList(20, 0)
+	rPage, _ := items.GetItemCategoryList(1, 1)
 	assert.Equal(t, "stat-boosts", rList.Results[0].Name, "Unexpected Name for ItemCategory' resource")
 	assert.Equal(t, "effort-drop", rPage.Results[0].Name, "Unexpected Name for ItemCategory resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -75,8 +74,8 @@ func TestGetItemFlingEffect(t *testing.T) {
 }
 
 func TestGetItemFlingEffectList(t *testing.T) {
-	rList, _ := items.GetItemFlingEffectList(models.PaginationOptions{})
-	rPage, _ := items.GetItemFlingEffectList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := items.GetItemFlingEffectList(20, 0)
+	rPage, _ := items.GetItemFlingEffectList(1, 1)
 	assert.Equal(t, "badly-poison", rList.Results[0].Name, "Unexpected Name for ItemFlingEffect resource")
 	assert.Equal(t, "burn", rPage.Results[0].Name, "Unexpected Name for ItemFlingEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -92,8 +91,8 @@ func TestGetItemPocket(t *testing.T) {
 }
 
 func TestGetItemPocketList(t *testing.T) {
-	rList, _ := items.GetItemPocketList(models.PaginationOptions{})
-	rPage, _ := items.GetItemPocketList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := items.GetItemPocketList(20, 0)
+	rPage, _ := items.GetItemPocketList(1, 1)
 	assert.Equal(t, "misc", rList.Results[0].Name, "Unexpected Name for ItemPocket resource")
 	assert.Equal(t, "medicine", rPage.Results[0].Name, "Unexpected Name for ItemPocket resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

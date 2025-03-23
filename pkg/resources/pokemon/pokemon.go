@@ -12,35 +12,35 @@ import (
 // Pokemon group interface
 type IPokemon interface {
 	GetAbility(nameOrId string) (*models.Ability, error)
-	GetAbilityList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetAbilityList(limit int, offset int) (*models.ResourceList, error)
 	GetCharacteristic(id string) (*models.Characteristic, error)
-	GetCharacteristicList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetCharacteristicList(limit int, offset int) (*models.ResourceList, error)
 	GetEggGroup(nameOrId string) (*models.EggGroup, error)
-	GetEggGroupList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetEggGroupList(limit int, offset int) (*models.ResourceList, error)
 	GetGender(nameOrId string) (*models.Gender, error)
-	GetGenderList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetGenderList(limit int, offset int) (*models.ResourceList, error)
 	GetGrowthRate(nameOrId string) (*models.GrowthRate, error)
-	GetGrowthRateList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetGrowthRateList(limit int, offset int) (*models.ResourceList, error)
 	GetNature(nameOrId string) (*models.Nature, error)
-	GetNatureList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetNatureList(limit int, offset int) (*models.ResourceList, error)
 	GetPokeathlonStat(nameOrId string) (*models.PokeathlonStat, error)
-	GetPokeathlonStatList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokeathlonStatList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemon(nameOrId string) (*models.Pokemon, error)
-	GetPokemonList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemonColor(nameOrId string) (*models.PokemonColor, error)
-	GetPokemonColorList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonColorList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemonForm(nameOrId string) (*models.PokemonForm, error)
-	GetPokemonFormList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonFormList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemonHabitat(nameOrId string) (*models.PokemonHabitat, error)
-	GetPokemonHabitatList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonHabitatList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemonShape(nameOrId string) (*models.PokemonShape, error)
-	GetPokemonShapeList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonShapeList(limit int, offset int) (*models.ResourceList, error)
 	GetPokemonSpecies(nameOrId string) (*models.PokemonSpecies, error)
-	GetPokemonSpeciesList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPokemonSpeciesList(limit int, offset int) (*models.ResourceList, error)
 	GetStat(nameOrId string) (*models.Stat, error)
-	GetStatList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetStatList(limit int, offset int) (*models.ResourceList, error)
 	GetType(nameOrId string) (*models.Type, error)
-	GetTypeList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetTypeList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Pokemon group struct
@@ -70,8 +70,8 @@ func (p Pokemon) GetAbility(nameOrId string) (*models.Ability, error) {
 }
 
 // Return a list of Ability resource
-func (p Pokemon) GetAbilityList(options models.PaginationOptions) (*models.ResourceList, error) {
-	abilityList, err := request.GetResourceList(constants.AbilityEndpoint, options)
+func (p Pokemon) GetAbilityList(limit int, offset int) (*models.ResourceList, error) {
+	abilityList, err := request.GetResourceList(constants.AbilityEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -88,8 +88,8 @@ func (p Pokemon) GetCharacteristic(id string) (*models.Characteristic, error) {
 }
 
 // Return a list of characteristic resource
-func (p Pokemon) GetCharacteristicList(options models.PaginationOptions) (*models.ResourceList, error) {
-	characteristicList, err := request.GetResourceList(constants.CharacteristicEndpoint, options)
+func (p Pokemon) GetCharacteristicList(limit int, offset int) (*models.ResourceList, error) {
+	characteristicList, err := request.GetResourceList(constants.CharacteristicEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -106,8 +106,8 @@ func (p Pokemon) GetEggGroup(nameOrId string) (*models.EggGroup, error) {
 }
 
 // Return a list of EggGroup resource
-func (p Pokemon) GetEggGroupList(options models.PaginationOptions) (*models.ResourceList, error) {
-	eggGroupList, err := request.GetResourceList(constants.EggGroupEndpoint, options)
+func (p Pokemon) GetEggGroupList(limit int, offset int) (*models.ResourceList, error) {
+	eggGroupList, err := request.GetResourceList(constants.EggGroupEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -124,8 +124,8 @@ func (p Pokemon) GetGender(nameOrId string) (*models.Gender, error) {
 }
 
 // Return a list of Gender resource
-func (p Pokemon) GetGenderList(options models.PaginationOptions) (*models.ResourceList, error) {
-	genderList, err := request.GetResourceList(constants.GenderEndpoint, options)
+func (p Pokemon) GetGenderList(limit int, offset int) (*models.ResourceList, error) {
+	genderList, err := request.GetResourceList(constants.GenderEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -142,8 +142,8 @@ func (p Pokemon) GetGrowthRate(nameOrId string) (*models.GrowthRate, error) {
 }
 
 // Return a list of GrowthRate resource
-func (p Pokemon) GetGrowthRateList(options models.PaginationOptions) (*models.ResourceList, error) {
-	growthRateList, err := request.GetResourceList(constants.GrowthRateEndpoint, options)
+func (p Pokemon) GetGrowthRateList(limit int, offset int) (*models.ResourceList, error) {
+	growthRateList, err := request.GetResourceList(constants.GrowthRateEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -160,8 +160,8 @@ func (p Pokemon) GetNature(nameOrId string) (*models.Nature, error) {
 }
 
 // Return a list of Nature resource
-func (p Pokemon) GetNatureList(options models.PaginationOptions) (*models.ResourceList, error) {
-	natureList, err := request.GetResourceList(constants.NatureEndpoint, options)
+func (p Pokemon) GetNatureList(limit int, offset int) (*models.ResourceList, error) {
+	natureList, err := request.GetResourceList(constants.NatureEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -178,8 +178,8 @@ func (p Pokemon) GetPokeathlonStat(nameOrId string) (*models.PokeathlonStat, err
 }
 
 // Return a list of PokeathlonStat resource
-func (p Pokemon) GetPokeathlonStatList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokeathlonStatList, err := request.GetResourceList(constants.PokeathlonStatEndpoint, options)
+func (p Pokemon) GetPokeathlonStatList(limit int, offset int) (*models.ResourceList, error) {
+	pokeathlonStatList, err := request.GetResourceList(constants.PokeathlonStatEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -196,8 +196,8 @@ func (p Pokemon) GetPokemon(nameOrId string) (*models.Pokemon, error) {
 }
 
 // Return a list of Pokemon resource
-func (p Pokemon) GetPokemonList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonList, err := request.GetResourceList(constants.PokemonEndpoint, options)
+func (p Pokemon) GetPokemonList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonList, err := request.GetResourceList(constants.PokemonEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -214,8 +214,8 @@ func (p Pokemon) GetPokemonColor(nameOrId string) (*models.PokemonColor, error) 
 }
 
 // Return a list of PokemonColor resource
-func (p Pokemon) GetPokemonColorList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonColorList, err := request.GetResourceList(constants.PokemonColorEndpoint, options)
+func (p Pokemon) GetPokemonColorList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonColorList, err := request.GetResourceList(constants.PokemonColorEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -232,8 +232,8 @@ func (p Pokemon) GetPokemonForm(nameOrId string) (*models.PokemonForm, error) {
 }
 
 // Return a list of PokemonForm resource
-func (p Pokemon) GetPokemonFormList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonFormList, err := request.GetResourceList(constants.PokemonFormEndpoint, options)
+func (p Pokemon) GetPokemonFormList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonFormList, err := request.GetResourceList(constants.PokemonFormEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -250,8 +250,8 @@ func (p Pokemon) GetPokemonHabitat(nameOrId string) (*models.PokemonHabitat, err
 }
 
 // Return a list of PokemonHabitat resource
-func (p Pokemon) GetPokemonHabitatList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonHabitatList, err := request.GetResourceList(constants.PokemonHabitatEndpoint, options)
+func (p Pokemon) GetPokemonHabitatList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonHabitatList, err := request.GetResourceList(constants.PokemonHabitatEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -268,8 +268,8 @@ func (p Pokemon) GetPokemonShape(nameOrId string) (*models.PokemonShape, error) 
 }
 
 // Return a list of PokemonShape resource
-func (p Pokemon) GetPokemonShapeList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonShapeList, err := request.GetResourceList(constants.PokemonShapeEndpoint, options)
+func (p Pokemon) GetPokemonShapeList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonShapeList, err := request.GetResourceList(constants.PokemonShapeEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -286,8 +286,8 @@ func (p Pokemon) GetPokemonSpecies(nameOrId string) (*models.PokemonSpecies, err
 }
 
 // Return a list of PokemonSpecies resource
-func (p Pokemon) GetPokemonSpeciesList(options models.PaginationOptions) (*models.ResourceList, error) {
-	pokemonSpeciesList, err := request.GetResourceList(constants.PokemonSpeciesEndpoint, options)
+func (p Pokemon) GetPokemonSpeciesList(limit int, offset int) (*models.ResourceList, error) {
+	pokemonSpeciesList, err := request.GetResourceList(constants.PokemonSpeciesEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -304,8 +304,8 @@ func (p Pokemon) GetStat(nameOrId string) (*models.Stat, error) {
 }
 
 // Return a list of Stat resource
-func (p Pokemon) GetStatList(options models.PaginationOptions) (*models.ResourceList, error) {
-	statList, err := request.GetResourceList(constants.StatEndpoint, options)
+func (p Pokemon) GetStatList(limit int, offset int) (*models.ResourceList, error) {
+	statList, err := request.GetResourceList(constants.StatEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -322,8 +322,8 @@ func (p Pokemon) GetType(nameOrId string) (*models.Type, error) {
 }
 
 // Return a list of Type resource
-func (p Pokemon) GetTypeList(options models.PaginationOptions) (*models.ResourceList, error) {
-	typeList, err := request.GetResourceList(constants.TypeEndpoint, options)
+func (p Pokemon) GetTypeList(limit int, offset int) (*models.ResourceList, error) {
+	typeList, err := request.GetResourceList(constants.TypeEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}

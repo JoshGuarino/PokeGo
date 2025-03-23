@@ -12,7 +12,7 @@ import (
 // Machines group interface
 type IMachines interface {
 	GetMachine(id string) (*models.Machine, error)
-	GetMachineList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMachineList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Machines group struct
@@ -42,8 +42,8 @@ func (m Machines) GetMachine(id string) (*models.Machine, error) {
 }
 
 // Return a list of Machine resource
-func (m Machines) GetMachineList(options models.PaginationOptions) (*models.ResourceList, error) {
-	machineList, err := request.GetResourceList(constants.MachineEndpoint, options)
+func (m Machines) GetMachineList(limit int, offset int) (*models.ResourceList, error) {
+	machineList, err := request.GetResourceList(constants.MachineEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}

@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/constants"
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,8 +24,8 @@ func TestGetContestType(t *testing.T) {
 }
 
 func TestGetContestTypeList(t *testing.T) {
-	rList, _ := contests.GetContestTypeList(models.PaginationOptions{})
-	rPage, _ := contests.GetContestTypeList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := contests.GetContestTypeList(20, 0)
+	rPage, _ := contests.GetContestTypeList(1, 1)
 	assert.Equal(t, "cool", rList.Results[0].Name, "Unexpected Name for ContestType resource")
 	assert.Equal(t, "beauty", rPage.Results[0].Name, "Unexpected Name for ContestType resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -40,8 +39,8 @@ func TestGetContestEffect(t *testing.T) {
 }
 
 func TestGetContestEffectList(t *testing.T) {
-	rList, _ := contests.GetContestEffectList(models.PaginationOptions{})
-	rPage, _ := contests.GetContestEffectList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := contests.GetContestEffectList(20, 0)
+	rPage, _ := contests.GetContestEffectList(1, 1)
 	assert.Equal(t, constants.ContestEffectEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for ContestEffect resource")
 	assert.Equal(t, constants.ContestEffectEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for ContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -55,8 +54,8 @@ func TestGetSuperContestEffect(t *testing.T) {
 }
 
 func TestGetSuperContestEffectList(t *testing.T) {
-	rList, _ := contests.GetSuperContestEffectList(models.PaginationOptions{})
-	rPage, _ := contests.GetSuperContestEffectList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := contests.GetSuperContestEffectList(20, 0)
+	rPage, _ := contests.GetSuperContestEffectList(1, 1)
 	assert.Equal(t, constants.SuperContestEffectEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
 	assert.Equal(t, constants.SuperContestEffectEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

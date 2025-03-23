@@ -3,7 +3,6 @@ package games
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetGeneration(t *testing.T) {
 }
 
 func TestGetGenerationList(t *testing.T) {
-	rList, _ := games.GetGenerationList(models.PaginationOptions{})
-	rPage, _ := games.GetGenerationList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := games.GetGenerationList(20, 0)
+	rPage, _ := games.GetGenerationList(1, 1)
 	assert.Equal(t, "generation-i", rList.Results[0].Name, "Unexpected Name for Generation resource")
 	assert.Equal(t, "generation-ii", rPage.Results[0].Name, "Unexpected Name for Generation resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetPokedex(t *testing.T) {
 }
 
 func TestGetPokedexList(t *testing.T) {
-	rList, _ := games.GetPokedexList(models.PaginationOptions{})
-	rPage, _ := games.GetPokedexList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := games.GetPokedexList(20, 0)
+	rPage, _ := games.GetPokedexList(1, 1)
 	assert.Equal(t, "national", rList.Results[0].Name, "Unexpected Name for Pokedex resource")
 	assert.Equal(t, "kanto", rPage.Results[0].Name, "Unexpected Name for Pokedex resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetVersion(t *testing.T) {
 }
 
 func TestGetVersionList(t *testing.T) {
-	rList, _ := games.GetVersionList(models.PaginationOptions{})
-	rPage, _ := games.GetVersionList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := games.GetVersionList(20, 0)
+	rPage, _ := games.GetVersionList(1, 1)
 	assert.Equal(t, "red", rList.Results[0].Name, "Unexpected Name for Version resource")
 	assert.Equal(t, "blue", rPage.Results[0].Name, "Unexpected Name for Version resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -75,8 +74,8 @@ func TestGetVersionGroup(t *testing.T) {
 }
 
 func TestGetVersionListGroup(t *testing.T) {
-	rList, _ := games.GetVersionGroupList(models.PaginationOptions{})
-	rPage, _ := games.GetVersionGroupList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := games.GetVersionGroupList(20, 0)
+	rPage, _ := games.GetVersionGroupList(1, 1)
 	assert.Equal(t, "red-blue", rList.Results[0].Name, "Unexpected Name for VersionGroup resource")
 	assert.Equal(t, "yellow", rPage.Results[0].Name, "Unexpected Name for VersionGroup resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

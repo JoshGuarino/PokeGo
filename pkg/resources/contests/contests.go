@@ -12,11 +12,11 @@ import (
 // Contests group interface
 type IContests interface {
 	GetContestType(nameOrId string) (*models.ContestType, error)
-	GetContestTypeList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetContestTypeList(limit int, offset int) (*models.ResourceList, error)
 	GetContestEffect(id string) (*models.ContestEffect, error)
-	GetContestEffectList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetContestEffectList(limit int, offset int) (*models.ResourceList, error)
 	GetSuperContestEffect(id string) (*models.SuperContestEffect, error)
-	GetSuperContestEffectList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetSuperContestEffectList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Contests group struct
@@ -46,8 +46,8 @@ func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 }
 
 // Return a list of Berry resource
-func (c Contests) GetContestTypeList(options models.PaginationOptions) (*models.ResourceList, error) {
-	contestTypeList, err := request.GetResourceList(constants.ContestTypeEndpoint, options)
+func (c Contests) GetContestTypeList(limit int, offset int) (*models.ResourceList, error) {
+	contestTypeList, err := request.GetResourceList(constants.ContestTypeEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -64,8 +64,8 @@ func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 }
 
 // Return a list of Berry resource
-func (c Contests) GetContestEffectList(options models.PaginationOptions) (*models.ResourceList, error) {
-	contestEffectList, err := request.GetResourceList(constants.ContestEffectEndpoint, options)
+func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceList, error) {
+	contestEffectList, err := request.GetResourceList(constants.ContestEffectEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -82,8 +82,8 @@ func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, 
 }
 
 // Return a list of Berry resource
-func (c Contests) GetSuperContestEffectList(options models.PaginationOptions) (*models.ResourceList, error) {
-	superContestEffectList, err := request.GetResourceList(constants.SuperContestEffectEndpoint, options)
+func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.ResourceList, error) {
+	superContestEffectList, err := request.GetResourceList(constants.SuperContestEffectEndpoint, limit, offest)
 	if err != nil {
 		return nil, err
 	}

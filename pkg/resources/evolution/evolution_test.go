@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/constants"
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -23,8 +22,8 @@ func TestGetEvolutionChain(t *testing.T) {
 }
 
 func TestGetEvolutionChainList(t *testing.T) {
-	rList, _ := evolution.GetEvolutionChainList(models.PaginationOptions{})
-	rPage, _ := evolution.GetEvolutionChainList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := evolution.GetEvolutionChainList(20, 0)
+	rPage, _ := evolution.GetEvolutionChainList(1, 1)
 	assert.Equal(t, constants.EvolutionChainEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for EvolutionChain resource")
 	assert.Equal(t, constants.EvolutionChainEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for EvolutionChain resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -40,8 +39,8 @@ func TestGetEvolutionTrigger(t *testing.T) {
 }
 
 func TestGetEvolutionTriggerList(t *testing.T) {
-	rList, _ := evolution.GetEvolutionTriggerList(models.PaginationOptions{})
-	rPage, _ := evolution.GetEvolutionTriggerList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := evolution.GetEvolutionTriggerList(20, 0)
+	rPage, _ := evolution.GetEvolutionTriggerList(1, 1)
 	assert.Equal(t, "level-up", rList.Results[0].Name, "Unexpected Name for EvolutionTrigger resource")
 	assert.Equal(t, "trade", rPage.Results[0].Name, "Unexpected Name for EvolutionTrigger resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

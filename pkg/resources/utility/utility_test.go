@@ -3,7 +3,6 @@ package utility
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetLanguage(t *testing.T) {
 }
 
 func TestGetLanguageList(t *testing.T) {
-	rList, _ := utility.GetLanguageList(models.PaginationOptions{})
-	rPage, _ := utility.GetLanguageList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := utility.GetLanguageList(20, 0)
+	rPage, _ := utility.GetLanguageList(1, 1)
 	assert.Equal(t, "ja-Hrkt", rList.Results[0].Name, "Unexpected Name for Language resource")
 	assert.Equal(t, "roomaji", rPage.Results[0].Name, "Unexpected Name for Language resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

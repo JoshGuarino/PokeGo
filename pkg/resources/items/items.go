@@ -12,15 +12,15 @@ import (
 // Items group interface
 type IItems interface {
 	GetItem(nameOrId string) (*models.Item, error)
-	GetItemList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetItemList(limit int, offset int) (*models.ResourceList, error)
 	GetItemAttribute(nameOrId string) (*models.ItemAttribute, error)
-	GetItemAttributeList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetItemAttributeList(limit int, offset int) (*models.ResourceList, error)
 	GetItemCategory(nameOrId string) (*models.ItemCategory, error)
-	GetItemCategoryList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetItemCategoryList(limit int, offset int) (*models.ResourceList, error)
 	GetItemFlingEffect(nameOrId string) (*models.ItemFlingEffect, error)
-	GetItemFlingEffectList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetItemFlingEffectList(limit int, offset int) (*models.ResourceList, error)
 	GetItemPocket(nameOrId string) (*models.ItemPocket, error)
-	GetItemPocketList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetItemPocketList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Items group struct
@@ -50,8 +50,8 @@ func (i Items) GetItem(nameOrId string) (*models.Item, error) {
 }
 
 // Return a list of Item resource
-func (i Items) GetItemList(options models.PaginationOptions) (*models.ResourceList, error) {
-	itemList, err := request.GetResourceList(constants.ItemEndpoint, options)
+func (i Items) GetItemList(limit int, offset int) (*models.ResourceList, error) {
+	itemList, err := request.GetResourceList(constants.ItemEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -68,8 +68,8 @@ func (i Items) GetItemAttribute(nameOrId string) (*models.ItemAttribute, error) 
 }
 
 // Return a list of ItemAttribute resource
-func (i Items) GetItemAttributeList(options models.PaginationOptions) (*models.ResourceList, error) {
-	itemAttributeList, err := request.GetResourceList(constants.ItemAttributeEndpoint, options)
+func (i Items) GetItemAttributeList(limit int, offset int) (*models.ResourceList, error) {
+	itemAttributeList, err := request.GetResourceList(constants.ItemAttributeEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -86,8 +86,8 @@ func (i Items) GetItemCategory(nameOrId string) (*models.ItemCategory, error) {
 }
 
 // Return a list of ItemCategory resource
-func (i Items) GetItemCategoryList(options models.PaginationOptions) (*models.ResourceList, error) {
-	itemCategoryList, err := request.GetResourceList(constants.ItemCategoryEndpoint, options)
+func (i Items) GetItemCategoryList(limit int, offset int) (*models.ResourceList, error) {
+	itemCategoryList, err := request.GetResourceList(constants.ItemCategoryEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -104,8 +104,8 @@ func (i Items) GetItemFlingEffect(nameOrId string) (*models.ItemFlingEffect, err
 }
 
 // Return a list of ItemFlingEffect resource
-func (i Items) GetItemFlingEffectList(options models.PaginationOptions) (*models.ResourceList, error) {
-	itemFlingEffectList, err := request.GetResourceList(constants.ItemFlingEffectEndpoint, options)
+func (i Items) GetItemFlingEffectList(limit int, offset int) (*models.ResourceList, error) {
+	itemFlingEffectList, err := request.GetResourceList(constants.ItemFlingEffectEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +122,8 @@ func (i Items) GetItemPocket(nameOrId string) (*models.ItemPocket, error) {
 }
 
 // Return a list of ItemPocket resource
-func (i Items) GetItemPocketList(options models.PaginationOptions) (*models.ResourceList, error) {
-	itemPocketList, err := request.GetResourceList(constants.ItemPocketEndpoint, options)
+func (i Items) GetItemPocketList(limit int, offset int) (*models.ResourceList, error) {
+	itemPocketList, err := request.GetResourceList(constants.ItemPocketEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}

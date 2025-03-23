@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/constants"
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,8 +24,8 @@ func TestGetAbility(t *testing.T) {
 }
 
 func TestGetAbilityList(t *testing.T) {
-	rList, _ := pokemon.GetAbilityList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetAbilityList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetAbilityList(20, 0)
+	rPage, _ := pokemon.GetAbilityList(1, 1)
 	assert.Equal(t, "stench", rList.Results[0].Name, "Unexpected Name for Ability resource")
 	assert.Equal(t, "drizzle", rPage.Results[0].Name, "Unexpected Name for Ability resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -40,8 +39,8 @@ func TestGetCharacteristic(t *testing.T) {
 }
 
 func TestGetCharacteristicList(t *testing.T) {
-	rList, _ := pokemon.GetCharacteristicList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetCharacteristicList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetCharacteristicList(20, 0)
+	rPage, _ := pokemon.GetCharacteristicList(1, 1)
 	assert.Equal(t, constants.CharacteristicEndpoint+"1/", rList.Results[0].URL, "Unexpected URL for Characteristic resource")
 	assert.Equal(t, constants.CharacteristicEndpoint+"2/", rPage.Results[0].URL, "Unexpected URL for Characteristic resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -57,8 +56,8 @@ func TestGetEggGroup(t *testing.T) {
 }
 
 func TestGetEggGroupList(t *testing.T) {
-	rList, _ := pokemon.GetEggGroupList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetEggGroupList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetEggGroupList(20, 0)
+	rPage, _ := pokemon.GetEggGroupList(1, 1)
 	assert.Equal(t, "monster", rList.Results[0].Name, "Unexpected Name for EggGroup resource")
 	assert.Equal(t, "water1", rPage.Results[0].Name, "Unexpected Name for EggGroup resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -74,8 +73,8 @@ func TestGetGender(t *testing.T) {
 }
 
 func TestGetGenderList(t *testing.T) {
-	rList, _ := pokemon.GetGenderList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetGenderList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetGenderList(20, 0)
+	rPage, _ := pokemon.GetGenderList(1, 1)
 	assert.Equal(t, "female", rList.Results[0].Name, "Unexpected Name for Gender resource")
 	assert.Equal(t, "male", rPage.Results[0].Name, "Unexpected Name for Gender resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -91,8 +90,8 @@ func TestGetGrowthRate(t *testing.T) {
 }
 
 func TestGetGrowthRateList(t *testing.T) {
-	rList, _ := pokemon.GetGrowthRateList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetGrowthRateList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetGrowthRateList(20, 0)
+	rPage, _ := pokemon.GetGrowthRateList(1, 1)
 	assert.Equal(t, "slow", rList.Results[0].Name, "Unexpected Name for GrowthRate resource")
 	assert.Equal(t, "medium", rPage.Results[0].Name, "Unexpected Name for GrowthRate resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -108,8 +107,8 @@ func TestGetNature(t *testing.T) {
 }
 
 func TestGetNatureList(t *testing.T) {
-	rList, _ := pokemon.GetNatureList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetNatureList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetNatureList(20, 0)
+	rPage, _ := pokemon.GetNatureList(1, 1)
 	assert.Equal(t, "hardy", rList.Results[0].Name, "Unexpected Name for Nature resource")
 	assert.Equal(t, "bold", rPage.Results[0].Name, "Unexpected Name for Nature resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -125,8 +124,8 @@ func TestGetPokeathlonStat(t *testing.T) {
 }
 
 func TestGetPokeathlonStatList(t *testing.T) {
-	rList, _ := pokemon.GetPokeathlonStatList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokeathlonStatList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokeathlonStatList(20, 0)
+	rPage, _ := pokemon.GetPokeathlonStatList(1, 1)
 	assert.Equal(t, "speed", rList.Results[0].Name, "Unexpected Name for PokeathlonStat resource")
 	assert.Equal(t, "power", rPage.Results[0].Name, "Unexpected Name for PokeathlonStat resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -142,8 +141,8 @@ func TestGetPokemon(t *testing.T) {
 }
 
 func TestGetPokemonList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonList(20, 0)
+	rPage, _ := pokemon.GetPokemonList(1, 1)
 	assert.Equal(t, "bulbasaur", rList.Results[0].Name, "Unexpected Name for Pokemon resource")
 	assert.Equal(t, "ivysaur", rPage.Results[0].Name, "Unexpected Name for Pokemon resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -159,8 +158,8 @@ func TestGetPokemonColor(t *testing.T) {
 }
 
 func TestGetPokemonColorList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonColorList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonColorList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonColorList(20, 0)
+	rPage, _ := pokemon.GetPokemonColorList(1, 1)
 	assert.Equal(t, "black", rList.Results[0].Name, "Unexpected Name for PokemonColor resource")
 	assert.Equal(t, "blue", rPage.Results[0].Name, "Unexpected Name for PokemonColor resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -176,8 +175,8 @@ func TestGetPokemonForm(t *testing.T) {
 }
 
 func TestGetPokemonFormList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonFormList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonFormList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonFormList(20, 0)
+	rPage, _ := pokemon.GetPokemonFormList(1, 1)
 	assert.Equal(t, "bulbasaur", rList.Results[0].Name, "Unexpected Name for PokemonForm resource")
 	assert.Equal(t, "ivysaur", rPage.Results[0].Name, "Unexpected Name for PokemonForm resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -193,8 +192,8 @@ func TestGetPokemonHabitat(t *testing.T) {
 }
 
 func TestGetPokemonHabitatList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonHabitatList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonHabitatList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonHabitatList(20, 0)
+	rPage, _ := pokemon.GetPokemonHabitatList(1, 1)
 	assert.Equal(t, "cave", rList.Results[0].Name, "Unexpected Name for PokemonHabitat resource")
 	assert.Equal(t, "forest", rPage.Results[0].Name, "Unexpected Name for PokemonHabitat resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -210,8 +209,8 @@ func TestGetPokemonShape(t *testing.T) {
 }
 
 func TestGetPokemonShapeList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonShapeList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonShapeList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonShapeList(20, 0)
+	rPage, _ := pokemon.GetPokemonShapeList(1, 1)
 	assert.Equal(t, "ball", rList.Results[0].Name, "Unexpected Name for PokemonShape resource")
 	assert.Equal(t, "squiggle", rPage.Results[0].Name, "Unexpected Name for PokemonShape resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -227,8 +226,8 @@ func TestGetPokemonSpecies(t *testing.T) {
 }
 
 func TestGetPokemonSpeciesList(t *testing.T) {
-	rList, _ := pokemon.GetPokemonSpeciesList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetPokemonSpeciesList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetPokemonSpeciesList(20, 0)
+	rPage, _ := pokemon.GetPokemonSpeciesList(1, 1)
 	assert.Equal(t, "bulbasaur", rList.Results[0].Name, "Unexpected Name for PokemonSpecies resource")
 	assert.Equal(t, "ivysaur", rPage.Results[0].Name, "Unexpected Name for PokemonSpecies resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -244,8 +243,8 @@ func TestGetStat(t *testing.T) {
 }
 
 func TestGetStatList(t *testing.T) {
-	rList, _ := pokemon.GetStatList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetStatList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetStatList(20, 0)
+	rPage, _ := pokemon.GetStatList(1, 1)
 	assert.Equal(t, "hp", rList.Results[0].Name, "Unexpected Name for Stat resource")
 	assert.Equal(t, "attack", rPage.Results[0].Name, "Unexpected Name for Stat resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -261,8 +260,8 @@ func TestGetType(t *testing.T) {
 }
 
 func TestGetTypeList(t *testing.T) {
-	rList, _ := pokemon.GetTypeList(models.PaginationOptions{})
-	rPage, _ := pokemon.GetTypeList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := pokemon.GetTypeList(20, 0)
+	rPage, _ := pokemon.GetTypeList(1, 1)
 	assert.Equal(t, "normal", rList.Results[0].Name, "Unexpected Name for Type resource")
 	assert.Equal(t, "fighting", rPage.Results[0].Name, "Unexpected Name for Type resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

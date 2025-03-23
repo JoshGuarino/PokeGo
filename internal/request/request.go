@@ -40,12 +40,9 @@ func Get(url string) ([]byte, error) {
 }
 
 // Make GET request for list of resource
-func GetResourceList(url string, options models.PaginationOptions) (*models.ResourceList, error) {
-	// Set default limit if not provided and build URL
-	if options.Limit == 0 {
-		options.Limit = 20
-	}
-	url = fmt.Sprintf("%s?offset=%d&limit=%d", url, options.Offest, options.Limit)
+func GetResourceList(url string, limit int, offset int) (*models.ResourceList, error) {
+	// Append limit and offset to URL
+	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
 
 	// Create new ResourceList instance
 	resourceList := models.ResourceList{}

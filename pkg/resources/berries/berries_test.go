@@ -3,7 +3,6 @@ package berries
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetBerry(t *testing.T) {
 }
 
 func TestGetBerryList(t *testing.T) {
-	rList, _ := berries.GetBerryList(models.PaginationOptions{})
-	rPage, _ := berries.GetBerryList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := berries.GetBerryList(20, 0)
+	rPage, _ := berries.GetBerryList(1, 1)
 	assert.Equal(t, "cheri", rList.Results[0].Name, "Unexpected Name for Berry resource")
 	assert.Equal(t, "chesto", rPage.Results[0].Name, "Unexpected Name for Berry resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetBerryFirmness(t *testing.T) {
 }
 
 func TestGetBerryFirmnessList(t *testing.T) {
-	rList, _ := berries.GetBerryFirmnessList(models.PaginationOptions{})
-	rPage, _ := berries.GetBerryFirmnessList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := berries.GetBerryFirmnessList(20, 0)
+	rPage, _ := berries.GetBerryFirmnessList(1, 1)
 	assert.Equal(t, "very-soft", rList.Results[0].Name, "Unexpected Name for BerryFirmness resource")
 	assert.Equal(t, "soft", rPage.Results[0].Name, "Unexpected Name for BerryFirmness resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetBerryFlavor(t *testing.T) {
 }
 
 func TestGetBerryFlavorList(t *testing.T) {
-	rList, _ := berries.GetBerryFlavorList(models.PaginationOptions{})
-	rPage, _ := berries.GetBerryFlavorList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := berries.GetBerryFlavorList(20, 0)
+	rPage, _ := berries.GetBerryFlavorList(1, 1)
 	assert.Equal(t, "spicy", rList.Results[0].Name, "Unexpected Name for BerryFlavor resource")
 	assert.Equal(t, "dry", rPage.Results[0].Name, "Unexpected Name for BerryFlavor resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

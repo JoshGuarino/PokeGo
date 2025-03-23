@@ -3,7 +3,6 @@ package locations
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetLocation(t *testing.T) {
 }
 
 func TestGetLocationList(t *testing.T) {
-	rList, _ := locations.GetLocationList(models.PaginationOptions{})
-	rPage, _ := locations.GetLocationList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := locations.GetLocationList(20, 0)
+	rPage, _ := locations.GetLocationList(1, 1)
 	assert.Equal(t, "canalave-city", rList.Results[0].Name, "Unexpected Name for Location resource")
 	assert.Equal(t, "eterna-city", rPage.Results[0].Name, "Unexpected Name for Location resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetLocationArea(t *testing.T) {
 }
 
 func TestGetLocationAreaList(t *testing.T) {
-	rList, _ := locations.GetLocationAreaList(models.PaginationOptions{})
-	rPage, _ := locations.GetLocationAreaList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := locations.GetLocationAreaList(20, 0)
+	rPage, _ := locations.GetLocationAreaList(1, 1)
 	assert.Equal(t, "canalave-city-area", rList.Results[0].Name, "Unexpected Name for LocationArea resource")
 	assert.Equal(t, "eterna-city-area", rPage.Results[0].Name, "Unexpected Name for LocationArea resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetPalParkArea(t *testing.T) {
 }
 
 func TestGetPalParkAreaList(t *testing.T) {
-	rList, _ := locations.GetPalParkAreaList(models.PaginationOptions{})
-	rPage, _ := locations.GetPalParkAreaList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := locations.GetPalParkAreaList(20, 0)
+	rPage, _ := locations.GetPalParkAreaList(1, 1)
 	assert.Equal(t, "forest", rList.Results[0].Name, "Unexpected Name for PalParkArea resource")
 	assert.Equal(t, "field", rPage.Results[0].Name, "Unexpected Name for PalParkArea resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -75,8 +74,8 @@ func TestGetRegion(t *testing.T) {
 }
 
 func TestGetRegionList(t *testing.T) {
-	rList, _ := locations.GetRegionList(models.PaginationOptions{})
-	rPage, _ := locations.GetRegionList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := locations.GetRegionList(20, 0)
+	rPage, _ := locations.GetRegionList(1, 1)
 	assert.Equal(t, "kanto", rList.Results[0].Name, "Unexpected Name for Region resource")
 	assert.Equal(t, "johto", rPage.Results[0].Name, "Unexpected Name for Region resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

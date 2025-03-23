@@ -12,19 +12,19 @@ import (
 // Moves group interface
 type IMoves interface {
 	GetMove(nameOrId string) (*models.Move, error)
-	GetMoveList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveAilment(nameOrId string) (*models.MoveAilment, error)
-	GetMoveAilmentList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveAilmentList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveBattleStyle(nameOrId string) (*models.MoveBattleStyle, error)
-	GetMoveBattleStyleList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveBattleStyleList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveCategory(nameOrId string) (*models.MoveCategory, error)
-	GetMoveCategoryList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveCategoryList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveDamageClass(nameOrId string) (*models.MoveDamageClass, error)
-	GetMoveDamageClassList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveDamageClassList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveLearnMethod(nameOrId string) (*models.MoveLearnMethod, error)
-	GetMoveLearnMethodList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveLearnMethodList(limit int, offset int) (*models.ResourceList, error)
 	GetMoveTarget(nameOrId string) (*models.MoveTarget, error)
-	GetMoveTargetList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetMoveTargetList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Moves group struct
@@ -54,8 +54,8 @@ func (m Moves) GetMove(nameOrId string) (*models.Move, error) {
 }
 
 // Return a list of Move resource
-func (m Moves) GetMoveList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveList, err := request.GetResourceList(constants.MoveEndpoint, options)
+func (m Moves) GetMoveList(limit int, offset int) (*models.ResourceList, error) {
+	moveList, err := request.GetResourceList(constants.MoveEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -72,8 +72,8 @@ func (m Moves) GetMoveAilment(nameOrId string) (*models.MoveAilment, error) {
 }
 
 // Return a list of MoveAilment resource
-func (m Moves) GetMoveAilmentList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveAilmentList, err := request.GetResourceList(constants.MoveAilmentEndpoint, options)
+func (m Moves) GetMoveAilmentList(limit int, offset int) (*models.ResourceList, error) {
+	moveAilmentList, err := request.GetResourceList(constants.MoveAilmentEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -90,8 +90,8 @@ func (m Moves) GetMoveBattleStyle(nameOrId string) (*models.MoveBattleStyle, err
 }
 
 // Return a list of MoveBattleStyle resource
-func (m Moves) GetMoveBattleStyleList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveBattleStyleList, err := request.GetResourceList(constants.MoveBattleStyleEndpoint, options)
+func (m Moves) GetMoveBattleStyleList(limit int, offset int) (*models.ResourceList, error) {
+	moveBattleStyleList, err := request.GetResourceList(constants.MoveBattleStyleEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -108,8 +108,8 @@ func (m Moves) GetMoveCategory(nameOrId string) (*models.MoveCategory, error) {
 }
 
 // Return a list of MoveCategory resource
-func (m Moves) GetMoveCategoryList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveCategoryList, err := request.GetResourceList(constants.MoveCategoryEndpoint, options)
+func (m Moves) GetMoveCategoryList(limit int, offset int) (*models.ResourceList, error) {
+	moveCategoryList, err := request.GetResourceList(constants.MoveCategoryEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -126,8 +126,8 @@ func (m Moves) GetMoveDamageClass(nameOrId string) (*models.MoveDamageClass, err
 }
 
 // Return a list of MoveDamageClass resource
-func (m Moves) GetMoveDamageClassList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveDamageClassList, err := request.GetResourceList(constants.MoveDamageClassEndpoint, options)
+func (m Moves) GetMoveDamageClassList(limit int, offset int) (*models.ResourceList, error) {
+	moveDamageClassList, err := request.GetResourceList(constants.MoveDamageClassEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -144,8 +144,8 @@ func (m Moves) GetMoveLearnMethod(nameOrId string) (*models.MoveLearnMethod, err
 }
 
 // Return a list of MoveLearnMethod resource
-func (m Moves) GetMoveLearnMethodList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveLearnMethodList, err := request.GetResourceList(constants.MoveLearnMethodEndpoint, options)
+func (m Moves) GetMoveLearnMethodList(limit int, offset int) (*models.ResourceList, error) {
+	moveLearnMethodList, err := request.GetResourceList(constants.MoveLearnMethodEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -162,8 +162,8 @@ func (m Moves) GetMoveTarget(nameOrId string) (*models.MoveTarget, error) {
 }
 
 // Return a list of MoveTarget resource
-func (m Moves) GetMoveTargetList(options models.PaginationOptions) (*models.ResourceList, error) {
-	moveTargetList, err := request.GetResourceList(constants.MoveTargetEndpoint, options)
+func (m Moves) GetMoveTargetList(limit int, offset int) (*models.ResourceList, error) {
+	moveTargetList, err := request.GetResourceList(constants.MoveTargetEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}

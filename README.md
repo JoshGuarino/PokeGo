@@ -3,26 +3,31 @@
 PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/) v2.
 
 ## Installation
+
 PokeGo can be installed using the following command:
+
 ```bash
 go get github.com/JoshGuarino/PokeGo
 ```
 
 ## Setup
-There are two options for using PokeGo. You can either use the main client or create individual resource groups seperately. 
-The main client will initialize all resource groups for you. If you choose to use individual resource groups, 
+
+There are two options for using PokeGo. You can either use the main client or create individual resource groups seperately.
+The main client will initialize all resource groups for you. If you choose to use individual resource groups,
 you will need to initialize each group separately.
 
-
 ##### Main client
-```go 
+
+```go
 import (
     pokego "github.com/JoshGuarino/PokeGo/pkg"
 )
 
 client := pokego.NewClient()
 ```
+
 ##### Individual resource group
+
 ```go
 import (
     "github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
@@ -32,6 +37,7 @@ pokemonGroup := pokemon.NewPokemonGroup()
 ```
 
 ## Resource Groups
+
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 | Group | Usage Docs | PokeAPI Docs |
 | - | - | - |
@@ -48,39 +54,25 @@ Below is a list of all the resource groups available in PokeGo. Each resource gr
 | Utility | [UTILITY.md](pkg/resources/utility/UTILITY.md) | https://pokeapi.co/docs/v2#utility-section |
 
 ## Pagination
-PokeGo uses the PokeAPI's pagination system to limit the number of results returned in a single request.
-The default limit is 20 results per page and the default offset is 0. This will return the first 20 results.
-Every list method has an pagination option that can be used to change the limit and offset of the results returned.
-The pagination option is a struct that contains two fields: `Limit` and `Offset`. An empty pagination struct will 
-return the default values of 20 for limit and 0 for offset. `PaginationOptions{}` is a requried parameter for all list methods.
 
-<details>
-<summary>Pagination example with options</summary>
+PokeGo supports pagination for list endpoints. The `GetPokemonList()` method is an example of a list endpoint that supports pagination.
+The method takes two arguments, `limit` and `offset`. The `limit` argument is the number of results to return and the `offset` argument
+is the number of results to skip. Both arugments are required as Golang does not support default arguments.
 
-```go
-// Main client example returning the first page of 10 results
-pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{Limit: 10, Offset: 0})
-
-// Individual resource group example returning the second page of 10 results
-pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{Limit: 10, Offset: 10}) 
-```
-</details>
-
-<details>
-<summary>Pagination example without options</summary>
+##### List endpoint pagination examples
 
 ```go
 // Main client example returning the first page of 20 results
-pokemonList, err := client.Pokemon.GetPokemonList(models.PaginationOptions{})
+pokemonList, err := client.Pokemon.GetPokemonList(20, 0})
 
-// Individual resource group example returning the first page of 20 results
-pokemonList, err := pokemonGroup.GetPokemonList(models.PaginationOptions{})
+// Individual resource group example returning the second page of 20 results
+pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
 ```
-</details>
 
 ## Caching
-PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI. 
-The cache is set to expire after 24 hours as resources in the PokeAPI are mostly static. 
+
+PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI.
+The cache is set to expire after 24 hours as resources in the PokeAPI are mostly static.
 The cache is initialized when the client is created or when a resource group is created.
 Only one instance of the cache is created and shared between the client and all resource groups upon there initialization.
 Any subsequent intializations will not create a new cache but reference the existing cache.
@@ -89,7 +81,8 @@ A pointer reference to the initialized cache is stored in the client and each re
 <details>
 <summary>Clear Cache</summary>
 
-##### The cache can be cleared by calling the `Clear()` method on the cache. 
+##### The cache can be cleared by calling the `Clear()` method on the cache.
+
 ```go
 // Main client example
 client.Cache.Clear()
@@ -97,12 +90,14 @@ client.Cache.Clear()
 // Individual resource group example
 resourceGroup.Cache.Clear()
 ```
+
 </details>
 
 <details>
 <summary>Disabling Cache</summary>
 
-##### The active status of the cache can be set by calling the `setActive()` method on the cache. 
+##### The active status of the cache can be set by calling the `setActive()` method on the cache.
+
 ```go
 // Main client example
 client.Cache.SetActive(false)
@@ -110,12 +105,14 @@ client.Cache.SetActive(false)
 // Individual resource group example
 resourceGroup.Cache.SetActive(false)
 ```
+
 </details>
 
 <details>
 <summary>Cache Status</summary>
 
-##### The active status of the cache can be checked by calling the `GetActive()` method on the cache. 
+##### The active status of the cache can be checked by calling the `GetActive()` method on the cache.
+
 ```go
 // Main client example
 client.Cache.GetActive()
@@ -123,12 +120,14 @@ client.Cache.GetActive()
 // Individual resource group example
 resourceGroup.Cache.GetActive()
 ```
+
 </details>
 
 <details>
     <summary>Custom Expiration Time</summary>
 
-##### The expiration time of the cache can be set by calling the `SetExpiration()` method on the cache. 
+##### The expiration time of the cache can be set by calling the `SetExpiration()` method on the cache.
+
 ```go
 // Main client example
 client.Cache.SetExpiration(48 * time.Hour)
@@ -136,4 +135,5 @@ client.Cache.SetExpiration(48 * time.Hour)
 // Individual resource group example
 resourceGroup.Cache.SetExpiration(48 * time.Hour)
 ```
+
 </details>

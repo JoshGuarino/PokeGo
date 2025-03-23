@@ -3,7 +3,6 @@ package moves
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -24,8 +23,8 @@ func TestGetMove(t *testing.T) {
 }
 
 func TestGetMoveList(t *testing.T) {
-	rList, _ := moves.GetMoveList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveList(20, 0)
+	rPage, _ := moves.GetMoveList(1, 1)
 	assert.Equal(t, "pound", rList.Results[0].Name, "Unexpected Name for Move resource")
 	assert.Equal(t, "karate-chop", rPage.Results[0].Name, "Unexpected Name for Move resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -41,8 +40,8 @@ func TestGetMoveAilment(t *testing.T) {
 }
 
 func TestGetMoveAilmentList(t *testing.T) {
-	rList, _ := moves.GetMoveAilmentList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveAilmentList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveAilmentList(20, 0)
+	rPage, _ := moves.GetMoveAilmentList(1, 1)
 	assert.Equal(t, "unknown", rList.Results[0].Name, "Unexpected Name for MoveAilment resource")
 	assert.Equal(t, "none", rPage.Results[0].Name, "Unexpected Name for MoveAilment resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -58,8 +57,8 @@ func TestGetMoveBattleStyle(t *testing.T) {
 }
 
 func TestGetMoveBattleStyleList(t *testing.T) {
-	rList, _ := moves.GetMoveBattleStyleList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveBattleStyleList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveBattleStyleList(20, 0)
+	rPage, _ := moves.GetMoveBattleStyleList(1, 1)
 	assert.Equal(t, "attack", rList.Results[0].Name, "Unexpected Name for MoveBattleStyle resource")
 	assert.Equal(t, "defense", rPage.Results[0].Name, "Unexpected Name for MoveBattleStyle resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -75,8 +74,8 @@ func TestGetMoveCategory(t *testing.T) {
 }
 
 func TestGetMoveCategoryList(t *testing.T) {
-	rList, _ := moves.GetMoveCategoryList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveCategoryList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveCategoryList(20, 0)
+	rPage, _ := moves.GetMoveCategoryList(1, 1)
 	assert.Equal(t, "damage", rList.Results[0].Name, "Unexpected Name for MoveCategory resource")
 	assert.Equal(t, "ailment", rPage.Results[0].Name, "Unexpected Name for MoveCategory resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -92,8 +91,8 @@ func TestGetMoveDamageClass(t *testing.T) {
 }
 
 func TestGetMoveDamageClassList(t *testing.T) {
-	rList, _ := moves.GetMoveDamageClassList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveDamageClassList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveDamageClassList(20, 0)
+	rPage, _ := moves.GetMoveDamageClassList(1, 1)
 	assert.Equal(t, "status", rList.Results[0].Name, "Unexpected Name for MoveDamageClass resource")
 	assert.Equal(t, "physical", rPage.Results[0].Name, "Unexpected Name for MoveDamageClass resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -109,8 +108,8 @@ func TestGetMoveLearnMethod(t *testing.T) {
 }
 
 func TestGetMoveLearnMethodList(t *testing.T) {
-	rList, _ := moves.GetMoveLearnMethodList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveLearnMethodList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveLearnMethodList(20, 0)
+	rPage, _ := moves.GetMoveLearnMethodList(1, 1)
 	assert.Equal(t, "level-up", rList.Results[0].Name, "Unexpected Name for MoveLearnMethod resource")
 	assert.Equal(t, "egg", rPage.Results[0].Name, "Unexpected Name for MoveLearnMethod resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
@@ -126,8 +125,8 @@ func TestGetMoveTarget(t *testing.T) {
 }
 
 func TestGetMoveTargetList(t *testing.T) {
-	rList, _ := moves.GetMoveTargetList(models.PaginationOptions{})
-	rPage, _ := moves.GetMoveTargetList(models.PaginationOptions{Limit: 1, Offest: 1})
+	rList, _ := moves.GetMoveTargetList(20, 0)
+	rPage, _ := moves.GetMoveTargetList(1, 1)
 	assert.Equal(t, "specific-move", rList.Results[0].Name, "Unexpected Name for MoveTarget resource")
 	assert.Equal(t, "selected-pokemon-me-first", rPage.Results[0].Name, "Unexpected Name for MoveTarget resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")

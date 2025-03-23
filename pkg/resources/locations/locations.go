@@ -12,13 +12,13 @@ import (
 // Locations group interface
 type ILocations interface {
 	GetLocation(nameOrId string) (*models.Location, error)
-	GetLocationList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetLocationList(limit int, offset int) (*models.ResourceList, error)
 	GetLocationArea(nameOrId string) (*models.LocationArea, error)
-	GetLocationAreaList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetLocationAreaList(limit int, offset int) (*models.ResourceList, error)
 	GetPalParkArea(nameOrId string) (*models.PalParkArea, error)
-	GetPalParkAreaList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetPalParkAreaList(limit int, offset int) (*models.ResourceList, error)
 	GetRegion(nameOrId string) (*models.Region, error)
-	GetRegionList(options models.PaginationOptions) (*models.ResourceList, error)
+	GetRegionList(limit int, offset int) (*models.ResourceList, error)
 }
 
 // Locations group struct
@@ -48,8 +48,8 @@ func (l Locations) GetLocation(nameOrId string) (*models.Location, error) {
 }
 
 // Return a list of Location resource
-func (l Locations) GetLocationList(options models.PaginationOptions) (*models.ResourceList, error) {
-	locationsList, err := request.GetResourceList(constants.LocationEndpoint, options)
+func (l Locations) GetLocationList(limit int, offset int) (*models.ResourceList, error) {
+	locationsList, err := request.GetResourceList(constants.LocationEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +66,8 @@ func (l Locations) GetLocationArea(nameOrId string) (*models.LocationArea, error
 }
 
 // Return a list of LocationArea resource
-func (l Locations) GetLocationAreaList(options models.PaginationOptions) (*models.ResourceList, error) {
-	locationsAreaList, err := request.GetResourceList(constants.LocationAreaEndpoint, options)
+func (l Locations) GetLocationAreaList(limit int, offset int) (*models.ResourceList, error) {
+	locationsAreaList, err := request.GetResourceList(constants.LocationAreaEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -84,8 +84,8 @@ func (l Locations) GetPalParkArea(nameOrId string) (*models.PalParkArea, error) 
 }
 
 // Return a list of PalParkArea resource
-func (l Locations) GetPalParkAreaList(options models.PaginationOptions) (*models.ResourceList, error) {
-	palParkAreaList, err := request.GetResourceList(constants.PalParkAreaEndpoint, options)
+func (l Locations) GetPalParkAreaList(limit int, offset int) (*models.ResourceList, error) {
+	palParkAreaList, err := request.GetResourceList(constants.PalParkAreaEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -102,8 +102,8 @@ func (l Locations) GetRegion(nameOrId string) (*models.Region, error) {
 }
 
 // Return a list of PalParkArea resource
-func (l Locations) GetRegionList(options models.PaginationOptions) (*models.ResourceList, error) {
-	regionList, err := request.GetResourceList(constants.RegionEndpoint, options)
+func (l Locations) GetRegionList(limit int, offset int) (*models.ResourceList, error) {
+	regionList, err := request.GetResourceList(constants.RegionEndpoint, limit, offset)
 	if err != nil {
 		return nil, err
 	}
