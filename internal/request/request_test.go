@@ -18,8 +18,8 @@ func TestGet(t *testing.T) {
 
 func TestGetResourceList(t *testing.T) {
 	url := constants.PokemonEndpoint
-	key := fmt.Sprintf("%s?offset=%d&limit=%d", url, 0, 20)
-	list, err := GetResourceList(url, models.PaginationOptions{Offest: 0, Limit: 20})
+	key := fmt.Sprintf("%s?limit=%d&offset=%d", url, 20, 0)
+	list, err := GetResourceList(url, 20, 0)
 	data, _ := cache.C.Get(key)
 	assert.Equal(t, list, data, "Expected resource to be cached")
 	assert.IsType(t, &models.ResourceList{}, list, "Expected ResourceList instance to be returned")
