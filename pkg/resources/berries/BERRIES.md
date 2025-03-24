@@ -4,7 +4,7 @@ The following are the resources available in the Berries group of the [PokeAPI](
 
 ## [Berry](https://pokeapi.co/docs/v2#berries)
 
-##### Get single Berry resource by name or ID
+##### Get single Berry resource by name or ID:
 
 ```go
 // Main client example with ID
@@ -14,7 +14,7 @@ berry, err := client.Berries.GetBerry("1")
 berry, err := berriesGroup.GetBerry("cheri")
 ```
 
-##### Get list of Berry resource
+##### Get list of Berry resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -26,7 +26,7 @@ berryList, err := berriesGroup.GetBerryList(20, 20)
 
 ## [BerryFirmness](https://pokeapi.co/docs/v2#berry-firmnesses)
 
-##### Get single Berry Firmness resource by name or ID
+##### Get single Berry Firmness resource by name or ID:
 
 ```go
 // Main client example with Name
@@ -36,7 +36,7 @@ berryFirmness, err := client.Berries.GetBerryFirmness("soft")
 berryFirmness, err := berriesGroup.GetBerryFirmness("1")
 ```
 
-##### Get list of Berry Firmness resource
+##### Get list of Berry Firmness resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -48,7 +48,7 @@ berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(20, 20)
 
 ## [BerryFlavor](https://pokeapi.co/docs/v2#berry-flavors)
 
-##### Get single Berry Flavor resource by name or ID
+##### Get single Berry Flavor resource by name or ID:
 
 ```go
 // Main client example with ID
@@ -58,7 +58,7 @@ berryFlavor, err := client.Berries.GetBerryFlavor("spicy")
 berryFlavor, err := berriesGroup.GetBerryFlavor("1")
 ```
 
-##### Get list of Berry Flavor resource
+##### Get list of Berry Flavor resource:
 
 ```go
 // Main client example returning first page of 20 results

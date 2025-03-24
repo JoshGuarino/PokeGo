@@ -4,7 +4,7 @@ The following are the resources available in the Encounters group of the [PokeAP
 
 ## [EncounterMethod](https://pokeapi.co/docs/v2#encounter-methods)
 
-##### Get single Encounter Method resource by name or ID
+##### Get single Encounter Method resource by name or ID:
 
 ```go
 // Main client example with ID
@@ -14,7 +14,7 @@ encounterMethod, err := client.Encounters.GetEncounterMethod("1")
 encounterMethod, err := encountersGroup.GetEncounterMethod("walk")
 ```
 
-##### Get list of Encounter Method resource
+##### Get list of Encounter Method resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -26,7 +26,7 @@ encounterMethodList, err := encountersGroup.GetEncounterMethodList(20, 20)
 
 ## [EncounterCondition](https://pokeapi.co/docs/v2#encounter-conditions)
 
-##### Get single Encounter Condition resource by name or ID
+##### Get single Encounter Condition resource by name or ID:
 
 ```go
 // Main client example with ID
@@ -36,7 +36,7 @@ encounterCondition, err := client.Encounters.GetEncounterCondition("1")
 encounterCondition, err := encountersGroup.GetEncounterCondition("swarm")
 ```
 
-##### Get list of Encounter Condition resource
+##### Get list of Encounter Condition resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -48,7 +48,7 @@ encounterConditionList, err := encountersGroup.GetEncounterConditionList(20, 20)
 
 ## [EncounterConditionValue](https://pokeapi.co/docs/v2#encounter-condition-values)
 
-##### Get single Encounter Condition Value resource by name or ID
+##### Get single Encounter Condition Value resource by name or ID:
 
 ```go
 // Main client example with ID
@@ -58,7 +58,7 @@ encounterConditionValue, err := client.Encounters.GetEncounterConditionValue("1"
 encounterConditionValue, err := encountersGroup.GetEncounterConditionValue("swarm-yes")
 ```
 
-##### Get list of Encounter Condition Value resource
+##### Get list of Encounter Condition Value resource:
 
 ```go
 // Main client example returning first page of 20 results

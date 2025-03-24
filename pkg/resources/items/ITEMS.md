@@ -4,7 +4,7 @@ The following are the resources available in the Items group of the [PokeAPI](ht
 
 ## [Item](https://pokeapi.co/docs/v2#items)
 
-##### Get single Item resource by Name or ID
+##### Get single Item resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -14,7 +14,7 @@ item, err := client.Items.GetItem("1")
 item, err := itemsGroup.GetItem("master-ball")
 ```
 
-##### Get list of Item resource
+##### Get list of Item resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -26,7 +26,7 @@ itemList, err := itemsGroup.GetItemList(20, 20)
 
 ## [Item Attribute](https://pokeapi.co/docs/v2#item-attributes)
 
-##### Get single Item Attribute resource by Name or ID
+##### Get single Item Attribute resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -36,7 +36,7 @@ itemAttribute, err := client.Items.GetItemAttribute("1")
 itemAttribute, err := itemsGroup.GetItemAttribute("countable")
 ```
 
-##### Get list of Item Attribute resource
+##### Get list of Item Attribute resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -48,7 +48,7 @@ itemAttributeList, err := itemsGroup.GetItemAttributeList(20, 20)
 
 ## [Item Category](https://pokeapi.co/docs/v2#item-categories)
 
-##### Get single Item Category resource by Name or ID
+##### Get single Item Category resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -58,7 +58,7 @@ itemCategory, err := client.Items.GetItemCategory("1")
 itemCategory, err := itemsGroup.GetItemCategory("stat-boosts")
 ```
 
-##### Get list of Item Category resource
+##### Get list of Item Category resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -70,7 +70,7 @@ itemCategoryList, err := itemsGroup.GetItemCategoryList(20, 20)
 
 ## [Item Fling Effect](https://pokeapi.co/docs/v2#item-fling-effects)
 
-##### Get single Item Fling Effect resource by Name or ID
+##### Get single Item Fling Effect resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -80,7 +80,7 @@ itemFlingEffect, err := client.Items.GetItemFlingEffect("1")
 itemFlingEffect, err := itemsGroup.GetItemFlingEffect("badly-poison")
 ```
 
-##### Get list of Item Fling Effect resource
+##### Get list of Item Fling Effect resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -92,7 +92,7 @@ itemFlingEffectList, err := itemsGroup.GetItemFlingEffectList(20, 20)
 
 ## [Item Pocket](https://pokeapi.co/docs/v2#item-pockets)
 
-##### Get single Item Pocket resource by Name or ID
+##### Get single Item Pocket resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -102,7 +102,7 @@ itemPocket, err := client.Items.GetItemPocket("1")
 itemPocket, err := itemsGroup.GetItemPocket("misc")
 ```
 
-##### Get list of Item Pocket resource
+##### Get list of Item Pocket resource:
 
 ```go
 // Main client example returning first page of 20 results

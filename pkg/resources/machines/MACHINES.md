@@ -4,7 +4,7 @@ The following are the resources available in the Machines group of the [PokeAPI]
 
 ## [Machine](https://pokeapi.co/docs/v2#machine)
 
-##### Get single Machine resource by ID
+##### Get single Machine resource by ID:
 
 ```go
 // Main client example with ID
@@ -14,7 +14,7 @@ machine, err := client.Machines.GetMachine("1")
 machine, err := machinesGroup.GetMachine("1")
 ```
 
-##### Get list of Machine resource
+##### Get list of Machine resource:
 
 ```go
 // Main client example returning first page of 20 results

@@ -4,7 +4,7 @@ The following are the resources available in the Games group of the [PokeAPI](ht
 
 ## [Generation](https://pokeapi.co/docs/v2#generations)
 
-##### Get single Generation resource by Name or ID
+##### Get single Generation resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -14,7 +14,7 @@ generation, err := client.Games.GetGeneration("1")
 generation, err := gamesGroup.GetGeneration("generation-i")
 ```
 
-##### Get list of Generation resource
+##### Get list of Generation resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -26,7 +26,7 @@ generationList, err := gamesGroup.GetGenerationList(20, 20)
 
 ## [Pokedex](https://pokeapi.co/docs/v2#pokedexes)
 
-##### Get single Pokedex resource by Name or ID
+##### Get single Pokedex resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -36,7 +36,7 @@ pokedex, err := client.Games.GetPokedex("1")
 pokedex, err := gamesGroup.GetPokedex("kanto")
 ```
 
-##### Get list of Pokedex resource
+##### Get list of Pokedex resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -48,7 +48,7 @@ pokedexList, err := gamesGroup.GetPokedexList(20, 20)
 
 ## [Version](https://pokeapi.co/docs/v2#versions)
 
-##### Get single Version resource by Name or ID
+##### Get single Version resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -58,7 +58,7 @@ version, err := client.Games.GetVersion("1")
 version, err := gamesGroup.GetVersion("red")
 ```
 
-##### Get list of Version resource
+##### Get list of Version resource:
 
 ```go
 // Main client example returning first page of 20 results
@@ -70,7 +70,7 @@ versionList, err := gamesGroup.GetVersionList(20, 20)
 
 ## [VersionGroup](https://pokeapi.co/docs/v2#version-groups)
 
-##### Get single Version Group resource by Name or ID
+##### Get single Version Group resource by Name or ID:
 
 ```go
 // Main client example with ID
@@ -80,7 +80,7 @@ versionGroup, err := client.Games.GetVersionGroup("1")
 versionGroup, err := gamesGroup.GetVersionGroup("red-blue")
 ```
 
-##### Get list of Version Group resource
+##### Get list of Version Group resource:
 
 ```go
 // Main client example returning first page of 20 results
