@@ -117,3 +117,13 @@ client.Cache.SetExpiration(48 * time.Hour)
 // Individual resource group example
 resourceGroup.Cache.SetExpiration(48 * time.Hour)
 ```
+
+##### The expiration time of the cache can be checked by calling the `GetExpiration()` method:
+
+```go
+// Main client example
+client.Cache.GetExpiration()
+
+// Individual resource group example
+resourceGroup.Cache.GetExpiration()
+```

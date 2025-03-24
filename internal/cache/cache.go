@@ -13,6 +13,7 @@ type ICache interface {
 	Delete(key string)
 	Clear()
 	SetExpiration(expiration time.Duration)
+	GetExpiration() time.Duration
 	SetActive(active bool)
 	GetActive() bool
 }
@@ -101,6 +102,11 @@ func (c *Cache) Clear() {
 // Set default expiration time for Cache
 func (c *Cache) SetExpiration(expiration time.Duration) {
 	c.settings.expiration = expiration
+}
+
+// Get expiration time of Cache
+func (c *Cache) GetExpiration() time.Duration {
+	return c.settings.expiration
 }
 
 // Set active status of cache
