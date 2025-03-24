@@ -16,7 +16,7 @@ There are two options for using PokeGo. You can either use the main client or cr
 The main client will initialize all resource groups for you. If you choose to use individual resource groups,
 you will need to initialize each group separately.
 
-##### Main client
+##### Main client setup:
 
 ```go
 import (
@@ -26,7 +26,7 @@ import (
 client := pokego.NewClient()
 ```
 
-##### Individual resource group
+##### Individual resource group setup:
 
 ```go
 import (
@@ -59,7 +59,7 @@ PokeGo supports pagination for list endpoints. The `GetPokemonList()` method is 
 The method takes two arguments, `limit` and `offset`. The `limit` argument is the number of results to return and the `offset` argument
 is the number of results to skip. Both arugments are required as Golang does not support default arguments.
 
-##### List endpoint pagination examples
+##### List endpoint pagination examples:
 
 ```go
 // Main client example returning the first page of 20 results
@@ -78,10 +78,7 @@ Only one instance of the cache is created and shared between the client and all 
 Any subsequent intializations will not create a new cache but reference the existing cache.
 A pointer reference to the initialized cache is stored in the client and each resource group.
 
-<details>
-<summary>Clear Cache</summary>
-
-##### The cache can be cleared by calling the `Clear()` method on the cache.
+##### The cache can be cleared by calling the `Clear()` method:
 
 ```go
 // Main client example
@@ -91,12 +88,7 @@ client.Cache.Clear()
 resourceGroup.Cache.Clear()
 ```
 
-</details>
-
-<details>
-<summary>Disabling Cache</summary>
-
-##### The active status of the cache can be set by calling the `setActive()` method on the cache.
+##### The active status of the cache can be set by calling the `setActive()` method:
 
 ```go
 // Main client example
@@ -106,12 +98,7 @@ client.Cache.SetActive(false)
 resourceGroup.Cache.SetActive(false)
 ```
 
-</details>
-
-<details>
-<summary>Cache Status</summary>
-
-##### The active status of the cache can be checked by calling the `GetActive()` method on the cache.
+##### The active status of the cache can be checked by calling the `GetActive()` method:
 
 ```go
 // Main client example
@@ -121,12 +108,7 @@ client.Cache.GetActive()
 resourceGroup.Cache.GetActive()
 ```
 
-</details>
-
-<details>
-    <summary>Custom Expiration Time</summary>
-
-##### The expiration time of the cache can be set by calling the `SetExpiration()` method on the cache.
+##### The expiration time of the cache can be set by calling the `SetExpiration()` method:
 
 ```go
 // Main client example
@@ -135,5 +117,3 @@ client.Cache.SetExpiration(48 * time.Hour)
 // Individual resource group example
 resourceGroup.Cache.SetExpiration(48 * time.Hour)
 ```
-
-</details>
