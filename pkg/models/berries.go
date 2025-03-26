@@ -1,73 +1,45 @@
 package models
 
-// Represents a single Berry resource
+// Represents a single berry resource
 type Berry struct {
-	Firmness struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"firmness"`
-	Flavors []struct {
-		Flavor struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"flavor"`
-		Potency int `json:"potency"`
-	} `json:"flavors"`
-	GrowthTime int `json:"growth_time"`
-	ID         int `json:"id"`
-	Item       struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"item"`
-	MaxHarvest       int    `json:"max_harvest"`
-	Name             string `json:"name"`
-	NaturalGiftPower int    `json:"natural_gift_power"`
-	NaturalGiftType  struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"natural_gift_type"`
-	Size        int `json:"size"`
-	Smoothness  int `json:"smoothness"`
-	SoilDryness int `json:"soil_dryness"`
+	ID               int              `json:"id"`
+	Name             string           `json:"name"`
+	GrowthTime       int              `json:"growth_time"`
+	MaxHarvest       int              `json:"max_harvest"`
+	NaturalGiftPower int              `json:"natural_gift_power"`
+	Size             int              `json:"size"`
+	Smoothness       int              `json:"smoothness"`
+	SoilDryness      int              `json:"soil_dryness"`
+	Firmness         NamedResource    `json:"firmness"`
+	Flavors          []BerryFlavorMap `json:"flavors"`
+	Item             NamedResource    `json:"item"`
+	NaturalGiftType  NamedResource    `json:"natural_gift_type"`
 }
 
-// Represents a single BerryFirmness resource
+// Represents a flavor that can be found in berries
+type BerryFlavorMap struct {
+	Potency int           `json:"potency"`
+	Flavor  NamedResource `json:"flavor"`
+}
+
+// Represents a single berry firmness resource
 type BerryFirmness struct {
-	Berries []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"berries"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID      int             `json:"id"`
+	Name    string          `json:"name"`
+	Berries []NamedResource `json:"berries"`
+	Names   []Name          `json:"names"`
 }
 
-// Represents a single BerryFirmness resource
+// Represents a single berry flavor resource
 type BerryFlavor struct {
-	Berries []struct {
-		Berry struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"berry"`
-		Potency int `json:"potency"`
-	} `json:"berries"`
-	ContestType struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"contest_type"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID      int              `json:"id"`
+	Name    string           `json:"name"`
+	Berries []FlavorBerryMap `json:"berries"`
+	Names   []Name           `json:"names"`
+}
+
+// Represents berries that have a particular flavor
+type FlavorBerryMap struct {
+	Potency int           `json:"potency"`
+	Berry   NamedResource `json:"berry"`
 }

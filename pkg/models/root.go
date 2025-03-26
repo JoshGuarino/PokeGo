@@ -52,22 +52,35 @@ type Root struct {
 	VersionGroup            string `json:"version-group"`
 }
 
-// Represents a ResourceList for an endpoint
+// Represents a resource list for a list endpoint
 type ResourceList struct {
-	Count    int      `json:"count"`
-	Next     *string  `json:"next"`
-	Previous *string  `json:"previous"`
-	Results  []Result `json:"results"`
+	Count    int        `json:"count"`
+	Next     string     `json:"next"`
+	Previous string     `json:"previous"`
+	Results  []Resource `json:"results"`
 }
 
-// Represents a ResourceList Result
-type Result struct {
+// Represents a unnamed resource
+type Resource struct {
+	URL string `json:"url"`
+}
+
+// Represents a named resource list for a list endpoint
+type NamedResourceList struct {
+	Count    int             `json:"count"`
+	Next     string          `json:"next"`
+	Previous string          `json:"previous"`
+	Results  []NamedResource `json:"results"`
+}
+
+// Represents a named resource
+type NamedResource struct {
 	Name string `json:"name"`
 	URL  string `json:"url"`
 }
 
-// Represents PaginationOptions for a list endpoint
-type PaginationOptions struct {
-	Limit  int
-	Offest int
+// Represents a localized name for a resource in specific language
+type Name struct {
+	Name     string        `json:"name"`
+	Language NamedResource `json:"language"`
 }
