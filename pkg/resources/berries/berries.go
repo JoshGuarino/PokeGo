@@ -12,11 +12,11 @@ import (
 // Berries group interface
 type IBerries interface {
 	GetBerry(nameOrId string) (*models.Berry, error)
-	GetBerryList(limit int, offset int) (*models.ResourceList, error)
+	GetBerryList(limit int, offset int) (*models.NamedResourceList, error)
 	GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error)
-	GetBerryFirmnessList(limit int, offset int) (*models.ResourceList, error)
+	GetBerryFirmnessList(limit int, offset int) (*models.NamedResourceList, error)
 	GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error)
-	GetBerryFlavorList(limit int, offset int) (*models.ResourceList, error)
+	GetBerryFlavorList(limit int, offset int) (*models.NamedResourceList, error)
 }
 
 // Berries group struct
@@ -38,7 +38,7 @@ func NewBerriesGroup() Berries {
 
 // Return a single Berry resource by name or ID
 func (b Berries) GetBerry(nameOrId string) (*models.Berry, error) {
-	berry, err := request.GetSpecificResource[models.Berry](endpoints.Berry + nameOrId)
+	berry, err := request.GetResource[models.Berry](endpoints.Berry + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -46,8 +46,8 @@ func (b Berries) GetBerry(nameOrId string) (*models.Berry, error) {
 }
 
 // Return a list of Berry resource
-func (b Berries) GetBerryList(limit int, offset int) (*models.ResourceList, error) {
-	berryList, err := request.GetResourceList(endpoints.Berry, limit, offset)
+func (b Berries) GetBerryList(limit int, offset int) (*models.NamedResourceList, error) {
+	berryList, err := request.GetResourceList[models.NamedResourceList](endpoints.Berry, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (b Berries) GetBerryList(limit int, offset int) (*models.ResourceList, erro
 
 // Return a single BerryFirmness resource by name or ID
 func (b Berries) GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error) {
-	berryFirmness, err := request.GetSpecificResource[models.BerryFirmness](endpoints.BerryFirmness + nameOrId)
+	berryFirmness, err := request.GetResource[models.BerryFirmness](endpoints.BerryFirmness + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -64,8 +64,8 @@ func (b Berries) GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error
 }
 
 // Return a list of BerryFirmness resource
-func (b Berries) GetBerryFirmnessList(limit int, offset int) (*models.ResourceList, error) {
-	berryFirmnessList, err := request.GetResourceList(endpoints.BerryFirmness, limit, offset)
+func (b Berries) GetBerryFirmnessList(limit int, offset int) (*models.NamedResourceList, error) {
+	berryFirmnessList, err := request.GetResourceList[models.NamedResourceList](endpoints.BerryFirmness, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func (b Berries) GetBerryFirmnessList(limit int, offset int) (*models.ResourceLi
 
 // Return a single BerryFlavor resource by name or ID
 func (b Berries) GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error) {
-	berryFlavor, err := request.GetSpecificResource[models.BerryFlavor](endpoints.BerryFlavor + nameOrId)
+	berryFlavor, err := request.GetResource[models.BerryFlavor](endpoints.BerryFlavor + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -83,8 +83,8 @@ func (b Berries) GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error) {
 }
 
 // Return a list of BerryFlavor resource
-func (b Berries) GetBerryFlavorList(limit int, offset int) (*models.ResourceList, error) {
-	berryFlavorList, err := request.GetResourceList(endpoints.BerryFlavor, limit, offset)
+func (b Berries) GetBerryFlavorList(limit int, offset int) (*models.NamedResourceList, error) {
+	berryFlavorList, err := request.GetResourceList[models.NamedResourceList](endpoints.BerryFlavor, limit, offset)
 	if err != nil {
 		return nil, err
 	}

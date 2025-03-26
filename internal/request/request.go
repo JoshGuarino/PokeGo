@@ -7,7 +7,6 @@ import (
 	"net/http"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/pkg/models"
 )
 
 // Make GET request
@@ -39,42 +38,8 @@ func Get(url string) ([]byte, error) {
 	return body, nil
 }
 
-// Make GET request for list of resource
-func GetResourceList(url string, limit int, offset int) (*models.ResourceList, error) {
-	// Append limit and offset to URL
-	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
-
-	// Create new ResourceList instance
-	resourceList := models.ResourceList{}
-
-	// Check for cached data and return if found
-	data, found := cache.C.Get(url)
-	if found {
-		return data.(*models.ResourceList), nil
-	}
-
-	// Make GET request
-	body, errReq := Get(url)
-	if errReq != nil {
-		return nil, errReq
-	}
-
-	// Unmarshal JSON response
-	errJson := json.Unmarshal(body, &resourceList)
-	if errJson != nil {
-		return nil, errJson
-	}
-
-	// Cache ResourceList if active and return
-	if cache.C.GetActive() {
-		cache.C.Set(url, &resourceList)
-		return &resourceList, nil
-	}
-	return &resourceList, nil
-}
-
-// Make GET request for a specifc resource
-func GetSpecificResource[T any](url string) (*T, error) {
+// Get data from URL or cache
+func GetData[T any](url string) (*T, error) {
 	// Check for cached data and return if found
 	data, found := cache.C.Get(url)
 	if found {
@@ -88,16 +53,28 @@ func GetSpecificResource[T any](url string) (*T, error) {
 	}
 
 	// Unmarshal JSON response
-	resource := new(T)
-	errJson := json.Unmarshal(body, resource)
+	dataStruct := new(T)
+	errJson := json.Unmarshal(body, dataStruct)
 	if errJson != nil {
 		return nil, errJson
 	}
 
-	// Cache Resource if active and return
+	// Cache ResourceList if active and return
 	if cache.C.GetActive() {
-		cache.C.Set(url, resource)
-		return resource, nil
+		cache.C.Set(url, dataStruct)
+		return dataStruct, nil
 	}
-	return resource, nil
+	return dataStruct, nil
+}
+
+// Make GET request for list of resource
+func GetResourceList[T any](url string, limit int, offset int) (*T, error) {
+	// Append limit and offset to URL
+	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
+	return GetData[T](url)
+}
+
+// Make GET request for a specifc resource
+func GetResource[T any](url string) (*T, error) {
+	return GetData[T](url)
 }

@@ -12,13 +12,13 @@ import (
 // Games group interface
 type IGames interface {
 	GetGeneration(nameOrId string) (*models.Generation, error)
-	GetGenerationList(limit int, offest int) (*models.ResourceList, error)
+	GetGenerationList(limit int, offest int) (*models.NamedResourceList, error)
 	GetPokedex(nameOrId string) (*models.Pokedex, error)
-	GetPokedexList(limit int, offest int) (*models.ResourceList, error)
+	GetPokedexList(limit int, offest int) (*models.NamedResourceList, error)
 	GetVersion(nameOrId string) (*models.Version, error)
-	GetVersionList(limit int, offest int) (*models.ResourceList, error)
+	GetVersionList(limit int, offest int) (*models.NamedResourceList, error)
 	GetVersionGroup(nameOrId string) (*models.VersionGroup, error)
-	GetVersionGroupList(limit int, offest int) (*models.ResourceList, error)
+	GetVersionGroupList(limit int, offest int) (*models.NamedResourceList, error)
 }
 
 // Games group struct
@@ -40,7 +40,7 @@ func NewGamesGroup() Games {
 
 // Return a single Generation resource by name or ID
 func (g Games) GetGeneration(nameOrId string) (*models.Generation, error) {
-	generation, err := request.GetSpecificResource[models.Generation](endpoints.Generation + nameOrId)
+	generation, err := request.GetResource[models.Generation](endpoints.Generation + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -48,8 +48,8 @@ func (g Games) GetGeneration(nameOrId string) (*models.Generation, error) {
 }
 
 // Return a list of Generation resource
-func (g Games) GetGenerationList(limit int, offest int) (*models.ResourceList, error) {
-	generationList, err := request.GetResourceList(endpoints.Generation, limit, offest)
+func (g Games) GetGenerationList(limit int, offest int) (*models.NamedResourceList, error) {
+	generationList, err := request.GetResourceList[models.NamedResourceList](endpoints.Generation, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func (g Games) GetGenerationList(limit int, offest int) (*models.ResourceList, e
 
 // Return a single Pokedex resource by name or ID
 func (g Games) GetPokedex(nameOrId string) (*models.Pokedex, error) {
-	pokedex, err := request.GetSpecificResource[models.Pokedex](endpoints.Pokedex + nameOrId)
+	pokedex, err := request.GetResource[models.Pokedex](endpoints.Pokedex + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +66,8 @@ func (g Games) GetPokedex(nameOrId string) (*models.Pokedex, error) {
 }
 
 // Return a list of Pokedex resource
-func (g Games) GetPokedexList(limit int, offest int) (*models.ResourceList, error) {
-	pokedexList, err := request.GetResourceList(endpoints.Pokedex, limit, offest)
+func (g Games) GetPokedexList(limit int, offest int) (*models.NamedResourceList, error) {
+	pokedexList, err := request.GetResourceList[models.NamedResourceList](endpoints.Pokedex, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func (g Games) GetPokedexList(limit int, offest int) (*models.ResourceList, erro
 
 // Return a single Version resource by name or ID
 func (g Games) GetVersion(nameOrId string) (*models.Version, error) {
-	version, err := request.GetSpecificResource[models.Version](endpoints.Version + nameOrId)
+	version, err := request.GetResource[models.Version](endpoints.Version + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -84,8 +84,8 @@ func (g Games) GetVersion(nameOrId string) (*models.Version, error) {
 }
 
 // Return a list of Version resource
-func (g Games) GetVersionList(limit int, offest int) (*models.ResourceList, error) {
-	versionList, err := request.GetResourceList(endpoints.Version, limit, offest)
+func (g Games) GetVersionList(limit int, offest int) (*models.NamedResourceList, error) {
+	versionList, err := request.GetResourceList[models.NamedResourceList](endpoints.Version, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,7 @@ func (g Games) GetVersionList(limit int, offest int) (*models.ResourceList, erro
 
 // Return a single VersionGroup resource by name or ID
 func (g Games) GetVersionGroup(nameOrId string) (*models.VersionGroup, error) {
-	versionGroup, err := request.GetSpecificResource[models.VersionGroup](endpoints.VersionGroup + nameOrId)
+	versionGroup, err := request.GetResource[models.VersionGroup](endpoints.VersionGroup + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -102,8 +102,8 @@ func (g Games) GetVersionGroup(nameOrId string) (*models.VersionGroup, error) {
 }
 
 // Return a list of VersionGroup resource
-func (g Games) GetVersionGroupList(limit int, offest int) (*models.ResourceList, error) {
-	versionGroupList, err := request.GetResourceList(endpoints.VersionGroup, limit, offest)
+func (g Games) GetVersionGroupList(limit int, offest int) (*models.NamedResourceList, error) {
+	versionGroupList, err := request.GetResourceList[models.NamedResourceList](endpoints.VersionGroup, limit, offest)
 	if err != nil {
 		return nil, err
 	}

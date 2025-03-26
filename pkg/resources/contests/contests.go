@@ -12,7 +12,7 @@ import (
 // Contests group interface
 type IContests interface {
 	GetContestType(nameOrId string) (*models.ContestType, error)
-	GetContestTypeList(limit int, offset int) (*models.ResourceList, error)
+	GetContestTypeList(limit int, offset int) (*models.NamedResourceList, error)
 	GetContestEffect(id string) (*models.ContestEffect, error)
 	GetContestEffectList(limit int, offset int) (*models.ResourceList, error)
 	GetSuperContestEffect(id string) (*models.SuperContestEffect, error)
@@ -38,7 +38,7 @@ func NewContestsGroup() Contests {
 
 // Return a single ContestsType resource by name or ID
 func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
-	contestType, err := request.GetSpecificResource[models.ContestType](endpoints.ContestType + nameOrId)
+	contestType, err := request.GetResource[models.ContestType](endpoints.ContestType + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -46,8 +46,8 @@ func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 }
 
 // Return a list of Berry resource
-func (c Contests) GetContestTypeList(limit int, offset int) (*models.ResourceList, error) {
-	contestTypeList, err := request.GetResourceList(endpoints.ContestType, limit, offset)
+func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResourceList, error) {
+	contestTypeList, err := request.GetResourceList[models.NamedResourceList](endpoints.ContestType, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c Contests) GetContestTypeList(limit int, offset int) (*models.ResourceLis
 
 // Return a single ContestsEffect resource by ID
 func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
-	contestEffect, err := request.GetSpecificResource[models.ContestEffect](endpoints.ContestEffect + id)
+	contestEffect, err := request.GetResource[models.ContestEffect](endpoints.ContestEffect + id)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 
 // Return a list of Berry resource
 func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceList, error) {
-	contestEffectList, err := request.GetResourceList(endpoints.ContestEffect, limit, offest)
+	contestEffectList, err := request.GetResourceList[models.ResourceList](endpoints.ContestEffect, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +74,7 @@ func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceL
 
 // Return a single SuperContestsEffect resource by ID
 func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, error) {
-	superContestEffect, err := request.GetSpecificResource[models.SuperContestEffect](endpoints.SuperContestEffect + id)
+	superContestEffect, err := request.GetResource[models.SuperContestEffect](endpoints.SuperContestEffect + id)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, 
 
 // Return a list of Berry resource
 func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.ResourceList, error) {
-	superContestEffectList, err := request.GetResourceList(endpoints.SuperContestEffect, limit, offest)
+	superContestEffectList, err := request.GetResourceList[models.ResourceList](endpoints.SuperContestEffect, limit, offest)
 	if err != nil {
 		return nil, err
 	}

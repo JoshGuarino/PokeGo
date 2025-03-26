@@ -66,7 +66,7 @@ func NewClient() PokeGo {
 
 // Return an instance of API Root list of available resources
 func (p PokeGo) Root() (*models.Root, error) {
-	root, err := request.GetSpecificResource[models.Root](endpoints.BaseUrl)
+	root, err := request.GetResource[models.Root](endpoints.BaseUrl)
 	if err != nil {
 		return nil, err
 	}

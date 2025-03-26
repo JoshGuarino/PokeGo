@@ -12,7 +12,7 @@ import (
 // Utility group interface
 type IUtility interface {
 	GetLanguage(nameOrId string) (*models.Language, error)
-	GetLanguageList(limit int, offset int) (*models.ResourceList, error)
+	GetLanguageList(limit int, offset int) (*models.NamedResourceList, error)
 }
 
 // Utility group struct
@@ -34,7 +34,7 @@ func NewUtilityGroup() Utility {
 
 // Return a single Language resource by name or ID
 func (u Utility) GetLanguage(nameOrId string) (*models.Language, error) {
-	language, err := request.GetSpecificResource[models.Language](endpoints.Language + nameOrId)
+	language, err := request.GetResource[models.Language](endpoints.Language + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -42,8 +42,8 @@ func (u Utility) GetLanguage(nameOrId string) (*models.Language, error) {
 }
 
 // Return a list of Language resource
-func (u Utility) GetLanguageList(limit int, offset int) (*models.ResourceList, error) {
-	languageList, err := request.GetResourceList(endpoints.Language, limit, offset)
+func (u Utility) GetLanguageList(limit int, offset int) (*models.NamedResourceList, error) {
+	languageList, err := request.GetResourceList[models.NamedResourceList](endpoints.Language, limit, offset)
 	if err != nil {
 		return nil, err
 	}

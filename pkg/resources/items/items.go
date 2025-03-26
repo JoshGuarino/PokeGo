@@ -12,15 +12,15 @@ import (
 // Items group interface
 type IItems interface {
 	GetItem(nameOrId string) (*models.Item, error)
-	GetItemList(limit int, offset int) (*models.ResourceList, error)
+	GetItemList(limit int, offset int) (*models.NamedResourceList, error)
 	GetItemAttribute(nameOrId string) (*models.ItemAttribute, error)
-	GetItemAttributeList(limit int, offset int) (*models.ResourceList, error)
+	GetItemAttributeList(limit int, offset int) (*models.NamedResourceList, error)
 	GetItemCategory(nameOrId string) (*models.ItemCategory, error)
-	GetItemCategoryList(limit int, offset int) (*models.ResourceList, error)
+	GetItemCategoryList(limit int, offset int) (*models.NamedResourceList, error)
 	GetItemFlingEffect(nameOrId string) (*models.ItemFlingEffect, error)
-	GetItemFlingEffectList(limit int, offset int) (*models.ResourceList, error)
+	GetItemFlingEffectList(limit int, offset int) (*models.NamedResourceList, error)
 	GetItemPocket(nameOrId string) (*models.ItemPocket, error)
-	GetItemPocketList(limit int, offset int) (*models.ResourceList, error)
+	GetItemPocketList(limit int, offset int) (*models.NamedResourceList, error)
 }
 
 // Items group struct
@@ -42,7 +42,7 @@ func NewItemsGroup() Items {
 
 // Return a single Item resource by name or ID
 func (i Items) GetItem(nameOrId string) (*models.Item, error) {
-	item, err := request.GetSpecificResource[models.Item](endpoints.Item + nameOrId)
+	item, err := request.GetResource[models.Item](endpoints.Item + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -50,8 +50,8 @@ func (i Items) GetItem(nameOrId string) (*models.Item, error) {
 }
 
 // Return a list of Item resource
-func (i Items) GetItemList(limit int, offset int) (*models.ResourceList, error) {
-	itemList, err := request.GetResourceList(endpoints.Item, limit, offset)
+func (i Items) GetItemList(limit int, offset int) (*models.NamedResourceList, error) {
+	itemList, err := request.GetResourceList[models.NamedResourceList](endpoints.Item, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func (i Items) GetItemList(limit int, offset int) (*models.ResourceList, error) 
 
 // Return a single ItemAttribute resource by name or ID
 func (i Items) GetItemAttribute(nameOrId string) (*models.ItemAttribute, error) {
-	itemAttribute, err := request.GetSpecificResource[models.ItemAttribute](endpoints.ItemAttribute + nameOrId)
+	itemAttribute, err := request.GetResource[models.ItemAttribute](endpoints.ItemAttribute + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -68,8 +68,8 @@ func (i Items) GetItemAttribute(nameOrId string) (*models.ItemAttribute, error) 
 }
 
 // Return a list of ItemAttribute resource
-func (i Items) GetItemAttributeList(limit int, offset int) (*models.ResourceList, error) {
-	itemAttributeList, err := request.GetResourceList(endpoints.ItemAttribute, limit, offset)
+func (i Items) GetItemAttributeList(limit int, offset int) (*models.NamedResourceList, error) {
+	itemAttributeList, err := request.GetResourceList[models.NamedResourceList](endpoints.ItemAttribute, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +78,7 @@ func (i Items) GetItemAttributeList(limit int, offset int) (*models.ResourceList
 
 // Return a single ItemCategory resource by name or ID
 func (i Items) GetItemCategory(nameOrId string) (*models.ItemCategory, error) {
-	itemCategory, err := request.GetSpecificResource[models.ItemCategory](endpoints.ItemCategory + nameOrId)
+	itemCategory, err := request.GetResource[models.ItemCategory](endpoints.ItemCategory + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -86,8 +86,8 @@ func (i Items) GetItemCategory(nameOrId string) (*models.ItemCategory, error) {
 }
 
 // Return a list of ItemCategory resource
-func (i Items) GetItemCategoryList(limit int, offset int) (*models.ResourceList, error) {
-	itemCategoryList, err := request.GetResourceList(endpoints.ItemCategory, limit, offset)
+func (i Items) GetItemCategoryList(limit int, offset int) (*models.NamedResourceList, error) {
+	itemCategoryList, err := request.GetResourceList[models.NamedResourceList](endpoints.ItemCategory, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +96,7 @@ func (i Items) GetItemCategoryList(limit int, offset int) (*models.ResourceList,
 
 // Return a single ItemFlingEffect resource by name or ID
 func (i Items) GetItemFlingEffect(nameOrId string) (*models.ItemFlingEffect, error) {
-	itemFlingEffect, err := request.GetSpecificResource[models.ItemFlingEffect](endpoints.ItemFlingEffect + nameOrId)
+	itemFlingEffect, err := request.GetResource[models.ItemFlingEffect](endpoints.ItemFlingEffect + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -104,8 +104,8 @@ func (i Items) GetItemFlingEffect(nameOrId string) (*models.ItemFlingEffect, err
 }
 
 // Return a list of ItemFlingEffect resource
-func (i Items) GetItemFlingEffectList(limit int, offset int) (*models.ResourceList, error) {
-	itemFlingEffectList, err := request.GetResourceList(endpoints.ItemFlingEffect, limit, offset)
+func (i Items) GetItemFlingEffectList(limit int, offset int) (*models.NamedResourceList, error) {
+	itemFlingEffectList, err := request.GetResourceList[models.NamedResourceList](endpoints.ItemFlingEffect, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (i Items) GetItemFlingEffectList(limit int, offset int) (*models.ResourceLi
 
 // Return a single ItemPocket resource by name or ID
 func (i Items) GetItemPocket(nameOrId string) (*models.ItemPocket, error) {
-	itemPocket, err := request.GetSpecificResource[models.ItemPocket](endpoints.ItemPocket + nameOrId)
+	itemPocket, err := request.GetResource[models.ItemPocket](endpoints.ItemPocket + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -122,8 +122,8 @@ func (i Items) GetItemPocket(nameOrId string) (*models.ItemPocket, error) {
 }
 
 // Return a list of ItemPocket resource
-func (i Items) GetItemPocketList(limit int, offset int) (*models.ResourceList, error) {
-	itemPocketList, err := request.GetResourceList(endpoints.ItemPocket, limit, offset)
+func (i Items) GetItemPocketList(limit int, offset int) (*models.NamedResourceList, error) {
+	itemPocketList, err := request.GetResourceList[models.NamedResourceList](endpoints.ItemPocket, limit, offset)
 	if err != nil {
 		return nil, err
 	}

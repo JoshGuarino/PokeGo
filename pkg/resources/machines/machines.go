@@ -34,7 +34,7 @@ func NewMachinesGroup() Machines {
 
 // Return a single Machine resource by  ID
 func (m Machines) GetMachine(id string) (*models.Machine, error) {
-	machine, err := request.GetSpecificResource[models.Machine](endpoints.Machine + id)
+	machine, err := request.GetResource[models.Machine](endpoints.Machine + id)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func (m Machines) GetMachine(id string) (*models.Machine, error) {
 
 // Return a list of Machine resource
 func (m Machines) GetMachineList(limit int, offset int) (*models.ResourceList, error) {
-	machineList, err := request.GetResourceList(endpoints.Machine, limit, offset)
+	machineList, err := request.GetResourceList[models.ResourceList](endpoints.Machine, limit, offset)
 	if err != nil {
 		return nil, err
 	}

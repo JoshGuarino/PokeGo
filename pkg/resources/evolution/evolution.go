@@ -14,7 +14,7 @@ type IEvolution interface {
 	GetEvolutionChain(id string) (*models.EvolutionChain, error)
 	GetEvolutionChainList(limit int, offest int) (*models.ResourceList, error)
 	GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigger, error)
-	GetEvolutionTriggerList(limit int, offset int) (*models.ResourceList, error)
+	GetEvolutionTriggerList(limit int, offset int) (*models.NamedResourceList, error)
 }
 
 // Evolution group struct
@@ -36,7 +36,7 @@ func NewEvolutionGroup() Evolution {
 
 // Return a single EvolutionChain resource by ID
 func (e Evolution) GetEvolutionChain(id string) (*models.EvolutionChain, error) {
-	evolutionChain, err := request.GetSpecificResource[models.EvolutionChain](endpoints.EvolutionChain + id)
+	evolutionChain, err := request.GetResource[models.EvolutionChain](endpoints.EvolutionChain + id)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func (e Evolution) GetEvolutionChain(id string) (*models.EvolutionChain, error) 
 
 // Return a list of EvolutionChain resource
 func (e Evolution) GetEvolutionChainList(limit int, offset int) (*models.ResourceList, error) {
-	evolutionChainList, err := request.GetResourceList(endpoints.EvolutionChain, limit, offset)
+	evolutionChainList, err := request.GetResourceList[models.ResourceList](endpoints.EvolutionChain, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -54,7 +54,7 @@ func (e Evolution) GetEvolutionChainList(limit int, offset int) (*models.Resourc
 
 // Return a single EvolutionTrigger resource by name or ID
 func (e Evolution) GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigger, error) {
-	evolutionTrigger, err := request.GetSpecificResource[models.EvolutionTrigger](endpoints.EvolutionTrigger + nameOrId)
+	evolutionTrigger, err := request.GetResource[models.EvolutionTrigger](endpoints.EvolutionTrigger + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -62,8 +62,8 @@ func (e Evolution) GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigge
 }
 
 // Return a list of EvolutionTrigger resource
-func (e Evolution) GetEvolutionTriggerList(limit int, offset int) (*models.ResourceList, error) {
-	evolutionTriggerList, err := request.GetResourceList(endpoints.EvolutionTrigger, limit, offset)
+func (e Evolution) GetEvolutionTriggerList(limit int, offset int) (*models.NamedResourceList, error) {
+	evolutionTriggerList, err := request.GetResourceList[models.NamedResourceList](endpoints.EvolutionTrigger, limit, offset)
 	if err != nil {
 		return nil, err
 	}

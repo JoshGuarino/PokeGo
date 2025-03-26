@@ -12,11 +12,11 @@ import (
 // Encounters group interface
 type IEncounters interface {
 	GetEncounterMethod(nameOrId string) (*models.EncounterMethod, error)
-	GetEncounterMethodList(limit int, offset int) (*models.ResourceList, error)
+	GetEncounterMethodList(limit int, offset int) (*models.NamedResourceList, error)
 	GetEncounterCondition(nameOrId string) (*models.EncounterCondition, error)
-	GetEncounterConditionList(limit int, offset int) (*models.ResourceList, error)
+	GetEncounterConditionList(limit int, offset int) (*models.NamedResourceList, error)
 	GetEncounterConditionValue(nameOrId string) (*models.EncounterConditionValue, error)
-	GetEncounterConditionValueList(limit int, offset int) (*models.ResourceList, error)
+	GetEncounterConditionValueList(limit int, offset int) (*models.NamedResourceList, error)
 }
 
 // Encounters group struct
@@ -38,7 +38,7 @@ func NewEncountersGroup() Encounters {
 
 // Return a single EncounterMethod resource by name or ID
 func (e Encounters) GetEncounterMethod(nameOrId string) (*models.EncounterMethod, error) {
-	encounterMethod, err := request.GetSpecificResource[models.EncounterMethod](endpoints.EncounterMethod + nameOrId)
+	encounterMethod, err := request.GetResource[models.EncounterMethod](endpoints.EncounterMethod + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -46,8 +46,8 @@ func (e Encounters) GetEncounterMethod(nameOrId string) (*models.EncounterMethod
 }
 
 // Return a list of EncounterMethod resource
-func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.ResourceList, error) {
-	encounterMethodList, err := request.GetResourceList(endpoints.EncounterMethod, limit, offest)
+func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.NamedResourceList, error) {
+	encounterMethodList, err := request.GetResourceList[models.NamedResourceList](endpoints.EncounterMethod, limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.Resou
 
 // Return a single EncounterCondition resource by name or ID
 func (e Encounters) GetEncounterCondition(nameOrId string) (*models.EncounterCondition, error) {
-	encounterCondition, err := request.GetSpecificResource[models.EncounterCondition](endpoints.EncounterCondition + nameOrId)
+	encounterCondition, err := request.GetResource[models.EncounterCondition](endpoints.EncounterCondition + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -64,8 +64,8 @@ func (e Encounters) GetEncounterCondition(nameOrId string) (*models.EncounterCon
 }
 
 // Return a list of EncounterCondition resource
-func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.ResourceList, error) {
-	encounterConditionList, err := request.GetResourceList(endpoints.EncounterCondition, limit, offset)
+func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.NamedResourceList, error) {
+	encounterConditionList, err := request.GetResourceList[models.NamedResourceList](endpoints.EncounterCondition, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +74,7 @@ func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.Re
 
 // Return a single EncounterCondition resource by name or ID
 func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.EncounterConditionValue, error) {
-	encounterConditionValue, err := request.GetSpecificResource[models.EncounterConditionValue](endpoints.EncounterConditionValue + nameOrId)
+	encounterConditionValue, err := request.GetResource[models.EncounterConditionValue](endpoints.EncounterConditionValue + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -82,8 +82,8 @@ func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.Encount
 }
 
 // Return a list of EncounterCondition resource
-func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*models.ResourceList, error) {
-	encounterConditionValueList, err := request.GetResourceList(endpoints.EncounterConditionValue, limit, offset)
+func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*models.NamedResourceList, error) {
+	encounterConditionValueList, err := request.GetResourceList[models.NamedResourceList](endpoints.EncounterConditionValue, limit, offset)
 	if err != nil {
 		return nil, err
 	}
