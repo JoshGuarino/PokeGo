@@ -1,540 +1,406 @@
 package models
 
-// Ability is a single ability.
+// Represents a single ability resource
 type Ability struct {
-	EffectChanges []struct {
-		EffectEntries []struct {
-			Effect   string `json:"effect"`
-			Language struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"language"`
-		} `json:"effect_entries"`
-		VersionGroup struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"version_group"`
-	} `json:"effect_changes"`
-	EffectEntries []struct {
-		Effect   string `json:"effect"`
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		ShortEffect string `json:"short_effect"`
-	} `json:"effect_entries"`
-	FlavorTextEntries []struct {
-		FlavorText string `json:"flavor_text"`
-		Language   struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		VersionGroup struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"version_group"`
-	} `json:"flavor_text_entries"`
-	Generation struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"generation"`
-	ID           int    `json:"id"`
-	IsMainSeries bool   `json:"is_main_series"`
-	Name         string `json:"name"`
-	Names        []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Pokemon []struct {
-		IsHidden bool `json:"is_hidden"`
-		Pokemon  struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon"`
-		Slot int `json:"slot"`
-	} `json:"pokemon"`
+	ID                int                   `json:"id"`
+	Name              string                `json:"name"`
+	IsMainSeries      bool                  `json:"is_main_series"`
+	Generation        NamedResource         `json:"generation"`
+	Names             []Name                `json:"names"`
+	EffectEntries     []VerboseEffect       `json:"effect_entries"`
+	EffectChanges     []AbilityEffectChange `json:"effect_changes"`
+	FlavorTextEntries []AbilityFlavorText   `json:"flavor_text_entries"`
+	Pokemon           []AbilityPokemon      `json:"pokemon"`
 }
 
-// Characteristic is a single characteristic.
+// Represents the effects an ability has
+type AbilityEffectChange struct {
+	EffectEntries []Effect      `json:"effect_entries"`
+	VersionGroup  NamedResource `json:"version_group"`
+}
+
+// Represents the localized flavor text of an ability
+type AbilityFlavorText struct {
+	FlavorText   string        `json:"flavor_text"`
+	Language     NamedResource `json:"language"`
+	VersionGroup NamedResource `json:"version_group"`
+}
+
+type AbilityPokemon struct {
+	IsHidden bool          `json:"is_hidden"`
+	Slot     int           `json:"slot"`
+	Pokemon  NamedResource `json:"pokemon"`
+}
+
+// Represents a single characteristic resource
 type Characteristic struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	GeneModulo  int `json:"gene_modulo"`
-	HighestStat struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"highest_stat"`
-	ID             int   `json:"id"`
-	PossibleValues []int `json:"possible_values"`
+	ID             int           `json:"id"`
+	GeneModulo     int           `json:"gene_modulo"`
+	PossibleValues []int         `json:"possible_values"`
+	HighestStat    NamedResource `json:"highest_stat"`
+	Descriptions   []Description `json:"descriptions"`
 }
 
-// EggGroup is a single egg group.
+// Represents a single egg group resource
 type EggGroup struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	Names          []Name          `json:"names"`
+	PokemonSpecies []NamedResource `json:"pokemon_species"`
 }
 
-// Gender is a single gender.
+// Represents a single gender resource
 type Gender struct {
-	ID                    int    `json:"id"`
-	Name                  string `json:"name"`
-	PokemonSpeciesDetails []struct {
-		PokemonSpecies struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon_species"`
-		Rate int `json:"rate"`
-	} `json:"pokemon_species_details"`
-	RequiredForEvolution []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"required_for_evolution"`
+	ID                    int                    `json:"id"`
+	Name                  string                 `json:"name"`
+	PokemonSpeciesDetails []PokemonSpeciesGender `json:"pokemon_species_details"`
+	RequiredForEvolution  []NamedResource        `json:"required_for_evolution"`
 }
 
-// GrowthRate is a single growth rate.
+// Represents a pokemmon species and the chance its a particular gender
+type PokemonSpeciesGender struct {
+	Rate           int           `json:"rate"`
+	PokemonSpecies NamedResource `json:"pokemon_species"`
+}
+
+// Represents a single growth rate resource
 type GrowthRate struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	Formula string `json:"formula"`
-	ID      int    `json:"id"`
-	Levels  []struct {
-		Experience int `json:"experience"`
-		Level      int `json:"level"`
-	} `json:"levels"`
-	Name           string `json:"name"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
+	ID             int                         `json:"id"`
+	Name           string                      `json:"name"`
+	Formula        string                      `json:"formula"`
+	Descriptions   []Description               `json:"descriptions"`
+	Levels         []GrowthRateExperienceLevel `json:"levels"`
+	PokemonSpecies []NamedResource             `json:"pokemon_species"`
 }
 
-// Nature is a single nature.
+// Represents a level within a growth rate
+type GrowthRateExperienceLevel struct {
+	Level      int `json:"level"`
+	Experience int `json:"experience"`
+}
+
+// Represents a single nature resource
 type Nature struct {
-	DecreasedStat              interface{} `json:"decreased_stat"`
-	HatesFlavor                interface{} `json:"hates_flavor"`
-	ID                         int         `json:"id"`
-	IncreasedStat              interface{} `json:"increased_stat"`
-	LikesFlavor                interface{} `json:"likes_flavor"`
-	MoveBattleStylePreferences []struct {
-		HighHpPreference int `json:"high_hp_preference"`
-		LowHpPreference  int `json:"low_hp_preference"`
-		MoveBattleStyle  struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"move_battle_style"`
-	} `json:"move_battle_style_preferences"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokeathlonStatChanges []struct {
-		MaxChange      int `json:"max_change"`
-		PokeathlonStat struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokeathlon_stat"`
-	} `json:"pokeathlon_stat_changes"`
+	ID                         int                         `json:"id"`
+	Name                       string                      `json:"name"`
+	DecreasedStat              NamedResource               `json:"decreased_stat"`
+	IncreasedStat              NamedResource               `json:"increased_stat"`
+	HatesFlavor                NamedResource               `json:"hates_flavor"`
+	LikesFlavor                NamedResource               `json:"likes_flavor"`
+	PokeathlonStatChanges      []NatureStatChange          `json:"pokeathlon_stat_changes"`
+	MoveBattleStylePreferences []MoveBattleStylePreference `json:"move_battle_style_preferences"`
+	Names                      []Name                      `json:"names"`
 }
 
-// PokeathlonStat is a single Pokeathlon stat.
+// Represents how a nature changes the referenced stat
+type NatureStatChange struct {
+	MaxChange      int           `json:"max_change"`
+	PokeathlonStat NamedResource `json:"pokeathlon_stat"`
+}
+
+// Represents a move battle style and how likely a pokemon is to use it
+type MoveBattleStylePreference struct {
+	LowHpPreference  int           `json:"low_hp_preference"`
+	HighHpPreference int           `json:"high_hp_preference"`
+	MoveBattleStyle  NamedResource `json:"move_battle_style"`
+}
+
+// Represents a single pokéathlon stat resource
 type PokeathlonStat struct {
-	AffectingNatures struct {
-		Decrease []struct {
-			MaxChange int `json:"max_change"`
-			Nature    struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"nature"`
-		} `json:"decrease"`
-		Increase []struct {
-			MaxChange int `json:"max_change"`
-			Nature    struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"nature"`
-		} `json:"increase"`
-	} `json:"affecting_natures"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID               int                            `json:"id"`
+	Name             string                         `json:"name"`
+	Names            []Name                         `json:"names"`
+	AffectingNatures NaturePokeathlonStatAffectSets `json:"affecting_natures"`
 }
 
-// Pokemon is a single Pokemon.
+// Represents how a pokéathlon stat affects natures
+type NaturePokeathlonStatAffectSets struct {
+	Increase []NaturePokeathlonStatAffect `json:"increase"`
+	Decrease []NaturePokeathlonStatAffect `json:"decrease"`
+}
+
+// Represents how a pokéathlon stat affects a natures
+type NaturePokeathlonStatAffect struct {
+	MaxChange int           `json:"max_change"`
+	Nature    NamedResource `json:"nature"`
+}
+
+// Represents a single pokemon resource
 type Pokemon struct {
-	Abilities []struct {
-		Ability struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"ability"`
-		IsHidden bool `json:"is_hidden"`
-		Slot     int  `json:"slot"`
-	} `json:"abilities"`
-	BaseExperience int `json:"base_experience"`
-	Forms          []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"forms"`
-	GameIndices []struct {
-		GameIndex int `json:"game_index"`
-		Version   struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"version"`
-	} `json:"game_indices"`
-	Height                 int           `json:"height"`
-	HeldItems              []interface{} `json:"held_items"`
-	ID                     int           `json:"id"`
-	IsDefault              bool          `json:"is_default"`
-	LocationAreaEncounters string        `json:"location_area_encounters"`
-	Moves                  []struct {
-		Move struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"move"`
-		VersionGroupDetails []struct {
-			LevelLearnedAt  int `json:"level_learned_at"`
-			MoveLearnMethod struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"move_learn_method"`
-			VersionGroup struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"version_group"`
-		} `json:"version_group_details"`
-	} `json:"moves"`
-	Name    string `json:"name"`
-	Order   int    `json:"order"`
-	Species struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"species"`
-	Sprites struct {
-		BackDefault      string      `json:"back_default"`
-		BackFemale       interface{} `json:"back_female"`
-		BackShiny        string      `json:"back_shiny"`
-		BackShinyFemale  interface{} `json:"back_shiny_female"`
-		FrontDefault     string      `json:"front_default"`
-		FrontFemale      interface{} `json:"front_female"`
-		FrontShiny       string      `json:"front_shiny"`
-		FrontShinyFemale interface{} `json:"front_shiny_female"`
-	} `json:"sprites"`
-	Stats []struct {
-		BaseStat int `json:"base_stat"`
-		Effort   int `json:"effort"`
-		Stat     struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"stat"`
-	} `json:"stats"`
-	Types []struct {
-		Slot int `json:"slot"`
-		Type struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"type"`
-	} `json:"types"`
-	Weight int `json:"weight"`
+	ID                     int                `json:"id"`
+	Name                   string             `json:"name"`
+	BaseExperience         int                `json:"base_experience"`
+	Height                 int                `json:"height"`
+	IsDefault              bool               `json:"is_default"`
+	Order                  int                `json:"order"`
+	Weight                 int                `json:"weight"`
+	Abilities              []PokemonAbility   `json:"abilities"`
+	Forms                  []NamedResource    `json:"forms"`
+	GameIndices            []VersionGameIndex `json:"game_indices"`
+	HeldItems              []PokemonHeldItem  `json:"held_items"`
+	LocationAreaEncounters string             `json:"location_area_encounters"`
+	Moves                  []PokemonMove      `json:"moves"`
+	PastTypes              []PokemonTypePast  `json:"past_types"`
+	Sprites                PokemonSprites     `json:"sprites"`
+	Species                NamedResource      `json:"species"`
+	Stats                  []PokemonStat      `json:"stats"`
+	Types                  []PokemonType      `json:"types"`
 }
 
-// PokemonColor is a single Pokemon color.
+// Represents a single pokemon ability
+type PokemonAbility struct {
+	IsHidden bool          `json:"is_hidden"`
+	Slot     int           `json:"slot"`
+	Ability  NamedResource `json:"ability"`
+}
+
+// Represents a single pokemon type
+type PokemonType struct {
+	Slot int           `json:"slot"`
+	Type NamedResource `json:"type"`
+}
+
+type PokemonFormType struct {
+	Slot int           `json:"slot"`
+	Type NamedResource `json:"type"`
+}
+
+// Represents past types of a pokemon in a previous generation
+type PokemonTypePast struct {
+	Generation NamedResource `json:"generation"`
+	Types      []PokemonType `json:"types"`
+}
+
+// Represents a held item by a pokemon
+type PokemonHeldItem struct {
+	Item           NamedResource            `json:"item"`
+	VersionDetails []PokemonHeldItemVersion `json:"version_details"`
+}
+
+// Represents the version details of a held item by a pokemon
+type PokemonHeldItemVersion struct {
+	Version NamedResource `json:"version"`
+	Rarity  int           `json:"rarity"`
+}
+
+// Represents a single pokemon move
+type PokemonMove struct {
+	Move                NamedResource        `json:"move"`
+	VersionGroupDetails []PokemonMoveVersion `json:"version_group_details"`
+}
+
+// Represents the version details of a move learned by a pokemon
+type PokemonMoveVersion struct {
+	MoveLearnMethod NamedResource `json:"move_learn_method"`
+	VersionGroup    NamedResource `json:"version_group"`
+	LevelLearnedAt  int           `json:"level_learned_at"`
+}
+
+// Represents a single pokemon stat
+type PokemonStat struct {
+	Stat     NamedResource `json:"stat"`
+	Effort   int           `json:"effort"`
+	BaseStat int           `json:"base_stat"`
+}
+
+// Represents the sprites of a pokemon
+type PokemonSprites struct {
+	FrontDefault     string `json:"front_default"`
+	FrontShiny       string `json:"front_shiny"`
+	FrontFemale      string `json:"front_female"`
+	FrontShinyFemale string `json:"front_shiny_female"`
+	BackDefault      string `json:"back_default"`
+	BackShiny        string `json:"back_shiny"`
+	BackFemale       string `json:"back_female"`
+	BackShinyFemale  string `json:"back_shiny_female"`
+}
+
+type PokemonCries struct {
+	Latest string `json:"latest"`
+	Legacy string `json:"legacy"`
+}
+
+// Represents a single location area encounter
+type LocationAreaEncounter struct {
+	LocationArea   NamedResource            `json:"location_area"`
+	VersionDetails []VersionEncounterDetail `json:"version_details"`
+}
+
+// Represents a single pokemon color resource
 type PokemonColor struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	Names          []Name          `json:"names"`
+	PokemonSpecies []NamedResource `json:"pokemon_species"`
 }
 
-// PokemonForm is a single Pokemon form.
+// Represents a single pokemon form resource
 type PokemonForm struct {
-	FormName     string        `json:"form_name"`
-	FormNames    []interface{} `json:"form_names"`
-	FormOrder    int           `json:"form_order"`
-	ID           int           `json:"id"`
-	IsBattleOnly bool          `json:"is_battle_only"`
-	IsDefault    bool          `json:"is_default"`
-	IsMega       bool          `json:"is_mega"`
-	Name         string        `json:"name"`
-	Names        []interface{} `json:"names"`
-	Order        int           `json:"order"`
-	Pokemon      struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon"`
-	Sprites struct {
-		BackDefault  string `json:"back_default"`
-		BackShiny    string `json:"back_shiny"`
-		FrontDefault string `json:"front_default"`
-		FrontShiny   string `json:"front_shiny"`
-	} `json:"sprites"`
-	VersionGroup struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"version_group"`
+	ID           int                `json:"id"`
+	Name         string             `json:"name"`
+	Order        int                `json:"order"`
+	FormOrder    int                `json:"form_order"`
+	IsDefault    bool               `json:"is_default"`
+	IsBattleOnly bool               `json:"is_battle_only"`
+	IsMega       bool               `json:"is_mega"`
+	FormName     string             `json:"form_name"`
+	Pokemon      NamedResource      `json:"pokemon"`
+	Types        []PokemonFormType  `json:"types"`
+	Sprites      PokemonFormSprites `json:"sprites"`
+	VersionGroup NamedResource      `json:"version_group"`
+	Names        []Name             `json:"names"`
+	FormNames    []Name             `json:"form_names"`
 }
 
-// PokemonHabitat is a single Pokemon habitat.
+// Represents a set of sprites for a pokemon form
+type PokemonFormSprites struct {
+	FrontDefault string `json:"front_default"`
+	FrontShiny   string `json:"front_shiny"`
+	BackDefault  string `json:"back_default"`
+	BackShiny    string `json:"back_shiny"`
+}
+
+// Represents a single pokemon habitat resource
 type PokemonHabitat struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	Names          []Name          `json:"names"`
+	PokemonSpecies []NamedResource `json:"pokemon_species"`
 }
 
-// PokemonShape is a single Pokemon shape.
+// Represents a single pokemon shape resource
 type PokemonShape struct {
-	AwesomeNames []struct {
-		AwesomeName string `json:"awesome_name"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"awesome_names"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	AwesomeNames   []AwesomeName   `json:"awesome_names"`
+	Names          []Name          `json:"names"`
+	PokemonSpecies []NamedResource `json:"pokemon_species"`
 }
 
-// PokemonSpecies is a single Pokemon species.
+// Represents scientific name of a pokemon shape
+type AwesomeName struct {
+	AwesomeName string        `json:"awesome_name"`
+	Language    NamedResource `json:"language"`
+}
+
+// Represents a single pokemon species resource
 type PokemonSpecies struct {
-	BaseHappiness int `json:"base_happiness"`
-	CaptureRate   int `json:"capture_rate"`
-	Color         struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"color"`
-	EggGroups []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"egg_groups"`
-	EvolutionChain struct {
-		URL string `json:"url"`
-	} `json:"evolution_chain"`
-	EvolvesFromSpecies interface{} `json:"evolves_from_species"`
-	FlavorTextEntries  []struct {
-		FlavorText string `json:"flavor_text"`
-		Language   struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Version struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"version"`
-	} `json:"flavor_text_entries"`
-	FormDescriptions []interface{} `json:"form_descriptions"`
-	FormsSwitchable  bool          `json:"forms_switchable"`
-	GenderRate       int           `json:"gender_rate"`
-	Genera           []struct {
-		Genus    string `json:"genus"`
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"genera"`
-	Generation struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"generation"`
-	GrowthRate struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"growth_rate"`
-	Habitat struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"habitat"`
-	HasGenderDifferences bool   `json:"has_gender_differences"`
-	HatchCounter         int    `json:"hatch_counter"`
-	ID                   int    `json:"id"`
-	IsBaby               bool   `json:"is_baby"`
-	Name                 string `json:"name"`
-	Names                []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Order             int `json:"order"`
-	PalParkEncounters []struct {
-		Area struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"area"`
-		BaseScore int `json:"base_score"`
-		Rate      int `json:"rate"`
-	} `json:"pal_park_encounters"`
-	PokedexNumbers []struct {
-		EntryNumber int `json:"entry_number"`
-		Pokedex     struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokedex"`
-	} `json:"pokedex_numbers"`
-	Shape struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"shape"`
-	Varieties []struct {
-		IsDefault bool `json:"is_default"`
-		Pokemon   struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon"`
-	} `json:"varieties"`
+	ID                   int                      `json:"id"`
+	Name                 string                   `json:"name"`
+	Order                int                      `json:"order"`
+	GenderRate           int                      `json:"gender_rate"`
+	CaptureRate          int                      `json:"capture_rate"`
+	BaseHappiness        int                      `json:"base_happiness"`
+	IsBaby               bool                     `json:"is_baby"`
+	IsLegendary          bool                     `json:"is_legendary"`
+	IsMythical           bool                     `json:"is_mythical"`
+	HatchCounter         int                      `json:"hatch_counter"`
+	HasGenderDifferences bool                     `json:"has_gender_differences"`
+	FormsSwitchable      bool                     `json:"forms_switchable"`
+	GrowthRate           NamedResource            `json:"growth_rate"`
+	PokedexNumbers       []PokemonSpeciesDexEntry `json:"pokedex_numbers"`
+	EggGroups            []NamedResource          `json:"egg_groups"`
+	Color                NamedResource            `json:"color"`
+	Shape                NamedResource            `json:"shape"`
+	EvolvesFromSpecies   NamedResource            `json:"evolves_from_species"`
+	EvolutionChain       Resource                 `json:"evolution_chain"`
+	Habitat              NamedResource            `json:"habitat"`
+	Generation           NamedResource            `json:"generation"`
+	Names                []Name                   `json:"names"`
+	PalParkEncounters    []PalParkEncounterArea   `json:"pal_park_encounters"`
+	FlavorTextEntries    []FlavorText             `json:"flavor_text_entries"`
+	FormDescriptions     []Description            `json:"form_descriptions"`
+	Genera               []Genus                  `json:"genera"`
+	Varieties            []PokemonSpeciesVariety  `json:"varieties"`
 }
 
-// Stat is a single stat.
+// Respresents the localized genus of a pokemon species
+type Genus struct {
+	Genus    string        `json:"genus"`
+	Language NamedResource `json:"language"`
+}
+
+// Represents a single pokemon species dex entry
+type PokemonSpeciesDexEntry struct {
+	EntryNumber int           `json:"entry_number"`
+	Pokedex     NamedResource `json:"pokedex"`
+}
+
+// Represents an encounter for a species in pal park
+type PalParkEncounterArea struct {
+	BaseScore int           `json:"base_score"`
+	Rate      int           `json:"rate"`
+	Area      NamedResource `json:"area"`
+}
+
+// Respresents a pokemon that exists within a species
+type PokemonSpeciesVariety struct {
+	IsDefault bool          `json:"is_default"`
+	Pokemon   NamedResource `json:"pokemon"`
+}
+
+// Represents a single stat resource
 type Stat struct {
-	AffectingMoves struct {
-		Decrease []interface{} `json:"decrease"`
-		Increase []struct {
-			Change int `json:"change"`
-			Move   struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"move"`
-		} `json:"increase"`
-	} `json:"affecting_moves"`
-	AffectingNatures struct {
-		Decrease []interface{} `json:"decrease"`
-		Increase []interface{} `json:"increase"`
-	} `json:"affecting_natures"`
-	Characteristics []struct {
-		URL string `json:"url"`
-	} `json:"characteristics"`
-	GameIndex       int         `json:"game_index"`
-	ID              int         `json:"id"`
-	IsBattleOnly    bool        `json:"is_battle_only"`
-	MoveDamageClass interface{} `json:"move_damage_class"`
-	Name            string      `json:"name"`
-	Names           []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID               int                  `json:"id"`
+	Name             string               `json:"name"`
+	GameIndex        int                  `json:"game_index"`
+	IsBattleOnly     bool                 `json:"is_battle_only"`
+	AffectingMoves   MoveStatAffectSets   `json:"affecting_moves"`
+	AffectingNatures NatureStatAffectSets `json:"affecting_natures"`
+	Characteristics  []Resource           `json:"characteristics"`
+	MoveDamageClass  NamedResource        `json:"move_damage_class"`
+	Names            []Name               `json:"names"`
 }
 
-// Type is a single type.
+// Represents a deatil of moves that affect a stat
+type MoveStatAffectSets struct {
+	Increase []MoveStatAffect `json:"increase"`
+	Decrease []MoveStatAffect `json:"decrease"`
+}
+
+// Represents a move that affects a stat
+type MoveStatAffect struct {
+	Change int           `json:"change"`
+	Move   NamedResource `json:"move"`
+}
+
+// Represents a detail of natures that affect a stat
+type NatureStatAffectSets struct {
+	Increase []NamedResource `json:"increase"`
+	Decrease []NamedResource `json:"decrease"`
+}
+
+// Represents a single type resource
 type Type struct {
-	DamageRelations struct {
-		DoubleDamageFrom []struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"double_damage_from"`
-		DoubleDamageTo []interface{} `json:"double_damage_to"`
-		HalfDamageFrom []interface{} `json:"half_damage_from"`
-		HalfDamageTo   []struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"half_damage_to"`
-		NoDamageFrom []struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"no_damage_from"`
-		NoDamageTo []struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"no_damage_to"`
-	} `json:"damage_relations"`
-	GameIndices []struct {
-		GameIndex  int `json:"game_index"`
-		Generation struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"generation"`
-	} `json:"game_indices"`
-	Generation struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"generation"`
-	ID              int `json:"id"`
-	MoveDamageClass struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"move_damage_class"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Pokemon []struct {
-		Pokemon struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon"`
-		Slot int `json:"slot"`
-	} `json:"pokemon"`
+	ID                  int                   `json:"id"`
+	Name                string                `json:"name"`
+	DamageRelations     TypeRelations         `json:"damage_relations"`
+	PastDamageRelations []TypeRelationsPast   `json:"past_damage_relations"`
+	GameIndices         []GenerationGameIndex `json:"game_indices"`
+	Generation          NamedResource         `json:"generation"`
+	MoveDamageClass     NamedResource         `json:"move_damage_class"`
+	Names               []Name                `json:"names"`
+	Pokemon             []TypePokemon         `json:"pokemon"`
+}
+
+// Respresents details of a pokemon that has a particular type
+type TypePokemon struct {
+	Slot    int           `json:"slot"`
+	Pokemon NamedResource `json:"pokemon"`
+}
+
+// Represents the damage relations of a type
+type TypeRelations struct {
+	NoDamageTo       []NamedResource `json:"no_damage_to"`
+	HalfDamageTo     []NamedResource `json:"half_damage_to"`
+	DoubleDamageTo   []NamedResource `json:"double_damage_to"`
+	NoDamageFrom     []NamedResource `json:"no_damage_from"`
+	HalfDamageFrom   []NamedResource `json:"half_damage_from"`
+	DoubleDamageFrom []NamedResource `json:"double_damage_from"`
+}
+
+// Represents the damage relations of a type in a previous generation
+type TypeRelationsPast struct {
+	Generation      NamedResource `json:"generation"`
+	DamageRelations TypeRelations `json:"damage_relations"`
 }

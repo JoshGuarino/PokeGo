@@ -148,6 +148,15 @@ func TestGetPokemonList(t *testing.T) {
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 
+func TestGetPokemonLocationAreas(t *testing.T) {
+	rById, _ := pokemon.GetPokemonLocationAreas("1")
+	rByName, _ := pokemon.GetPokemonLocationAreas("bulbasaur")
+	_, err := pokemon.GetPokemonLocationAreas("test")
+	assert.Equal(t, "cerulean-city-area", rById[0].LocationArea.Name, "Unexpected ID for PokemonLocationArea resource")
+	assert.Equal(t, "cerulean-city-area", rByName[0].LocationArea.Name, "Unexpected Name for PokemonLocationArea resource")
+	assert.Error(t, err, "Expected an error to be thrown.")
+}
+
 func TestGetPokemonColor(t *testing.T) {
 	rById, _ := pokemon.GetPokemonColor("1")
 	rByName, _ := pokemon.GetPokemonColor("black")

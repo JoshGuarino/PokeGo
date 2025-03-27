@@ -27,6 +27,7 @@ type IPokemon interface {
 	GetPokeathlonStatList(limit int, offset int) (*models.NamedResourceList, error)
 	GetPokemon(nameOrId string) (*models.Pokemon, error)
 	GetPokemonList(limit int, offset int) (*models.NamedResourceList, error)
+	GetPokemonLocationAreas(nameOrId string) ([]*models.LocationAreaEncounter, error)
 	GetPokemonColor(nameOrId string) (*models.PokemonColor, error)
 	GetPokemonColorList(limit int, offset int) (*models.NamedResourceList, error)
 	GetPokemonForm(nameOrId string) (*models.PokemonForm, error)
@@ -202,6 +203,15 @@ func (p Pokemon) GetPokemonList(limit int, offset int) (*models.NamedResourceLis
 		return nil, err
 	}
 	return pokemonList, nil
+}
+
+// Return a single LocationAreaEncounter by name or ID
+func (p Pokemon) GetPokemonLocationAreas(nameOrId string) ([]*models.LocationAreaEncounter, error) {
+	pokemonLocationAreas, err := request.GetResourceSlice[models.LocationAreaEncounter](endpoints.Pokemon + nameOrId + "/encounters")
+	if err != nil {
+		return nil, err
+	}
+	return pokemonLocationAreas, nil
 }
 
 // Return a single PokemonColor by name or ID
