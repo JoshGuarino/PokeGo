@@ -178,6 +178,18 @@ pokemonList, err := client.Pokemon.GetPokemonList(20, 0)
 pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
 ```
 
+## [Pokemon Location Areas](https://pokeapi.co/docs/v2#pokemon-location-areas)
+
+##### Get list of Pokemon Location Areas:
+
+```go
+// Main client example with ID
+pokemonLocationAreas, err := clinet.Pokemon.GetPokemonLocationAreas("1")
+
+// Individual resource group example with Name
+pokemonLocationAreas, err := pokemonGroup.GetPokemonLocationAreas("bulbasaur")
+```
+
 ## [Pokemon Color](https://pokeapi.co/docs/v2#pokemon-colors)
 
 ##### Get single Pokemon Color resource by name or ID:

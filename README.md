@@ -77,4 +77,4 @@ The cache is initialized when the client is created or when a resource group is 
 Only one instance of the cache is created and shared between the client and all resource groups upon there initialization.
 Any subsequent intializations will not create a new cache but reference the existing cache.
 A pointer reference to the initialized cache is stored in the client and each resource group.
-For more information on the cache, see the [cache](docs/CACHE.md) documentation.
+For more information on the cache, see the [CACHE.md](docs/CACHE.md) documentation.
