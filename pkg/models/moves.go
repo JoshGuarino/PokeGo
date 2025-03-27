@@ -1,220 +1,131 @@
 package models
 
-// Move is a single move.
+// Represents a single move resource
 type Move struct {
-	Accuracy      int `json:"accuracy"`
-	ContestCombos struct {
-		Normal struct {
-			UseAfter  interface{} `json:"use_after"`
-			UseBefore []struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"use_before"`
-		} `json:"normal"`
-		Super struct {
-			UseAfter  interface{} `json:"use_after"`
-			UseBefore interface{} `json:"use_before"`
-		} `json:"super"`
-	} `json:"contest_combos"`
-	ContestEffect struct {
-		URL string `json:"url"`
-	} `json:"contest_effect"`
-	ContestType struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"contest_type"`
-	DamageClass struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"damage_class"`
-	EffectChance  interface{}   `json:"effect_chance"`
-	EffectChanges []interface{} `json:"effect_changes"`
-	EffectEntries []struct {
-		Effect   string `json:"effect"`
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		ShortEffect string `json:"short_effect"`
-	} `json:"effect_entries"`
-	FlavorTextEntries []struct {
-		FlavorText string `json:"flavor_text"`
-		Language   struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		VersionGroup struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"version_group"`
-	} `json:"flavor_text_entries"`
-	Generation struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"generation"`
-	ID       int           `json:"id"`
-	Machines []interface{} `json:"machines"`
-	Meta     struct {
-		Ailment struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"ailment"`
-		AilmentChance int `json:"ailment_chance"`
-		Category      struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"category"`
-		CritRate     int         `json:"crit_rate"`
-		Drain        int         `json:"drain"`
-		FlinchChance int         `json:"flinch_chance"`
-		Healing      int         `json:"healing"`
-		MaxHits      interface{} `json:"max_hits"`
-		MaxTurns     interface{} `json:"max_turns"`
-		MinHits      interface{} `json:"min_hits"`
-		MinTurns     interface{} `json:"min_turns"`
-		StatChance   int         `json:"stat_chance"`
-	} `json:"meta"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PastValues         []interface{} `json:"past_values"`
-	Power              int           `json:"power"`
-	Pp                 int           `json:"pp"`
-	Priority           int           `json:"priority"`
-	StatChanges        []interface{} `json:"stat_changes"`
-	SuperContestEffect struct {
-		URL string `json:"url"`
-	} `json:"super_contest_effect"`
-	Target struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"target"`
-	Type struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"type"`
+	ID                 int                    `json:"id"`
+	Name               string                 `json:"name"`
+	Accuracy           int                    `json:"accuracy"`
+	EffectChance       int                    `json:"effect_chance"`
+	PP                 int                    `json:"pp"`
+	Priority           int                    `json:"priority"`
+	Power              int                    `json:"power"`
+	ContestCombos      ContestComboSets       `json:"contest_combos"`
+	ContestType        NamedResource          `json:"contest_type"`
+	ContestEffect      Resource               `json:"contest_effect"`
+	DamageClass        NamedResource          `json:"damage_class"`
+	EffectEntries      []VerboseEffect        `json:"effect_entries"`
+	EffectChanges      []AbilityEffectChange  `json:"effect_changes"`
+	LearnedByPokemon   []NamedResource        `json:"learned_by_pokemon"`
+	FlavorTextEntries  []MoveFlavorText       `json:"flavor_text_entries"`
+	Generation         NamedResource          `json:"generation"`
+	Machines           []MachineVersionDetail `json:"machines"`
+	Meta               MoveMetaData           `json:"meta"`
+	Names              []Name                 `json:"names"`
+	PastValues         []PastMoveStatValues   `json:"past_values"`
+	StatChanges        []MoveStatChange       `json:"stat_changes"`
+	SuperContestEffect Resource               `json:"super_contest_effect"`
+	Target             NamedResource          `json:"target"`
+	Type               NamedResource          `json:"type"`
 }
 
-// MoveAilment is a single move ailment.
+// Respresents a set of contest combos
+type ContestComboSets struct {
+	Normal ContestComboDetail `json:"normal"`
+	Super  ContestComboDetail `json:"super"`
+}
+
+// Represents the details of a contest combo
+type ContestComboDetail struct {
+	UseBefore []NamedResource `json:"use_before"`
+	UseAfter  []NamedResource `json:"use_after"`
+}
+
+// Represents the localized flavor text of a move
+type MoveFlavorText struct {
+	FlavorText   string        `json:"flavor_text"`
+	Language     NamedResource `json:"language"`
+	VersionGroup NamedResource `json:"version_group"`
+}
+
+// Represents meta data about a move
+type MoveMetaData struct {
+	Ailment       NamedResource `json:"ailment"`
+	Category      NamedResource `json:"category"`
+	MinHits       int           `json:"min_hits"`
+	MaxHits       int           `json:"max_hits"`
+	MinTurns      int           `json:"min_turns"`
+	MaxTurns      int           `json:"max_turns"`
+	Drain         int           `json:"drain"`
+	Healing       int           `json:"healing"`
+	CritRate      int           `json:"crit_rate"`
+	AilmentChance int           `json:"ailment_chance"`
+	FlinchChance  int           `json:"flinch_chance"`
+	StatChance    int           `json:"stat_chance"`
+}
+
+// Represents a move stat change
+type MoveStatChange struct {
+	Change int           `json:"change"`
+	Stat   NamedResource `json:"stat"`
+}
+
+// Represents past move stat values
+type PastMoveStatValues struct {
+	Accuracy      int             `json:"accuracy"`
+	EffectChance  int             `json:"effect_chance"`
+	Power         int             `json:"power"`
+	PP            int             `json:"pp"`
+	EffectEntries []VerboseEffect `json:"effect_entries"`
+	Type          NamedResource   `json:"type"`
+	VersionGroup  NamedResource   `json:"version_group"`
+}
+
+// Represents a single move ailment resource
 type MoveAilment struct {
-	ID    int `json:"id"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID    int             `json:"id"`
+	Name  string          `json:"name"`
+	Moves []NamedResource `json:"moves"`
+	Names []Name          `json:"names"`
 }
 
-// MoveBattleStyle is a single move battle style.
+// Represents a single move battle style resource
 type MoveBattleStyle struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	Names []Name `json:"names"`
 }
 
-// MoveCategory is a single move category.
+// Represents a single move category resource
 type MoveCategory struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	ID    int `json:"id"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name string `json:"name"`
+	ID           int             `json:"id"`
+	Name         string          `json:"name"`
+	Moves        []NamedResource `json:"moves"`
+	Descriptions []Description   `json:"descriptions"`
 }
 
-// MoveDamageClass is a single move damage class.
+// Represents a single move damage class resource
 type MoveDamageClass struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	ID    int `json:"id"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID           int             `json:"id"`
+	Name         string          `json:"name"`
+	Descriptions []Description   `json:"descriptions"`
+	Moves        []NamedResource `json:"moves"`
+	Names        []Name          `json:"names"`
 }
 
-// MoveLearnMethod is a single move learn method.
+// Represents a single move learn method resource
 type MoveLearnMethod struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	VersionGroups []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"version_groups"`
+	ID            int             `json:"id"`
+	Name          string          `json:"name"`
+	Descriptions  []Description   `json:"descriptions"`
+	Names         []Name          `json:"names"`
+	VersionGroups []NamedResource `json:"version_groups"`
 }
 
-// MoveTarget is a single move target.
+// Represents a single move target resource
 type MoveTarget struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	ID    int `json:"id"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
+	ID           int             `json:"id"`
+	Name         string          `json:"name"`
+	Descriptions []Description   `json:"descriptions"`
+	Moves        []NamedResource `json:"moves"`
+	Names        []Name          `json:"names"`
 }

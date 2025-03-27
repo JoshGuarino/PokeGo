@@ -38,7 +38,7 @@ type BerryFlavor struct {
 	Names   []Name           `json:"names"`
 }
 
-// Represents berries that have a particular flavor
+// Represents a berry that has a particular flavor
 type FlavorBerryMap struct {
 	Potency int           `json:"potency"`
 	Berry   NamedResource `json:"berry"`

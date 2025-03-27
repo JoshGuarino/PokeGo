@@ -1,109 +1,52 @@
 package models
 
-// Represents a single Generation resource
+// Represents a single generation resource
 type Generation struct {
-	Abilities  []interface{} `json:"abilities"`
-	ID         int           `json:"id"`
-	MainRegion struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"main_region"`
-	Moves []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"moves"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonSpecies []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokemon_species"`
-	Types []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"types"`
-	VersionGroups []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"version_groups"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	Abilities      []NamedResource `json:"abilities"`
+	Names          []Name          `json:"names"`
+	MainRegion     NamedResource   `json:"main_region"`
+	Moves          []NamedResource `json:"moves"`
+	PokemonSpecies []NamedResource `json:"pokemon_species"`
+	Types          []NamedResource `json:"types"`
+	VersionGroups  []NamedResource `json:"version_groups"`
 }
 
-// Represents a single Pokedex resource
+// Represents a single pokedex resource
 type Pokedex struct {
-	Descriptions []struct {
-		Description string `json:"description"`
-		Language    struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-	} `json:"descriptions"`
-	ID           int    `json:"id"`
-	IsMainSeries bool   `json:"is_main_series"`
-	Name         string `json:"name"`
-	Names        []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonEntries []struct {
-		EntryNumber    int `json:"entry_number"`
-		PokemonSpecies struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon_species"`
-	} `json:"pokemon_entries"`
-	Region        interface{}   `json:"region"`
-	VersionGroups []interface{} `json:"version_groups"`
+	ID             int             `json:"id"`
+	Name           string          `json:"name"`
+	IsMainSeries   bool            `json:"is_main_series"`
+	Descriptions   []Description   `json:"descriptions"`
+	Names          []Name          `json:"names"`
+	PokemonEntries []PokemonEntry  `json:"pokemon_entries"`
+	Region         NamedResource   `json:"region"`
+	VersionGroups  []NamedResource `json:"version_groups"`
 }
 
-// Represents a single Version resource
+// Represents a pokemon in the specific pokedex
+type PokemonEntry struct {
+	EntryNumber    int           `json:"entry_number"`
+	PokemonSpecies NamedResource `json:"pokemon_species"`
+}
+
+// Represents a single version resource
 type Version struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	VersionGroup struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"version_group"`
+	ID           int           `json:"id"`
+	Name         string        `json:"name"`
+	Names        []Name        `json:"names"`
+	VersionGroup NamedResource `json:"version_group"`
 }
 
-// Represents is a single VersionGroup resource
+// Represents is a single version group resource
 type VersionGroup struct {
-	Generation struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"generation"`
-	ID               int `json:"id"`
-	MoveLearnMethods []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"move_learn_methods"`
-	Name      string `json:"name"`
-	Order     int    `json:"order"`
-	Pokedexes []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokedexes"`
-	Regions []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"regions"`
-	Versions []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"versions"`
+	ID               int             `json:"id"`
+	Name             string          `json:"name"`
+	Order            int             `json:"order"`
+	Generation       NamedResource   `json:"generation"`
+	MoveLearnMethods []NamedResource `json:"move_learn_methods"`
+	Pokedexes        []NamedResource `json:"pokedexes"`
+	Regions          []NamedResource `json:"regions"`
+	Versions         []NamedResource `json:"versions"`
 }

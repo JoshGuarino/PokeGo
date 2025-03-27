@@ -79,8 +79,75 @@ type NamedResource struct {
 	URL  string `json:"url"`
 }
 
+// Represents the localized description for a resource in specific Language
+type Description struct {
+	Description string        `json:"description"`
+	Language    NamedResource `json:"language"`
+}
+
+// Represents the localized effect text for a resource in specific language
+type Effect struct {
+	Effect   string        `json:"effect"`
+	Language NamedResource `json:"language"`
+}
+
+// Represents the detailed information about a specific encounter
+type Encounter struct {
+	MinLevel        int             `json:"min_level"`
+	MaxLevel        int             `json:"max_level"`
+	ConditionValues []NamedResource `json:"condition_values"`
+	Chance          int             `json:"chance"`
+	Method          NamedResource   `json:"method"`
+}
+
+// Represents the localized flavor text for a resource in specific language
+type FlavorText struct {
+	FlavorText string        `json:"flavor_text"`
+	Language   NamedResource `json:"language"`
+	Version    NamedResource `json:"version"`
+}
+
+// Represents a game index reference for a resource
+type GenerationGameIndex struct {
+	GameIndex  int           `json:"game_index"`
+	Gereration NamedResource `json:"generation"`
+}
+
+// Represents a single machine that teaches a move
+type MachineVersionDetail struct {
+	Machine      Resource      `json:"machine"`
+	VersionGroup NamedResource `json:"version_group"`
+}
+
 // Represents a localized name for a resource in specific language
 type Name struct {
 	Name     string        `json:"name"`
 	Language NamedResource `json:"language"`
+}
+
+// Represents long description of an effect
+type VerboseEffect struct {
+	Effect      string        `json:"effect"`
+	ShortEffect string        `json:"short_effect"`
+	Language    NamedResource `json:"language"`
+}
+
+// Represents encounter details for a specific version
+type VersionEncounterDetail struct {
+	Version          NamedResource `json:"version"`
+	MaxChance        int           `json:"max_chance"`
+	EncounterDetails []Encounter   `json:"encounter_details"`
+}
+
+// Represents an game index reference for a specific version
+type VersionGameIndex struct {
+	GameIndex int           `json:"game_index"`
+	Version   NamedResource `json:"version"`
+}
+
+// Respresents the flavor text for a version group
+type VersionGroupFlavorText struct {
+	Text         string        `json:"text"`
+	Language     NamedResource `json:"language"`
+	VersionGroup NamedResource `json:"version_group"`
 }

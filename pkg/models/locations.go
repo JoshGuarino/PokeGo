@@ -1,133 +1,66 @@
 package models
 
-// Represents a single Location resource
+// Represents a single location resource
 type Location struct {
-	Areas []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"areas"`
-	GameIndices []struct {
-		GameIndex  int `json:"game_index"`
-		Generation struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"generation"`
-	} `json:"game_indices"`
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Region struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"region"`
+	ID          int                   `json:"id"`
+	Name        string                `json:"name"`
+	Region      NamedResource         `json:"region"`
+	Names       []Name                `json:"names"`
+	GameIndices []GenerationGameIndex `json:"game_indices"`
+	Areas       []NamedResource       `json:"areas"`
 }
 
-// Represents a single LocationArea resource
+// Represents a single location area resource
 type LocationArea struct {
-	EncounterMethodRates []struct {
-		EncounterMethod struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"encounter_method"`
-		VersionDetails []struct {
-			Rate    int `json:"rate"`
-			Version struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"version"`
-		} `json:"version_details"`
-	} `json:"encounter_method_rates"`
-	GameIndex int `json:"game_index"`
-	ID        int `json:"id"`
-	Location  struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"location"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonEncounters []struct {
-		Pokemon struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon"`
-		VersionDetails []struct {
-			EncounterDetails []struct {
-				Chance          int           `json:"chance"`
-				ConditionValues []interface{} `json:"condition_values"`
-				MaxLevel        int           `json:"max_level"`
-				Method          struct {
-					Name string `json:"name"`
-					URL  string `json:"url"`
-				} `json:"method"`
-				MinLevel int `json:"min_level"`
-			} `json:"encounter_details"`
-			MaxChance int `json:"max_chance"`
-			Version   struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"version"`
-		} `json:"version_details"`
-	} `json:"pokemon_encounters"`
+	ID                   int                   `json:"id"`
+	Name                 string                `json:"name"`
+	GameIndex            int                   `json:"game_index"`
+	EncounterMethodRates []EncounterMethodRate `json:"encounter_method_rates"`
+	Location             NamedResource         `json:"location"`
+	Names                []Name                `json:"names"`
+	PokemonEncounters    []PokemonEncounter    `json:"pokemon_encounters"`
 }
 
-// Represents a single PalParkArea resource
+// Represents a method to encounter pokemon for an area
+type EncounterMethodRate struct {
+	EncounterMethod NamedResource             `json:"encounter_method"`
+	VersionDetails  []EncounterVersionDetails `json:"version_details"`
+}
+
+// Represents a version detail for an encounter method rate
+type EncounterVersionDetails struct {
+	Rate    int           `json:"rate"`
+	Version NamedResource `json:"version"`
+}
+
+// Respresents the pokemon that can be encountered in an area
+type PokemonEncounter struct {
+	Pokemon        NamedResource            `json:"pokemon"`
+	VersionDetails []VersionEncounterDetail `json:"version_details"`
+}
+
+// Represents a single pal park area resource
 type PalParkArea struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	PokemonEncounters []struct {
-		BaseScore      int `json:"base_score"`
-		PokemonSpecies struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"pokemon_species"`
-		Rate int `json:"rate"`
-	} `json:"pokemon_encounters"`
+	ID                int                       `json:"id"`
+	Name              string                    `json:"name"`
+	Names             []Name                    `json:"names"`
+	PokemonEncounters []PalParkEncounterSpecies `json:"pokemon_encounters"`
 }
 
-// Represents a single Region resource
+// Represents a pokemon species that can be encountered in a pal park area
+type PalParkEncounterSpecies struct {
+	BaseScore      int           `json:"base_score"`
+	Rate           int           `json:"rate"`
+	PokemonSpecies NamedResource `json:"pokemon_species"`
+}
+
+// Represents a single region resource
 type Region struct {
-	ID        int `json:"id"`
-	Locations []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"locations"`
-	MainGeneration struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"main_generation"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Pokedexes []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"pokedexes"`
-	VersionGroups []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"version_groups"`
+	ID             int             `json:"id"`
+	Locations      []NamedResource `json:"locations"`
+	Name           string          `json:"name"`
+	Names          []Name          `json:"names"`
+	MainGeneration NamedResource   `json:"main_generation"`
+	Pokedexes      []NamedResource `json:"pokedexes"`
+	VersionGroups  []NamedResource `json:"version_groups"`
 }

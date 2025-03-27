@@ -1,49 +1,25 @@
 package models
 
-// Represents a single EncounterMethod resource
+// Represents a single encounter method resource
 type EncounterMethod struct {
 	ID    int    `json:"id"`
 	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Order int `json:"order"`
+	Order int    `json:"order"`
+	Names []Name `json:"names"`
 }
 
-// Represents a single EncounterCondition resource
+// Represents a single encounter condition resource
 type EncounterCondition struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Values []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"values"`
+	ID     int             `json:"id"`
+	Name   string          `json:"name"`
+	Names  []Name          `json:"names"`
+	Values []NamedResource `json:"values"`
 }
 
-// Represents a single EncounterConditionValue resource
+// Represents a single encounter condition value resource
 type EncounterConditionValue struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Names []struct {
-		Language struct {
-			Name string `json:"name"`
-			URL  string `json:"url"`
-		} `json:"language"`
-		Name string `json:"name"`
-	} `json:"names"`
-	Values []struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"values"`
+	ID        int           `json:"id"`
+	Name      string        `json:"name"`
+	Condition NamedResource `json:"condition"`
+	Names     []Name        `json:"names"`
 }
