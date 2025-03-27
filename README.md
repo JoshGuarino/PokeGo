@@ -41,17 +41,17 @@ pokemonGroup := pokemon.NewPokemonGroup()
 Below is a list of all the resource groups available in PokeGo. Each resource group has a set of methods that can be used to interact with the PokeAPI.
 | Group | Usage Docs | PokeAPI Docs |
 | - | - | - |
-| Berries | [BERRIES.md](pkg/resources/berries/BERRIES.md) | https://pokeapi.co/docs/v2#berries-section |
-| Contests | [CONTESTS.md](pkg/resources/contests/CONTESTS.md) | https://pokeapi.co/docs/v2#contests-section |
-| Encounters | [ENCOUNTERS.md](pkg/resources/encounters/ENCOUNTERS.md) | https://pokeapi.co/docs/v2#encounters-section |
-| Evolution | [EVOLUTION.md](pkg/resources/evolution/EVOLUTION.md) | https://pokeapi.co/docs/v2#evolution-section |
-| Games | [GAMES.md](pkg/resources/games/GAMES.md) | https://pokeapi.co/docs/v2#games-section |
-| Items | [ITEMS.md](pkg/resources/items/ITEMS.md) | https://pokeapi.co/docs/v2#items-section |
-| Locations | [LOCATIONS.md](pkg/resources/locations/LOCATIONS.md) | https://pokeapi.co/docs/v2#locations-section |
-| Machines | [MACHINES.md](pkg/resources/machines/MACHINES.md) | https://pokeapi.co/docs/v2#machines-section |
-| Moves | [MOVES.md](pkg/resources/moves/MOVES.md) | https://pokeapi.co/docs/v2#moves-section |
-| Pokemon | [POKEMON.md](pkg/resources/pokemon/POKEMON.md) | https://pokeapi.co/docs/v2#pokemon-section |
-| Utility | [UTILITY.md](pkg/resources/utility/UTILITY.md) | https://pokeapi.co/docs/v2#utility-section |
+| Berries | [BERRIES.md](docs/BERRIES.md) | https://pokeapi.co/docs/v2#berries-section |
+| Contests | [CONTESTS.md](docs/CONTESTS.md) | https://pokeapi.co/docs/v2#contests-section |
+| Encounters | [ENCOUNTERS.md](docs/ENCOUNTERS.md) | https://pokeapi.co/docs/v2#encounters-section |
+| Evolution | [EVOLUTION.md](docs/EVOLUTION.md) | https://pokeapi.co/docs/v2#evolution-section |
+| Games | [GAMES.md](docs/GAMES.md) | https://pokeapi.co/docs/v2#games-section |
+| Items | [ITEMS.md](docs/ITEMS.md) | https://pokeapi.co/docs/v2#items-section |
+| Locations | [LOCATIONS.md](docs/LOCATIONS.md) | https://pokeapi.co/docs/v2#locations-section |
+| Machines | [MACHINES.md](docs/MACHINES.md) | https://pokeapi.co/docs/v2#machines-section |
+| Moves | [MOVES.md](docs/MOVES.md) | https://pokeapi.co/docs/v2#moves-section |
+| Pokemon | [POKEMON.md](docs/POKEMON.md) | https://pokeapi.co/docs/v2#pokemon-section |
+| Utility | [UTILITY.md](docs/UTILITY.md) | https://pokeapi.co/docs/v2#utility-section |
 
 ## Pagination
 
@@ -77,53 +77,4 @@ The cache is initialized when the client is created or when a resource group is 
 Only one instance of the cache is created and shared between the client and all resource groups upon there initialization.
 Any subsequent intializations will not create a new cache but reference the existing cache.
 A pointer reference to the initialized cache is stored in the client and each resource group.
-
-##### The cache can be cleared by calling the `Clear()` method:
-
-```go
-// Main client example
-client.Cache.Clear()
-
-// Individual resource group example
-resourceGroup.Cache.Clear()
-```
-
-##### The active status of the cache can be set by calling the `setActive()` method:
-
-```go
-// Main client example
-client.Cache.SetActive(false)
-
-// Individual resource group example
-resourceGroup.Cache.SetActive(false)
-```
-
-##### The active status of the cache can be checked by calling the `GetActive()` method:
-
-```go
-// Main client example
-client.Cache.GetActive()
-
-// Individual resource group example
-resourceGroup.Cache.GetActive()
-```
-
-##### The expiration time of the cache can be set by calling the `SetExpiration()` method:
-
-```go
-// Main client example
-client.Cache.SetExpiration(48 * time.Hour)
-
-// Individual resource group example
-resourceGroup.Cache.SetExpiration(48 * time.Hour)
-```
-
-##### The expiration time of the cache can be checked by calling the `GetExpiration()` method:
-
-```go
-// Main client example
-client.Cache.GetExpiration()
-
-// Individual resource group example
-resourceGroup.Cache.GetExpiration()
-```
+For more information on the cache, see the [cache](docs/CACHE.md) documentation.

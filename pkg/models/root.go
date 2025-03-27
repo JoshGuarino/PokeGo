@@ -113,7 +113,7 @@ type GenerationGameIndex struct {
 	Gereration NamedResource `json:"generation"`
 }
 
-// Represents a single machine that teaches a move
+// Represents version details about a machine
 type MachineVersionDetail struct {
 	Machine      Resource      `json:"machine"`
 	VersionGroup NamedResource `json:"version_group"`
