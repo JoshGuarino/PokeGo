@@ -25,7 +25,7 @@ func TestGet(t *testing.T) {
 	assert.True(t, ok)
 }
 
-func TestCear(t *testing.T) {
+func TestClear(t *testing.T) {
 	cache.Set("key", "value")
 	cache.Clear()
 	value, ok := cache.Get("key")
@@ -43,10 +43,12 @@ func TestDelete(t *testing.T) {
 
 func TestSetExpiration(t *testing.T) {
 	cache.SetExpiration(1 * time.Second)
+	expiration := cache.GetExpiration()
 	cache.Set("key", "value")
 	time.Sleep(2 * time.Second)
 	value, ok := cache.Get("key")
 	assert.Equal(t, nil, value, "Expected value to be nil")
+	assert.Equal(t, 1*time.Second, expiration, "Unexpected expiration time")
 	assert.False(t, ok)
 }
 
