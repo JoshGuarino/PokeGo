@@ -72,7 +72,9 @@ pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
 ## Caching
 
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI.
-The cache is set to expire after 24 hours as resources in the PokeAPI are mostly static.
+The cache is set to expire after 24 hours by default, as resources in the PokeAPI are mostly static.
+You are able to disable the cache or change the expiration time of a cached resource.
+I would reccommend against disabling it as it will result in a large number of requests to the PokeAPI and may result in rate limiting.
 The cache is initialized when the client is created or when a resource group is created.
 Only one instance of the cache is created and shared between the client and all resource groups upon there initialization.
 Any subsequent intializations will not create a new cache but reference the existing cache.

@@ -1,6 +1,11 @@
 # Cache
 
-The following is a set of available methods for the cache used in the PokeGo client.
+The cache is initialized when the client is created or when a resource group is created.
+Only one instance of the cache is created and shared between the client and all resource groups upon there initialization.
+Any subsequent intializations will not create a new cache but reference the existing cache.
+A pointer reference to the initialized cache is stored in the client and each resource group.
+
+## The following is a set of available methods for the cache used in the PokeGo client.
 
 ##### The cache can be cleared by calling the `Clear()` method:
 
