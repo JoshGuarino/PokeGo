@@ -35,3 +35,13 @@ func TestGetSpecificResource(t *testing.T) {
 	assert.IsType(t, &models.Pokemon{}, resource, "Unexpected type parameter returned")
 	assert.NoError(t, err, "Expected error to nil")
 }
+
+func TestGetResourceSlice(t *testing.T) {
+	url := endpoints.Pokemon + "1" + "/encounters"
+	key := url
+	resourceSlice, err := GetResourceSlice[models.LocationAreaEncounter](url)
+	data, _ := cache.C.Get(key)
+	assert.Equal(t, resourceSlice, data, "Expected resource to be cached")
+	assert.IsType(t, []*models.LocationAreaEncounter{}, resourceSlice, "Unexpected type parameter returned")
+	assert.NoError(t, err, "Expected error to nil")
+}
