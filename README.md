@@ -76,3 +76,7 @@ The cache is set to expire after 24 hours by default, as resources in the PokeAP
 You are able to disable the cache or change the expiration time of a cached resource.
 I would reccommend against disabling it as it will result in a large number of requests to the PokeAPI and may result in rate limiting.
 For more information on the cache, see the [CACHE.md](docs/CACHE.md) documentation.
+
+## License
+
+PokeGo is licensed under the [BSD 3-Clause License](LICENSE).
