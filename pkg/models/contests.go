@@ -24,7 +24,7 @@ type ContestEffect struct {
 	FlavorTextEntries []FlavorText `json:"flavor_text_entries"`
 }
 
-// Represents a single super contest resource
+// Represents a single super contest effect resource
 type SuperContestEffect struct {
 	ID                int             `json:"id"`
 	Appeal            int             `json:"appeal"`

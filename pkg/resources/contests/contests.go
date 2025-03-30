@@ -36,7 +36,7 @@ func NewContestsGroup() Contests {
 	}
 }
 
-// Return a single ContestsType resource by name or ID
+// Return a single ContestType resource by name or ID
 func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 	contestType, err := request.GetResource[models.ContestType](endpoints.ContestType + nameOrId)
 	if err != nil {
@@ -45,7 +45,7 @@ func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 	return contestType, nil
 }
 
-// Return a list of ContestsType resource
+// Return a list of ContestType resource
 func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResourceList, error) {
 	contestTypeList, err := request.GetResourceList[models.NamedResourceList](endpoints.ContestType, limit, offset)
 	if err != nil {
@@ -54,7 +54,7 @@ func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResour
 	return contestTypeList, nil
 }
 
-// Return a single ContestsEffect resource by ID
+// Return a single ContestEffect resource by ID
 func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 	contestEffect, err := request.GetResource[models.ContestEffect](endpoints.ContestEffect + id)
 	if err != nil {
@@ -63,7 +63,7 @@ func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 	return contestEffect, nil
 }
 
-// Return a list of ContestsEffect resource
+// Return a list of ContestEffect resource
 func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceList, error) {
 	contestEffectList, err := request.GetResourceList[models.ResourceList](endpoints.ContestEffect, limit, offest)
 	if err != nil {
@@ -72,7 +72,7 @@ func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceL
 	return contestEffectList, nil
 }
 
-// Return a single SuperContestsEffect resource by ID
+// Return a single SuperContestEffect resource by ID
 func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, error) {
 	superContestEffect, err := request.GetResource[models.SuperContestEffect](endpoints.SuperContestEffect + id)
 	if err != nil {
