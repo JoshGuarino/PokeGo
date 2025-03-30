@@ -72,7 +72,7 @@ func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.Na
 	return encounterConditionList, nil
 }
 
-// Return a single EncounterCondition resource by name or ID
+// Return a single EncounterConditionValue resource by name or ID
 func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.EncounterConditionValue, error) {
 	encounterConditionValue, err := request.GetResource[models.EncounterConditionValue](endpoints.EncounterConditionValue + nameOrId)
 	if err != nil {
@@ -81,7 +81,7 @@ func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.Encount
 	return encounterConditionValue, nil
 }
 
-// Return a list of EncounterCondition resource
+// Return a list of EncounterConditionValue resource
 func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*models.NamedResourceList, error) {
 	encounterConditionValueList, err := request.GetResourceList[models.NamedResourceList](endpoints.EncounterConditionValue, limit, offset)
 	if err != nil {

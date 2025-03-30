@@ -45,7 +45,7 @@ func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 	return contestType, nil
 }
 
-// Return a list of Berry resource
+// Return a list of ContestsType resource
 func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResourceList, error) {
 	contestTypeList, err := request.GetResourceList[models.NamedResourceList](endpoints.ContestType, limit, offset)
 	if err != nil {
@@ -63,7 +63,7 @@ func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 	return contestEffect, nil
 }
 
-// Return a list of Berry resource
+// Return a list of ContestsEffect resource
 func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceList, error) {
 	contestEffectList, err := request.GetResourceList[models.ResourceList](endpoints.ContestEffect, limit, offest)
 	if err != nil {
@@ -81,7 +81,7 @@ func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, 
 	return superContestEffect, nil
 }
 
-// Return a list of Berry resource
+// Return a list of SuperContestEffect resource
 func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.ResourceList, error) {
 	superContestEffectList, err := request.GetResourceList[models.ResourceList](endpoints.SuperContestEffect, limit, offest)
 	if err != nil {

@@ -101,7 +101,7 @@ func (l Locations) GetRegion(nameOrId string) (*models.Region, error) {
 	return Region, nil
 }
 
-// Return a list of PalParkArea resource
+// Return a list of Region resource
 func (l Locations) GetRegionList(limit int, offset int) (*models.NamedResourceList, error) {
 	regionList, err := request.GetResourceList[models.NamedResourceList](endpoints.Region, limit, offset)
 	if err != nil {
