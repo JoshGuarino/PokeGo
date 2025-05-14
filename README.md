@@ -77,6 +77,11 @@ You are able to disable the cache or change the expiration time of a cached reso
 I would reccommend against disabling it as it will result in a large number of requests to the PokeAPI and may result in rate limiting.
 For more information on the cache, see the [CACHE.md](docs/CACHE.md) documentation.
 
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request if you have any suggestions or improvements.
+See the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+
 ## License
 
 PokeGo is licensed under the [BSD 3-Clause License](LICENSE).
