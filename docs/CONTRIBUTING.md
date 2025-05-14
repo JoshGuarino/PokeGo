@@ -9,7 +9,7 @@ I especially appreciate any help keeping up with endpoint and data model changes
 1. [Fork the project to your own GitHub profile.](https://help.github.com/articles/fork-a-repo/)
 2. [Clone the forked repository](https://help.github.com/articles/cloning-a-repository/) onto your local machine.
 3. `git remote add upstream https://github.com/JoshGuarino/PokeGo` to create a remote handle to the upstream repo.
-4. `git pull upstream master` to ensure you have the latest main code.
+4. `git pull upstream main` to ensure you have the latest main code.
 5. `git checkout -b branch-name` (replacing branch-name with a suitable name) to create a branch for your changes.
 
 ### Push it
