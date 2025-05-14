@@ -80,7 +80,7 @@ For more information on the cache, see the [CACHE.md](docs/CACHE.md) documentati
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request if you have any suggestions or improvements.
-See the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
+See the [CONTRIBUTING.md](docs/CONTRIBUTING.md) file for more information.
 
 ## License
 
