@@ -14,7 +14,7 @@ I especially appreciate any help keeping up with endpoint and data model changes
 
 ### Push it
 1. `git add .` to stage your changed files.
-2. `git commit -m 'commit message'` (replacing commit message with a description work done) to commit your changes.
+2. `git commit -m 'commit message'` (replacing commit message with a description of work done) to commit your changes.
 3. `git push my-fork-name branch-name` to push your changes to your own GitHub repository.
 4. Go to the PokeGo GitHub repo and you should see your recently pushed branches.
 5. Follow GitHub's instructions to submit a pull request.
