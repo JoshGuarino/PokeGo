@@ -1,5 +1,10 @@
 # PokeGo <a href="https://pokeapi.co/api/v2/pokemon/charmander"><img src='https://veekun.com/dex/media/pokemon/global-link/4.png' height=100px/></a>
 
+[![actions](https://github.com/JoshGuarino/PokeGo/actions/workflows/main.yml/badge.svg)](https://github.com/JoshGuarino/PokeGo/actions/workflows/main.yml)
+![Release](https://img.shields.io/github/v/release/JoshGuarino/PokeGo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/JoshGuarino/PokeGo?style=flat)](https://goreportcard.com/report/github.com/JoshGuarino/PokeGo)
+[![license](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg "license")](https://github.com/JoshGuarino/PokeGo/blob/main/LICENSE)
+
 PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/) v2.
 
 ## Installation
