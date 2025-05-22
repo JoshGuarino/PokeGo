@@ -1,6 +1,6 @@
 package models
 
-// Root is a list of availble resource endpoints
+// Root is a list of available resource endpoints
 type Root struct {
 	Ability                 string `json:"ability"`
 	Berry                   string `json:"berry"`
