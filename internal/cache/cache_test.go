@@ -53,7 +53,7 @@ func TestSetExpiration(t *testing.T) {
 }
 
 func TestGetActive(t *testing.T) {
-	assert.True(t, cache.GetActive(), "Expected intial active value to be true")
+	assert.True(t, cache.GetActive(), "Expected initial active value to be true")
 }
 
 func TestSetActive(t *testing.T) {
