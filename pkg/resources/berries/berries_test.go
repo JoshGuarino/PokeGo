@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -22,6 +23,7 @@ func TestGetBerry(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Berry resource")
 	assert.Equal(t, "cheri", rByName.Name, "Unexpected name for Berry resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Berry{}, rById, "Expected Berry instance to be returned")
 }
 
 func TestGetBerryList(t *testing.T) {
@@ -30,6 +32,7 @@ func TestGetBerryList(t *testing.T) {
 	assert.Equal(t, "cheri", rList.Results[0].Name, "Unexpected Name for Berry resource")
 	assert.Equal(t, "chesto", rPage.Results[0].Name, "Unexpected Name for Berry resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
 func TestGetBerryUrl(t *testing.T) {
@@ -45,6 +48,7 @@ func TestGetBerryFirmness(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for BerryFirmness resource")
 	assert.Equal(t, "very-soft", rByName.Name, "Unexpected Name for BerryFirmness resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.BerryFirmness{}, rById, "Expected BerryFirmness instance to be returned")
 }
 
 func TestGetBerryFirmnessList(t *testing.T) {
@@ -53,6 +57,7 @@ func TestGetBerryFirmnessList(t *testing.T) {
 	assert.Equal(t, "very-soft", rList.Results[0].Name, "Unexpected Name for BerryFirmness resource")
 	assert.Equal(t, "soft", rPage.Results[0].Name, "Unexpected Name for BerryFirmness resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
 func TestGetBerryFirmnessUrl(t *testing.T) {
@@ -68,6 +73,7 @@ func TestGetBerryFlavor(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for BerryFlavor resource")
 	assert.Equal(t, "spicy", rByName.Name, "Unexpected Name for BerryFlavor resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.BerryFlavor{}, rById, "Expected BerryFlavor instance to be returned")
 }
 
 func TestGetBerryFlavorList(t *testing.T) {
@@ -76,6 +82,7 @@ func TestGetBerryFlavorList(t *testing.T) {
 	assert.Equal(t, "spicy", rList.Results[0].Name, "Unexpected Name for BerryFlavor resource")
 	assert.Equal(t, "dry", rPage.Results[0].Name, "Unexpected Name for BerryFlavor resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
 func TestGetBerryFlavorUrl(t *testing.T) {
