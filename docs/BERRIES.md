@@ -65,5 +65,5 @@ berryFlavor, err := berriesGroup.GetBerryFlavor("1")
 berryFlavorList, err := client.Berries.GetBerryFlavorList(limit, offset)
 
 // Main client example 
-berryFlavorList, err := berriesGroup.GetBerryFlavorList(20, 20)
+berryFlavorList, err := berriesGroup.GetBerryFlavorList(limit, offset)
 ```
