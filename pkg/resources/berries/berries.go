@@ -13,10 +13,13 @@ import (
 type IBerries interface {
 	GetBerry(nameOrId string) (*models.Berry, error)
 	GetBerryList(limit int, offset int) (*models.NamedResourceList, error)
+	GetBerryUrl() string
 	GetBerryFirmness(nameOrId string) (*models.BerryFirmness, error)
 	GetBerryFirmnessList(limit int, offset int) (*models.NamedResourceList, error)
+	GetBerryFirmnessUrl() string
 	GetBerryFlavor(nameOrId string) (*models.BerryFlavor, error)
 	GetBerryFlavorList(limit int, offset int) (*models.NamedResourceList, error)
+	GetBerryFlavorUrl() string
 }
 
 // Berries group struct
