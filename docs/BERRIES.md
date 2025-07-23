@@ -17,11 +17,11 @@ berry, err := berriesGroup.GetBerry("cheri")
 ##### Get list of Berry resource:
 
 ```go
-// Main client example returning first page of 20 results
-berryList, err := client.Berries.GetBerryList(20, 0)
+// Main client example
+berryList, err := client.Berries.GetBerryList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-berryList, err := berriesGroup.GetBerryList(20, 20)
+// Individual resource group example 
+berryList, err := berriesGroup.GetBerryList(limit, offset)
 ```
 
 ## [BerryFirmness](https://pokeapi.co/docs/v2#berry-firmnesses)
@@ -39,11 +39,11 @@ berryFirmness, err := berriesGroup.GetBerryFirmness("1")
 ##### Get list of Berry Firmness resource:
 
 ```go
-// Main client example returning first page of 20 results
-berryFirmnessList, err := client.Berries.GetBerryFirmnessList(20, 0)
+// Main client example returning 
+berryFirmnessList, err := client.Berries.GetBerryFirmnessList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(20, 20)
+// Individual resource group example 
+berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(limit, offset)
 ```
 
 ## [BerryFlavor](https://pokeapi.co/docs/v2#berry-flavors)
@@ -61,9 +61,9 @@ berryFlavor, err := berriesGroup.GetBerryFlavor("1")
 ##### Get list of Berry Flavor resource:
 
 ```go
-// Main client example returning first page of 20 results
-berryFlavorList, err := client.Berries.GetBerryFlavorList(20, 0)
+// Main client example 
+berryFlavorList, err := client.Berries.GetBerryFlavorList(limit, offset)
 
-// Main client example returning first page of 20 results
+// Main client example 
 berryFlavorList, err := berriesGroup.GetBerryFlavorList(20, 20)
 ```
