@@ -11,7 +11,7 @@ import (
 )
 
 func TestGet(t *testing.T) {
-	body, err := Get(endpoints.BaseUrl)
+	body, err := Get(endpoints.BaseURL)
 	assert.IsType(t, []byte{}, body, "Expected slice of bytes to be returned")
 	assert.NoError(t, err, "Expected error to nil")
 }

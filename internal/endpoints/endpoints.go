@@ -1,76 +1,98 @@
 package endpoints
 
+import (
+	"fmt"
+	"testing"
+)
+
 const (
 	// PokeApi base URL
-	BaseUrl = "https://pokeapi.co/api/v2"
+	ProdBaseURL = "https://pokeapi.co/api/v2"
+
+	// Staging base URL
+	StageBaseURL = "https://staging.pokeapi.co/api/v2"
 
 	// Berry group resource endpoints
-	Berry         = BaseUrl + "/berry/"
-	BerryFirmness = BaseUrl + "/berry-firmness/"
-	BerryFlavor   = BaseUrl + "/berry-flavor/"
+	Berry         = "/berry/"
+	BerryFirmness = "/berry-firmness/"
+	BerryFlavor   = "/berry-flavor/"
 
 	// Contests group resource endpoints
-	ContestType        = BaseUrl + "/contest-type/"
-	ContestEffect      = BaseUrl + "/contest-effect/"
-	SuperContestEffect = BaseUrl + "/super-contest-effect/"
+	ContestType        = ProdBaseURL + "/contest-type/"
+	ContestEffect      = ProdBaseURL + "/contest-effect/"
+	SuperContestEffect = ProdBaseURL + "/super-contest-effect/"
 
 	// Encounters group resource endpoints
-	EncounterMethod         = BaseUrl + "/encounter-method/"
-	EncounterCondition      = BaseUrl + "/encounter-condition/"
-	EncounterConditionValue = BaseUrl + "/encounter-condition-value/"
+	EncounterMethod         = ProdBaseURL + "/encounter-method/"
+	EncounterCondition      = ProdBaseURL + "/encounter-condition/"
+	EncounterConditionValue = ProdBaseURL + "/encounter-condition-value/"
 
 	// Evolution group resource endpoints
-	EvolutionChain   = BaseUrl + "/evolution-chain/"
-	EvolutionTrigger = BaseUrl + "/evolution-trigger/"
+	EvolutionChain   = ProdBaseURL + "/evolution-chain/"
+	EvolutionTrigger = ProdBaseURL + "/evolution-trigger/"
 
 	// Games group resource endpoints
-	Generation   = BaseUrl + "/generation/"
-	Pokedex      = BaseUrl + "/pokedex/"
-	Version      = BaseUrl + "/version/"
-	VersionGroup = BaseUrl + "/version-group/"
+	Generation   = ProdBaseURL + "/generation/"
+	Pokedex      = ProdBaseURL + "/pokedex/"
+	Version      = ProdBaseURL + "/version/"
+	VersionGroup = ProdBaseURL + "/version-group/"
 
 	// Items group resource endpoints
-	Item            = BaseUrl + "/item/"
-	ItemAttribute   = BaseUrl + "/item-attribute/"
-	ItemCategory    = BaseUrl + "/item-category/"
-	ItemFlingEffect = BaseUrl + "/item-fling-effect/"
-	ItemPocket      = BaseUrl + "/item-pocket/"
+	Item            = ProdBaseURL + "/item/"
+	ItemAttribute   = ProdBaseURL + "/item-attribute/"
+	ItemCategory    = ProdBaseURL + "/item-category/"
+	ItemFlingEffect = ProdBaseURL + "/item-fling-effect/"
+	ItemPocket      = ProdBaseURL + "/item-pocket/"
 
 	// Locations group resource endpoints
-	Location     = BaseUrl + "/location/"
-	LocationArea = BaseUrl + "/location-area/"
-	PalParkArea  = BaseUrl + "/pal-park-area/"
-	Region       = BaseUrl + "/region/"
+	Location     = ProdBaseURL + "/location/"
+	LocationArea = ProdBaseURL + "/location-area/"
+	PalParkArea  = ProdBaseURL + "/pal-park-area/"
+	Region       = ProdBaseURL + "/region/"
 
 	// Machines group resource endpoints
-	Machine = BaseUrl + "/machine/"
+	Machine = ProdBaseURL + "/machine/"
 
 	// Moves group resource endpoints
-	Move            = BaseUrl + "/move/"
-	MoveAilment     = BaseUrl + "/move-ailment/"
-	MoveBattleStyle = BaseUrl + "/move-battle-style/"
-	MoveCategory    = BaseUrl + "/move-category/"
-	MoveDamageClass = BaseUrl + "/move-damage-class/"
-	MoveLearnMethod = BaseUrl + "/move-learn-method/"
-	MoveTarget      = BaseUrl + "/move-target/"
+	Move            = ProdBaseURL + "/move/"
+	MoveAilment     = ProdBaseURL + "/move-ailment/"
+	MoveBattleStyle = ProdBaseURL + "/move-battle-style/"
+	MoveCategory    = ProdBaseURL + "/move-category/"
+	MoveDamageClass = ProdBaseURL + "/move-damage-class/"
+	MoveLearnMethod = ProdBaseURL + "/move-learn-method/"
+	MoveTarget      = ProdBaseURL + "/move-target/"
 
 	// Pokemon group resource endpoints
-	Ability        = BaseUrl + "/ability/"
-	Characteristic = BaseUrl + "/characteristic/"
-	EggGroup       = BaseUrl + "/egg-group/"
-	Gender         = BaseUrl + "/gender/"
-	GrowthRate     = BaseUrl + "/growth-rate/"
-	Nature         = BaseUrl + "/nature/"
-	PokeathlonStat = BaseUrl + "/pokeathlon-stat/"
-	Pokemon        = BaseUrl + "/pokemon/"
-	PokemonColor   = BaseUrl + "/pokemon-color/"
-	PokemonForm    = BaseUrl + "/pokemon-form/"
-	PokemonHabitat = BaseUrl + "/pokemon-habitat/"
-	PokemonShape   = BaseUrl + "/pokemon-shape/"
-	PokemonSpecies = BaseUrl + "/pokemon-species/"
-	Stat           = BaseUrl + "/stat/"
-	Type           = BaseUrl + "/type/"
+	Ability        = ProdBaseURL + "/ability/"
+	Characteristic = ProdBaseURL + "/characteristic/"
+	EggGroup       = ProdBaseURL + "/egg-group/"
+	Gender         = ProdBaseURL + "/gender/"
+	GrowthRate     = ProdBaseURL + "/growth-rate/"
+	Nature         = ProdBaseURL + "/nature/"
+	PokeathlonStat = ProdBaseURL + "/pokeathlon-stat/"
+	Pokemon        = ProdBaseURL + "/pokemon/"
+	PokemonColor   = ProdBaseURL + "/pokemon-color/"
+	PokemonForm    = ProdBaseURL + "/pokemon-form/"
+	PokemonHabitat = ProdBaseURL + "/pokemon-habitat/"
+	PokemonShape   = ProdBaseURL + "/pokemon-shape/"
+	PokemonSpecies = ProdBaseURL + "/pokemon-species/"
+	Stat           = ProdBaseURL + "/stat/"
+	Type           = ProdBaseURL + "/type/"
 
 	// Utility group resource endpoints
-	Language = BaseUrl + "/language/"
+	Language = ProdBaseURL + "/language/"
 )
+
+// PokeAPI base URL
+var BaseURL string
+
+// Initialize function
+func init() {
+	// If testing, use the staging URL
+	if testing.Testing() {
+		BaseURL = StageBaseURL
+	} else {
+		BaseURL = ProdBaseURL
+	}
+	fmt.Println("Base URL initialized ->", BaseURL)
+}
