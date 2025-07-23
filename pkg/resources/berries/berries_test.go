@@ -35,8 +35,8 @@ func TestGetBerryList(t *testing.T) {
 	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
-func TestGetBerryUrl(t *testing.T) {
-	berryURL := berries.GetBerryUrl()
+func TestGetBerryURL(t *testing.T) {
+	berryURL := berries.GetBerryURL()
 	assert.Equal(t, url+endpoints.Berry, berryURL, "Unexpected Berry resource URL")
 	assert.IsType(t, "", berryURL, "Expected Berry resource URL to be a string")
 }
@@ -60,8 +60,8 @@ func TestGetBerryFirmnessList(t *testing.T) {
 	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
-func TestGetBerryFirmnessUrl(t *testing.T) {
-	berryFirmnessURL := berries.GetBerryFirmnessUrl()
+func TestGetBerryFirmnessURL(t *testing.T) {
+	berryFirmnessURL := berries.GetBerryFirmnessURL()
 	assert.Equal(t, url+endpoints.BerryFirmness, berryFirmnessURL, "Unexpected BerryFirmness resource URL")
 	assert.IsType(t, "", berryFirmnessURL, "Expected BerryFirmness resource URL to be a string")
 }
@@ -85,8 +85,8 @@ func TestGetBerryFlavorList(t *testing.T) {
 	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
 
-func TestGetBerryFlavorUrl(t *testing.T) {
-	berryFlavorURL := berries.GetBerryFlavorUrl()
+func TestGetBerryFlavorURL(t *testing.T) {
+	berryFlavorURL := berries.GetBerryFlavorURL()
 	assert.Equal(t, url+endpoints.BerryFlavor, berryFlavorURL, "Unexpected BerryFlavor resource URL")
 	assert.IsType(t, "", berryFlavorURL, "Expected BerryFlavor resource URL to be a string")
 }

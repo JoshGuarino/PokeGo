@@ -18,9 +18,9 @@ const (
 	BerryFlavor   = "/berry-flavor/"
 
 	// Contests group resource endpoints
-	ContestType        = ProdBaseURL + "/contest-type/"
-	ContestEffect      = ProdBaseURL + "/contest-effect/"
-	SuperContestEffect = ProdBaseURL + "/super-contest-effect/"
+	ContestType        = "/contest-type/"
+	ContestEffect      = "/contest-effect/"
+	SuperContestEffect = "/super-contest-effect/"
 
 	// Encounters group resource endpoints
 	EncounterMethod         = ProdBaseURL + "/encounter-method/"

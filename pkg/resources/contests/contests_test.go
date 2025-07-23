@@ -8,6 +8,7 @@ import (
 )
 
 var contests IContests = NewContestsGroup()
+var url string = endpoints.BaseURL
 
 func TestNewContestsGroup(t *testing.T) {
 	contests := NewContestsGroup()
@@ -31,6 +32,12 @@ func TestGetContestTypeList(t *testing.T) {
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 }
 
+func TestGetContestTypeURL(t *testing.T) {
+	contestTypeURL := contests.GetContestTypeURL()
+	assert.Equal(t, url+endpoints.ContestType, contestTypeURL, "Unexpected ContestType resource URL")
+	assert.IsType(t, "", contestTypeURL, "Expected ContestType resource URL to be a string")
+}
+
 func TestGetContestEffect(t *testing.T) {
 	rById, _ := contests.GetContestEffect("1")
 	_, err := contests.GetContestEffect("test")
@@ -41,9 +48,15 @@ func TestGetContestEffect(t *testing.T) {
 func TestGetContestEffectList(t *testing.T) {
 	rList, _ := contests.GetContestEffectList(20, 0)
 	rPage, _ := contests.GetContestEffectList(1, 1)
-	assert.Equal(t, endpoints.ContestEffect+"1/", rList.Results[0].URL, "Unexpected URL for ContestEffect resource")
-	assert.Equal(t, endpoints.ContestEffect+"2/", rPage.Results[0].URL, "Unexpected URL for ContestEffect resource")
+	assert.Equal(t, contests.GetContestEffectURL()+"1/", rList.Results[0].URL, "Unexpected URL for ContestEffect resource")
+	assert.Equal(t, contests.GetContestEffectURL()+"2/", rPage.Results[0].URL, "Unexpected URL for ContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+}
+
+func TestGetContestEffectURL(t *testing.T) {
+	contestEffectURL := contests.GetContestEffectURL()
+	assert.Equal(t, url+endpoints.ContestEffect, contestEffectURL, "Unexpected ContestEffect resource URL")
+	assert.IsType(t, "", contestEffectURL, "Expected ContestEffect resource URL to be a string")
 }
 
 func TestGetSuperContestEffect(t *testing.T) {
@@ -56,7 +69,13 @@ func TestGetSuperContestEffect(t *testing.T) {
 func TestGetSuperContestEffectList(t *testing.T) {
 	rList, _ := contests.GetSuperContestEffectList(20, 0)
 	rPage, _ := contests.GetSuperContestEffectList(1, 1)
-	assert.Equal(t, endpoints.SuperContestEffect+"1/", rList.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
-	assert.Equal(t, endpoints.SuperContestEffect+"2/", rPage.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
+	assert.Equal(t, contests.GetSuperContestEffectURL()+"1/", rList.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
+	assert.Equal(t, contests.GetSuperContestEffectURL()+"2/", rPage.Results[0].URL, "Unexpected URL for SuperContestEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+}
+
+func TestGetSuperContestEffectURL(t *testing.T) {
+	superContestEffectURL := contests.GetSuperContestEffectURL()
+	assert.Equal(t, url+endpoints.SuperContestEffect, superContestEffectURL, "Unexpected SuperContestEffect resource URL")
+	assert.IsType(t, "", superContestEffectURL, "Expected SuperContestEffect resource URL to be a string")
 }
