@@ -27,10 +27,10 @@ contestTypeList, err := contestsGroup.GetContestTypeList(limit, offset)
 ##### Get URL for Contest Type resource:
 ```go
 // Main client example
-contestTypeURL, err := client.Contests.GetContestTypeURL()
+contestTypeURL := client.Contests.GetContestTypeURL()
 
 // Individual resource group example
-contestTypeURL, err := contestsGroup.GetContestTypeURL()
+contestTypeURL := contestsGroup.GetContestTypeURL()
 ```
 
 ## [ContestEffect](https://pokeapi.co/docs/v2#contest-effects)
@@ -58,10 +58,10 @@ contestEffectList, err := contestsGroup.GetContestEffectList(limit, offset)
 ##### Get URL for Contest Effect resource:
 ```go
 // Main client example
-contestEffectURL, err := client.Contests.GetContestEffectURL()
+contestEffectURL := client.Contests.GetContestEffectURL()
 
 // Individual resource group example
-contestEffectURL, err := contestsGroup.GetContestEffectURL()
+contestEffectURL := contestsGroup.GetContestEffectURL()
 ```
 
 ## [SuperContestEffect](https://pokeapi.co/docs/v2#super-contest-effects)
@@ -89,8 +89,8 @@ superContestEffectList, err := contestsGroup.GetSuperContestEffectList(limit, of
 ##### Get URL for Super Contest Effect resource:
 ```go
 // Main client example
-superContestEffectURL, err := client.Contests.GetSuperContestEffectURL()
+superContestEffectURL := client.Contests.GetSuperContestEffectURL()
 
 // Individual resource group example
-superContestEffectURL, err := contestsGroup.GetSuperContestEffectURL()
+superContestEffectURL := contestsGroup.GetSuperContestEffectURL()
 ```

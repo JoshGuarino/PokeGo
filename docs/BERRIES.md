@@ -27,10 +27,10 @@ berryList, err := berriesGroup.GetBerryList(limit, offset)
 ##### Get URL for Berry resource:
 ```go
 // Main client example
-berryURL, err := client.Berries.GetBerryURL()
+berryURLr := client.Berries.GetBerryURL()
 
 // Individual resource group example
-berryURL, err := berriesGroup.GetBerryURL()
+berryURL := berriesGroup.GetBerryURL()
 ```
 
 ## [BerryFirmness](https://pokeapi.co/docs/v2#berry-firmnesses)
@@ -58,10 +58,10 @@ berryFirmnessList, err := berriesGroup.GetBerryFirmnessList(limit, offset)
 ##### Get URL for Berry Firmness resource:
 ```go
 // Main client example
-berryFirmnessURL, err := client.Berries.GetBerryFirmnessURL()
+berryFirmnessURL := client.Berries.GetBerryFirmnessURL()
 
 // Individual resource group example
-berryFirmnessURL, err := berriesGroup.GetBerryFirmnessURL()
+berryFirmnessURL := berriesGroup.GetBerryFirmnessURL()
 ```
 
 ## [BerryFlavor](https://pokeapi.co/docs/v2#berry-flavors)
@@ -89,8 +89,8 @@ berryFlavorList, err := berriesGroup.GetBerryFlavorList(limit, offset)
 ##### Get URL for Berry Flavor resource:
 ```go
 // Main client example
-berryFlavorURL, err := client.Berries.GetBerryFlavorURL()
+berryFlavorURL := client.Berries.GetBerryFlavorURL()
 
 // Individual resource group example
-berryFlavorURL, err := berriesGroup.GetBerryFlavorURL()
+berryFlavorURL := berriesGroup.GetBerryFlavorURL()
 ```
