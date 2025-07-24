@@ -28,8 +28,8 @@ const (
 	EncounterConditionValue = "/encounter-condition-value/"
 
 	// Evolution group resource endpoints
-	EvolutionChain   = ProdBaseURL + "/evolution-chain/"
-	EvolutionTrigger = ProdBaseURL + "/evolution-trigger/"
+	EvolutionChain   = "/evolution-chain/"
+	EvolutionTrigger = "/evolution-trigger/"
 
 	// Games group resource endpoints
 	Generation   = ProdBaseURL + "/generation/"

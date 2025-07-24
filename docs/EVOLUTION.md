@@ -18,10 +18,19 @@ evolutionChain, err := evolutionsGroup.GetEvolutionChain("1")
 
 ```go
 // Main client example returning first page of 20 results
-evolutionChainList, err := client.Evolutions.GetEvolutionChainList(20, 0)
+evolutionChainList, err := client.Evolutions.GetEvolutionChainList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-evolutionChainList, err := evolutionsGroup.GetEvolutionChainList(20, 20)
+evolutionChainList, err := evolutionsGroup.GetEvolutionChainList(limit, offset)
+```
+
+##### Get URL for Evolution Chain resource:
+```go
+// Main client example
+evolutionChainURL := client.Evolutions.GetEvolutionChainURL()
+
+// Individual resource group example
+evolutionChainURL := evolutionsGroup.GetEvolutionChainURL()
 ```
 
 ## [EvolutionTrigger](https://pokeapi.co/docs/v2#evolution-triggers)
@@ -40,8 +49,17 @@ evolutionTrigger, err := evolutionsGroup.GetEvolutionTrigger("level-up")
 
 ```go
 // Main client example returning first page of 20 results
-evolutionTriggerList, err := client.Evolutions.GetEvolutionTriggerList(20, 0)
+evolutionTriggerList, err := client.Evolutions.GetEvolutionTriggerList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-evolutionTriggerList, err := evolutionsGroup.GetEvolutionTriggerList(20, 20)
+evolutionTriggerList, err := evolutionsGroup.GetEvolutionTriggerList(limit, offset)
+```
+
+##### Get URL for Evolution Trigger resource:
+```go
+// Main client example
+evolutionTriggerURL := client.Evolutions.GetEvolutionTriggerURL()
+
+// Individual resource group example
+evolutionTriggerURL := evolutionsGroup.GetEvolutionTriggerURL()
 ```
