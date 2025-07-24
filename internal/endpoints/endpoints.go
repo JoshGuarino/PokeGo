@@ -23,9 +23,9 @@ const (
 	SuperContestEffect = "/super-contest-effect/"
 
 	// Encounters group resource endpoints
-	EncounterMethod         = ProdBaseURL + "/encounter-method/"
-	EncounterCondition      = ProdBaseURL + "/encounter-condition/"
-	EncounterConditionValue = ProdBaseURL + "/encounter-condition-value/"
+	EncounterMethod         = "/encounter-method/"
+	EncounterCondition      = "/encounter-condition/"
+	EncounterConditionValue = "/encounter-condition-value/"
 
 	// Evolution group resource endpoints
 	EvolutionChain   = ProdBaseURL + "/evolution-chain/"

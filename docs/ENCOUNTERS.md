@@ -24,6 +24,15 @@ encounterMethodList, err := client.Encounters.GetEncounterMethodList(20, 0)
 encounterMethodList, err := encountersGroup.GetEncounterMethodList(20, 20)
 ```
 
+##### Get URL for Encounter Method resource:
+```go
+// Main client example
+encounterMethodURL, err := client.Encounters.GetEncounterMethodURL()
+
+// Individual resource group example
+encounterMethodURL, err := encountersGroup.GetEncounterMethodURL()
+```
+
 ## [EncounterCondition](https://pokeapi.co/docs/v2#encounter-conditions)
 
 ##### Get single Encounter Condition resource by name or ID:
@@ -46,6 +55,15 @@ encounterConditionList, err := client.Encounters.GetEncounterConditionList(20, 0
 encounterConditionList, err := encountersGroup.GetEncounterConditionList(20, 20)
 ```
 
+##### Get URL for Encounter Condition resource:
+```go
+// Main client example
+encounterConditionURL, err := client.Encounters.GetEncounterConditionURL()
+
+// Individual resource group example
+encounterConditionURL, err := encountersGroup.GetEncounterConditionURL()
+```
+
 ## [EncounterConditionValue](https://pokeapi.co/docs/v2#encounter-condition-values)
 
 ##### Get single Encounter Condition Value resource by name or ID:
@@ -66,4 +84,13 @@ encounterConditionValueList, err := client.Encounters.GetEncounterConditionValue
 
 // Individual resource group example returning second page of 20 results
 encounterConditionValueList, err := encountersGroup.GetEncounterConditionValueList(20, 20)
+```
+
+##### Get URL for Encounter Condition Value resource:
+```go
+// Main client example
+encounterConditionValueURL, err := client.Encounters.GetEncounterConditionValueURL()
+
+// Individual resource group example
+encounterConditionValueURL, err := encountersGroup.GetEncounterConditionValueURL()
 ```
