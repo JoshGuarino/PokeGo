@@ -27,8 +27,8 @@ func TestGetMachine(t *testing.T) {
 func TestGetMachineList(t *testing.T) {
 	rList, _ := machines.GetMachineList(20, 0)
 	rPage, _ := machines.GetMachineList(1, 1)
-	assert.Equal(t, endpoints.Machine+"1/", rList.Results[0].URL, "Unexpected URL for Machine resource")
-	assert.Equal(t, endpoints.Machine+"2/", rPage.Results[0].URL, "Unexpected URL for Machine resource")
+	assert.Equal(t, machines.GetMachineURL()+"1/", rList.Results[0].URL, "Unexpected URL for Machine resource")
+	assert.Equal(t, machines.GetMachineURL()+"2/", rPage.Results[0].URL, "Unexpected URL for Machine resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 	assert.IsType(t, &models.ResourceList{}, rList, "Expected ResourceList instance to be returned")
 }

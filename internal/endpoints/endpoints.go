@@ -51,7 +51,7 @@ const (
 	Region       = ProdBaseURL + "/region/"
 
 	// Machines group resource endpoints
-	Machine = ProdBaseURL + "/machine/"
+	Machine = "/machine/"
 
 	// Moves group resource endpoints
 	Move            = ProdBaseURL + "/move/"
