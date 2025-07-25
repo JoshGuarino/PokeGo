@@ -80,7 +80,7 @@ const (
 	Type           = ProdBaseURL + "/type/"
 
 	// Utility group resource endpoints
-	Language = ProdBaseURL + "/language/"
+	Language = "/language/"
 )
 
 // PokeAPI base URL
