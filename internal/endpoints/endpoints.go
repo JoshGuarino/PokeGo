@@ -83,16 +83,14 @@ const (
 	Language = "/language/"
 )
 
-// PokeAPI base URL
-var BaseURL string
+// PokeAPI base URL set to prod env by default
+var BaseURL string = ProdBaseURL
 
 // Initialize function
 func init() {
 	// If testing, use the staging URL
 	if testing.Testing() {
 		BaseURL = StageBaseURL
-	} else {
-		BaseURL = ProdBaseURL
 	}
 	fmt.Println("Base URL initialized ->", BaseURL)
 }
