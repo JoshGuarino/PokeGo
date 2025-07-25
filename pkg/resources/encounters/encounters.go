@@ -64,7 +64,7 @@ func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.Named
 	return encounterMethodList, nil
 }
 
-// Return the the EncounterMethod resource URL
+// Return the EncounterMethod resource URL
 func (e Encounters) GetEncounterMethodURL() string {
 	return e.EncounterMethodURL
 }
@@ -87,7 +87,7 @@ func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.Na
 	return encounterConditionList, nil
 }
 
-// Return the the EncounterCondition resource URL
+// Return the EncounterCondition resource URL
 func (e Encounters) GetEncounterConditionURL() string {
 	return e.EncounterConditionURL
 }
@@ -110,7 +110,7 @@ func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*mode
 	return encounterConditionValueList, nil
 }
 
-// Return the the EncounterConditionValue resource URL
+// Return the EncounterConditionValue resource URL
 func (e Encounters) GetEncounterConditionValueURL() string {
 	return e.EncounterConditionValueURL
 }

@@ -64,7 +64,7 @@ func (b Berries) GetBerryList(limit int, offset int) (*models.NamedResourceList,
 	return berryList, nil
 }
 
-// Return the the Berry resource URL
+// Return the Berry resource URL
 func (b Berries) GetBerryURL() string {
 	return b.BerryURL
 }
@@ -88,7 +88,7 @@ func (b Berries) GetBerryFirmnessList(limit int, offset int) (*models.NamedResou
 
 }
 
-// Return the the BerryFirmness resource URL
+// Return the BerryFirmness resource URL
 func (b Berries) GetBerryFirmnessURL() string {
 	return b.BerryFirmnessURL
 }
@@ -112,7 +112,7 @@ func (b Berries) GetBerryFlavorList(limit int, offset int) (*models.NamedResourc
 
 }
 
-// Return the the BerryFlavor resource URL
+// Return the BerryFlavor resource URL
 func (b Berries) GetBerryFlavorURL() string {
 	return b.BerryFlavorURL
 }

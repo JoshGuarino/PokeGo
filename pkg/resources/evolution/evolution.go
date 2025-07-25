@@ -59,7 +59,7 @@ func (e Evolution) GetEvolutionChainList(limit int, offset int) (*models.Resourc
 	return evolutionChainList, nil
 }
 
-// Return the the EvolutionChain resource URL
+// Return the EvolutionChain resource URL
 func (e Evolution) GetEvolutionChainURL() string {
 	return e.EvolutionChainURL
 }
@@ -82,7 +82,7 @@ func (e Evolution) GetEvolutionTriggerList(limit int, offset int) (*models.Named
 	return evolutionTriggerList, nil
 }
 
-// Return the the EvolutionTrigger resource URL
+// Return the EvolutionTrigger resource URL
 func (e Evolution) GetEvolutionTriggerURL() string {
 	return e.EvolutionTriggerURL
 }

@@ -64,7 +64,7 @@ func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResour
 	return contestTypeList, nil
 }
 
-// Return the the ContestType resource URL
+// Return the ContestType resource URL
 func (c Contests) GetContestTypeURL() string {
 	return c.ContestTypeURL
 }
@@ -87,7 +87,7 @@ func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceL
 	return contestEffectList, nil
 }
 
-// Return the the ContestEffect resource URL
+// Return the ContestEffect resource URL
 func (c Contests) GetContestEffectURL() string {
 	return c.ContestEffectURL
 }
@@ -110,7 +110,7 @@ func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.Reso
 	return superContestEffectList, nil
 }
 
-// Return the the SuperContestEffect resource URL
+// Return the SuperContestEffect resource URL
 func (c Contests) GetSuperContestEffectURL() string {
 	return c.SuperContestEffectURL
 }
