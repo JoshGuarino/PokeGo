@@ -32,10 +32,10 @@ const (
 	EvolutionTrigger = "/evolution-trigger/"
 
 	// Games group resource endpoints
-	Generation   = ProdBaseURL + "/generation/"
-	Pokedex      = ProdBaseURL + "/pokedex/"
-	Version      = ProdBaseURL + "/version/"
-	VersionGroup = ProdBaseURL + "/version-group/"
+	Generation   = "/generation/"
+	Pokedex      = "/pokedex/"
+	Version      = "/version/"
+	VersionGroup = "/version-group/"
 
 	// Items group resource endpoints
 	Item            = ProdBaseURL + "/item/"

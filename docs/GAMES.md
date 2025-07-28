@@ -17,11 +17,21 @@ generation, err := gamesGroup.GetGeneration("generation-i")
 ##### Get list of Generation resource:
 
 ```go
-// Main client example returning first page of 20 results
-generationList, err := client.Games.GetGenerationList(20, 0)
+// Main client example
+generationList, err := client.Games.GetGenerationList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-generationList, err := gamesGroup.GetGenerationList(20, 20)
+// Individual resource group example 
+generationList, err := gamesGroup.GetGenerationList(limit, offset)
+```
+
+##### Get Generation resource URL:
+
+```go
+// Main client example
+generationURL := client.Games.GetGenerationURL()
+
+// Individual resource group example
+generationURL := gamesGroup.GetGenerationURL()
 ```
 
 ## [Pokedex](https://pokeapi.co/docs/v2#pokedexes)
@@ -39,11 +49,21 @@ pokedex, err := gamesGroup.GetPokedex("kanto")
 ##### Get list of Pokedex resource:
 
 ```go
-// Main client example returning first page of 20 results
-pokedexList, err := client.Games.GetPokedexList(20, 0)
+// Main client example 
+pokedexList, err := client.Games.GetPokedexList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-pokedexList, err := gamesGroup.GetPokedexList(20, 20)
+// Individual resource group example
+pokedexList, err := gamesGroup.GetPokedexList(limit, offset)
+```
+
+##### Get Pokedex resource URL:
+
+```go
+// Main client example
+pokedexURL := client.Games.GetPokedexURL()
+
+// Individual resource group example
+pokedexURL := gamesGroup.GetPokedexURL()
 ```
 
 ## [Version](https://pokeapi.co/docs/v2#versions)
@@ -61,11 +81,21 @@ version, err := gamesGroup.GetVersion("red")
 ##### Get list of Version resource:
 
 ```go
-// Main client example returning first page of 20 results
-versionList, err := client.Games.GetVersionList(20, 0)
+// Main client example 
+versionList, err := client.Games.GetVersionList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-versionList, err := gamesGroup.GetVersionList(20, 20)
+// Individual resource group example 
+versionList, err := gamesGroup.GetVersionList(limit, offset)
+```
+
+##### Get Version resource URL:
+
+```go
+// Main client example
+versionURL := client.Games.GetVersionURL()
+
+// Individual resource group example
+versionURL := gamesGroup.GetVersionURL()
 ```
 
 ## [VersionGroup](https://pokeapi.co/docs/v2#version-groups)
@@ -83,9 +113,9 @@ versionGroup, err := gamesGroup.GetVersionGroup("red-blue")
 ##### Get list of Version Group resource:
 
 ```go
-// Main client example returning first page of 20 results
-versionGroupList, err := client.Games.GetVersionGroupList(20, 0)
+// Main client example 
+versionGroupList, err := client.Games.GetVersionGroupList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-versionGroupList, err := gamesGroup.GetVersionGroupList(20, 20)
+// Individual resource group example 
+versionGroupList, err := gamesGroup.GetVersionGroupList(limit, offset)
 ```
