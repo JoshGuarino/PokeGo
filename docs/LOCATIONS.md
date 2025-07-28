@@ -17,11 +17,21 @@ location, err := locationsGroup.GetLocation("canalave-city")
 ##### Get list of Location resource:
 
 ```go
-// Main client example returning first page of 20 results
-locationList, err := client.Locations.GetLocationList(20, 0)
+// Main client example 
+locationList, err := client.Locations.GetLocationList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-locationList, err := locationsGroup.GetLocationList(20, 20)
+// Individual resource group example 
+locationList, err := locationsGroup.GetLocationList(limit, offset)
+```
+
+##### Get the Location resource URL:
+
+```go
+// Main client example
+locationURL := client.Locations.GetLocationURL()
+
+// Individual resource group example
+locationURL := locationsGroup.GetLocationURL()
 ```
 
 ## [Location Area](https://pokeapi.co/docs/v2#location-areas)
@@ -39,11 +49,21 @@ locationArea, err := locationsGroup.GetLocationArea("canalave-city-area")
 ##### Get list of Location Area resource:
 
 ```go
-// Main client example returning first page of 20 results
-locationAreaList, err := client.Locations.GetLocationAreaList(20, 0)
+// Main client example 
+locationAreaList, err := client.Locations.GetLocationAreaList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-locationAreaList, err := locationsGroup.GetLocationAreaList(20, 20)
+// Individual resource group example 
+locationAreaList, err := locationsGroup.GetLocationAreaList(limit, offset)
+```
+
+##### Get the Location Area resource URL:
+
+```go
+// Main client example
+locationAreaURL := client.Locations.GetLocationAreaURL()
+
+// Individual resource group example
+locationAreaURL := locationsGroup.GetLocationAreaURL()
 ```
 
 ## [Pal Park Area](https://pokeapi.co/docs/v2#pal-park-areas)
@@ -61,11 +81,21 @@ palParkArea, err := locationsGroup.GetPalParkArea("forest")
 ##### Get list of Pal Park Area resource:
 
 ```go
-// Main client example returning first page of 20 results
-palParkAreaList, err := client.Locations.GetPalParkAreaList(20, 0)
+// Main client example 
+palParkAreaList, err := client.Locations.GetPalParkAreaList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-palParkAreaList, err := locationsGroup.GetPalParkAreaList(20, 20)
+// Individual resource group example 
+palParkAreaList, err := locationsGroup.GetPalParkAreaList(limit, offset)
+```
+
+##### Get the Pal Park Area resource URL:
+
+```go
+// Main client example
+palParkAreaURL := client.Locations.GetPalParkAreaURL()
+
+// Individual resource group example
+palParkAreaURL := locationsGroup.GetPalParkAreaURL()
 ```
 
 ## [Region](https://pokeapi.co/docs/v2#regions)
@@ -83,9 +113,19 @@ region, err := locationsGroup.GetRegion("kanto")
 ##### Get list of Region resource:
 
 ```go
-// Main client example returning first page of 20 results
-regionList, err := client.Locations.GetRegionList(20, 0)
+// Main client example 
+regionList, err := client.Locations.GetRegionList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-regionList, err := locationsGroup.GetRegionList(20, 20)
+// Individual resource group example 
+regionList, err := locationsGroup.GetRegionList(limit, offset)
+```
+
+##### Get the Region resource URL:
+
+```go
+// Main client example
+regionURL := client.Locations.GetRegionURL()
+
+// Individual resource group example
+regionURL := locationsGroup.GetRegionURL()
 ```

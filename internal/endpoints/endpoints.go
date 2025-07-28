@@ -45,10 +45,10 @@ const (
 	ItemPocket      = "/item-pocket/"
 
 	// Locations group resource endpoints
-	Location     = ProdBaseURL + "/location/"
-	LocationArea = ProdBaseURL + "/location-area/"
-	PalParkArea  = ProdBaseURL + "/pal-park-area/"
-	Region       = ProdBaseURL + "/region/"
+	Location     = "/location/"
+	LocationArea = "/location-area/"
+	PalParkArea  = "/pal-park-area/"
+	Region       = "/region/"
 
 	// Machines group resource endpoints
 	Machine = "/machine/"
