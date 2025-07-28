@@ -3,10 +3,13 @@ package items
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var items IItems = NewItemsGroup()
+var url string = endpoints.BaseURL
 
 func TestNewItemsGroup(t *testing.T) {
 	items := NewItemsGroup()
@@ -20,6 +23,7 @@ func TestGetItem(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Item resource")
 	assert.Equal(t, "master-ball", rByName.Name, "Unexpected Name for Item resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Item{}, rById, "Expected Item instance to be returned")
 }
 
 func TestGetItemList(t *testing.T) {
@@ -28,6 +32,13 @@ func TestGetItemList(t *testing.T) {
 	assert.Equal(t, "master-ball", rList.Results[0].Name, "Unexpected Name for Item resource")
 	assert.Equal(t, "ultra-ball", rPage.Results[0].Name, "Unexpected Name for Item resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetItemURL(t *testing.T) {
+	itemURL := items.GetItemURL()
+	assert.Equal(t, url+endpoints.Item, itemURL, "Unexpected Item resource URL")
+	assert.IsType(t, "", itemURL, "Expected Item resource URL to be a string")
 }
 
 func TestGetItemAttribute(t *testing.T) {
@@ -37,6 +48,7 @@ func TestGetItemAttribute(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for ItemAttribute resource")
 	assert.Equal(t, "countable", rByName.Name, "Unexpected Name for ItemAttribute resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.ItemAttribute{}, rById, "Expected ItemAttribute instance to be returned")
 }
 
 func TestGetItemAttributeList(t *testing.T) {
@@ -45,6 +57,13 @@ func TestGetItemAttributeList(t *testing.T) {
 	assert.Equal(t, "countable", rList.Results[0].Name, "Unexpected Name for ItemAttribute resource")
 	assert.Equal(t, "consumable", rPage.Results[0].Name, "Unexpected Name for ItemAttribute resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetItemAttributeURL(t *testing.T) {
+	itemAttributeURL := items.GetItemAttributeURL()
+	assert.Equal(t, url+endpoints.ItemAttribute, itemAttributeURL, "Unexpected ItemAttribute resource URL")
+	assert.IsType(t, "", itemAttributeURL, "Expected ItemAttribute resource URL to be a string")
 }
 
 func TestGetItemCategory(t *testing.T) {
@@ -54,6 +73,7 @@ func TestGetItemCategory(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for ItemCategory resource")
 	assert.Equal(t, "stat-boosts", rByName.Name, "Unexpected Name for ItemCategory resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.ItemCategory{}, rById, "Expected ItemCategory instance to be returned")
 }
 
 func TestGetItemCategoryList(t *testing.T) {
@@ -62,6 +82,13 @@ func TestGetItemCategoryList(t *testing.T) {
 	assert.Equal(t, "stat-boosts", rList.Results[0].Name, "Unexpected Name for ItemCategory' resource")
 	assert.Equal(t, "effort-drop", rPage.Results[0].Name, "Unexpected Name for ItemCategory resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetItemCategoryURL(t *testing.T) {
+	itemCategoryURL := items.GetItemCategoryURL()
+	assert.Equal(t, url+endpoints.ItemCategory, itemCategoryURL, "Unexpected ItemCategory resource URL")
+	assert.IsType(t, "", itemCategoryURL, "Expected ItemCategory resource URL to be a string")
 }
 
 func TestGetItemFlingEffect(t *testing.T) {
@@ -71,6 +98,7 @@ func TestGetItemFlingEffect(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for ItemFlingEffect resource")
 	assert.Equal(t, "badly-poison", rByName.Name, "Unexpected Name for ItemFlingEffect resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.ItemFlingEffect{}, rById, "Expected ItemFlingEffect instance to be returned")
 }
 
 func TestGetItemFlingEffectList(t *testing.T) {
@@ -79,6 +107,13 @@ func TestGetItemFlingEffectList(t *testing.T) {
 	assert.Equal(t, "badly-poison", rList.Results[0].Name, "Unexpected Name for ItemFlingEffect resource")
 	assert.Equal(t, "burn", rPage.Results[0].Name, "Unexpected Name for ItemFlingEffect resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetItemFlingEffectURL(t *testing.T) {
+	itemFlingEffectURL := items.GetItemFlingEffectURL()
+	assert.Equal(t, url+endpoints.ItemFlingEffect, itemFlingEffectURL, "Unexpected ItemFlingEffect resource URL")
+	assert.IsType(t, "", itemFlingEffectURL, "Expected ItemFlingEffect resource URL to be a string")
 }
 
 func TestGetItemPocket(t *testing.T) {
@@ -88,6 +123,7 @@ func TestGetItemPocket(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for ItemPocket resource")
 	assert.Equal(t, "misc", rByName.Name, "Unexpected Name for ItemPocket resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.ItemPocket{}, rById, "Expected ItemPocket instance to be returned")
 }
 
 func TestGetItemPocketList(t *testing.T) {
@@ -96,4 +132,11 @@ func TestGetItemPocketList(t *testing.T) {
 	assert.Equal(t, "misc", rList.Results[0].Name, "Unexpected Name for ItemPocket resource")
 	assert.Equal(t, "medicine", rPage.Results[0].Name, "Unexpected Name for ItemPocket resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetItemPocketURL(t *testing.T) {
+	itemPocketURL := items.GetItemPocketURL()
+	assert.Equal(t, url+endpoints.ItemPocket, itemPocketURL, "Unexpected ItemPocket resource URL")
+	assert.IsType(t, "", itemPocketURL, "Expected ItemPocket resource URL to be a string")
 }

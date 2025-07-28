@@ -17,11 +17,21 @@ item, err := itemsGroup.GetItem("master-ball")
 ##### Get list of Item resource:
 
 ```go
-// Main client example returning first page of 20 results
-itemList, err := client.Items.GetItemList(20, 0)
+// Main client example
+itemList, err := client.Items.GetItemList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-itemList, err := itemsGroup.GetItemList(20, 20)
+// Individual resource group example
+itemList, err := itemsGroup.GetItemList(limit, offset)
+```
+
+##### Get Item resource URL:
+
+```go
+// Main client example
+itemURL := client.Items.GetItemURL()
+
+// Individual resource group example
+itemURL := itemsGroup.GetItemURL()
 ```
 
 ## [Item Attribute](https://pokeapi.co/docs/v2#item-attributes)
@@ -39,11 +49,21 @@ itemAttribute, err := itemsGroup.GetItemAttribute("countable")
 ##### Get list of Item Attribute resource:
 
 ```go
-// Main client example returning first page of 20 results
-itemAttributeList, err := client.Items.GetItemAttributeList(20, 0)
+// Main client example 
+itemAttributeList, err := client.Items.GetItemAttributeList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-itemAttributeList, err := itemsGroup.GetItemAttributeList(20, 20)
+// Individual resource group example 
+itemAttributeList, err := itemsGroup.GetItemAttributeList(limit, offset)
+```
+
+##### Get Item Attribute resource URL:
+
+```go
+// Main client example
+itemAttributeURL := client.Items.GetItemAttributeURL()
+
+// Individual resource group example
+itemAttributeURL := itemsGroup.GetItemAttributeURL()
 ```
 
 ## [Item Category](https://pokeapi.co/docs/v2#item-categories)
@@ -61,11 +81,21 @@ itemCategory, err := itemsGroup.GetItemCategory("stat-boosts")
 ##### Get list of Item Category resource:
 
 ```go
-// Main client example returning first page of 20 results
-itemCategoryList, err := client.Items.GetItemCategoryList(20, 0)
+// Main client example 
+itemCategoryList, err := client.Items.GetItemCategoryList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-itemCategoryList, err := itemsGroup.GetItemCategoryList(20, 20)
+// Individual resource group example
+itemCategoryList, err := itemsGroup.GetItemCategoryList(limit, offset)
+```
+
+##### Get Item Category resource URL:
+
+```go
+// Main client example
+itemCategoryURL := client.Items.GetItemCategoryURL()
+
+// Individual resource group example
+itemCategoryURL := itemsGroup.GetItemCategoryURL()
 ```
 
 ## [Item Fling Effect](https://pokeapi.co/docs/v2#item-fling-effects)
@@ -83,11 +113,21 @@ itemFlingEffect, err := itemsGroup.GetItemFlingEffect("badly-poison")
 ##### Get list of Item Fling Effect resource:
 
 ```go
-// Main client example returning first page of 20 results
-itemFlingEffectList, err := client.Items.GetItemFlingEffectList(20, 0)
+// Main client example 
+itemFlingEffectList, err := client.Items.GetItemFlingEffectList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-itemFlingEffectList, err := itemsGroup.GetItemFlingEffectList(20, 20)
+// Individual resource group example 
+itemFlingEffectList, err := itemsGroup.GetItemFlingEffectList(limit, offset)
+```
+
+##### Get Item Fling Effect resource URL:
+
+```go
+// Main client example
+itemFlingEffectURL := client.Items.GetItemFlingEffectURL()
+
+// Individual resource group example
+itemFlingEffectURL := itemsGroup.GetItemFlingEffectURL()
 ```
 
 ## [Item Pocket](https://pokeapi.co/docs/v2#item-pockets)
@@ -105,9 +145,19 @@ itemPocket, err := itemsGroup.GetItemPocket("misc")
 ##### Get list of Item Pocket resource:
 
 ```go
-// Main client example returning first page of 20 results
-itemPocketList, err := client.Items.GetItemPocketList(20, 0)
+// Main client example 
+itemPocketList, err := client.Items.GetItemPocketList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-itemPocketList, err := itemsGroup.GetItemPocketList(20, 20)
+// Individual resource group 
+itemPocketList, err := itemsGroup.GetItemPocketList(limit, offset)
+```
+
+##### Get Item Pocket resource URL:
+
+```go
+// Main client example
+itemPocketURL := client.Items.GetItemPocketURL()
+
+// Individual resource group example
+itemPocketURL := itemsGroup.GetItemPocketURL()
 ```

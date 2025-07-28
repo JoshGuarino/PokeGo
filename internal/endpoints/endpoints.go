@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	// PokeApi base URL
+	// Production base URL
 	ProdBaseURL = "https://pokeapi.co/api/v2"
 
 	// Staging base URL
@@ -38,11 +38,11 @@ const (
 	VersionGroup = "/version-group/"
 
 	// Items group resource endpoints
-	Item            = ProdBaseURL + "/item/"
-	ItemAttribute   = ProdBaseURL + "/item-attribute/"
-	ItemCategory    = ProdBaseURL + "/item-category/"
-	ItemFlingEffect = ProdBaseURL + "/item-fling-effect/"
-	ItemPocket      = ProdBaseURL + "/item-pocket/"
+	Item            = "/item/"
+	ItemAttribute   = "/item-attribute/"
+	ItemCategory    = "/item-category/"
+	ItemFlingEffect = "/item-fling-effect/"
+	ItemPocket      = "/item-pocket/"
 
 	// Locations group resource endpoints
 	Location     = ProdBaseURL + "/location/"
