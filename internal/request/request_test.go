@@ -11,6 +11,7 @@ import (
 )
 
 var url string = endpoints.BaseURL
+var pokemonURL string = url + endpoints.Pokemon
 
 func TestGet(t *testing.T) {
 	body, err := Get(url)
@@ -41,9 +42,8 @@ func TestGetDataWithoutCache(t *testing.T) {
 }
 
 func TestGetResourceList(t *testing.T) {
-	url := endpoints.Pokemon
-	key := fmt.Sprintf("%s?limit=%d&offset=%d", url, 20, 0)
-	list, err := GetResourceList[models.NamedResourceList](url, 20, 0)
+	key := fmt.Sprintf("%s?limit=%d&offset=%d", pokemonURL, 20, 0)
+	list, err := GetResourceList[models.NamedResourceList](pokemonURL, 20, 0)
 	_, found := cache.C.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, &models.NamedResourceList{}, list, "Expected ResourceList instance to be returned")
@@ -51,9 +51,8 @@ func TestGetResourceList(t *testing.T) {
 }
 
 func TestGetSpecificResource(t *testing.T) {
-	url := endpoints.Pokemon + "1"
-	key := url
-	resource, err := GetResource[models.Pokemon](url)
+	key := pokemonURL + "1"
+	resource, err := GetResource[models.Pokemon](pokemonURL + "1")
 	_, found := cache.C.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, &models.Pokemon{}, resource, "Unexpected type parameter returned")
@@ -61,9 +60,8 @@ func TestGetSpecificResource(t *testing.T) {
 }
 
 func TestGetResourceSlice(t *testing.T) {
-	url := endpoints.Pokemon + "1" + "/encounters"
-	key := url
-	resourceSlice, err := GetResourceSlice[models.LocationAreaEncounter](url)
+	key := url + endpoints.Pokemon + "1" + "/encounters"
+	resourceSlice, err := GetResourceSlice[models.LocationAreaEncounter](key)
 	_, found := cache.C.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, []*models.LocationAreaEncounter{}, resourceSlice, "Unexpected type parameter returned")
