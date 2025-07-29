@@ -3,10 +3,13 @@ package moves
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var moves IMoves = NewMovesGroup()
+var url string = endpoints.BaseURL
 
 func TestNewMovesGroup(t *testing.T) {
 	moves := NewMovesGroup()
@@ -20,6 +23,7 @@ func TestGetMove(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Move resource")
 	assert.Equal(t, "pound", rByName.Name, "Unexpected Name for Move resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Move{}, rById, "Expected Move instance to be returned")
 }
 
 func TestGetMoveList(t *testing.T) {
@@ -28,6 +32,13 @@ func TestGetMoveList(t *testing.T) {
 	assert.Equal(t, "pound", rList.Results[0].Name, "Unexpected Name for Move resource")
 	assert.Equal(t, "karate-chop", rPage.Results[0].Name, "Unexpected Name for Move resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveURL(t *testing.T) {
+	moveURL := moves.GetMoveURL()
+	assert.Equal(t, url+endpoints.Move, moveURL, "Unexpected Move resource URL")
+	assert.IsType(t, "", moveURL, "Expected Move resource URL to be a string")
 }
 
 func TestGetMoveAilment(t *testing.T) {
@@ -37,6 +48,7 @@ func TestGetMoveAilment(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveAilment resource")
 	assert.Equal(t, "unknown", rByName.Name, "Unexpected Name for MoveAilment resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveAilment{}, rById, "Expected MoveAilment instance to be returned")
 }
 
 func TestGetMoveAilmentList(t *testing.T) {
@@ -45,6 +57,13 @@ func TestGetMoveAilmentList(t *testing.T) {
 	assert.Equal(t, "unknown", rList.Results[0].Name, "Unexpected Name for MoveAilment resource")
 	assert.Equal(t, "none", rPage.Results[0].Name, "Unexpected Name for MoveAilment resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveAilmentURL(t *testing.T) {
+	moveAilmentURL := moves.GetMoveAilmentURL()
+	assert.Equal(t, url+endpoints.MoveAilment, moveAilmentURL, "Unexpected MoveAilment resource URL")
+	assert.IsType(t, "", moveAilmentURL, "Expected MoveAilment resource URL to be a string")
 }
 
 func TestGetMoveBattleStyle(t *testing.T) {
@@ -54,6 +73,7 @@ func TestGetMoveBattleStyle(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveBattleStyle resource")
 	assert.Equal(t, "attack", rByName.Name, "Unexpected Name for MoveBattleStyle resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveBattleStyle{}, rById, "Expected MoveBattleStyle instance to be returned")
 }
 
 func TestGetMoveBattleStyleList(t *testing.T) {
@@ -62,6 +82,13 @@ func TestGetMoveBattleStyleList(t *testing.T) {
 	assert.Equal(t, "attack", rList.Results[0].Name, "Unexpected Name for MoveBattleStyle resource")
 	assert.Equal(t, "defense", rPage.Results[0].Name, "Unexpected Name for MoveBattleStyle resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveBattleStyleURL(t *testing.T) {
+	moveBattleStyleURL := moves.GetMoveBattleStyleURL()
+	assert.Equal(t, url+endpoints.MoveBattleStyle, moveBattleStyleURL, "Unexpected MoveBattleStyle resource URL")
+	assert.IsType(t, "", moveBattleStyleURL, "Expected MoveBattleStyle resource URL to be a string")
 }
 
 func TestGetMoveCategory(t *testing.T) {
@@ -71,6 +98,7 @@ func TestGetMoveCategory(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveCategory resource")
 	assert.Equal(t, "damage", rByName.Name, "Unexpected Name for MoveCategory resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveCategory{}, rById, "Expected MoveCategory instance to be returned")
 }
 
 func TestGetMoveCategoryList(t *testing.T) {
@@ -79,6 +107,13 @@ func TestGetMoveCategoryList(t *testing.T) {
 	assert.Equal(t, "damage", rList.Results[0].Name, "Unexpected Name for MoveCategory resource")
 	assert.Equal(t, "ailment", rPage.Results[0].Name, "Unexpected Name for MoveCategory resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveCategoryURL(t *testing.T) {
+	moveCategoryURL := moves.GetMoveCategoryURL()
+	assert.Equal(t, url+endpoints.MoveCategory, moveCategoryURL, "Unexpected MoveCategory resource URL")
+	assert.IsType(t, "", moveCategoryURL, "Expected MoveCategory resource URL to be a string")
 }
 
 func TestGetMoveDamageClass(t *testing.T) {
@@ -88,6 +123,7 @@ func TestGetMoveDamageClass(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveDamageClass resource")
 	assert.Equal(t, "status", rByName.Name, "Unexpected Name for MoveDamageClass resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveDamageClass{}, rById, "Expected MoveDamageClass instance to be returned")
 }
 
 func TestGetMoveDamageClassList(t *testing.T) {
@@ -96,6 +132,13 @@ func TestGetMoveDamageClassList(t *testing.T) {
 	assert.Equal(t, "status", rList.Results[0].Name, "Unexpected Name for MoveDamageClass resource")
 	assert.Equal(t, "physical", rPage.Results[0].Name, "Unexpected Name for MoveDamageClass resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveDamageClassURL(t *testing.T) {
+	moveDamageClassURL := moves.GetMoveDamageClassURL()
+	assert.Equal(t, url+endpoints.MoveDamageClass, moveDamageClassURL, "Unexpected MoveDamageClass resource URL")
+	assert.IsType(t, "", moveDamageClassURL, "Expected MoveDamageClass resource URL to be a string")
 }
 
 func TestGetMoveLearnMethod(t *testing.T) {
@@ -105,6 +148,7 @@ func TestGetMoveLearnMethod(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveLearnMethod resource")
 	assert.Equal(t, "level-up", rByName.Name, "Unexpected Name for MoveLearnMethod resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveLearnMethod{}, rById, "Expected MoveLearnMethod instance to be returned")
 }
 
 func TestGetMoveLearnMethodList(t *testing.T) {
@@ -113,6 +157,13 @@ func TestGetMoveLearnMethodList(t *testing.T) {
 	assert.Equal(t, "level-up", rList.Results[0].Name, "Unexpected Name for MoveLearnMethod resource")
 	assert.Equal(t, "egg", rPage.Results[0].Name, "Unexpected Name for MoveLearnMethod resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveLearnMethodURL(t *testing.T) {
+	moveLearnMethodURL := moves.GetMoveLearnMethodURL()
+	assert.Equal(t, url+endpoints.MoveLearnMethod, moveLearnMethodURL, "Unexpected MoveLearnMethod resource URL")
+	assert.IsType(t, "", moveLearnMethodURL, "Expected MoveLearnMethod resource URL to be a string")
 }
 
 func TestGetMoveTarget(t *testing.T) {
@@ -122,6 +173,7 @@ func TestGetMoveTarget(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for MoveTarget resource")
 	assert.Equal(t, "specific-move", rByName.Name, "Unexpected Name for MoveTarget resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.MoveTarget{}, rById, "Expected MoveTarget instance to be returned")
 }
 
 func TestGetMoveTargetList(t *testing.T) {
@@ -130,4 +182,11 @@ func TestGetMoveTargetList(t *testing.T) {
 	assert.Equal(t, "specific-move", rList.Results[0].Name, "Unexpected Name for MoveTarget resource")
 	assert.Equal(t, "selected-pokemon-me-first", rPage.Results[0].Name, "Unexpected Name for MoveTarget resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetMoveTargetURL(t *testing.T) {
+	moveTargetURL := moves.GetMoveTargetURL()
+	assert.Equal(t, url+endpoints.MoveTarget, moveTargetURL, "Unexpected MoveTarget resource URL")
+	assert.IsType(t, "", moveTargetURL, "Expected MoveTarget resource URL to be a string")
 }

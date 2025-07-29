@@ -54,13 +54,13 @@ const (
 	Machine = "/machine/"
 
 	// Moves group resource endpoints
-	Move            = ProdBaseURL + "/move/"
-	MoveAilment     = ProdBaseURL + "/move-ailment/"
-	MoveBattleStyle = ProdBaseURL + "/move-battle-style/"
-	MoveCategory    = ProdBaseURL + "/move-category/"
-	MoveDamageClass = ProdBaseURL + "/move-damage-class/"
-	MoveLearnMethod = ProdBaseURL + "/move-learn-method/"
-	MoveTarget      = ProdBaseURL + "/move-target/"
+	Move            = "/move/"
+	MoveAilment     = "/move-ailment/"
+	MoveBattleStyle = "/move-battle-style/"
+	MoveCategory    = "/move-category/"
+	MoveDamageClass = "/move-damage-class/"
+	MoveLearnMethod = "/move-learn-method/"
+	MoveTarget      = "/move-target/"
 
 	// Pokemon group resource endpoints
 	Ability        = ProdBaseURL + "/ability/"
