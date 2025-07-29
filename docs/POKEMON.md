@@ -18,10 +18,20 @@ ability, err := pokemonGroup.GetAbility("overgrow")
 
 ```go
 // Main client example returning first page of 20 results
-abilityList, err := client.Pokemon.GetAbilityList(20, 0)
+abilityList, err := client.Pokemon.GetAbilityList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-abilityList, err := pokemonGroup.GetAbilityList(20, 20)
+abilityList, err := pokemonGroup.GetAbilityList(limit, offset)
+```
+
+##### Get Ability resource URL:
+
+```go
+// Main client example
+abilityURL := client.Pokemon.GetAbilityURL()
+
+// Individual resource group example
+abilityURL := pokemonGroup.GetAbilityURL()
 ```
 
 ## [Characteristic](https://pokeapi.co/docs/v2#characteristics)
@@ -32,6 +42,7 @@ abilityList, err := pokemonGroup.GetAbilityList(20, 20)
 // Main client example with ID
 characteristic, err := client.Pokemon.GetCharacteristic("1")
 
+	models
 // Individual resource group example with Name
 characteristic, err := pokemonGroup.GetCharacteristic("1")
 ```
@@ -40,10 +51,20 @@ characteristic, err := pokemonGroup.GetCharacteristic("1")
 
 ```go
 // Main client example returning first page of 20 results
-characteristicList, err := client.Pokemon.GetCharacteristicList(20, 0)
+characteristicList, err := client.Pokemon.GetCharacteristicList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-characteristicList, err := pokemonGroup.GetCharacteristicList(20, 20)
+characteristicList, err := pokemonGroup.GetCharacteristicList(limit, offset)
+```
+
+##### Get Characteristic resource URL:
+
+```go
+// Main client example
+characteristicURL := client.Pokemon.GetCharacteristicURL()
+
+// Individual resource group example
+characteristicURL := pokemonGroup.GetCharacteristicURL()
 ```
 
 ## [Egg Group](https://pokeapi.co/docs/v2#egg-groups)
@@ -62,10 +83,20 @@ eggGroup, err := pokemonGroup.GetEggGroup("monster")
 
 ```go
 // Main client example returning first page of 20 results
-eggGroupList, err := client.Pokemon.GetEggGroupList(20, 0)
+eggGroupList, err := client.Pokemon.GetEggGroupList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-eggGroupList, err := pokemonGroup.GetEggGroupList(20, 20)
+eggGroupList, err := pokemonGroup.GetEggGroupList(limit, offset)
+```
+
+##### Get Egg Group resource URL:
+
+```go
+// Main client example
+eggGroupURL := client.Pokemon.GetEggGroupURL()
+
+// Individual resource group example
+eggGroupURL := pokemonGroup.GetEggGroupURL()
 ```
 
 ## [Gender](https://pokeapi.co/docs/v2#gender)
@@ -84,10 +115,20 @@ gender, err := pokemonGroup.GetGender("male")
 
 ```go
 // Main client example returning first page of 20 results
-genderList, err := client.Pokemon.GetGenderList(20, 0)
+genderList, err := client.Pokemon.GetGenderList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-genderList, err := pokemonGroup.GetGenderList(20, 20)
+genderList, err := pokemonGroup.GetGenderList(limit, offset)
+```
+
+##### Get Gender resource URL:
+
+```go
+// Main client example
+genderURL := client.Pokemon.GetGenderURL()
+
+// Individual resource group example
+genderURL := pokemonGroup.GetGenderURL()
 ```
 
 ## [Growth Rate](https://pokeapi.co/docs/v2#growth-rates)
@@ -106,10 +147,20 @@ growthRate, err := pokemonGroup.GetGrowthRate("slow")
 
 ```go
 // Main client example returning first page of 20 results
-growthRateList, err := client.Pokemon.GetGrowthRateList(20, 0)
+growthRateList, err := client.Pokemon.GetGrowthRateList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-growthRateList, err := pokemonGroup.GetGrowthRateList(20, 20)
+growthRateList, err := pokemonGroup.GetGrowthRateList(limit, offset)
+```
+
+##### Get Growth Rate resource URL:
+
+```go
+// Main client example
+growthRateURL := client.Pokemon.GetGrowthRateURL()
+
+// Individual resource group example
+growthRateURL := pokemonGroup.GetGrowthRateURL()
 ```
 
 ## [Nature](https://pokeapi.co/docs/v2#natures)
@@ -128,10 +179,20 @@ nature, err := pokemonGroup.GetNature("hardy")
 
 ```go
 // Main client example returning first page of 20 results
-natureList, err := client.Pokemon.GetNatureList(20, 0)
+natureList, err := client.Pokemon.GetNatureList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-natureList, err := pokemonGroup.GetNatureList(20, 20)
+natureList, err := pokemonGroup.GetNatureList(limit, offset)
+```
+
+##### Get Nature resource URL:
+
+```go
+// Main client example
+natureURL := client.Pokemon.GetNatureURL()
+
+// Individual resource group example
+natureURL := pokemonGroup.GetNatureURL()
 ```
 
 ## [Pokeathlon Stat](https://pokeapi.co/docs/v2#pokeathlon-stats)
@@ -150,10 +211,20 @@ pokeathlonStat, err := pokemonGroup.GetPokeathlonStat("speed")
 
 ```go
 // Main client example returning first page of 20 results
-pokeathlonStatList, err := client.Pokemon.GetPokeathlonStatList(20, 0)
+pokeathlonStatList, err := client.Pokemon.GetPokeathlonStatList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokeathlonStatList, err := pokemonGroup.GetPokeathlonStatList(20, 20)
+pokeathlonStatList, err := pokemonGroup.GetPokeathlonStatList(limit, offset)
+```
+
+##### Get Pokeathlon Stat resource URL:
+
+```go
+// Main client example
+pokeathlonStatURL := client.Pokemon.GetPokeathlonStatURL()
+
+// Individual resource group example
+pokeathlonStatURL := pokemonGroup.GetPokeathlonStatURL()
 ```
 
 ## [Pokemon](https://pokeapi.co/docs/v2#pokemon)
@@ -172,10 +243,20 @@ pokemon, err := pokemonGroup.GetPokemon("bulbasaur")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonList, err := client.Pokemon.GetPokemonList(20, 0)
+pokemonList, err := client.Pokemon.GetPokemonList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
+pokemonList, err := pokemonGroup.GetPokemonList(limit, offset)
+```
+
+##### Get Pokemon resource URL:
+
+```go
+// Main client example
+pokemonURL := client.Pokemon.GetPokemonURL()
+
+// Individual resource group example
+pokemonURL := pokemonGroup.GetPokemonURL()
 ```
 
 ## [Pokemon Location Areas](https://pokeapi.co/docs/v2#pokemon-location-areas)
@@ -206,10 +287,20 @@ pokemonColor, err := pokemonGroup.GetPokemonColor("black")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonColorList, err := client.Pokemon.GetPokemonColorList(20, 0)
+pokemonColorList, err := client.Pokemon.GetPokemonColorList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonColorList, err := pokemonGroup.GetPokemonColorList(20, 20)
+pokemonColorList, err := pokemonGroup.GetPokemonColorList(limit, offset)
+```
+
+##### Get Pokemon Color resource URL:
+
+```go
+// Main client example
+pokemonColorURL := client.Pokemon.GetPokemonColorURL()
+
+// Individual resource group example
+pokemonColorURL := pokemonGroup.GetPokemonColorURL()
 ```
 
 ## [Pokemon Form](https://pokeapi.co/docs/v2#pokemon-forms)
@@ -228,10 +319,20 @@ pokemonForm, err := pokemonGroup.GetPokemonForm("bulbasaur")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonFormList, err := client.Pokemon.GetPokemonFormList(20, 0)
+pokemonFormList, err := client.Pokemon.GetPokemonFormList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonFormList, err := pokemonGroup.GetPokemonFormList(20, 20)
+pokemonFormList, err := pokemonGroup.GetPokemonFormList(limit, offset)
+```
+
+##### Get Pokemon Form resource URL:
+
+```go
+// Main client example
+pokemonFormURL := client.Pokemon.GetPokemonFormURL()
+
+// Individual resource group example
+pokemonFormURL := pokemonGroup.GetPokemonFormURL()
 ```
 
 ## [Pokemon Habitat](https://pokeapi.co/docs/v2#pokemon-habitats)
@@ -250,10 +351,20 @@ pokemonHabitat, err := pokemonGroup.GetPokemonHabitat("cave")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonHabitatList, err := client.Pokemon.GetPokemonHabitatList(20, 0)
+pokemonHabitatList, err := client.Pokemon.GetPokemonHabitatList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonHabitatList, err := pokemonGroup.GetPokemonHabitatList(20, 20)
+pokemonHabitatList, err := pokemonGroup.GetPokemonHabitatList(limit, offset)
+```
+
+##### Get Pokemon Habitat resource URL:
+
+```go
+// Main client example
+pokemonHabitatURL := client.Pokemon.GetPokemonHabitatURL()
+
+// Individual resource group example
+pokemonHabitatURL := pokemonGroup.GetPokemonHabitatURL()
 ```
 
 ## [Pokemon Shape](https://pokeapi.co/docs/v2#pokemon-shapes)
@@ -272,10 +383,20 @@ pokemonShape, err := pokemonGroup.GetPokemonShape("ball")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonShapeList, err := client.Pokemon.GetPokemonShapeList(20, 0)
+pokemonShapeList, err := client.Pokemon.GetPokemonShapeList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonShapeList, err := pokemonGroup.GetPokemonShapeList(20, 20)
+pokemonShapeList, err := pokemonGroup.GetPokemonShapeList(limit, offset)
+```
+
+##### Get Pokemon Shape resource URL:
+
+```go
+// Main client example
+pokemonShapeURL := client.Pokemon.GetPokemonShapeURL()
+
+// Individual resource group example
+pokemonShapeURL := pokemonGroup.GetPokemonShapeURL()
 ```
 
 ## [Pokemon Species](https://pokeapi.co/docs/v2#pokemon-species)
@@ -294,10 +415,20 @@ pokemonSpecies, err := pokemonGroup.GetPokemonSpecies("bulbasaur")
 
 ```go
 // Main client example returning first page of 20 results
-pokemonSpeciesList, err := client.Pokemon.GetPokemonSpeciesList(20, 0)
+pokemonSpeciesList, err := client.Pokemon.GetPokemonSpeciesList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-pokemonSpeciesList, err := pokemonGroup.GetPokemonSpeciesList(20, 20)
+pokemonSpeciesList, err := pokemonGroup.GetPokemonSpeciesList(limit, offset)
+```
+
+##### Get Pokemon Species resource URL:
+
+```go
+// Main client example
+pokemonSpeciesURL := client.Pokemon.GetPokemonSpeciesURL()
+
+// Individual resource group example
+pokemonSpeciesURL := pokemonGroup.GetPokemonSpeciesURL()
 ```
 
 ## [Stat](https://pokeapi.co/docs/v2#stats)
@@ -316,10 +447,20 @@ stat, err := pokemonGroup.GetStat("hp")
 
 ```go
 // Main client example returning first page of 20 results
-statList, err := client.Pokemon.GetStatList(20, 0)
+statList, err := client.Pokemon.GetStatList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-statList, err := pokemonGroup.GetStatList(20, 20)
+statList, err := pokemonGroup.GetStatList(limit, offset)
+```
+
+##### Get Stat resource URL:
+
+```go
+// Main client example
+statURL := client.Pokemon.GetStatURL()
+
+// Individual resource group example
+statURL := pokemonGroup.GetStatURL()
 ```
 
 ## [Type](https://pokeapi.co/docs/v2#types)
@@ -338,8 +479,18 @@ typeResource, err := pokemonGroup.GetType("normal")
 
 ```go
 // Main client example returning first page of 20 results
-typeList, err := client.Pokemon.GetTypeList(20, 0)
+typeList, err := client.Pokemon.GetTypeList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-typeList, err := pokemonGroup.GetTypeList(20, 20)
+typeList, err := pokemonGroup.GetTypeList(limit, offset)
+```
+
+##### Get Type resource URL:
+
+```go
+// Main client example
+typeURL := client.Pokemon.GetTypeURL()
+
+// Individual resource group example
+typeURL := pokemonGroup.GetTypeURL()
 ```
