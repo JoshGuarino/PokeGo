@@ -21,24 +21,32 @@ There are two options for using PokeGo. You can either use the main client or cr
 The main client will initialize all resource groups for you. If you choose to use individual resource groups,
 you will need to initialize each group separately.
 
-##### Main client setup:
+##### Main client setup example:
 
 ```go
+package main
+
 import (
     pokego "github.com/JoshGuarino/PokeGo/pkg"
 )
 
-client := pokego.NewClient()
+func main() {
+    client := pokego.NewClient()
+}
 ```
 
-##### Individual resource group setup:
+##### Individual resource group setup example:
 
 ```go
+package main
+
 import (
     "github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
 )
 
-pokemonGroup := pokemon.NewPokemonGroup()
+func main() {
+    pokemonGroup := pokemon.NewPokemonGroup()
+}
 ```
 
 ## Resource Groups

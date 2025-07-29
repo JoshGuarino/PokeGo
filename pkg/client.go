@@ -22,7 +22,7 @@ import (
 
 // PokeGo API wrapper interface
 type IPokeGo interface {
-	Root() (models.Root, error)
+	Root() (*models.Root, error)
 	GetBaseURL() string
 }
 
