@@ -20,7 +20,7 @@ generation, err := gamesGroup.GetGeneration("generation-i")
 // Main client example
 generationList, err := client.Games.GetGenerationList(limit, offset)
 
-// Individual resource group example 
+// Individual resource group example
 generationList, err := gamesGroup.GetGenerationList(limit, offset)
 ```
 
@@ -49,7 +49,7 @@ pokedex, err := gamesGroup.GetPokedex("kanto")
 ##### Get list of Pokedex resource:
 
 ```go
-// Main client example 
+// Main client example
 pokedexList, err := client.Games.GetPokedexList(limit, offset)
 
 // Individual resource group example
@@ -81,10 +81,10 @@ version, err := gamesGroup.GetVersion("red")
 ##### Get list of Version resource:
 
 ```go
-// Main client example 
+// Main client example
 versionList, err := client.Games.GetVersionList(limit, offset)
 
-// Individual resource group example 
+// Individual resource group example
 versionList, err := gamesGroup.GetVersionList(limit, offset)
 ```
 
@@ -113,9 +113,19 @@ versionGroup, err := gamesGroup.GetVersionGroup("red-blue")
 ##### Get list of Version Group resource:
 
 ```go
-// Main client example 
+// Main client example
 versionGroupList, err := client.Games.GetVersionGroupList(limit, offset)
 
-// Individual resource group example 
+// Individual resource group example
 versionGroupList, err := gamesGroup.GetVersionGroupList(limit, offset)
+```
+
+##### Get Version Group resource URL:
+
+```go
+// Main client example
+versionGroupURL := client.Games.GetVersionGroupURL()
+
+// Individual resource group example
+versionGroupURL := gamesGroup.GetVersionGroupURL()
 ```
