@@ -3,10 +3,13 @@ package encounters
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var encounters IEncounters = NewEncountersGroup()
+var url string = endpoints.BaseURL
 
 func TestNewEncountersGroup(t *testing.T) {
 	encounters := NewEncountersGroup()
@@ -20,6 +23,7 @@ func TestGetEncounterMethod(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for EncounterMethod resource")
 	assert.Equal(t, "walk", rByName.Name, "Unexpected Name for EncounterMethod resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.EncounterMethod{}, rById, "Expected EncounterMethod instance to be returned")
 }
 
 func TestGetEncounterMethodList(t *testing.T) {
@@ -28,6 +32,13 @@ func TestGetEncounterMethodList(t *testing.T) {
 	assert.Equal(t, "walk", rList.Results[0].Name, "Unexpected Name for EncounterMethod resource")
 	assert.Equal(t, "old-rod", rPage.Results[0].Name, "Unexpected Name for EncounterMethod resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetEncounterMethodURL(t *testing.T) {
+	encounterMethodURL := encounters.GetEncounterMethodURL()
+	assert.Equal(t, url+endpoints.EncounterMethod, encounterMethodURL, "Unexpected EncounterMethod resource URL")
+	assert.IsType(t, "", encounterMethodURL, "Expected EncounterMethod resource URL to be a string")
 }
 
 func TestGetEncounterCondition(t *testing.T) {
@@ -37,6 +48,7 @@ func TestGetEncounterCondition(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for EncounterCondition resource")
 	assert.Equal(t, "swarm", rByName.Name, "Unexpected Name for EncounterCondition resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.EncounterCondition{}, rById, "Expected EncounterCondition instance to be returned")
 }
 
 func TestGetEncounterConditionList(t *testing.T) {
@@ -45,6 +57,13 @@ func TestGetEncounterConditionList(t *testing.T) {
 	assert.Equal(t, "swarm", rList.Results[0].Name, "Unexpected Name for EncounterCondition resource")
 	assert.Equal(t, "time", rPage.Results[0].Name, "Unexpected Name for EncounterCondition resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetEncounterConditionURL(t *testing.T) {
+	encounterConditionURL := encounters.GetEncounterConditionURL()
+	assert.Equal(t, url+endpoints.EncounterCondition, encounterConditionURL, "Unexpected EncounterCondition resource URL")
+	assert.IsType(t, "", encounterConditionURL, "Expected EncounterCondition resource URL to be a string")
 }
 
 func TestGetEncounterConditionValue(t *testing.T) {
@@ -54,6 +73,7 @@ func TestGetEncounterConditionValue(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for EncounterConditionValue resource")
 	assert.Equal(t, "swarm-yes", rByName.Name, "Unexpected Name for EncounterConditionValue resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.EncounterConditionValue{}, rById, "Expected EncounterConditionValue instance to be returned")
 }
 
 func TestGetEncounterConditionValueList(t *testing.T) {
@@ -62,4 +82,11 @@ func TestGetEncounterConditionValueList(t *testing.T) {
 	assert.Equal(t, "swarm-yes", rList.Results[0].Name, "Unexpected Name for EncounterConditionValue resource")
 	assert.Equal(t, "swarm-no", rPage.Results[0].Name, "Unexpected Name for EncounterConditionValue resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetEncounterConditionValueURL(t *testing.T) {
+	encounterConditionValueURL := encounters.GetEncounterConditionValueURL()
+	assert.Equal(t, url+endpoints.EncounterConditionValue, encounterConditionValueURL, "Unexpected EncounterConditionValue resource URL")
+	assert.IsType(t, "", encounterConditionValueURL, "Expected EncounterConditionValue resource URL to be a string")
 }

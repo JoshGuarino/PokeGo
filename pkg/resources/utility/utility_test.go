@@ -3,10 +3,13 @@ package utility
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var utility IUtility = NewUtilityGroup()
+var url string = endpoints.BaseURL
 
 func TestNewUtilityGroup(t *testing.T) {
 	utility := NewUtilityGroup()
@@ -20,6 +23,7 @@ func TestGetLanguage(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Language resource")
 	assert.Equal(t, "en", rByname.Name, "Unexpected ID for Language resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Language{}, rById, "Expected Language instance to be returned")
 }
 
 func TestGetLanguageList(t *testing.T) {
@@ -28,4 +32,11 @@ func TestGetLanguageList(t *testing.T) {
 	assert.Equal(t, "ja-Hrkt", rList.Results[0].Name, "Unexpected Name for Language resource")
 	assert.Equal(t, "roomaji", rPage.Results[0].Name, "Unexpected Name for Language resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetLanguageURL(t *testing.T) {
+	languageURL := utility.GetLanguageURL()
+	assert.Equal(t, url+endpoints.Language, languageURL, "Unexpected Language resource URL")
+	assert.IsType(t, "", languageURL, "Expected Language resource URL to be a string")
 }

@@ -17,11 +17,20 @@ contestType, err := contestsGroup.GetContestType("cool")
 ##### Get list of Contest Type resource:
 
 ```go
-// Main client example returning first page of 20 results
-contestTypeList, err := client.Contests.GetContestTypeList(20, 0)
+// Main client example 
+contestTypeList, err := client.Contests.GetContestTypeList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-contestTypeList, err := contestsGroup.GetContestTypeList(20, 20)
+// Individual resource group example 
+contestTypeList, err := contestsGroup.GetContestTypeList(limit, offset)
+```
+
+##### Get URL for Contest Type resource:
+```go
+// Main client example
+contestTypeURL := client.Contests.GetContestTypeURL()
+
+// Individual resource group example
+contestTypeURL := contestsGroup.GetContestTypeURL()
 ```
 
 ## [ContestEffect](https://pokeapi.co/docs/v2#contest-effects)
@@ -39,11 +48,20 @@ contestEffect, err := contestsGroup.GetContestEffect("1")
 ##### Get list of Contest Effect resource:
 
 ```go
-// Main client example returning first page of 20 results
-contestEffectList, err := client.Contests.GetContestEffectList(20, 0)
+// Main client example 
+contestEffectList, err := client.Contests.GetContestEffectList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-contestEffectList, err := contestsGroup.GetContestEffectList(20, 20)
+// Individual resource group example 
+contestEffectList, err := contestsGroup.GetContestEffectList(limit, offset)
+```
+
+##### Get URL for Contest Effect resource:
+```go
+// Main client example
+contestEffectURL := client.Contests.GetContestEffectURL()
+
+// Individual resource group example
+contestEffectURL := contestsGroup.GetContestEffectURL()
 ```
 
 ## [SuperContestEffect](https://pokeapi.co/docs/v2#super-contest-effects)
@@ -61,9 +79,18 @@ superContestEffect, err := contestsGroup.GetSuperContestEffect("1")
 ##### Get list of Super Contest Effect resource:
 
 ```go
-// Main client example returning first page of 20 results
-superContestEffectList, err := client.Contests.GetSuperContestEffectList(20, 0)
+// Main client example 
+superContestEffectList, err := client.Contests.GetSuperContestEffectList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-superContestEffectList, err := contestsGroup.GetSuperContestEffectList(20, 20)
+superContestEffectList, err := contestsGroup.GetSuperContestEffectList(limit, offset)
+```
+
+##### Get URL for Super Contest Effect resource:
+```go
+// Main client example
+superContestEffectURL := client.Contests.GetSuperContestEffectURL()
+
+// Individual resource group example
+superContestEffectURL := contestsGroup.GetSuperContestEffectURL()
 ```

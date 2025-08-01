@@ -22,11 +22,17 @@ import (
 
 // PokeGo API wrapper interface
 type IPokeGo interface {
-	Root() (models.Root, error)
+	Root() (*models.Root, error)
+	GetBaseURL() string
 }
 
 // PokeGo API wrapper client
 type PokeGo struct {
+	// base URL and cache
+	BaseURL string
+	Cache   *cache.Cache
+
+	// resources
 	Berries    berries.Berries
 	Contests   contests.Contests
 	Encounters encounters.Encounters
@@ -38,7 +44,6 @@ type PokeGo struct {
 	Moves      moves.Moves
 	Pokemon    pokemon.Pokemon
 	Utility    utility.Utility
-	Cache      *cache.Cache
 }
 
 // Initialize function
@@ -49,6 +54,11 @@ func init() {
 // Return an instance of the PokeGo API wrapper client
 func NewClient() PokeGo {
 	return PokeGo{
+		// initialize base URL and cache
+		BaseURL: endpoints.BaseURL,
+		Cache:   cache.C,
+
+		// initialize resources
 		Berries:    berries.NewBerriesGroup(),
 		Contests:   contests.NewContestsGroup(),
 		Encounters: encounters.NewEncountersGroup(),
@@ -60,15 +70,19 @@ func NewClient() PokeGo {
 		Moves:      moves.NewMovesGroup(),
 		Pokemon:    pokemon.NewPokemonGroup(),
 		Utility:    utility.NewUtilityGroup(),
-		Cache:      cache.C,
 	}
 }
 
 // Return an instance of API Root list of available resources
 func (p PokeGo) Root() (*models.Root, error) {
-	root, err := request.GetResource[models.Root](endpoints.BaseUrl)
+	root, err := request.GetResource[models.Root](p.BaseURL)
 	if err != nil {
 		return nil, err
 	}
 	return root, nil
+}
+
+// Return the base URL for PokeAPI
+func (p PokeGo) GetBaseURL() string {
+	return p.BaseURL
 }

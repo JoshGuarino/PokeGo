@@ -21,24 +21,32 @@ There are two options for using PokeGo. You can either use the main client or cr
 The main client will initialize all resource groups for you. If you choose to use individual resource groups,
 you will need to initialize each group separately.
 
-##### Main client setup:
+##### Main client setup example:
 
 ```go
+package main
+
 import (
     pokego "github.com/JoshGuarino/PokeGo/pkg"
 )
 
-client := pokego.NewClient()
+func main() {
+    client := pokego.NewClient()
+}
 ```
 
-##### Individual resource group setup:
+##### Individual resource group setup example:
 
 ```go
+package main
+
 import (
     "github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
 )
 
-pokemonGroup := pokemon.NewPokemonGroup()
+func main() {
+    pokemonGroup := pokemon.NewPokemonGroup()
+}
 ```
 
 ## Resource Groups
@@ -68,10 +76,12 @@ is the number of results to skip. Both arugments are required as Golang does not
 
 ```go
 // Main client example returning the first page of 20 results
-pokemonList, err := client.Pokemon.GetPokemonList(20, 0)
+limit, offset := 20, 0
+pokemonList, err := client.Pokemon.GetPokemonList(limit, offset)
 
 // Individual resource group example returning the second page of 20 results
-pokemonList, err := pokemonGroup.GetPokemonList(20, 20)
+limit, offset := 20, 20 
+pokemonList, err := pokemonGroup.GetPokemonList(limit, offset)
 ```
 
 ## Caching

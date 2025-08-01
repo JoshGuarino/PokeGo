@@ -17,9 +17,19 @@ language, err := utilityGroup.GetLanguage("en")
 ##### Get list of Language resource:
 
 ```go
-// Main client example returning first page of 20 results
-languageList, err := client.Utility.GetLanguageList(20, 0)
+// Main client example 
+languageList, err := client.Utility.GetLanguageList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-languageList, err := utilityGroup.GetLanguageList(20, 20)
+// Individual resource group example 
+languageList, err := utilityGroup.GetLanguageList(limit, offset)
+```
+
+##### Get URL for Language resource:
+
+```go
+// Main client example
+languageURL := client.Utility.GetLanguageURL()
+
+// Individual resource group example
+languageURL := utilityGroup.GetLanguageURL()
 ```

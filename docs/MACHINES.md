@@ -17,9 +17,19 @@ machine, err := machinesGroup.GetMachine("1")
 ##### Get list of Machine resource:
 
 ```go
-// Main client example returning first page of 20 results
-machineList, err := client.Machines.GetMachineList(20, 0)
+// Main client example 
+machineList, err := client.Machines.GetMachineList(limit, offset)
 
-// Individual resource group example returning second page of 20 results
-machineList, err := machinesGroup.GetMachineList(20, 20)
+// Individual resource group example 
+machineList, err := machinesGroup.GetMachineList(limit, offset)
+```
+
+##### Get URL for Machine resource:
+
+```go
+// Main client example
+machineURL := client.Machines.GetMachineURL()
+
+// Individual resource group example
+machineURL := machinesGroup.GetMachineURL()
 ```

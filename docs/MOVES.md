@@ -18,10 +18,20 @@ move, err := movesGroup.GetMove("pound")
 
 ```go
 // Main client example returning first page of 20 results
-moveList, err := client.Moves.GetMoveList(20, 0)
+moveList, err := client.Moves.GetMoveList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveList, err := movesGroup.GetMoveList(20, 20)
+moveList, err := movesGroup.GetMoveList(limit, offset)
+```
+
+##### Get Move resource URL:
+
+```go
+// Main client example
+moveURL := client.Moves.GetMoveURL()
+
+// Individual resource group example
+moveURL := movesGroup.GetMoveURL()
 ```
 
 ## [Move Ailment](https://pokeapi.co/docs/v2#move-ailments)
@@ -40,10 +50,20 @@ moveAilment, err := movesGroup.GetMoveAilment("paralysis")
 
 ```go
 // Main client example returning first page of 20 results
-moveAilmentList, err := client.Moves.GetMoveAilmentList(20, 0)
+moveAilmentList, err := client.Moves.GetMoveAilmentList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveAilmentList, err := movesGroup.GetMoveAilmentList(20, 20)
+moveAilmentList, err := movesGroup.GetMoveAilmentList(limit, offset)
+```
+
+##### Get Move Ailment resource URL:
+
+```go
+// Main client example
+moveAilmentURL := client.Moves.GetMoveAilmentURL()
+
+// Individual resource group example
+moveAilmentURL := movesGroup.GetMoveAilmentURL()
 ```
 
 ## [Move Battle Style](https://pokeapi.co/docs/v2#move-battle-styles)
@@ -62,10 +82,20 @@ moveBattleStyle, err := movesGroup.GetMoveBattleStyle("attack")
 
 ```go
 // Main client example returning first page of 20 results
-moveBattleStyleList, err := client.Moves.GetMoveBattleStyleList(20, 0)
+moveBattleStyleList, err := client.Moves.GetMoveBattleStyleList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveBattleStyleList, err := movesGroup.GetMoveBattleStyleList(20, 20)
+moveBattleStyleList, err := movesGroup.GetMoveBattleStyleList(limit, offset)
+```
+
+##### Get Move Battle Style resource URL:
+
+```go
+// Main client example
+moveBattleStyleURL := client.Moves.GetMoveBattleStyleURL()
+
+// Individual resource group example
+moveBattleStyleURL := movesGroup.GetMoveBattleStyleURL()
 ```
 
 ## [Move Category](https://pokeapi.co/docs/v2#move-categories)
@@ -84,10 +114,20 @@ moveCategory, err := movesGroup.GetMoveCategory("damage")
 
 ```go
 // Main client example returning first page of 20 results
-moveCategoryList, err := client.Moves.GetMoveCategoryList(20, 0)
+moveCategoryList, err := client.Moves.GetMoveCategoryList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveCategoryList, err := movesGroup.GetMoveCategoryList(20, 20)
+moveCategoryList, err := movesGroup.GetMoveCategoryList(limit, offset)
+```
+
+##### Get Move Category resource URL:
+
+```go
+// Main client example
+moveCategoryURL := client.Moves.GetMoveCategoryURL()
+
+// Individual resource group example
+moveCategoryURL := movesGroup.GetMoveCategoryURL()
 ```
 
 ## [Move Damage Class](https://pokeapi.co/docs/v2#move-damage-classes)
@@ -106,10 +146,20 @@ moveDamageClass, err := movesGroup.GetMoveDamageClass("status")
 
 ```go
 // Main client example returning first page of 20 results
-moveDamageClassList, err := client.Moves.GetMoveDamageClassList(20, 0)
+moveDamageClassList, err := client.Moves.GetMoveDamageClassList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveDamageClassList, err := movesGroup.GetMoveDamageClassList(20, 20)
+moveDamageClassList, err := movesGroup.GetMoveDamageClassList(limit, offset)
+```
+
+##### Get Move Damage Class resource URL:
+
+```go
+// Main client example
+moveDamageClassURL := client.Moves.GetMoveDamageClassURL()
+
+// Individual resource group example
+moveDamageClassURL := movesGroup.GetMoveDamageClassURL()
 ```
 
 ## [Move Learn Method](https://pokeapi.co/docs/v2#move-learn-methods)
@@ -128,10 +178,20 @@ moveLearnMethod, err := movesGroup.GetMoveLearnMethod("level-up")
 
 ```go
 // Main client example returning first page of 20 results
-moveLearnMethodList, err := client.Moves.GetMoveLearnMethodList(20, 0)
+moveLearnMethodList, err := client.Moves.GetMoveLearnMethodList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveLearnMethodList, err := movesGroup.GetMoveLearnMethodList(20, 20)
+moveLearnMethodList, err := movesGroup.GetMoveLearnMethodList(limit, offset)
+```
+
+##### Get Move Learn Method resource URL:
+
+```go
+// Main client example
+moveLearnMethodURL := client.Moves.GetMoveLearnMethodURL()
+
+// Individual resource group example
+moveLearnMethodURL := movesGroup.GetMoveLearnMethodURL()
 ```
 
 ## [Move Target](https://pokeapi.co/docs/v2#move-targets)
@@ -150,8 +210,18 @@ moveTarget, err := movesGroup.GetMoveTarget("specific-move")
 
 ```go
 // Main client example returning first page of 20 results
-moveTargetList, err := client.Moves.GetMoveTargetList(20, 0)
+moveTargetList, err := client.Moves.GetMoveTargetList(limit, offset)
 
 // Individual resource group example returning second page of 20 results
-moveTargetList, err := movesGroup.GetMoveTargetList(20, 20)
+moveTargetList, err := movesGroup.GetMoveTargetList(limit, offset)
+```
+
+##### Get Move Target resource URL:
+
+```go
+// Main client example
+moveTargetURL := client.Moves.GetMoveTargetURL()
+
+// Individual resource group example
+moveTargetURL := movesGroup.GetMoveTargetURL()
 ```

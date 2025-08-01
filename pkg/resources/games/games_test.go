@@ -3,10 +3,13 @@ package games
 import (
 	"testing"
 
+	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var games IGames = NewGamesGroup()
+var url string = endpoints.BaseURL
 
 func TestNewGamesGroup(t *testing.T) {
 	games := NewGamesGroup()
@@ -20,6 +23,7 @@ func TestGetGeneration(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Generation resource")
 	assert.Equal(t, "generation-i", rByName.Name, "Unexpected Name for Generation resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Generation{}, rById, "Expected Generation instance to be returned")
 }
 
 func TestGetGenerationList(t *testing.T) {
@@ -28,6 +32,13 @@ func TestGetGenerationList(t *testing.T) {
 	assert.Equal(t, "generation-i", rList.Results[0].Name, "Unexpected Name for Generation resource")
 	assert.Equal(t, "generation-ii", rPage.Results[0].Name, "Unexpected Name for Generation resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetGenerationURL(t *testing.T) {
+	generationURL := games.GetGenerationURL()
+	assert.Equal(t, url+endpoints.Generation, generationURL, "Unexpected Generation resource URL")
+	assert.IsType(t, "", generationURL, "Expected Generation resource URL to be a string")
 }
 
 func TestGetPokedex(t *testing.T) {
@@ -37,6 +48,7 @@ func TestGetPokedex(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Pokedex resource")
 	assert.Equal(t, "national", rByName.Name, "Unexpected Name for Pokedex resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Pokedex{}, rById, "Expected Pokedex instance to be returned")
 }
 
 func TestGetPokedexList(t *testing.T) {
@@ -45,6 +57,13 @@ func TestGetPokedexList(t *testing.T) {
 	assert.Equal(t, "national", rList.Results[0].Name, "Unexpected Name for Pokedex resource")
 	assert.Equal(t, "kanto", rPage.Results[0].Name, "Unexpected Name for Pokedex resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetPokedexURL(t *testing.T) {
+	pokedexURL := games.GetPokedexURL()
+	assert.Equal(t, url+endpoints.Pokedex, pokedexURL, "Unexpected Pokedex resource URL")
+	assert.IsType(t, "", pokedexURL, "Expected Pokedex resource URL to be a string")
 }
 
 func TestGetVersion(t *testing.T) {
@@ -54,6 +73,7 @@ func TestGetVersion(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for Version resource")
 	assert.Equal(t, "red", rByName.Name, "Unexpected Name for Version resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.Version{}, rById, "Expected Version instance to be returned")
 }
 
 func TestGetVersionList(t *testing.T) {
@@ -62,6 +82,13 @@ func TestGetVersionList(t *testing.T) {
 	assert.Equal(t, "red", rList.Results[0].Name, "Unexpected Name for Version resource")
 	assert.Equal(t, "blue", rPage.Results[0].Name, "Unexpected Name for Version resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetVersionURL(t *testing.T) {
+	versionURL := games.GetVersionURL()
+	assert.Equal(t, url+endpoints.Version, versionURL, "Unexpected Version resource URL")
+	assert.IsType(t, "", versionURL, "Expected Version resource URL to be a string")
 }
 
 func TestGetVersionGroup(t *testing.T) {
@@ -71,6 +98,7 @@ func TestGetVersionGroup(t *testing.T) {
 	assert.Equal(t, 1, rById.ID, "Unexpected ID for VersionGroup resource")
 	assert.Equal(t, "red-blue", rByName.Name, "Unexpected Name for VersionGroup resource")
 	assert.Error(t, err, "Expected an error to be thrown.")
+	assert.IsType(t, &models.VersionGroup{}, rById, "Expected VersionGroup instance to be returned")
 }
 
 func TestGetVersionListGroup(t *testing.T) {
@@ -79,4 +107,11 @@ func TestGetVersionListGroup(t *testing.T) {
 	assert.Equal(t, "red-blue", rList.Results[0].Name, "Unexpected Name for VersionGroup resource")
 	assert.Equal(t, "yellow", rPage.Results[0].Name, "Unexpected Name for VersionGroup resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
+	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
+}
+
+func TestGetVersionGroupURL(t *testing.T) {
+	versionGroupURL := games.GetVersionGroupURL()
+	assert.Equal(t, url+endpoints.VersionGroup, versionGroupURL, "Unexpected VersionGroup resource URL")
+	assert.IsType(t, "", versionGroupURL, "Expected VersionGroup resource URL to be a string")
 }

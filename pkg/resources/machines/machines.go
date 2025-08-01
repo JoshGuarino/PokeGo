@@ -13,11 +13,13 @@ import (
 type IMachines interface {
 	GetMachine(id string) (*models.Machine, error)
 	GetMachineList(limit int, offset int) (*models.ResourceList, error)
+	GetMachineURL() string
 }
 
 // Machines group struct
 type Machines struct {
-	Cache *cache.Cache
+	MachineURL string
+	Cache      *cache.Cache
 }
 
 // Initialize function
@@ -27,14 +29,16 @@ func init() {
 
 // Return an instance of Items resource group struct
 func NewMachinesGroup() Machines {
+	url := endpoints.BaseURL
 	return Machines{
-		Cache: cache.C,
+		MachineURL: url + endpoints.Machine,
+		Cache:      cache.C,
 	}
 }
 
 // Return a single Machine resource by  ID
 func (m Machines) GetMachine(id string) (*models.Machine, error) {
-	machine, err := request.GetResource[models.Machine](endpoints.Machine + id)
+	machine, err := request.GetResource[models.Machine](m.MachineURL + id)
 	if err != nil {
 		return nil, err
 	}
@@ -43,9 +47,14 @@ func (m Machines) GetMachine(id string) (*models.Machine, error) {
 
 // Return a list of Machine resource
 func (m Machines) GetMachineList(limit int, offset int) (*models.ResourceList, error) {
-	machineList, err := request.GetResourceList[models.ResourceList](endpoints.Machine, limit, offset)
+	machineList, err := request.GetResourceList[models.ResourceList](m.MachineURL, limit, offset)
 	if err != nil {
 		return nil, err
 	}
 	return machineList, nil
+}
+
+// Return the Machine resource url
+func (m Machines) GetMachineURL() string {
+	return m.MachineURL
 }
