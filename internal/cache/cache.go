@@ -1,9 +1,10 @@
 package cache
 
 import (
-	"fmt"
 	"sync"
 	"time"
+
+	"github.com/charmbracelet/log"
 )
 
 // Cache interface
@@ -43,7 +44,7 @@ var C *Cache
 // Initialize cache
 func init() {
 	C = NewCache()
-	fmt.Println("Cache initialized")
+	log.Info("Cache initialized")
 }
 
 // Return an instance of Cache struct

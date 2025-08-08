@@ -1,12 +1,11 @@
 package locations
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Locations group interface
@@ -36,7 +35,7 @@ type Locations struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Locations resource group initialized")
+	log.Info("Locations resource group initialized")
 }
 
 // Return an instance of Locations resource group struct

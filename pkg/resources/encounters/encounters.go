@@ -1,12 +1,11 @@
 package encounters
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Encounters group interface
@@ -32,7 +31,7 @@ type Encounters struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Encounters resource group initialized")
+	log.Info("Encounters resource group initialized")
 }
 
 // Return an instance of Encounters resource group struct

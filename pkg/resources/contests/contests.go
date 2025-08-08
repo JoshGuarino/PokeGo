@@ -1,12 +1,11 @@
 package contests
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Contests group interface
@@ -32,7 +31,7 @@ type Contests struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Contests resource group initialized")
+	log.Info("Contests resource group initialized")
 }
 
 // Return an instance of Contests resource group struct

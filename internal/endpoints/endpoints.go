@@ -1,8 +1,9 @@
 package endpoints
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/charmbracelet/log"
 )
 
 const (
@@ -83,14 +84,16 @@ const (
 	Language = "/language/"
 )
 
-// PokeAPI base URL set to prod env by default
+// PokeAPI base URL set to Production environment by default
 var BaseURL string = ProdBaseURL
+var ENV string = "prod"
 
 // Initialize function
 func init() {
 	// If testing, use the staging URL
 	if testing.Testing() {
 		BaseURL = StageBaseURL
+		ENV = "stage"
 	}
-	fmt.Println("Base URL initialized ->", BaseURL)
+	log.Info("Base URL initialized", "ENV", ENV, "URL", BaseURL)
 }

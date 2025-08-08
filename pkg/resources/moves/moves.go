@@ -1,12 +1,11 @@
 package moves
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Moves group interface
@@ -48,7 +47,7 @@ type Moves struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Moves resource group initialized")
+	log.Info("Moves resource group initialized")
 }
 
 // Return an instance of Moves resource group struct

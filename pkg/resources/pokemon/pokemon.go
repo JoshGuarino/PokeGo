@@ -1,12 +1,11 @@
 package pokemon
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Pokemon group interface
@@ -81,7 +80,7 @@ type Pokemon struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Pokemon resource group initialized")
+	log.Info("Pokemon resource group initialized")
 }
 
 // Return an instance of Pokmon resource group struct

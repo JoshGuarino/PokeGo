@@ -1,12 +1,11 @@
 package berries
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Berries group interface
@@ -32,7 +31,7 @@ type Berries struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Berries resource group initialized")
+	log.Info("Berries resource group initialized")
 }
 
 // Return an instance of Berry resource group struct

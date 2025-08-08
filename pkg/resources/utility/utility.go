@@ -1,12 +1,11 @@
 package utility
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Utility group interface
@@ -24,7 +23,7 @@ type Utility struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Utility resource group initialized")
+	log.Info("Utility resource group initialized")
 }
 
 // Return an instance of Utility resource group struct

@@ -1,12 +1,11 @@
 package items
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Items group interface
@@ -40,7 +39,7 @@ type Items struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Items resource group initialized")
+	log.Info("Items resource group initialized")
 }
 
 // Return an instance of Items resource group struct

@@ -1,12 +1,11 @@
 package evolution
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Evolution group interface
@@ -28,7 +27,7 @@ type Evolution struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Evolution resource group initialized")
+	log.Info("Evolution resource group initialized")
 }
 
 // Return an instance of Evolution resource group struct

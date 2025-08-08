@@ -1,8 +1,6 @@
 package pokego
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
@@ -18,6 +16,7 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/resources/moves"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/utility"
+	"github.com/charmbracelet/log"
 )
 
 // PokeGo API wrapper interface
@@ -48,7 +47,7 @@ type PokeGo struct {
 
 // Initialize function
 func init() {
-	fmt.Println("PokeGo API wrapper initialized")
+	log.Info("PokeGo API wrapper initialized")
 }
 
 // Return an instance of the PokeGo API wrapper client

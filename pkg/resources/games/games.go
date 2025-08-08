@@ -1,12 +1,11 @@
 package games
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/endpoints"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+	"github.com/charmbracelet/log"
 )
 
 // Games group interface
@@ -36,7 +35,7 @@ type Games struct {
 
 // Initialize function
 func init() {
-	fmt.Println("Games resource group initialized")
+	log.Info("Games resource group initialized")
 }
 
 // Return an instance of Games resource group struct
