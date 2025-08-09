@@ -7,10 +7,8 @@ import (
 )
 
 const (
-	// Production base URL
-	ProdBaseURL = "https://pokeapi.co/api/v2"
-
-	// Staging base URL
+	// Base URLs
+	ProdBaseURL  = "https://pokeapi.co/api/v2"
 	StageBaseURL = "https://staging.pokeapi.co/api/v2"
 
 	// Berry group resource endpoints
@@ -86,14 +84,14 @@ const (
 
 // PokeAPI base URL set to Production environment by default
 var BaseURL string = ProdBaseURL
-var ENV string = "prod"
+var Env string = "prod"
 
 // Initialize function
 func init() {
-	// If testing, use the staging URL
+	// If testing, use the staging environment
 	if testing.Testing() {
 		BaseURL = StageBaseURL
-		ENV = "stage"
+		Env = "stage"
 	}
-	log.Info("Base URL initialized", "ENV", ENV, "URL", BaseURL)
+	log.Info("Base URL initialized", "Env", Env, "BaseURL", BaseURL)
 }
