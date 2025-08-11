@@ -1,4 +1,4 @@
-package endpoints
+package env
 
 import (
 	"testing"
@@ -7,34 +7,13 @@ import (
 )
 
 const (
+	// Environment domains
+	prodDomain  = "prod"
+	stageDomain = "stage"
+
 	// Base URLs
-	ProdBaseURL  = "https://pokeapi.co/api/v2"
-	StageBaseURL = "https://staging.pokeapi.co/api/v2"
-
-	// Berry group resource endpoints
-	Berry         = "/berry/"
-	BerryFirmness = "/berry-firmness/"
-	BerryFlavor   = "/berry-flavor/"
-
-	// Contests group resource endpoints
-	ContestType        = "/contest-type/"
-	ContestEffect      = "/contest-effect/"
-	SuperContestEffect = "/super-contest-effect/"
-
-	// Encounters group resource endpoints
-	EncounterMethod         = "/encounter-method/"
-	EncounterCondition      = "/encounter-condition/"
-	EncounterConditionValue = "/encounter-condition-value/"
-
-	// Evolution group resource endpoints
-	EvolutionChain   = "/evolution-chain/"
-	EvolutionTrigger = "/evolution-trigger/"
-
-	// Games group resource endpoints
-	Generation   = "/generation/"
-	Pokedex      = "/pokedex/"
-	Version      = "/version/"
-	VersionGroup = "/version-group/"
+	prodURL  = "https://pokeapi.co/api/v2"
+	stageURL = "https://staging.pokeapi.co/api/v2"
 
 	// Items group resource endpoints
 	Item            = "/item/"
@@ -82,16 +61,68 @@ const (
 	Language = "/language/"
 )
 
-// PokeAPI base URL set to Production environment by default
-var BaseURL string = ProdBaseURL
-var Env string = "prod"
+// Environment interface
+type IEnv interface {
+	GetDomain() string
+	GetURL() string
+	SetStage()
+	SetProd()
+}
+
+// Environment struct
+type Env struct {
+	url    string
+	domain string
+}
+
+// Environment global variable defaulting to production
+var ENV *Env = prodEnv()
 
 // Initialize function
 func init() {
-	// If testing, use the staging environment
+	// Set environment to stage if testing
 	if testing.Testing() {
-		BaseURL = StageBaseURL
-		Env = "stage"
+		ENV = stageEnv()
 	}
-	log.Info("Base URL initialized", "Env", Env, "BaseURL", BaseURL)
+	log.Info("Environment initialized", "domain", ENV.Domain(), "url", ENV.URL())
+}
+
+// Return an instance of Env struct
+// pointing to the staging environment
+func stageEnv() *Env {
+	return &Env{
+		url:    stageURL,
+		domain: stageDomain,
+	}
+}
+
+// Return an instance of Env struct
+// pointing to the production environment
+func prodEnv() *Env {
+	return &Env{
+		url:    prodURL,
+		domain: prodDomain,
+	}
+}
+
+// Return the environment domain
+func (e *Env) Domain() string {
+	return e.domain
+}
+
+// Return the url for the environment
+func (e *Env) URL() string {
+	return e.url
+}
+
+// Set the environment to stage
+func (e *Env) SetStage() {
+	e.domain = stageDomain
+	e.url = stageURL
+}
+
+// Set the environment to production
+func (e *Env) SetProd() {
+	e.domain = prodDomain
+	e.url = prodURL
 }

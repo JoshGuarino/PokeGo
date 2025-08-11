@@ -43,7 +43,7 @@ func TestDelete(t *testing.T) {
 
 func TestSetExpiration(t *testing.T) {
 	cache.SetExpiration(1 * time.Second)
-	expiration := cache.GetExpiration()
+	expiration := cache.Expiration()
 	cache.Set("key", "value")
 	time.Sleep(2 * time.Second)
 	value, ok := cache.Get("key")
@@ -53,7 +53,7 @@ func TestSetExpiration(t *testing.T) {
 }
 
 func TestGetActive(t *testing.T) {
-	assert.True(t, cache.GetActive(), "Expected initial active value to be true")
+	assert.True(t, cache.Active(), "Expected initial active value to be true")
 }
 
 func TestSetActive(t *testing.T) {

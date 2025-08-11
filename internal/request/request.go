@@ -40,7 +40,7 @@ func GetData[T any](url string) (T, error) {
 	dataStruct := new(T)
 
 	// Check for cached data and return if found
-	data, found := cache.C.Get(url)
+	data, found := cache.CACHE.Get(url)
 	if found {
 		return data.(T), nil
 	}
@@ -58,8 +58,8 @@ func GetData[T any](url string) (T, error) {
 	}
 
 	// Cache ResourceList if active and return
-	if cache.C.GetActive() {
-		cache.C.Set(url, *dataStruct)
+	if cache.CACHE.Active() {
+		cache.CACHE.Set(url, *dataStruct)
 		return *dataStruct, nil
 	}
 	return *dataStruct, nil

@@ -14,9 +14,9 @@ type ICache interface {
 	Delete(key string)
 	Clear()
 	SetExpiration(expiration time.Duration)
-	GetExpiration() time.Duration
+	Expiration() time.Duration
 	SetActive(active bool)
-	GetActive() bool
+	Active() bool
 }
 
 // Cache struct
@@ -38,12 +38,12 @@ type Settings struct {
 	active     bool
 }
 
-// Cache var
-var C *Cache
+// Cache global variable
+var CACHE *Cache
 
 // Initialize cache
 func init() {
-	C = NewCache()
+	CACHE = NewCache()
 	log.Info("Cache initialized")
 }
 
@@ -106,7 +106,7 @@ func (c *Cache) SetExpiration(expiration time.Duration) {
 }
 
 // Get expiration time of Cache
-func (c *Cache) GetExpiration() time.Duration {
+func (c *Cache) Expiration() time.Duration {
 	return c.settings.expiration
 }
 
@@ -116,6 +116,6 @@ func (c *Cache) SetActive(active bool) {
 }
 
 // Get active status of Cache
-func (c *Cache) GetActive() bool {
+func (c *Cache) Active() bool {
 	return c.settings.active
 }
