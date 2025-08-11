@@ -3,7 +3,7 @@ package pokego
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
@@ -22,6 +22,6 @@ func TestRoot(t *testing.T) {
 
 func TestGetBaseURL(t *testing.T) {
 	baseURL := pokego.GetBaseURL()
-	assert.Equal(t, endpoints.StageBaseURL, baseURL, "Unexpected staging base URL returned")
+	assert.Equal(t, env.ENV.URL(), baseURL, "Unexpected staging base URL returned")
 	assert.IsType(t, "", baseURL, "Expected base URL to be a string")
 }
