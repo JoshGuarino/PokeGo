@@ -2,10 +2,15 @@ package machines
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/charmbracelet/log"
+)
+
+// Machines group resource endpoints
+const (
+	MachineEndpoint = "/machine/"
 )
 
 // Machines group interface
@@ -17,8 +22,8 @@ type IMachines interface {
 
 // Machines group struct
 type Machines struct {
-	MachineURL string
-	Cache      *cache.Cache
+	Cache *cache.Cache
+	Env   *env.Env
 }
 
 // Initialize function
@@ -28,16 +33,15 @@ func init() {
 
 // Return an instance of Items resource group struct
 func NewMachinesGroup() Machines {
-	url := endpoints.BaseURL
 	return Machines{
-		MachineURL: url + endpoints.Machine,
-		Cache:      cache.C,
+		Cache: cache.CACHE,
+		Env:   env.ENV,
 	}
 }
 
 // Return a single Machine resource by  ID
 func (m Machines) GetMachine(id string) (*models.Machine, error) {
-	machine, err := request.GetResource[models.Machine](m.MachineURL + id)
+	machine, err := request.GetResource[models.Machine](m.GetMachineURL() + id)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +50,7 @@ func (m Machines) GetMachine(id string) (*models.Machine, error) {
 
 // Return a list of Machine resource
 func (m Machines) GetMachineList(limit int, offset int) (*models.ResourceList, error) {
-	machineList, err := request.GetResourceList[models.ResourceList](m.MachineURL, limit, offset)
+	machineList, err := request.GetResourceList[models.ResourceList](m.GetMachineURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -55,5 +59,5 @@ func (m Machines) GetMachineList(limit int, offset int) (*models.ResourceList, e
 
 // Return the Machine resource url
 func (m Machines) GetMachineURL() string {
-	return m.MachineURL
+	return m.Env.URL() + MachineEndpoint
 }

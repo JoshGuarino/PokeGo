@@ -3,13 +3,13 @@ package machines
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var machines IMachines = NewMachinesGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewMachinesGroup(t *testing.T) {
 	machines := NewMachinesGroup()
@@ -35,6 +35,6 @@ func TestGetMachineList(t *testing.T) {
 
 func TestGetMachineURL(t *testing.T) {
 	machineURL := machines.GetMachineURL()
-	assert.Equal(t, url+endpoints.Machine, machineURL, "Unexpected Machine resource URL")
+	assert.Equal(t, url+MachineEndpoint, machineURL, "Unexpected Machine resource URL")
 	assert.IsType(t, "", machineURL, "Expected Machine resource URL to be a string")
 }

@@ -3,13 +3,13 @@ package encounters
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var encounters IEncounters = NewEncountersGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewEncountersGroup(t *testing.T) {
 	encounters := NewEncountersGroup()
@@ -37,7 +37,7 @@ func TestGetEncounterMethodList(t *testing.T) {
 
 func TestGetEncounterMethodURL(t *testing.T) {
 	encounterMethodURL := encounters.GetEncounterMethodURL()
-	assert.Equal(t, url+endpoints.EncounterMethod, encounterMethodURL, "Unexpected EncounterMethod resource URL")
+	assert.Equal(t, url+EncounterMethodEndpoint, encounterMethodURL, "Unexpected EncounterMethod resource URL")
 	assert.IsType(t, "", encounterMethodURL, "Expected EncounterMethod resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetEncounterConditionList(t *testing.T) {
 
 func TestGetEncounterConditionURL(t *testing.T) {
 	encounterConditionURL := encounters.GetEncounterConditionURL()
-	assert.Equal(t, url+endpoints.EncounterCondition, encounterConditionURL, "Unexpected EncounterCondition resource URL")
+	assert.Equal(t, url+EncounterConditionEndpoint, encounterConditionURL, "Unexpected EncounterCondition resource URL")
 	assert.IsType(t, "", encounterConditionURL, "Expected EncounterCondition resource URL to be a string")
 }
 
@@ -87,6 +87,6 @@ func TestGetEncounterConditionValueList(t *testing.T) {
 
 func TestGetEncounterConditionValueURL(t *testing.T) {
 	encounterConditionValueURL := encounters.GetEncounterConditionValueURL()
-	assert.Equal(t, url+endpoints.EncounterConditionValue, encounterConditionValueURL, "Unexpected EncounterConditionValue resource URL")
+	assert.Equal(t, url+EncounterConditionValueEndpoint, encounterConditionValueURL, "Unexpected EncounterConditionValue resource URL")
 	assert.IsType(t, "", encounterConditionValueURL, "Expected EncounterConditionValue resource URL to be a string")
 }

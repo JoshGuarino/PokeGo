@@ -14,51 +14,6 @@ const (
 	// Base URLs
 	prodURL  = "https://pokeapi.co/api/v2"
 	stageURL = "https://staging.pokeapi.co/api/v2"
-
-	// Items group resource endpoints
-	Item            = "/item/"
-	ItemAttribute   = "/item-attribute/"
-	ItemCategory    = "/item-category/"
-	ItemFlingEffect = "/item-fling-effect/"
-	ItemPocket      = "/item-pocket/"
-
-	// Locations group resource endpoints
-	Location     = "/location/"
-	LocationArea = "/location-area/"
-	PalParkArea  = "/pal-park-area/"
-	Region       = "/region/"
-
-	// Machines group resource endpoints
-	Machine = "/machine/"
-
-	// Moves group resource endpoints
-	Move            = "/move/"
-	MoveAilment     = "/move-ailment/"
-	MoveBattleStyle = "/move-battle-style/"
-	MoveCategory    = "/move-category/"
-	MoveDamageClass = "/move-damage-class/"
-	MoveLearnMethod = "/move-learn-method/"
-	MoveTarget      = "/move-target/"
-
-	// Pokemon group resource endpoints
-	Ability        = "/ability/"
-	Characteristic = "/characteristic/"
-	EggGroup       = "/egg-group/"
-	Gender         = "/gender/"
-	GrowthRate     = "/growth-rate/"
-	Nature         = "/nature/"
-	PokeathlonStat = "/pokeathlon-stat/"
-	Pokemon        = "/pokemon/"
-	PokemonColor   = "/pokemon-color/"
-	PokemonForm    = "/pokemon-form/"
-	PokemonHabitat = "/pokemon-habitat/"
-	PokemonShape   = "/pokemon-shape/"
-	PokemonSpecies = "/pokemon-species/"
-	Stat           = "/stat/"
-	Type           = "/type/"
-
-	// Utility group resource endpoints
-	Language = "/language/"
 )
 
 // Environment interface

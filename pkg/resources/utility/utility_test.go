@@ -3,13 +3,13 @@ package utility
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var utility IUtility = NewUtilityGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewUtilityGroup(t *testing.T) {
 	utility := NewUtilityGroup()
@@ -37,6 +37,6 @@ func TestGetLanguageList(t *testing.T) {
 
 func TestGetLanguageURL(t *testing.T) {
 	languageURL := utility.GetLanguageURL()
-	assert.Equal(t, url+endpoints.Language, languageURL, "Unexpected Language resource URL")
+	assert.Equal(t, url+LanguageEndpoint, languageURL, "Unexpected Language resource URL")
 	assert.IsType(t, "", languageURL, "Expected Language resource URL to be a string")
 }

@@ -3,13 +3,13 @@ package pokemon
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var pokemon IPokemon = NewPokemonGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewPokemonGroup(t *testing.T) {
 	pokemon := NewPokemonGroup()
@@ -37,7 +37,7 @@ func TestGetAbilityList(t *testing.T) {
 
 func TestGetAbilityURL(t *testing.T) {
 	abilityURL := pokemon.GetAbilityURL()
-	assert.Equal(t, url+endpoints.Ability, abilityURL, "Unexpected Ability resource URL")
+	assert.Equal(t, url+AbilityEndpoint, abilityURL, "Unexpected Ability resource URL")
 	assert.IsType(t, "", abilityURL, "Expected Ability resource URL to be a string")
 }
 
@@ -60,7 +60,7 @@ func TestGetCharacteristicList(t *testing.T) {
 
 func TestGetCharacteristicURL(t *testing.T) {
 	characteristicURL := pokemon.GetCharacteristicURL()
-	assert.Equal(t, url+endpoints.Characteristic, characteristicURL, "Unexpected Characteristic resource URL")
+	assert.Equal(t, url+CharacteristicEndpoint, characteristicURL, "Unexpected Characteristic resource URL")
 	assert.IsType(t, "", characteristicURL, "Expected Characteristic resource URL to be a string")
 }
 
@@ -85,7 +85,7 @@ func TestGetEggGroupList(t *testing.T) {
 
 func TestGetEggGroupURL(t *testing.T) {
 	eggGroupURL := pokemon.GetEggGroupURL()
-	assert.Equal(t, url+endpoints.EggGroup, eggGroupURL, "Unexpected EggGroup resource URL")
+	assert.Equal(t, url+EggGroupEndpoint, eggGroupURL, "Unexpected EggGroup resource URL")
 	assert.IsType(t, "", eggGroupURL, "Expected EggGroup resource URL to be a string")
 }
 
@@ -110,7 +110,7 @@ func TestGetGenderList(t *testing.T) {
 
 func TestGetGenderURL(t *testing.T) {
 	genderURL := pokemon.GetGenderURL()
-	assert.Equal(t, url+endpoints.Gender, genderURL, "Unexpected Gender resource URL")
+	assert.Equal(t, url+GenderEndpoint, genderURL, "Unexpected Gender resource URL")
 	assert.IsType(t, "", genderURL, "Expected Gender resource URL to be a string")
 }
 
@@ -135,7 +135,7 @@ func TestGetGrowthRateList(t *testing.T) {
 
 func TestGetGrowthRateURL(t *testing.T) {
 	growthRateURL := pokemon.GetGrowthRateURL()
-	assert.Equal(t, url+endpoints.GrowthRate, growthRateURL, "Unexpected GrowthRate resource URL")
+	assert.Equal(t, url+GrowthRateEndpoint, growthRateURL, "Unexpected GrowthRate resource URL")
 	assert.IsType(t, "", growthRateURL, "Expected GrowthRate resource URL to be a string")
 }
 
@@ -160,7 +160,7 @@ func TestGetNatureList(t *testing.T) {
 
 func TestGetNatureURL(t *testing.T) {
 	natureURL := pokemon.GetNatureURL()
-	assert.Equal(t, url+endpoints.Nature, natureURL, "Unexpected Nature resource URL")
+	assert.Equal(t, url+NatureEndpoint, natureURL, "Unexpected Nature resource URL")
 	assert.IsType(t, "", natureURL, "Expected Nature resource URL to be a string")
 }
 
@@ -185,7 +185,7 @@ func TestGetPokeathlonStatList(t *testing.T) {
 
 func TestGetPokeathlonStatURL(t *testing.T) {
 	pokeathlonStatURL := pokemon.GetPokeathlonStatURL()
-	assert.Equal(t, url+endpoints.PokeathlonStat, pokeathlonStatURL, "Unexpected PokeathlonStat resource URL")
+	assert.Equal(t, url+PokeathlonStatEndpoint, pokeathlonStatURL, "Unexpected PokeathlonStat resource URL")
 	assert.IsType(t, "", pokeathlonStatURL, "Expected PokeathlonStat resource URL to be a string")
 }
 
@@ -210,7 +210,7 @@ func TestGetPokemonList(t *testing.T) {
 
 func TestGetPokemonURL(t *testing.T) {
 	pokemonURL := pokemon.GetPokemonURL()
-	assert.Equal(t, url+endpoints.Pokemon, pokemonURL, "Unexpected Pokemon resource URL")
+	assert.Equal(t, url+PokemonEndpoint, pokemonURL, "Unexpected Pokemon resource URL")
 	assert.IsType(t, "", pokemonURL, "Expected Pokemon resource URL to be a string")
 }
 
@@ -245,7 +245,7 @@ func TestGetPokemonColorList(t *testing.T) {
 
 func TestGetPokemonColorURL(t *testing.T) {
 	pokemonColorURL := pokemon.GetPokemonColorURL()
-	assert.Equal(t, url+endpoints.PokemonColor, pokemonColorURL, "Unexpected PokemonColor resource URL")
+	assert.Equal(t, url+PokemonColorEndpoint, pokemonColorURL, "Unexpected PokemonColor resource URL")
 	assert.IsType(t, "", pokemonColorURL, "Expected PokemonColor resource URL to be a string")
 }
 
@@ -270,7 +270,7 @@ func TestGetPokemonFormList(t *testing.T) {
 
 func TestGetPokemonFormURL(t *testing.T) {
 	pokemonFormURL := pokemon.GetPokemonFormURL()
-	assert.Equal(t, url+endpoints.PokemonForm, pokemonFormURL, "Unexpected PokemonForm resource URL")
+	assert.Equal(t, url+PokemonFormEndpoint, pokemonFormURL, "Unexpected PokemonForm resource URL")
 	assert.IsType(t, "", pokemonFormURL, "Expected PokemonForm resource URL to be a string")
 }
 
@@ -295,7 +295,7 @@ func TestGetPokemonHabitatList(t *testing.T) {
 
 func TestGetPokemonHabitatURL(t *testing.T) {
 	pokemonHabitatURL := pokemon.GetPokemonHabitatURL()
-	assert.Equal(t, url+endpoints.PokemonHabitat, pokemonHabitatURL, "Unexpected PokemonHabitat resource URL")
+	assert.Equal(t, url+PokemonHabitatEndpoint, pokemonHabitatURL, "Unexpected PokemonHabitat resource URL")
 	assert.IsType(t, "", pokemonHabitatURL, "Expected PokemonHabitat resource URL to be a string")
 }
 
@@ -320,7 +320,7 @@ func TestGetPokemonShapeList(t *testing.T) {
 
 func TestGetPokemonShapeURL(t *testing.T) {
 	pokemonShapeURL := pokemon.GetPokemonShapeURL()
-	assert.Equal(t, url+endpoints.PokemonShape, pokemonShapeURL, "Unexpected PokemonShape resource URL")
+	assert.Equal(t, url+PokemonShapeEndpoint, pokemonShapeURL, "Unexpected PokemonShape resource URL")
 	assert.IsType(t, "", pokemonShapeURL, "Expected PokemonShape resource URL to be a string")
 }
 
@@ -345,7 +345,7 @@ func TestGetPokemonSpeciesList(t *testing.T) {
 
 func TestGetPokemonSpeciesURL(t *testing.T) {
 	pokemonSpeciesURL := pokemon.GetPokemonSpeciesURL()
-	assert.Equal(t, url+endpoints.PokemonSpecies, pokemonSpeciesURL, "Unexpected PokemonSpecies resource URL")
+	assert.Equal(t, url+PokemonSpeciesEndpoint, pokemonSpeciesURL, "Unexpected PokemonSpecies resource URL")
 	assert.IsType(t, "", pokemonSpeciesURL, "Expected PokemonSpecies resource URL to be a string")
 }
 
@@ -370,7 +370,7 @@ func TestGetStatList(t *testing.T) {
 
 func TestGetStatURL(t *testing.T) {
 	statURL := pokemon.GetStatURL()
-	assert.Equal(t, url+endpoints.Stat, statURL, "Unexpected Stat resource URL")
+	assert.Equal(t, url+StatEndpoint, statURL, "Unexpected Stat resource URL")
 	assert.IsType(t, "", statURL, "Expected Stat resource URL to be a string")
 }
 
@@ -395,6 +395,6 @@ func TestGetTypeList(t *testing.T) {
 
 func TestGetTypeURL(t *testing.T) {
 	typeURL := pokemon.GetTypeURL()
-	assert.Equal(t, url+endpoints.Type, typeURL, "Unexpected Type resource URL")
+	assert.Equal(t, url+TypeEndpoint, typeURL, "Unexpected Type resource URL")
 	assert.IsType(t, "", typeURL, "Expected Type resource URL to be a string")
 }

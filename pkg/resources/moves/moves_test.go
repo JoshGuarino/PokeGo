@@ -3,13 +3,13 @@ package moves
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var moves IMoves = NewMovesGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewMovesGroup(t *testing.T) {
 	moves := NewMovesGroup()
@@ -37,7 +37,7 @@ func TestGetMoveList(t *testing.T) {
 
 func TestGetMoveURL(t *testing.T) {
 	moveURL := moves.GetMoveURL()
-	assert.Equal(t, url+endpoints.Move, moveURL, "Unexpected Move resource URL")
+	assert.Equal(t, url+MoveEndpoint, moveURL, "Unexpected Move resource URL")
 	assert.IsType(t, "", moveURL, "Expected Move resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetMoveAilmentList(t *testing.T) {
 
 func TestGetMoveAilmentURL(t *testing.T) {
 	moveAilmentURL := moves.GetMoveAilmentURL()
-	assert.Equal(t, url+endpoints.MoveAilment, moveAilmentURL, "Unexpected MoveAilment resource URL")
+	assert.Equal(t, url+MoveAilmentEndpoint, moveAilmentURL, "Unexpected MoveAilment resource URL")
 	assert.IsType(t, "", moveAilmentURL, "Expected MoveAilment resource URL to be a string")
 }
 
@@ -87,7 +87,7 @@ func TestGetMoveBattleStyleList(t *testing.T) {
 
 func TestGetMoveBattleStyleURL(t *testing.T) {
 	moveBattleStyleURL := moves.GetMoveBattleStyleURL()
-	assert.Equal(t, url+endpoints.MoveBattleStyle, moveBattleStyleURL, "Unexpected MoveBattleStyle resource URL")
+	assert.Equal(t, url+MoveBattleStyleEndpoint, moveBattleStyleURL, "Unexpected MoveBattleStyle resource URL")
 	assert.IsType(t, "", moveBattleStyleURL, "Expected MoveBattleStyle resource URL to be a string")
 }
 
@@ -112,7 +112,7 @@ func TestGetMoveCategoryList(t *testing.T) {
 
 func TestGetMoveCategoryURL(t *testing.T) {
 	moveCategoryURL := moves.GetMoveCategoryURL()
-	assert.Equal(t, url+endpoints.MoveCategory, moveCategoryURL, "Unexpected MoveCategory resource URL")
+	assert.Equal(t, url+MoveCategoryEndpoint, moveCategoryURL, "Unexpected MoveCategory resource URL")
 	assert.IsType(t, "", moveCategoryURL, "Expected MoveCategory resource URL to be a string")
 }
 
@@ -137,7 +137,7 @@ func TestGetMoveDamageClassList(t *testing.T) {
 
 func TestGetMoveDamageClassURL(t *testing.T) {
 	moveDamageClassURL := moves.GetMoveDamageClassURL()
-	assert.Equal(t, url+endpoints.MoveDamageClass, moveDamageClassURL, "Unexpected MoveDamageClass resource URL")
+	assert.Equal(t, url+MoveDamageClassEndpoint, moveDamageClassURL, "Unexpected MoveDamageClass resource URL")
 	assert.IsType(t, "", moveDamageClassURL, "Expected MoveDamageClass resource URL to be a string")
 }
 
@@ -162,7 +162,7 @@ func TestGetMoveLearnMethodList(t *testing.T) {
 
 func TestGetMoveLearnMethodURL(t *testing.T) {
 	moveLearnMethodURL := moves.GetMoveLearnMethodURL()
-	assert.Equal(t, url+endpoints.MoveLearnMethod, moveLearnMethodURL, "Unexpected MoveLearnMethod resource URL")
+	assert.Equal(t, url+MoveLearnMethodEndpoint, moveLearnMethodURL, "Unexpected MoveLearnMethod resource URL")
 	assert.IsType(t, "", moveLearnMethodURL, "Expected MoveLearnMethod resource URL to be a string")
 }
 
@@ -187,6 +187,6 @@ func TestGetMoveTargetList(t *testing.T) {
 
 func TestGetMoveTargetURL(t *testing.T) {
 	moveTargetURL := moves.GetMoveTargetURL()
-	assert.Equal(t, url+endpoints.MoveTarget, moveTargetURL, "Unexpected MoveTarget resource URL")
+	assert.Equal(t, url+MoveTargetEndpoint, moveTargetURL, "Unexpected MoveTarget resource URL")
 	assert.IsType(t, "", moveTargetURL, "Expected MoveTarget resource URL to be a string")
 }

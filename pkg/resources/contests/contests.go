@@ -2,10 +2,17 @@ package contests
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/charmbracelet/log"
+)
+
+// Contests group resource endpoints
+const (
+	ContestTypeEndpoint        = "/contest-type/"
+	ContestEffectEndpoint      = "/contest-effect/"
+	SuperContestEffectEndpoint = "/super-contest-effect/"
 )
 
 // Contests group interface
@@ -23,10 +30,8 @@ type IContests interface {
 
 // Contests group struct
 type Contests struct {
-	ContestTypeURL        string
-	ContestEffectURL      string
-	SuperContestEffectURL string
-	Cache                 *cache.Cache
+	Cache *cache.Cache
+	Env   *env.Env
 }
 
 // Initialize function
@@ -36,18 +41,15 @@ func init() {
 
 // Return an instance of Contests resource group struct
 func NewContestsGroup() Contests {
-	url := endpoints.BaseURL
 	return Contests{
-		ContestTypeURL:        url + endpoints.ContestType,
-		ContestEffectURL:      url + endpoints.ContestEffect,
-		SuperContestEffectURL: url + endpoints.SuperContestEffect,
-		Cache:                 cache.C,
+		Cache: cache.CACHE,
+		Env:   env.ENV,
 	}
 }
 
 // Return a single ContestType resource by name or ID
 func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
-	contestType, err := request.GetResource[models.ContestType](c.ContestTypeURL + nameOrId)
+	contestType, err := request.GetResource[models.ContestType](c.GetContestTypeURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +58,7 @@ func (c Contests) GetContestType(nameOrId string) (*models.ContestType, error) {
 
 // Return a list of ContestType resource
 func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResourceList, error) {
-	contestTypeList, err := request.GetResourceList[models.NamedResourceList](c.ContestTypeURL, limit, offset)
+	contestTypeList, err := request.GetResourceList[models.NamedResourceList](c.GetContestTypeURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -65,12 +67,12 @@ func (c Contests) GetContestTypeList(limit int, offset int) (*models.NamedResour
 
 // Return the ContestType resource URL
 func (c Contests) GetContestTypeURL() string {
-	return c.ContestTypeURL
+	return c.Env.URL() + ContestTypeEndpoint
 }
 
 // Return a single ContestEffect resource by ID
 func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
-	contestEffect, err := request.GetResource[models.ContestEffect](c.ContestEffectURL + id)
+	contestEffect, err := request.GetResource[models.ContestEffect](c.GetContestEffectURL() + id)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +81,7 @@ func (c Contests) GetContestEffect(id string) (*models.ContestEffect, error) {
 
 // Return a list of ContestEffect resource
 func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceList, error) {
-	contestEffectList, err := request.GetResourceList[models.ResourceList](c.ContestEffectURL, limit, offest)
+	contestEffectList, err := request.GetResourceList[models.ResourceList](c.GetContestEffectURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -88,12 +90,12 @@ func (c Contests) GetContestEffectList(limit int, offest int) (*models.ResourceL
 
 // Return the ContestEffect resource URL
 func (c Contests) GetContestEffectURL() string {
-	return c.ContestEffectURL
+	return c.Env.URL() + ContestEffectEndpoint
 }
 
 // Return a single SuperContestEffect resource by ID
 func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, error) {
-	superContestEffect, err := request.GetResource[models.SuperContestEffect](c.SuperContestEffectURL + id)
+	superContestEffect, err := request.GetResource[models.SuperContestEffect](c.GetSuperContestEffectURL() + id)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +104,7 @@ func (c Contests) GetSuperContestEffect(id string) (*models.SuperContestEffect, 
 
 // Return a list of SuperContestEffect resource
 func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.ResourceList, error) {
-	superContestEffectList, err := request.GetResourceList[models.ResourceList](c.SuperContestEffectURL, limit, offest)
+	superContestEffectList, err := request.GetResourceList[models.ResourceList](c.GetSuperContestEffectURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -111,5 +113,5 @@ func (c Contests) GetSuperContestEffectList(limit int, offest int) (*models.Reso
 
 // Return the SuperContestEffect resource URL
 func (c Contests) GetSuperContestEffectURL() string {
-	return c.SuperContestEffectURL
+	return c.Env.URL() + SuperContestEffectEndpoint
 }

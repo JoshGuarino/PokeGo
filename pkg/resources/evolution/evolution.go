@@ -2,10 +2,16 @@ package evolution
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/charmbracelet/log"
+)
+
+// Evolution group resource endpoints
+const (
+	EvolutionChainEndpoint   = "/evolution-chain/"
+	EvolutionTriggerEndpoint = "/evolution-trigger/"
 )
 
 // Evolution group interface
@@ -20,9 +26,8 @@ type IEvolution interface {
 
 // Evolution group struct
 type Evolution struct {
-	EvolutionChainURL   string
-	EvolutionTriggerURL string
-	Cache               *cache.Cache
+	Cache *cache.Cache
+	Env   *env.Env
 }
 
 // Initialize function
@@ -32,17 +37,15 @@ func init() {
 
 // Return an instance of Evolution resource group struct
 func NewEvolutionGroup() Evolution {
-	url := endpoints.BaseURL
 	return Evolution{
-		EvolutionChainURL:   url + endpoints.EvolutionChain,
-		EvolutionTriggerURL: url + endpoints.EvolutionTrigger,
-		Cache:               cache.C,
+		Cache: cache.CACHE,
+		Env:   env.ENV,
 	}
 }
 
 // Return a single EvolutionChain resource by ID
 func (e Evolution) GetEvolutionChain(id string) (*models.EvolutionChain, error) {
-	evolutionChain, err := request.GetResource[models.EvolutionChain](e.EvolutionChainURL + id)
+	evolutionChain, err := request.GetResource[models.EvolutionChain](e.GetEvolutionChainURL() + id)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +54,7 @@ func (e Evolution) GetEvolutionChain(id string) (*models.EvolutionChain, error) 
 
 // Return a list of EvolutionChain resource
 func (e Evolution) GetEvolutionChainList(limit int, offset int) (*models.ResourceList, error) {
-	evolutionChainList, err := request.GetResourceList[models.ResourceList](e.EvolutionChainURL, limit, offset)
+	evolutionChainList, err := request.GetResourceList[models.ResourceList](e.GetEvolutionChainURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -60,12 +63,12 @@ func (e Evolution) GetEvolutionChainList(limit int, offset int) (*models.Resourc
 
 // Return the EvolutionChain resource URL
 func (e Evolution) GetEvolutionChainURL() string {
-	return e.EvolutionChainURL
+	return e.Env.URL() + EvolutionChainEndpoint
 }
 
 // Return a single EvolutionTrigger resource by name or ID
 func (e Evolution) GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigger, error) {
-	evolutionTrigger, err := request.GetResource[models.EvolutionTrigger](e.EvolutionTriggerURL + nameOrId)
+	evolutionTrigger, err := request.GetResource[models.EvolutionTrigger](e.GetEvolutionTriggerURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +77,7 @@ func (e Evolution) GetEvolutionTrigger(nameOrId string) (*models.EvolutionTrigge
 
 // Return a list of EvolutionTrigger resource
 func (e Evolution) GetEvolutionTriggerList(limit int, offset int) (*models.NamedResourceList, error) {
-	evolutionTriggerList, err := request.GetResourceList[models.NamedResourceList](e.EvolutionTriggerURL, limit, offset)
+	evolutionTriggerList, err := request.GetResourceList[models.NamedResourceList](e.GetEvolutionTriggerURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -83,5 +86,5 @@ func (e Evolution) GetEvolutionTriggerList(limit int, offset int) (*models.Named
 
 // Return the EvolutionTrigger resource URL
 func (e Evolution) GetEvolutionTriggerURL() string {
-	return e.EvolutionTriggerURL
+	return e.Env.URL() + EvolutionTriggerEndpoint
 }

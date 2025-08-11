@@ -3,13 +3,13 @@ package locations
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var locations ILocations = NewLocationsGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewLocationsGroup(t *testing.T) {
 	locations := NewLocationsGroup()
@@ -37,7 +37,7 @@ func TestGetLocationList(t *testing.T) {
 
 func TestGetLocationURL(t *testing.T) {
 	locationURL := locations.GetLocationURL()
-	assert.Equal(t, url+endpoints.Location, locationURL, "Unexpected Location resource URL")
+	assert.Equal(t, url+LocationEndpoint, locationURL, "Unexpected Location resource URL")
 	assert.IsType(t, "", locationURL, "Expected Location resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetLocationAreaList(t *testing.T) {
 
 func TestGetLocationAreaURL(t *testing.T) {
 	locationAreaURL := locations.GetLocationAreaURL()
-	assert.Equal(t, url+endpoints.LocationArea, locationAreaURL, "Unexpected LocationArea resource URL")
+	assert.Equal(t, url+LocationAreaEndpoint, locationAreaURL, "Unexpected LocationArea resource URL")
 	assert.IsType(t, "", locationAreaURL, "Expected LocationArea resource URL to be a string")
 }
 
@@ -87,7 +87,7 @@ func TestGetPalParkAreaList(t *testing.T) {
 
 func TestGetPalParkAreaURL(t *testing.T) {
 	palParkAreaURL := locations.GetPalParkAreaURL()
-	assert.Equal(t, url+endpoints.PalParkArea, palParkAreaURL, "Unexpected PalParkArea resource URL")
+	assert.Equal(t, url+PalParkAreaEndpoint, palParkAreaURL, "Unexpected PalParkArea resource URL")
 	assert.IsType(t, "", palParkAreaURL, "Expected PalParkArea resource URL to be a string")
 }
 
@@ -112,6 +112,6 @@ func TestGetRegionList(t *testing.T) {
 
 func TestGetRegionURL(t *testing.T) {
 	regionURL := locations.GetRegionURL()
-	assert.Equal(t, url+endpoints.Region, regionURL, "Unexpected Region resource URL")
+	assert.Equal(t, url+RegionEndpoint, regionURL, "Unexpected Region resource URL")
 	assert.IsType(t, "", regionURL, "Expected Region resource URL to be a string")
 }

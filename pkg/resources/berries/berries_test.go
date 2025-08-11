@@ -3,13 +3,13 @@ package berries
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/env"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var berries IBerries = NewBerriesGroup()
-var url string = endpoints.BaseURL
+var url string = env.ENV.URL()
 
 func TestNewBerriesGroup(t *testing.T) {
 	berries := NewBerriesGroup()
@@ -37,7 +37,7 @@ func TestGetBerryList(t *testing.T) {
 
 func TestGetBerryURL(t *testing.T) {
 	berryURL := berries.GetBerryURL()
-	assert.Equal(t, url+endpoints.Berry, berryURL, "Unexpected Berry resource URL")
+	assert.Equal(t, url+BerryEndpoint, berryURL, "Unexpected Berry resource URL")
 	assert.IsType(t, "", berryURL, "Expected Berry resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetBerryFirmnessList(t *testing.T) {
 
 func TestGetBerryFirmnessURL(t *testing.T) {
 	berryFirmnessURL := berries.GetBerryFirmnessURL()
-	assert.Equal(t, url+endpoints.BerryFirmness, berryFirmnessURL, "Unexpected BerryFirmness resource URL")
+	assert.Equal(t, url+BerryFirmnessEndpoint, berryFirmnessURL, "Unexpected BerryFirmness resource URL")
 	assert.IsType(t, "", berryFirmnessURL, "Expected BerryFirmness resource URL to be a string")
 }
 
@@ -87,6 +87,6 @@ func TestGetBerryFlavorList(t *testing.T) {
 
 func TestGetBerryFlavorURL(t *testing.T) {
 	berryFlavorURL := berries.GetBerryFlavorURL()
-	assert.Equal(t, url+endpoints.BerryFlavor, berryFlavorURL, "Unexpected BerryFlavor resource URL")
+	assert.Equal(t, url+BerryFlavorEndpoint, berryFlavorURL, "Unexpected BerryFlavor resource URL")
 	assert.IsType(t, "", berryFlavorURL, "Expected BerryFlavor resource URL to be a string")
 }
