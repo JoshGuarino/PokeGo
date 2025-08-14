@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
 // Make GET request
@@ -67,17 +68,34 @@ func GetData[T any](url string) (T, error) {
 
 // Make GET request for list of resource
 func GetResourceList[T any](url string, limit int, offset int) (*T, error) {
-	// Append limit and offset to URL
 	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
-	return GetData[*T](url)
+	logger.LOG.Info("Get resource list called", "url", url, "limit", limit, "offset", offset)
+	data, err := GetData[*T](url)
+	if err != nil {
+		logger.LOG.Error("Error getting resource list", "err", err)
+		return nil, err
+	}
+	return data, nil
 }
 
 // Make GET request for a specifc resource
 func GetResource[T any](url string) (*T, error) {
-	return GetData[*T](url)
+	logger.LOG.Info("Get resource called", "url", url)
+	data, err := GetData[*T](url)
+	if err != nil {
+		logger.LOG.Error("Error getting specifc resource", "err", err)
+		return nil, err
+	}
+	return data, nil
 }
 
 // Make GET request for a slice of resources
 func GetResourceSlice[T any](url string) ([]*T, error) {
-	return GetData[[]*T](url)
+	logger.LOG.Info("Get resource slice called", "url", url)
+	data, err := GetData[[]*T](url)
+	if err != nil {
+		logger.LOG.Error("Error getting resource slice", "err", err)
+		return nil, err
+	}
+	return data, nil
 }

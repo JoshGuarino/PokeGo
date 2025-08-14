@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/charmbracelet/log"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
 // Cache interface
@@ -44,7 +44,7 @@ var CACHE *Cache
 // Initialize cache
 func init() {
 	CACHE = NewCache()
-	log.Info("Cache initialized")
+	logger.LOG.Info("Cache initialized")
 }
 
 // Return an instance of Cache struct
