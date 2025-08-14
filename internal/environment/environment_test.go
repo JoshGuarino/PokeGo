@@ -1,4 +1,4 @@
-package env
+package environment
 
 import (
 	"testing"
@@ -6,20 +6,20 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var env *Env = ENV
+var env *Environment = ENV
 
 func TestStageEnv(t *testing.T) {
 	stageEnv := stageEnv()
 	assert.Equal(t, stageDomain, stageEnv.Domain(), "Unexpected environment domain")
 	assert.Equal(t, stageURL, stageEnv.URL(), "Unexpected environment URL")
-	assert.IsType(t, &Env{}, stageEnv, "Expected environment struct instance to be returned")
+	assert.IsType(t, &Environment{}, stageEnv, "Expected environment struct instance to be returned")
 }
 
 func TestProdEnv(t *testing.T) {
 	prodEnv := prodEnv()
 	assert.Equal(t, prodDomain, prodEnv.Domain(), "Unexpected environment domain")
 	assert.Equal(t, prodURL, prodEnv.URL(), "Unexpected environment URL")
-	assert.IsType(t, &Env{}, prodEnv, "Expected environment struct instance to be returned")
+	assert.IsType(t, &Environment{}, prodEnv, "Expected environment struct instance to be returned")
 }
 
 func TestGetDomain(t *testing.T) {

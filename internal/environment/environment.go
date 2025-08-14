@@ -1,9 +1,9 @@
-package env
+package environment
 
 import (
 	"testing"
 
-	"github.com/charmbracelet/log"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
 const (
@@ -17,7 +17,7 @@ const (
 )
 
 // Environment interface
-type IEnv interface {
+type IEnvironment interface {
 	GetDomain() string
 	GetURL() string
 	SetStage()
@@ -25,13 +25,13 @@ type IEnv interface {
 }
 
 // Environment struct
-type Env struct {
+type Environment struct {
 	url    string
 	domain string
 }
 
 // Environment global variable defaulting to production
-var ENV *Env = prodEnv()
+var ENV *Environment = prodEnv()
 
 // Initialize function
 func init() {
@@ -39,13 +39,13 @@ func init() {
 	if testing.Testing() {
 		ENV = stageEnv()
 	}
-	log.Info("Environment initialized", "domain", ENV.Domain(), "url", ENV.URL())
+	logger.LOG.Info("Environment initialized", "domain", ENV.Domain(), "url", ENV.URL())
 }
 
 // Return an instance of Env struct
 // pointing to the staging environment
-func stageEnv() *Env {
-	return &Env{
+func stageEnv() *Environment {
+	return &Environment{
 		url:    stageURL,
 		domain: stageDomain,
 	}
@@ -53,31 +53,31 @@ func stageEnv() *Env {
 
 // Return an instance of Env struct
 // pointing to the production environment
-func prodEnv() *Env {
-	return &Env{
+func prodEnv() *Environment {
+	return &Environment{
 		url:    prodURL,
 		domain: prodDomain,
 	}
 }
 
 // Return the environment domain
-func (e *Env) Domain() string {
+func (e *Environment) Domain() string {
 	return e.domain
 }
 
 // Return the url for the environment
-func (e *Env) URL() string {
+func (e Environment) URL() string {
 	return e.url
 }
 
 // Set the environment to stage
-func (e *Env) SetStage() {
+func (e *Environment) SetStage() {
 	e.domain = stageDomain
 	e.url = stageURL
 }
 
 // Set the environment to production
-func (e *Env) SetProd() {
+func (e *Environment) SetProd() {
 	e.domain = prodDomain
 	e.url = prodURL
 }
