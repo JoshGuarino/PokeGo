@@ -2,10 +2,10 @@ package locations
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Locations group resource endpoints
@@ -35,19 +35,21 @@ type ILocations interface {
 // Locations group struct
 type Locations struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Locations resource group initialized")
+	logger.LOG.Info("Locations resource group initialized")
 }
 
 // Return an instance of Locations resource group struct
 func NewLocationsGroup() Locations {
 	return Locations{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

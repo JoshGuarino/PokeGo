@@ -2,10 +2,10 @@ package machines
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Machines group resource endpoints
@@ -23,19 +23,21 @@ type IMachines interface {
 // Machines group struct
 type Machines struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Machines resource group initialized")
+	logger.LOG.Info("Machines resource group initialized")
 }
 
 // Return an instance of Items resource group struct
 func NewMachinesGroup() Machines {
 	return Machines{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

@@ -2,10 +2,10 @@ package utility
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Utility group resource endpoints
@@ -23,19 +23,21 @@ type IUtility interface {
 // Utility group struct
 type Utility struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Utility resource group initialized")
+	logger.LOG.Info("Utility resource group initialized")
 }
 
 // Return an instance of Utility resource group struct
 func NewUtilityGroup() Utility {
 	return Utility{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

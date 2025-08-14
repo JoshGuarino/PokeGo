@@ -3,13 +3,13 @@ package machines
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var machines IMachines = NewMachinesGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewMachinesGroup(t *testing.T) {
 	machines := NewMachinesGroup()

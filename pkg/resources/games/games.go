@@ -2,10 +2,10 @@ package games
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Games group resource endpoints
@@ -35,19 +35,21 @@ type IGames interface {
 // Games group struct
 type Games struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Games resource group initialized")
+	logger.LOG.Info("Games resource group initialized")
 }
 
 // Return an instance of Games resource group struct
 func NewGamesGroup() Games {
 	return Games{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

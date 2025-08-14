@@ -2,10 +2,10 @@ package moves
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Moves group resource endpoints
@@ -47,19 +47,21 @@ type IMoves interface {
 // Moves group struct
 type Moves struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Moves resource group initialized")
+	logger.LOG.Info("Moves resource group initialized")
 }
 
 // Return an instance of Moves resource group struct
 func NewMovesGroup() Moves {
 	return Moves{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

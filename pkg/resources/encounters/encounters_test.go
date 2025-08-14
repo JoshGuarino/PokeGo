@@ -3,13 +3,13 @@ package encounters
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var encounters IEncounters = NewEncountersGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewEncountersGroup(t *testing.T) {
 	encounters := NewEncountersGroup()

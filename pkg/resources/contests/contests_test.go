@@ -3,13 +3,13 @@ package contests
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var contests IContests = NewContestsGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewContestsGroup(t *testing.T) {
 	contests := NewContestsGroup()

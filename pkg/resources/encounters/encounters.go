@@ -2,10 +2,10 @@ package encounters
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Encounters group resource endpoints
@@ -31,19 +31,21 @@ type IEncounters interface {
 // Encounters group struct
 type Encounters struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Encounters resource group initialized")
+	logger.LOG.Info("Encounters resource group initialized")
 }
 
 // Return an instance of Encounters resource group struct
 func NewEncountersGroup() Encounters {
 	return Encounters{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 

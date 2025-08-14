@@ -3,13 +3,13 @@ package evolution
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var evolution IEvolution = NewEvolutionGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewEvolutionGroup(t *testing.T) {
 	evolution := NewEvolutionGroup()

@@ -2,7 +2,8 @@ package pokego
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/berries"
@@ -16,7 +17,6 @@ import (
 	"github.com/JoshGuarino/PokeGo/pkg/resources/moves"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/pokemon"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/utility"
-	"github.com/charmbracelet/log"
 )
 
 // PokeGo API wrapper interface
@@ -29,7 +29,8 @@ type IPokeGo interface {
 type PokeGo struct {
 	// Chache and environmen
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 
 	// resources
 	Berries    berries.Berries
@@ -47,15 +48,16 @@ type PokeGo struct {
 
 // Initialize function
 func init() {
-	log.Info("PokeGo API wrapper initialized")
+	logger.LOG.Info("PokeGo API wrapper initialized")
 }
 
 // Return an instance of the PokeGo API wrapper client
 func NewClient() PokeGo {
 	return PokeGo{
-		// initialize cache and environment
+		// initialize cache, environment, and logger
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 
 		// initialize resources
 		Berries:    berries.NewBerriesGroup(),

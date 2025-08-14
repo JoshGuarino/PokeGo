@@ -3,13 +3,13 @@ package utility
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var utility IUtility = NewUtilityGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewUtilityGroup(t *testing.T) {
 	utility := NewUtilityGroup()

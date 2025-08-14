@@ -3,13 +3,13 @@ package locations
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var locations ILocations = NewLocationsGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewLocationsGroup(t *testing.T) {
 	locations := NewLocationsGroup()

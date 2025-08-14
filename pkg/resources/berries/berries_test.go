@@ -3,13 +3,13 @@ package berries
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var berries IBerries = NewBerriesGroup()
-var url string = env.ENV.URL()
+var url string = environment.ENV.URL()
 
 func TestNewBerriesGroup(t *testing.T) {
 	berries := NewBerriesGroup()

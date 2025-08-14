@@ -2,10 +2,10 @@ package pokemon
 
 import (
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/env"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
-	"github.com/charmbracelet/log"
 )
 
 // Pokemon group resource endpoints
@@ -80,19 +80,21 @@ type IPokemon interface {
 // Pokemon group struct
 type Pokemon struct {
 	Cache *cache.Cache
-	Env   *env.Env
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Initialize function
 func init() {
-	log.Info("Pokemon resource group initialized")
+	logger.LOG.Info("Pokemon resource group initialized")
 }
 
 // Return an instance of Pokmon resource group struct
 func NewPokemonGroup() Pokemon {
 	return Pokemon{
 		Cache: cache.CACHE,
-		Env:   env.ENV,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 
