@@ -11,7 +11,7 @@ import (
 )
 
 // Make GET request
-func Get(url string) ([]byte, error) {
+func get(url string) ([]byte, error) {
 	// Create new GET request
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -36,7 +36,7 @@ func Get(url string) ([]byte, error) {
 }
 
 // Get data from URL or cache
-func GetData[T any](url string) (T, error) {
+func getData[T any](url string) (T, error) {
 	// Create new data struct
 	dataStruct := new(T)
 
@@ -47,7 +47,7 @@ func GetData[T any](url string) (T, error) {
 	}
 
 	// Make GET request
-	body, errReq := Get(url)
+	body, errReq := get(url)
 	if errReq != nil {
 		return *dataStruct, errReq
 	}
@@ -73,7 +73,7 @@ func GetResourceList[T any](url string, limit int, offset int) (*T, error) {
 		"Get resource list called",
 		"url", url,
 	)
-	data, err := GetData[*T](url)
+	data, err := getData[*T](url)
 	if err != nil {
 		logger.LOG.Error("Error getting resource list", "err", err)
 		return nil, err
@@ -87,7 +87,7 @@ func GetResource[T any](url string) (*T, error) {
 		"Get resource called",
 		"url", url,
 	)
-	data, err := GetData[*T](url)
+	data, err := getData[*T](url)
 	if err != nil {
 		logger.LOG.Error("Error getting specifc resource", "err", err)
 		return nil, err
@@ -101,7 +101,7 @@ func GetResourceSlice[T any](url string) ([]*T, error) {
 		"Get resource slice called",
 		"url", url,
 	)
-	data, err := GetData[[]*T](url)
+	data, err := getData[[]*T](url)
 	if err != nil {
 		logger.LOG.Error("Error getting resource slice", "err", err)
 		return nil, err

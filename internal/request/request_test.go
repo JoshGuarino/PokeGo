@@ -14,18 +14,18 @@ var url string = environment.ENV.URL()
 var endpoint string = "/pokemon/"
 
 func TestGet(t *testing.T) {
-	body, err := Get(url)
+	body, err := get(url)
 	assert.IsType(t, []byte{}, body, "Expected slice of bytes to be returned")
 	assert.NoError(t, err, "Expected error to nil")
 }
 
 func TestGetData(t *testing.T) {
-	data, err := GetData[models.Root](url)
+	data, err := getData[models.Root](url)
 	_, found := cache.CACHE.Get(url)
 	assert.Equal(t, true, found, "Expected data to be cached")
 	assert.IsType(t, models.Root{}, data, "Expected Root instance to be returned")
 	assert.NoError(t, err, "Expected error to nil")
-	cachedData, err := GetData[models.Root](url)
+	cachedData, err := getData[models.Root](url)
 	assert.NoError(t, err, "Expected error to nil")
 	assert.Equal(t, data, cachedData, "Expected cached data to be returned")
 }
@@ -33,7 +33,7 @@ func TestGetData(t *testing.T) {
 func TestGetDataWithoutCache(t *testing.T) {
 	cache.CACHE.Clear()
 	cache.CACHE.SetActive(false)
-	data, err := GetData[models.Root](url)
+	data, err := getData[models.Root](url)
 	_, found := cache.CACHE.Get(url)
 	assert.Equal(t, false, found, "Expected data to not be cached")
 	assert.IsType(t, models.Root{}, data, "Expected Pokemon instance to be returned")
