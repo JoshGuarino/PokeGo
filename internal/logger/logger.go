@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"log/slog"
+	"github.com/charmbracelet/log"
 )
 
 // Logger interface
@@ -10,16 +10,26 @@ type ILogger interface {
 	Warn(msg string, keyvals ...any)
 	Error(msg string, keyvals ...any)
 	Debug(msg string, keyvals ...any)
+	newMessage(msg string, level log.Level, keyvals ...any)
+	Messages() []Message
+	Clear()
 	Active() bool
 	SetActive(active bool)
-	Level() slog.Level
-	SetLevel(level slog.Level)
+	Level() log.Level
+	SetLevel(level log.Level)
 }
 
 // Logger struct
 type Logger struct {
-	level    slog.Level
+	logger   *log.Logger
+	messages []Message
 	settings Settings
+}
+
+type Message struct {
+	msg     string
+	level   log.Level
+	keyvals []any
 }
 
 // Settings struct
@@ -39,7 +49,8 @@ func init() {
 // Return an instance of Logger struct
 func NewLogger() *Logger {
 	return &Logger{
-		level: slog.LevelInfo,
+		logger:   log.Default(),
+		messages: []Message{},
 		settings: Settings{
 			active: true,
 		},
@@ -48,26 +59,45 @@ func NewLogger() *Logger {
 
 // Info logs a message at the info level
 func (l *Logger) Info(msg string, keyvals ...any) {
-	l.SetLevel(slog.LevelInfo)
-	slog.Info(msg, keyvals...)
+	l.logger.Info(msg, keyvals...)
+	l.newMessage(msg, log.InfoLevel, keyvals...)
 }
 
 // Warn logs a message at the warn level
 func (l *Logger) Warn(msg string, keyvals ...any) {
-	l.SetLevel(slog.LevelWarn)
-	slog.Warn(msg, keyvals...)
+	l.logger.Warn(msg, keyvals...)
+	l.newMessage(msg, log.WarnLevel, keyvals...)
 }
 
 // Error logs a message at the error level
 func (l *Logger) Error(msg string, keyvals ...any) {
-	l.SetLevel(slog.LevelError)
-	slog.Error(msg, keyvals...)
+	l.logger.Error(msg, keyvals...)
+	l.newMessage(msg, log.ErrorLevel, keyvals...)
 }
 
 // Debug logs a message at the debug level
 func (l *Logger) Debug(msg string, keyvals ...any) {
-	l.SetLevel(slog.LevelDebug)
-	slog.Debug(msg, keyvals...)
+	l.logger.Debug(msg, keyvals...)
+	l.newMessage(msg, log.DebugLevel, keyvals...)
+}
+
+// Messages returns the logger messages
+func (l *Logger) Messages() []Message {
+	return l.messages
+}
+
+// NewMessage adds a new message to the logger
+func (l *Logger) newMessage(msg string, level log.Level, keyvals ...any) {
+	l.messages = append(l.messages, Message{
+		msg:     msg,
+		level:   level,
+		keyvals: keyvals,
+	})
+}
+
+// Clear clears the logger messages
+func (l *Logger) Clear() {
+	l.messages = []Message{}
 }
 
 // Active returns the logger active status
@@ -82,11 +112,11 @@ func (l *Logger) SetActive(active bool) {
 }
 
 // Level returns the logger level
-func (l *Logger) Level() slog.Level {
-	return l.level
+func (l *Logger) Level() log.Level {
+	return l.logger.GetLevel()
 }
 
 // SetLevel sets the logger level
-func (l *Logger) SetLevel(level slog.Level) {
-	l.level = level
+func (l *Logger) SetLevel(level log.Level) {
+	l.logger.SetLevel(level)
 }
