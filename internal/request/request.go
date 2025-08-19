@@ -10,6 +10,9 @@ import (
 	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
+// Logger reference variable
+var log logger.ILogger = logger.LOG
+
 // Make GET request
 func get(url string) ([]byte, error) {
 	// Create new GET request
@@ -69,42 +72,36 @@ func getData[T any](url string) (T, error) {
 // Make GET request for list of resource
 func GetResourceList[T any](url string, limit int, offset int) (*T, error) {
 	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
-	logger.LOG.Info(
-		"Get resource list called",
-		"url", url,
-	)
+	log.Info("Get resource list called", "url", url)
 	data, err := getData[*T](url)
 	if err != nil {
-		logger.LOG.Error("Error getting resource list", "err", err)
+		log.Error("Error getting resource list", "err", err)
 		return nil, err
 	}
+	log.Debug("Resource list retrieved", "url", url, "data", data)
 	return data, nil
 }
 
 // Make GET request for a specifc resource
 func GetResource[T any](url string) (*T, error) {
-	logger.LOG.Info(
-		"Get resource called",
-		"url", url,
-	)
+	log.Info("Get resource called", "url", url)
 	data, err := getData[*T](url)
 	if err != nil {
-		logger.LOG.Error("Error getting specifc resource", "err", err)
+		log.Error("Error getting specifc resource", "err", err)
 		return nil, err
 	}
+	log.Debug("Resource retrieved", "url", url, "data", data)
 	return data, nil
 }
 
 // Make GET request for a slice of resources
 func GetResourceSlice[T any](url string) ([]*T, error) {
-	logger.LOG.Info(
-		"Get resource slice called",
-		"url", url,
-	)
+	log.Info("Get resource slice called", "url", url)
 	data, err := getData[[]*T](url)
 	if err != nil {
-		logger.LOG.Error("Error getting resource slice", "err", err)
+		log.Error("Error getting resource slice", "err", err)
 		return nil, err
 	}
+	log.Debug("Resource slice retrieved", "url", url, "data", data)
 	return data, nil
 }
