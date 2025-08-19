@@ -13,6 +13,9 @@ import (
 // Logger reference variable
 var log logger.ILogger = logger.LOG
 
+// Cache reference variable
+var ch cache.ICache = cache.CACHE
+
 // Make GET request
 func get(url string) ([]byte, error) {
 	// Create new GET request
@@ -44,7 +47,7 @@ func getData[T any](url string) (T, error) {
 	dataStruct := new(T)
 
 	// Check for cached data and return if found
-	data, found := cache.CACHE.Get(url)
+	data, found := ch.Get(url)
 	if found {
 		return data.(T), nil
 	}
@@ -62,8 +65,8 @@ func getData[T any](url string) (T, error) {
 	}
 
 	// Cache ResourceList if active and return
-	if cache.CACHE.Active() {
-		cache.CACHE.Set(url, *dataStruct)
+	if ch.Active() {
+		ch.Set(url, *dataStruct)
 		return *dataStruct, nil
 	}
 	return *dataStruct, nil

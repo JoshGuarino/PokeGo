@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/cache"
 	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
@@ -21,7 +20,7 @@ func TestGet(t *testing.T) {
 
 func TestGetData(t *testing.T) {
 	data, err := getData[models.Root](url)
-	_, found := cache.CACHE.Get(url)
+	_, found := ch.Get(url)
 	assert.Equal(t, true, found, "Expected data to be cached")
 	assert.IsType(t, models.Root{}, data, "Expected Root instance to be returned")
 	assert.NoError(t, err, "Expected error to nil")
@@ -31,20 +30,20 @@ func TestGetData(t *testing.T) {
 }
 
 func TestGetDataWithoutCache(t *testing.T) {
-	cache.CACHE.Clear()
-	cache.CACHE.SetActive(false)
+	ch.Clear()
+	ch.SetActive(false)
 	data, err := getData[models.Root](url)
-	_, found := cache.CACHE.Get(url)
+	_, found := ch.Get(url)
 	assert.Equal(t, false, found, "Expected data to not be cached")
 	assert.IsType(t, models.Root{}, data, "Expected Pokemon instance to be returned")
 	assert.NoError(t, err, "Expected error to nil")
-	cache.CACHE.SetActive(true)
+	ch.SetActive(true)
 }
 
 func TestGetResourceList(t *testing.T) {
 	key := fmt.Sprintf("%s?limit=%d&offset=%d", url+endpoint, 20, 0)
 	list, err := GetResourceList[models.NamedResourceList](url+endpoint, 20, 0)
-	_, found := cache.CACHE.Get(key)
+	_, found := ch.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, &models.NamedResourceList{}, list, "Expected NamedResourceList instance to be returned")
 	assert.NoError(t, err, "Expected error to nil")
@@ -53,7 +52,7 @@ func TestGetResourceList(t *testing.T) {
 func TestGetSpecificResource(t *testing.T) {
 	key := url + endpoint + "1"
 	resource, err := GetResource[models.Pokemon](url + endpoint + "1")
-	_, found := cache.CACHE.Get(key)
+	_, found := ch.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, &models.Pokemon{}, resource, "Expected Pokemon instance to be returned")
 	assert.NoError(t, err, "Expected error to nil")
@@ -62,7 +61,7 @@ func TestGetSpecificResource(t *testing.T) {
 func TestGetResourceSlice(t *testing.T) {
 	key := url + endpoint + "1" + "/encounters"
 	resourceSlice, err := GetResourceSlice[models.LocationAreaEncounter](key)
-	_, found := cache.CACHE.Get(key)
+	_, found := ch.Get(key)
 	assert.Equal(t, true, found, "Expected resource to be cached")
 	assert.IsType(t, []*models.LocationAreaEncounter{}, resourceSlice, "Expected LocationAreaEncounter slice to be returned")
 	assert.NoError(t, err, "Expected error to nil")

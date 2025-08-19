@@ -10,7 +10,7 @@ import (
 // Cache interface
 type ICache interface {
 	Get(key string) (any, bool)
-	Set(key string, value any, expiration time.Duration)
+	Set(key string, value any)
 	Delete(key string)
 	Clear()
 	SetExpiration(expiration time.Duration)
