@@ -47,7 +47,7 @@ var log logger.ILogger = logger.LOG
 // Initialize cache
 func init() {
 	CACHE = NewCache()
-	logger.LOG.Info("Cache initialized")
+	log.Info("Cache initialized")
 }
 
 // Return an instance of Cache struct
