@@ -41,6 +41,9 @@ type Settings struct {
 // Cache global variable
 var CACHE *Cache
 
+// Logger reference variable
+var log logger.ILogger = logger.LOG
+
 // Initialize cache
 func init() {
 	CACHE = NewCache()
@@ -86,6 +89,7 @@ func (c *Cache) Get(key string) (any, bool) {
 
 // Delete a key-value pair from the Cache
 func (c *Cache) Delete(key string) {
+	log.Warn("Cached resource deleted", "key", key)
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -94,6 +98,7 @@ func (c *Cache) Delete(key string) {
 
 // Clear the cache
 func (c *Cache) Clear() {
+	log.Warn("Cache cleared")
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -102,6 +107,7 @@ func (c *Cache) Clear() {
 
 // Set default expiration time for Cache
 func (c *Cache) SetExpiration(expiration time.Duration) {
+	log.Warn("Cache expiration time changed", "expiration", expiration)
 	c.settings.expiration = expiration
 }
 
@@ -112,6 +118,7 @@ func (c *Cache) Expiration() time.Duration {
 
 // Set active status of cache
 func (c *Cache) SetActive(active bool) {
+	log.Warn("Cache active status changed", "active", active)
 	c.settings.active = active
 }
 
