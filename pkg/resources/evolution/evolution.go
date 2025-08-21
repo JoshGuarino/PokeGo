@@ -31,11 +31,6 @@ type Evolution struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Evolution resource group initialized")
-}
-
 // Return an instance of Evolution resource group struct
 func NewEvolutionGroup() Evolution {
 	return Evolution{

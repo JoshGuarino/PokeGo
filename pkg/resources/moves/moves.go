@@ -51,11 +51,6 @@ type Moves struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Moves resource group initialized")
-}
-
 // Return an instance of Moves resource group struct
 func NewMovesGroup() Moves {
 	return Moves{

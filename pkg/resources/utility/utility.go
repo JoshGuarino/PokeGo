@@ -27,11 +27,6 @@ type Utility struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Utility resource group initialized")
-}
-
 // Return an instance of Utility resource group struct
 func NewUtilityGroup() Utility {
 	return Utility{

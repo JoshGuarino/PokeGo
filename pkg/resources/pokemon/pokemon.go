@@ -84,11 +84,6 @@ type Pokemon struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Pokemon resource group initialized")
-}
-
 // Return an instance of Pokmon resource group struct
 func NewPokemonGroup() Pokemon {
 	return Pokemon{

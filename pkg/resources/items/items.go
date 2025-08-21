@@ -43,11 +43,6 @@ type Items struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Items resource group initialized")
-}
-
 // Return an instance of Items resource group struct
 func NewItemsGroup() Items {
 	return Items{

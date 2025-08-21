@@ -35,11 +35,6 @@ type Encounters struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Encounters resource group initialized")
-}
-
 // Return an instance of Encounters resource group struct
 func NewEncountersGroup() Encounters {
 	return Encounters{

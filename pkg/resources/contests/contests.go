@@ -35,11 +35,6 @@ type Contests struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Contests resource group initialized")
-}
-
 // Return an instance of Contests resource group struct
 func NewContestsGroup() Contests {
 	return Contests{

@@ -39,11 +39,6 @@ type Games struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Games resource group initialized")
-}
-
 // Return an instance of Games resource group struct
 func NewGamesGroup() Games {
 	return Games{

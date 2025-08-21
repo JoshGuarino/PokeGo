@@ -39,11 +39,6 @@ type Locations struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Locations resource group initialized")
-}
-
 // Return an instance of Locations resource group struct
 func NewLocationsGroup() Locations {
 	return Locations{

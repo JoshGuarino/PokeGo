@@ -27,11 +27,6 @@ type Machines struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Machines resource group initialized")
-}
-
 // Return an instance of Items resource group struct
 func NewMachinesGroup() Machines {
 	return Machines{

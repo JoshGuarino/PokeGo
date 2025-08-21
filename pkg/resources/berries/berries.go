@@ -35,11 +35,6 @@ type Berries struct {
 	Log   *logger.Logger
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("Berries resource group initialized")
-}
-
 // Return an instance of Berry resource group struct
 func NewBerriesGroup() Berries {
 	return Berries{

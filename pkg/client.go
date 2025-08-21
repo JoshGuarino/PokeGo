@@ -46,11 +46,6 @@ type PokeGo struct {
 	Utility    utility.Utility
 }
 
-// Initialize function
-func init() {
-	logger.LOG.Info("PokeGo API wrapper initialized")
-}
-
 // Return an instance of the PokeGo API wrapper client
 func NewClient() PokeGo {
 	return PokeGo{
