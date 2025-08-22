@@ -1,6 +1,8 @@
 package logger
 
 import (
+	"sync"
+
 	"github.com/charmbracelet/log"
 )
 
@@ -24,6 +26,7 @@ type Logger struct {
 	logger   *log.Logger
 	messages []Message
 	settings Settings
+	lock     sync.Mutex
 }
 
 type Message struct {
@@ -57,37 +60,45 @@ func NewLogger() *Logger {
 	}
 }
 
+func (l *Logger) log(level log.Level, msg string, keyvals ...any) {
+	if !l.Active() {
+		return
+	}
+	l.logger.Log(level, msg, keyvals...)
+	l.newMessage(msg, level, keyvals...)
+}
+
 // Info logs a message at the info level
 func (l *Logger) Info(msg string, keyvals ...any) {
-	l.logger.Info(msg, keyvals...)
-	l.newMessage(msg, log.InfoLevel, keyvals...)
+	l.log(log.InfoLevel, msg, keyvals...)
 }
 
 // Warn logs a message at the warn level
 func (l *Logger) Warn(msg string, keyvals ...any) {
-	l.logger.Warn(msg, keyvals...)
-	l.newMessage(msg, log.WarnLevel, keyvals...)
+	l.log(log.WarnLevel, msg, keyvals...)
 }
 
 // Error logs a message at the error level
 func (l *Logger) Error(msg string, keyvals ...any) {
-	l.logger.Error(msg, keyvals...)
-	l.newMessage(msg, log.ErrorLevel, keyvals...)
+	l.log(log.ErrorLevel, msg, keyvals...)
 }
 
 // Debug logs a message at the debug level
 func (l *Logger) Debug(msg string, keyvals ...any) {
-	l.logger.Debug(msg, keyvals...)
-	l.newMessage(msg, log.DebugLevel, keyvals...)
+	l.log(log.DebugLevel, msg, keyvals...)
 }
 
 // Messages returns the logger messages
 func (l *Logger) Messages() []Message {
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	return l.messages
 }
 
 // NewMessage adds a new message to the logger
 func (l *Logger) newMessage(msg string, level log.Level, keyvals ...any) {
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	l.messages = append(l.messages, Message{
 		msg:     msg,
 		level:   level,
@@ -97,26 +108,38 @@ func (l *Logger) newMessage(msg string, level log.Level, keyvals ...any) {
 
 // Clear clears the logger messages
 func (l *Logger) Clear() {
+	l.Warn("Logger messages cleared")
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	l.messages = []Message{}
 }
 
 // Active returns the logger active status
 func (l *Logger) Active() bool {
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	return l.settings.active
 }
 
 // SetActive sets the logger active
 func (l *Logger) SetActive(active bool) {
 	l.Warn("Logger active status changed", "active", active)
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	l.settings.active = active
 }
 
 // Level returns the logger level
 func (l *Logger) Level() log.Level {
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	return l.logger.GetLevel()
 }
 
 // SetLevel sets the logger level
 func (l *Logger) SetLevel(level log.Level) {
+	l.Warn("Logger level changed", "Level", level)
+	l.lock.Lock()
+	defer l.lock.Unlock()
 	l.logger.SetLevel(level)
 }

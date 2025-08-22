@@ -108,21 +108,29 @@ func (c *Cache) Clear() {
 // Set default expiration time for Cache
 func (c *Cache) SetExpiration(expiration time.Duration) {
 	log.Warn("Cache expiration time changed", "expiration", expiration)
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	c.settings.expiration = expiration
 }
 
 // Get expiration time of Cache
 func (c *Cache) Expiration() time.Duration {
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	return c.settings.expiration
 }
 
 // Set active status of cache
 func (c *Cache) SetActive(active bool) {
 	log.Warn("Cache active status changed", "active", active)
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	c.settings.active = active
 }
 
 // Get active status of Cache
 func (c *Cache) Active() bool {
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	return c.settings.active
 }

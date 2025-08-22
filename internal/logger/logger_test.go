@@ -53,20 +53,23 @@ func TestNewMessage(t *testing.T) {
 }
 
 func TestClear(t *testing.T) {
+	logger.Info("test", "key", "value")
 	logger.Clear()
 	assert.Equal(t, 0, len(logger.Messages()), "Expected no messages to be logged")
 }
 
 func TestActive(t *testing.T) {
+	logger.Clear()
 	assert.Equal(t, true, logger.Active(), "Expected logger to be active")
 	assert.IsType(t, true, logger.Active(), "Expected logger to be active")
 }
 
 func TestSetActive(t *testing.T) {
 	logger.SetActive(false)
+	logger.Clear()
+	logger.Info("test", "key", "value")
 	assert.Equal(t, false, logger.Active(), "Expected logger to be inactive")
-	logger.SetActive(true)
-	assert.Equal(t, true, logger.Active(), "Expected logger to be active")
+	assert.Equal(t, 0, len(logger.Messages()), "Expected no messages to be logged")
 }
 
 func TestLevel(t *testing.T) {

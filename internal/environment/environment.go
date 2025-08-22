@@ -1,6 +1,7 @@
 package environment
 
 import (
+	"sync"
 	"testing"
 
 	"github.com/JoshGuarino/PokeGo/internal/logger"
@@ -28,6 +29,7 @@ type IEnvironment interface {
 type Environment struct {
 	url    string
 	domain string
+	lock   sync.Mutex
 }
 
 // Environment global variable defaulting to production
@@ -65,17 +67,23 @@ func prodEnv() *Environment {
 
 // Return the environment domain
 func (e *Environment) Domain() string {
+	e.lock.Lock()
+	defer e.lock.Unlock()
 	return e.domain
 }
 
 // Return the url for the environment
-func (e Environment) URL() string {
+func (e *Environment) URL() string {
+	e.lock.Lock()
+	defer e.lock.Unlock()
 	return e.url
 }
 
 // Set the environment to stage
 func (e *Environment) SetStage() {
 	log.Warn("Environment changed to stage", "domain", stageDomain, "url", stageURL)
+	e.lock.Lock()
+	defer e.lock.Unlock()
 	e.domain = stageDomain
 	e.url = stageURL
 }
@@ -83,6 +91,8 @@ func (e *Environment) SetStage() {
 // Set the environment to production
 func (e *Environment) SetProd() {
 	log.Warn("Environment changed to production", "domain", prodDomain, "url", prodURL)
+	e.lock.Lock()
+	defer e.lock.Unlock()
 	e.domain = prodDomain
 	e.url = prodURL
 }
