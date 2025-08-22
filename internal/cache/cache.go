@@ -21,19 +21,19 @@ type ICache interface {
 
 // Cache struct
 type Cache struct {
-	data     map[string]Value
-	settings Settings
+	store    map[string]data
+	settings settings
 	lock     sync.Mutex
 }
 
-// Value struct
-type Value struct {
+// Data struct
+type data struct {
 	value      any
 	expiration time.Time
 }
 
 // Cache settings
-type Settings struct {
+type settings struct {
 	expiration time.Duration
 	active     bool
 }
@@ -46,15 +46,15 @@ var log logger.ILogger = logger.LOG
 
 // Initialize cache
 func init() {
-	CACHE = NewCache()
+	CACHE = newCache()
 	log.Info("Cache initialized")
 }
 
 // Return an instance of Cache struct
-func NewCache() *Cache {
+func newCache() *Cache {
 	return &Cache{
-		data: make(map[string]Value),
-		settings: Settings{
+		store: make(map[string]data),
+		settings: settings{
 			expiration: 24 * time.Hour,
 			active:     true,
 		},
@@ -67,7 +67,7 @@ func (c *Cache) Set(key string, value any) {
 	defer c.lock.Unlock()
 
 	expirationTime := time.Now().Add(c.settings.expiration)
-	c.data[key] = Value{
+	c.store[key] = data{
 		value:      value,
 		expiration: expirationTime,
 	}
@@ -78,9 +78,9 @@ func (c *Cache) Get(key string) (any, bool) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	value, ok := c.data[key]
+	value, ok := c.store[key]
 	if !ok || time.Now().After(value.expiration) {
-		delete(c.data, key)
+		delete(c.store, key)
 		return nil, false
 	}
 
@@ -93,7 +93,7 @@ func (c *Cache) Delete(key string) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	delete(c.data, key)
+	delete(c.store, key)
 }
 
 // Clear the cache
@@ -102,7 +102,7 @@ func (c *Cache) Clear() {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	c.data = make(map[string]Value)
+	c.store = make(map[string]data)
 }
 
 // Set default expiration time for Cache

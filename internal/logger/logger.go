@@ -13,7 +13,7 @@ type ILogger interface {
 	Error(msg string, keyvals ...any)
 	Debug(msg string, keyvals ...any)
 	newMessage(msg string, level log.Level, keyvals ...any)
-	Messages() []Message
+	Messages() []message
 	Clear()
 	Active() bool
 	SetActive(active bool)
@@ -24,19 +24,20 @@ type ILogger interface {
 // Logger struct
 type Logger struct {
 	logger   *log.Logger
-	messages []Message
-	settings Settings
+	messages []message
+	settings settings
 	lock     sync.Mutex
 }
 
-type Message struct {
+// Message struct
+type message struct {
 	msg     string
 	level   log.Level
 	keyvals []any
 }
 
 // Settings struct
-type Settings struct {
+type settings struct {
 	active bool
 }
 
@@ -45,16 +46,16 @@ var LOG *Logger
 
 // Initialize logger
 func init() {
-	LOG = NewLogger()
+	LOG = newLogger()
 	LOG.Info("Logger initialized")
 }
 
 // Return an instance of Logger struct
-func NewLogger() *Logger {
+func newLogger() *Logger {
 	return &Logger{
 		logger:   log.Default(),
-		messages: []Message{},
-		settings: Settings{
+		messages: []message{},
+		settings: settings{
 			active: true,
 		},
 	}
@@ -89,7 +90,7 @@ func (l *Logger) Debug(msg string, keyvals ...any) {
 }
 
 // Messages returns the logger messages
-func (l *Logger) Messages() []Message {
+func (l *Logger) Messages() []message {
 	l.lock.Lock()
 	defer l.lock.Unlock()
 	return l.messages
@@ -99,7 +100,7 @@ func (l *Logger) Messages() []Message {
 func (l *Logger) newMessage(msg string, level log.Level, keyvals ...any) {
 	l.lock.Lock()
 	defer l.lock.Unlock()
-	l.messages = append(l.messages, Message{
+	l.messages = append(l.messages, message{
 		msg:     msg,
 		level:   level,
 		keyvals: keyvals,
@@ -111,7 +112,7 @@ func (l *Logger) Clear() {
 	l.Warn("Logger messages cleared")
 	l.lock.Lock()
 	defer l.lock.Unlock()
-	l.messages = []Message{}
+	l.messages = []message{}
 }
 
 // Active returns the logger active status

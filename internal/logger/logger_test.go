@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var logger ILogger = NewLogger()
+var logger ILogger = newLogger()
 
 func TestNewLogger(t *testing.T) {
 	assert.IsType(t, &Logger{}, logger, "Expected Logger instance to be returned")
@@ -41,7 +41,7 @@ func TestMessages(t *testing.T) {
 	logger.Clear()
 	logger.newMessage("test", log.InfoLevel, "key", "value")
 	assert.Equal(t, 1, len(logger.Messages()), "Expected 1 message to be logged")
-	assert.IsType(t, []Message{}, logger.Messages(), "Expected message to be of type Message")
+	assert.IsType(t, []message{}, logger.Messages(), "Expected message to be of type Message")
 }
 
 func TestNewMessage(t *testing.T) {

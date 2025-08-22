@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var cache ICache = NewCache()
+var cache ICache = newCache()
 
 func TestNewCache(t *testing.T) {
 	assert.IsType(t, &Cache{}, cache)
