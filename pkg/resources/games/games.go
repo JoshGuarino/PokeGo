@@ -1,12 +1,19 @@
 package games
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+)
+
+// Games group resource endpoints
+const (
+	GenerationEndpoint   = "/generation/"
+	PokedexEndpoint      = "/pokedex/"
+	VersionEndpoint      = "/version/"
+	VersionGroupEndpoint = "/version-group/"
 )
 
 // Games group interface
@@ -27,33 +34,23 @@ type IGames interface {
 
 // Games group struct
 type Games struct {
-	GenerationURL   string
-	PokedexURL      string
-	VersionURL      string
-	VersionGroupURL string
-	Cache           *cache.Cache
-}
-
-// Initialize function
-func init() {
-	fmt.Println("Games resource group initialized")
+	Cache *cache.Cache
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Return an instance of Games resource group struct
 func NewGamesGroup() Games {
-	url := endpoints.BaseURL
 	return Games{
-		GenerationURL:   url + endpoints.Generation,
-		PokedexURL:      url + endpoints.Pokedex,
-		VersionURL:      url + endpoints.Version,
-		VersionGroupURL: url + endpoints.VersionGroup,
-		Cache:           cache.C,
+		Cache: cache.CACHE,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 
 // Return a single Generation resource by name or ID
 func (g Games) GetGeneration(nameOrId string) (*models.Generation, error) {
-	generation, err := request.GetResource[models.Generation](g.GenerationURL + nameOrId)
+	generation, err := request.GetResource[models.Generation](g.GetGenerationURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +59,7 @@ func (g Games) GetGeneration(nameOrId string) (*models.Generation, error) {
 
 // Return a list of Generation resource
 func (g Games) GetGenerationList(limit int, offest int) (*models.NamedResourceList, error) {
-	generationList, err := request.GetResourceList[models.NamedResourceList](g.GenerationURL, limit, offest)
+	generationList, err := request.GetResourceList[models.NamedResourceList](g.GetGenerationURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -71,12 +68,12 @@ func (g Games) GetGenerationList(limit int, offest int) (*models.NamedResourceLi
 
 // Return the Generation resource URL
 func (g Games) GetGenerationURL() string {
-	return g.GenerationURL
+	return g.Env.URL() + GenerationEndpoint
 }
 
 // Return a single Pokedex resource by name or ID
 func (g Games) GetPokedex(nameOrId string) (*models.Pokedex, error) {
-	pokedex, err := request.GetResource[models.Pokedex](g.PokedexURL + nameOrId)
+	pokedex, err := request.GetResource[models.Pokedex](g.GetPokedexURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -85,7 +82,7 @@ func (g Games) GetPokedex(nameOrId string) (*models.Pokedex, error) {
 
 // Return a list of Pokedex resource
 func (g Games) GetPokedexList(limit int, offest int) (*models.NamedResourceList, error) {
-	pokedexList, err := request.GetResourceList[models.NamedResourceList](g.PokedexURL, limit, offest)
+	pokedexList, err := request.GetResourceList[models.NamedResourceList](g.GetPokedexURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -94,12 +91,12 @@ func (g Games) GetPokedexList(limit int, offest int) (*models.NamedResourceList,
 
 // Return the Pokedex resource URL
 func (g Games) GetPokedexURL() string {
-	return g.PokedexURL
+	return g.Env.URL() + PokedexEndpoint
 }
 
 // Return a single Version resource by name or ID
 func (g Games) GetVersion(nameOrId string) (*models.Version, error) {
-	version, err := request.GetResource[models.Version](g.VersionURL + nameOrId)
+	version, err := request.GetResource[models.Version](g.GetVersionURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +105,7 @@ func (g Games) GetVersion(nameOrId string) (*models.Version, error) {
 
 // Return a list of Version resource
 func (g Games) GetVersionList(limit int, offest int) (*models.NamedResourceList, error) {
-	versionList, err := request.GetResourceList[models.NamedResourceList](g.VersionURL, limit, offest)
+	versionList, err := request.GetResourceList[models.NamedResourceList](g.GetVersionURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -117,12 +114,12 @@ func (g Games) GetVersionList(limit int, offest int) (*models.NamedResourceList,
 
 // Return the Version resource URL
 func (g Games) GetVersionURL() string {
-	return g.VersionURL
+	return g.Env.URL() + VersionEndpoint
 }
 
 // Return a single VersionGroup resource by name or ID
 func (g Games) GetVersionGroup(nameOrId string) (*models.VersionGroup, error) {
-	versionGroup, err := request.GetResource[models.VersionGroup](g.VersionGroupURL + nameOrId)
+	versionGroup, err := request.GetResource[models.VersionGroup](g.GetVersionGroupURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +128,7 @@ func (g Games) GetVersionGroup(nameOrId string) (*models.VersionGroup, error) {
 
 // Return a list of VersionGroup resource
 func (g Games) GetVersionGroupList(limit int, offest int) (*models.NamedResourceList, error) {
-	versionGroupList, err := request.GetResourceList[models.NamedResourceList](g.VersionGroupURL, limit, offest)
+	versionGroupList, err := request.GetResourceList[models.NamedResourceList](g.GetVersionGroupURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -140,5 +137,5 @@ func (g Games) GetVersionGroupList(limit int, offest int) (*models.NamedResource
 
 // Return the VersionGroup resource URL
 func (g Games) GetVersionGroupURL() string {
-	return g.VersionGroupURL
+	return g.Env.URL() + VersionGroupEndpoint
 }

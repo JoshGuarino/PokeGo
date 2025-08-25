@@ -3,13 +3,13 @@ package evolution
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var evolution IEvolution = NewEvolutionGroup()
-var url string = endpoints.BaseURL
+var url string = environment.ENV.URL()
 
 func TestNewEvolutionGroup(t *testing.T) {
 	evolution := NewEvolutionGroup()
@@ -34,7 +34,7 @@ func TestGetEvolutionChainList(t *testing.T) {
 
 func TestGetEvolutionChainURL(t *testing.T) {
 	evolutionChainURL := evolution.GetEvolutionChainURL()
-	assert.Equal(t, url+endpoints.EvolutionChain, evolutionChainURL, "Unexpected EvolutionChain resource URL")
+	assert.Equal(t, url+EvolutionChainEndpoint, evolutionChainURL, "Unexpected EvolutionChain resource URL")
 	assert.IsType(t, "", evolutionChainURL, "Expected EvolutionChain resource URL to be a string")
 }
 
@@ -59,6 +59,6 @@ func TestGetEvolutionTriggerList(t *testing.T) {
 
 func TestGetEvolutionTriggerURL(t *testing.T) {
 	evolutionTriggerURL := evolution.GetEvolutionTriggerURL()
-	assert.Equal(t, url+endpoints.EvolutionTrigger, evolutionTriggerURL, "Unexpected EvolutionTrigger resource URL")
+	assert.Equal(t, url+EvolutionTriggerEndpoint, evolutionTriggerURL, "Unexpected EvolutionTrigger resource URL")
 	assert.IsType(t, "", evolutionTriggerURL, "Expected EvolutionTrigger resource URL to be a string")
 }

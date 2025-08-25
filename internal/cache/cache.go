@@ -1,56 +1,60 @@
 package cache
 
 import (
-	"fmt"
 	"sync"
 	"time"
+
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
 // Cache interface
 type ICache interface {
 	Get(key string) (any, bool)
-	Set(key string, value any, expiration time.Duration)
+	Set(key string, value any)
 	Delete(key string)
 	Clear()
 	SetExpiration(expiration time.Duration)
-	GetExpiration() time.Duration
+	Expiration() time.Duration
 	SetActive(active bool)
-	GetActive() bool
+	Active() bool
 }
 
 // Cache struct
 type Cache struct {
-	data     map[string]Value
-	settings Settings
+	store    map[string]data
+	settings settings
 	lock     sync.Mutex
 }
 
-// Value struct
-type Value struct {
+// Data struct
+type data struct {
 	value      any
 	expiration time.Time
 }
 
 // Cache settings
-type Settings struct {
+type settings struct {
 	expiration time.Duration
 	active     bool
 }
 
-// Cache var
-var C *Cache
+// Cache global variable
+var CACHE *Cache
+
+// Logger reference variable
+var log logger.ILogger = logger.LOG
 
 // Initialize cache
 func init() {
-	C = NewCache()
-	fmt.Println("Cache initialized")
+	CACHE = newCache()
+	log.Info("Cache initialized")
 }
 
 // Return an instance of Cache struct
-func NewCache() *Cache {
+func newCache() *Cache {
 	return &Cache{
-		data: make(map[string]Value),
-		settings: Settings{
+		store: make(map[string]data),
+		settings: settings{
 			expiration: 24 * time.Hour,
 			active:     true,
 		},
@@ -63,7 +67,7 @@ func (c *Cache) Set(key string, value any) {
 	defer c.lock.Unlock()
 
 	expirationTime := time.Now().Add(c.settings.expiration)
-	c.data[key] = Value{
+	c.store[key] = data{
 		value:      value,
 		expiration: expirationTime,
 	}
@@ -74,9 +78,9 @@ func (c *Cache) Get(key string) (any, bool) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	value, ok := c.data[key]
+	value, ok := c.store[key]
 	if !ok || time.Now().After(value.expiration) {
-		delete(c.data, key)
+		delete(c.store, key)
 		return nil, false
 	}
 
@@ -85,36 +89,48 @@ func (c *Cache) Get(key string) (any, bool) {
 
 // Delete a key-value pair from the Cache
 func (c *Cache) Delete(key string) {
+	log.Warn("Cached resource deleted", "key", key)
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	delete(c.data, key)
+	delete(c.store, key)
 }
 
 // Clear the cache
 func (c *Cache) Clear() {
+	log.Warn("Cache cleared")
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
-	c.data = make(map[string]Value)
+	c.store = make(map[string]data)
 }
 
 // Set default expiration time for Cache
 func (c *Cache) SetExpiration(expiration time.Duration) {
+	log.Warn("Cache expiration time changed", "expiration", expiration)
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	c.settings.expiration = expiration
 }
 
 // Get expiration time of Cache
-func (c *Cache) GetExpiration() time.Duration {
+func (c *Cache) Expiration() time.Duration {
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	return c.settings.expiration
 }
 
 // Set active status of cache
 func (c *Cache) SetActive(active bool) {
+	log.Warn("Cache active status changed", "active", active)
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	c.settings.active = active
 }
 
 // Get active status of Cache
-func (c *Cache) GetActive() bool {
+func (c *Cache) Active() bool {
+	c.lock.Lock()
+	defer c.lock.Unlock()
 	return c.settings.active
 }

@@ -1,12 +1,30 @@
 package pokemon
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+)
+
+// Pokemon group resource endpoints
+const (
+	AbilityEndpoint        = "/ability/"
+	CharacteristicEndpoint = "/characteristic/"
+	EggGroupEndpoint       = "/egg-group/"
+	GenderEndpoint         = "/gender/"
+	GrowthRateEndpoint     = "/growth-rate/"
+	NatureEndpoint         = "/nature/"
+	PokeathlonStatEndpoint = "/pokeathlon-stat/"
+	PokemonEndpoint        = "/pokemon/"
+	PokemonColorEndpoint   = "/pokemon-color/"
+	PokemonFormEndpoint    = "/pokemon-form/"
+	PokemonHabitatEndpoint = "/pokemon-habitat/"
+	PokemonShapeEndpoint   = "/pokemon-shape/"
+	PokemonSpeciesEndpoint = "/pokemon-species/"
+	StatEndpoint           = "/stat/"
+	TypeEndpoint           = "/type/"
 )
 
 // Pokemon group interface
@@ -61,55 +79,23 @@ type IPokemon interface {
 
 // Pokemon group struct
 type Pokemon struct {
-	AbilityURL        string
-	CharacteristicURL string
-	EggGroupURL       string
-	GenderURL         string
-	GrowthRateURL     string
-	NatureURL         string
-	PokeathlonStatURL string
-	PokemonURL        string
-	PokemonColorURL   string
-	PokemonFormURL    string
-	PokemonHabitatURL string
-	PokemonShapeURL   string
-	PokemonSpeciesURL string
-	StatURL           string
-	TypeURL           string
-	Cache             *cache.Cache
-}
-
-// Initialize function
-func init() {
-	fmt.Println("Pokemon resource group initialized")
+	Cache *cache.Cache
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Return an instance of Pokmon resource group struct
 func NewPokemonGroup() Pokemon {
-	url := endpoints.BaseURL
 	return Pokemon{
-		AbilityURL:        url + endpoints.Ability,
-		CharacteristicURL: url + endpoints.Characteristic,
-		EggGroupURL:       url + endpoints.EggGroup,
-		GenderURL:         url + endpoints.Gender,
-		GrowthRateURL:     url + endpoints.GrowthRate,
-		NatureURL:         url + endpoints.Nature,
-		PokeathlonStatURL: url + endpoints.PokeathlonStat,
-		PokemonURL:        url + endpoints.Pokemon,
-		PokemonColorURL:   url + endpoints.PokemonColor,
-		PokemonFormURL:    url + endpoints.PokemonForm,
-		PokemonHabitatURL: url + endpoints.PokemonHabitat,
-		PokemonShapeURL:   url + endpoints.PokemonShape,
-		PokemonSpeciesURL: url + endpoints.PokemonSpecies,
-		StatURL:           url + endpoints.Stat,
-		TypeURL:           url + endpoints.Type,
-		Cache:             cache.C,
+		Cache: cache.CACHE,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 
 // Return a single Ability resource by name or ID
 func (p Pokemon) GetAbility(nameOrId string) (*models.Ability, error) {
-	ability, err := request.GetResource[models.Ability](p.AbilityURL + nameOrId)
+	ability, err := request.GetResource[models.Ability](p.GetAbilityURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -118,7 +104,7 @@ func (p Pokemon) GetAbility(nameOrId string) (*models.Ability, error) {
 
 // Return a list of Ability resource
 func (p Pokemon) GetAbilityList(limit int, offset int) (*models.NamedResourceList, error) {
-	abilityList, err := request.GetResourceList[models.NamedResourceList](p.AbilityURL, limit, offset)
+	abilityList, err := request.GetResourceList[models.NamedResourceList](p.GetAbilityURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -127,12 +113,12 @@ func (p Pokemon) GetAbilityList(limit int, offset int) (*models.NamedResourceLis
 
 // Return the Ability resource url
 func (p Pokemon) GetAbilityURL() string {
-	return p.AbilityURL
+	return p.Env.URL() + AbilityEndpoint
 }
 
 // Return a single Characteristic resource by ID
 func (p Pokemon) GetCharacteristic(id string) (*models.Characteristic, error) {
-	characteristic, err := request.GetResource[models.Characteristic](p.CharacteristicURL + id)
+	characteristic, err := request.GetResource[models.Characteristic](p.GetCharacteristicURL() + id)
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +127,7 @@ func (p Pokemon) GetCharacteristic(id string) (*models.Characteristic, error) {
 
 // Return a list of characteristic resource
 func (p Pokemon) GetCharacteristicList(limit int, offset int) (*models.ResourceList, error) {
-	characteristicList, err := request.GetResourceList[models.ResourceList](p.CharacteristicURL, limit, offset)
+	characteristicList, err := request.GetResourceList[models.ResourceList](p.GetCharacteristicURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -150,12 +136,12 @@ func (p Pokemon) GetCharacteristicList(limit int, offset int) (*models.ResourceL
 
 // Return the Characteristic resource url
 func (p Pokemon) GetCharacteristicURL() string {
-	return p.CharacteristicURL
+	return p.Env.URL() + CharacteristicEndpoint
 }
 
 // Return a single EggGroup resource by name or ID
 func (p Pokemon) GetEggGroup(nameOrId string) (*models.EggGroup, error) {
-	eggGroup, err := request.GetResource[models.EggGroup](p.EggGroupURL + nameOrId)
+	eggGroup, err := request.GetResource[models.EggGroup](p.GetEggGroupURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -164,7 +150,7 @@ func (p Pokemon) GetEggGroup(nameOrId string) (*models.EggGroup, error) {
 
 // Return a list of EggGroup resource
 func (p Pokemon) GetEggGroupList(limit int, offset int) (*models.NamedResourceList, error) {
-	eggGroupList, err := request.GetResourceList[models.NamedResourceList](p.EggGroupURL, limit, offset)
+	eggGroupList, err := request.GetResourceList[models.NamedResourceList](p.GetEggGroupURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -173,12 +159,12 @@ func (p Pokemon) GetEggGroupList(limit int, offset int) (*models.NamedResourceLi
 
 // Return the EggGroup resource url
 func (p Pokemon) GetEggGroupURL() string {
-	return p.EggGroupURL
+	return p.Env.URL() + EggGroupEndpoint
 }
 
 // Return a single Gender by name or ID
 func (p Pokemon) GetGender(nameOrId string) (*models.Gender, error) {
-	gender, err := request.GetResource[models.Gender](p.GenderURL + nameOrId)
+	gender, err := request.GetResource[models.Gender](p.GetGenderURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -187,7 +173,7 @@ func (p Pokemon) GetGender(nameOrId string) (*models.Gender, error) {
 
 // Return a list of Gender resource
 func (p Pokemon) GetGenderList(limit int, offset int) (*models.NamedResourceList, error) {
-	genderList, err := request.GetResourceList[models.NamedResourceList](p.GenderURL, limit, offset)
+	genderList, err := request.GetResourceList[models.NamedResourceList](p.GetGenderURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -196,12 +182,12 @@ func (p Pokemon) GetGenderList(limit int, offset int) (*models.NamedResourceList
 
 // Return the Gender resource url
 func (p Pokemon) GetGenderURL() string {
-	return p.GenderURL
+	return p.Env.URL() + GenderEndpoint
 }
 
 // Return a single GrowthRate by name or ID
 func (p Pokemon) GetGrowthRate(nameOrId string) (*models.GrowthRate, error) {
-	growthRate, err := request.GetResource[models.GrowthRate](p.GrowthRateURL + nameOrId)
+	growthRate, err := request.GetResource[models.GrowthRate](p.GetGrowthRateURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -210,7 +196,7 @@ func (p Pokemon) GetGrowthRate(nameOrId string) (*models.GrowthRate, error) {
 
 // Return a list of GrowthRate resource
 func (p Pokemon) GetGrowthRateList(limit int, offset int) (*models.NamedResourceList, error) {
-	growthRateList, err := request.GetResourceList[models.NamedResourceList](p.GrowthRateURL, limit, offset)
+	growthRateList, err := request.GetResourceList[models.NamedResourceList](p.GetGrowthRateURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -219,12 +205,12 @@ func (p Pokemon) GetGrowthRateList(limit int, offset int) (*models.NamedResource
 
 // Return the GrowthRate resource url
 func (p Pokemon) GetGrowthRateURL() string {
-	return p.GrowthRateURL
+	return p.Env.URL() + GrowthRateEndpoint
 }
 
 // Return a single Nature by name or ID
 func (p Pokemon) GetNature(nameOrId string) (*models.Nature, error) {
-	nature, err := request.GetResource[models.Nature](p.NatureURL + nameOrId)
+	nature, err := request.GetResource[models.Nature](p.GetNatureURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -233,7 +219,7 @@ func (p Pokemon) GetNature(nameOrId string) (*models.Nature, error) {
 
 // Return a list of Nature resource
 func (p Pokemon) GetNatureList(limit int, offset int) (*models.NamedResourceList, error) {
-	natureList, err := request.GetResourceList[models.NamedResourceList](p.NatureURL, limit, offset)
+	natureList, err := request.GetResourceList[models.NamedResourceList](p.GetNatureURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -242,12 +228,12 @@ func (p Pokemon) GetNatureList(limit int, offset int) (*models.NamedResourceList
 
 // Return the Nature resource url
 func (p Pokemon) GetNatureURL() string {
-	return p.NatureURL
+	return p.Env.URL() + NatureEndpoint
 }
 
 // Return a single PokeathlonStat by name or ID
 func (p Pokemon) GetPokeathlonStat(nameOrId string) (*models.PokeathlonStat, error) {
-	pokeathlonStat, err := request.GetResource[models.PokeathlonStat](p.PokeathlonStatURL + nameOrId)
+	pokeathlonStat, err := request.GetResource[models.PokeathlonStat](p.GetPokeathlonStatURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -256,7 +242,7 @@ func (p Pokemon) GetPokeathlonStat(nameOrId string) (*models.PokeathlonStat, err
 
 // Return a list of PokeathlonStat resource
 func (p Pokemon) GetPokeathlonStatList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokeathlonStatList, err := request.GetResourceList[models.NamedResourceList](p.PokeathlonStatURL, limit, offset)
+	pokeathlonStatList, err := request.GetResourceList[models.NamedResourceList](p.GetPokeathlonStatURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -265,12 +251,12 @@ func (p Pokemon) GetPokeathlonStatList(limit int, offset int) (*models.NamedReso
 
 // Return the PokeathlonStat resource url
 func (p Pokemon) GetPokeathlonStatURL() string {
-	return p.PokeathlonStatURL
+	return p.Env.URL() + PokeathlonStatEndpoint
 }
 
 // Return a single Pokemon by name or ID
 func (p Pokemon) GetPokemon(nameOrId string) (*models.Pokemon, error) {
-	pokemon, err := request.GetResource[models.Pokemon](p.PokemonURL + nameOrId)
+	pokemon, err := request.GetResource[models.Pokemon](p.GetPokemonURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -279,7 +265,7 @@ func (p Pokemon) GetPokemon(nameOrId string) (*models.Pokemon, error) {
 
 // Return a list of Pokemon resource
 func (p Pokemon) GetPokemonList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonList, err := request.GetResourceList[models.NamedResourceList](p.PokemonURL, limit, offset)
+	pokemonList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -288,12 +274,12 @@ func (p Pokemon) GetPokemonList(limit int, offset int) (*models.NamedResourceLis
 
 // Return the Pokemon resource url
 func (p Pokemon) GetPokemonURL() string {
-	return p.PokemonURL
+	return p.Env.URL() + PokemonEndpoint
 }
 
 // Return a single LocationAreaEncounter by name or ID
 func (p Pokemon) GetPokemonLocationAreas(nameOrId string) ([]*models.LocationAreaEncounter, error) {
-	pokemonLocationAreas, err := request.GetResourceSlice[models.LocationAreaEncounter](p.PokemonURL + nameOrId + "/encounters")
+	pokemonLocationAreas, err := request.GetResourceSlice[models.LocationAreaEncounter](p.GetPokemonURL() + nameOrId + "/encounters")
 	if err != nil {
 		return nil, err
 	}
@@ -302,7 +288,7 @@ func (p Pokemon) GetPokemonLocationAreas(nameOrId string) ([]*models.LocationAre
 
 // Return a single PokemonColor by name or ID
 func (p Pokemon) GetPokemonColor(nameOrId string) (*models.PokemonColor, error) {
-	pokemonColor, err := request.GetResource[models.PokemonColor](p.PokemonColorURL + nameOrId)
+	pokemonColor, err := request.GetResource[models.PokemonColor](p.GetPokemonColorURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -311,7 +297,7 @@ func (p Pokemon) GetPokemonColor(nameOrId string) (*models.PokemonColor, error) 
 
 // Return a list of PokemonColor resource
 func (p Pokemon) GetPokemonColorList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonColorList, err := request.GetResourceList[models.NamedResourceList](p.PokemonColorURL, limit, offset)
+	pokemonColorList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonColorURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -320,12 +306,12 @@ func (p Pokemon) GetPokemonColorList(limit int, offset int) (*models.NamedResour
 
 // Return the PokemonColor resource url
 func (p Pokemon) GetPokemonColorURL() string {
-	return p.PokemonColorURL
+	return p.Env.URL() + PokemonColorEndpoint
 }
 
 // Return a single PokemonForm by name or ID
 func (p Pokemon) GetPokemonForm(nameOrId string) (*models.PokemonForm, error) {
-	pokemonForm, err := request.GetResource[models.PokemonForm](p.PokemonFormURL + nameOrId)
+	pokemonForm, err := request.GetResource[models.PokemonForm](p.GetPokemonFormURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -334,7 +320,7 @@ func (p Pokemon) GetPokemonForm(nameOrId string) (*models.PokemonForm, error) {
 
 // Return a list of PokemonForm resource
 func (p Pokemon) GetPokemonFormList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonFormList, err := request.GetResourceList[models.NamedResourceList](p.PokemonFormURL, limit, offset)
+	pokemonFormList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonFormURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -343,12 +329,12 @@ func (p Pokemon) GetPokemonFormList(limit int, offset int) (*models.NamedResourc
 
 // Return the PokemonForm resource url
 func (p Pokemon) GetPokemonFormURL() string {
-	return p.PokemonFormURL
+	return p.Env.URL() + PokemonFormEndpoint
 }
 
 // Return a single PokemonHabitat by name or ID
 func (p Pokemon) GetPokemonHabitat(nameOrId string) (*models.PokemonHabitat, error) {
-	pokemonHabitat, err := request.GetResource[models.PokemonHabitat](p.PokemonHabitatURL + nameOrId)
+	pokemonHabitat, err := request.GetResource[models.PokemonHabitat](p.GetPokemonHabitatURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -357,7 +343,7 @@ func (p Pokemon) GetPokemonHabitat(nameOrId string) (*models.PokemonHabitat, err
 
 // Return a list of PokemonHabitat resource
 func (p Pokemon) GetPokemonHabitatList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonHabitatList, err := request.GetResourceList[models.NamedResourceList](p.PokemonHabitatURL, limit, offset)
+	pokemonHabitatList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonHabitatURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -366,12 +352,12 @@ func (p Pokemon) GetPokemonHabitatList(limit int, offset int) (*models.NamedReso
 
 // Return the PokemonHabitat resource url
 func (p Pokemon) GetPokemonHabitatURL() string {
-	return p.PokemonHabitatURL
+	return p.Env.URL() + PokemonHabitatEndpoint
 }
 
 // Return a single PokemonShape by name or ID
 func (p Pokemon) GetPokemonShape(nameOrId string) (*models.PokemonShape, error) {
-	pokemonShape, err := request.GetResource[models.PokemonShape](p.PokemonShapeURL + nameOrId)
+	pokemonShape, err := request.GetResource[models.PokemonShape](p.GetPokemonShapeURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -380,7 +366,7 @@ func (p Pokemon) GetPokemonShape(nameOrId string) (*models.PokemonShape, error) 
 
 // Return a list of PokemonShape resource
 func (p Pokemon) GetPokemonShapeList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonShapeList, err := request.GetResourceList[models.NamedResourceList](p.PokemonShapeURL, limit, offset)
+	pokemonShapeList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonShapeURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -389,12 +375,12 @@ func (p Pokemon) GetPokemonShapeList(limit int, offset int) (*models.NamedResour
 
 // Return the PokemonShape resource url
 func (p Pokemon) GetPokemonShapeURL() string {
-	return p.PokemonShapeURL
+	return p.Env.URL() + PokemonShapeEndpoint
 }
 
 // Return a single PokemonSpecies by name or ID
 func (p Pokemon) GetPokemonSpecies(nameOrId string) (*models.PokemonSpecies, error) {
-	pokemonSpecies, err := request.GetResource[models.PokemonSpecies](p.PokemonSpeciesURL + nameOrId)
+	pokemonSpecies, err := request.GetResource[models.PokemonSpecies](p.GetPokemonSpeciesURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -403,7 +389,7 @@ func (p Pokemon) GetPokemonSpecies(nameOrId string) (*models.PokemonSpecies, err
 
 // Return a list of PokemonSpecies resource
 func (p Pokemon) GetPokemonSpeciesList(limit int, offset int) (*models.NamedResourceList, error) {
-	pokemonSpeciesList, err := request.GetResourceList[models.NamedResourceList](p.PokemonSpeciesURL, limit, offset)
+	pokemonSpeciesList, err := request.GetResourceList[models.NamedResourceList](p.GetPokemonSpeciesURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -412,12 +398,12 @@ func (p Pokemon) GetPokemonSpeciesList(limit int, offset int) (*models.NamedReso
 
 // Return the PokemonSpecies resource url
 func (p Pokemon) GetPokemonSpeciesURL() string {
-	return p.PokemonSpeciesURL
+	return p.Env.URL() + PokemonSpeciesEndpoint
 }
 
 // Return a single Stat by name or ID
 func (p Pokemon) GetStat(nameOrId string) (*models.Stat, error) {
-	stat, err := request.GetResource[models.Stat](p.StatURL + nameOrId)
+	stat, err := request.GetResource[models.Stat](p.GetStatURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -426,7 +412,7 @@ func (p Pokemon) GetStat(nameOrId string) (*models.Stat, error) {
 
 // Return a list of Stat resource
 func (p Pokemon) GetStatList(limit int, offset int) (*models.NamedResourceList, error) {
-	statList, err := request.GetResourceList[models.NamedResourceList](p.StatURL, limit, offset)
+	statList, err := request.GetResourceList[models.NamedResourceList](p.GetStatURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -435,12 +421,12 @@ func (p Pokemon) GetStatList(limit int, offset int) (*models.NamedResourceList, 
 
 // Return the Stat resource url
 func (p Pokemon) GetStatURL() string {
-	return p.StatURL
+	return p.Env.URL() + StatEndpoint
 }
 
 // Return a single Type by name or ID
 func (p Pokemon) GetType(nameOrId string) (*models.Type, error) {
-	typeResource, err := request.GetResource[models.Type](p.TypeURL + nameOrId)
+	typeResource, err := request.GetResource[models.Type](p.GetTypeURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -449,7 +435,7 @@ func (p Pokemon) GetType(nameOrId string) (*models.Type, error) {
 
 // Return a list of Type resource
 func (p Pokemon) GetTypeList(limit int, offset int) (*models.NamedResourceList, error) {
-	typeList, err := request.GetResourceList[models.NamedResourceList](p.TypeURL, limit, offset)
+	typeList, err := request.GetResourceList[models.NamedResourceList](p.GetTypeURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -458,5 +444,5 @@ func (p Pokemon) GetTypeList(limit int, offset int) (*models.NamedResourceList, 
 
 // Return the Type resource url
 func (p Pokemon) GetTypeURL() string {
-	return p.TypeURL
+	return p.Env.URL() + TypeEndpoint
 }

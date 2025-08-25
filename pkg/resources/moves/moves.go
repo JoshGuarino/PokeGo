@@ -1,12 +1,22 @@
 package moves
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+)
+
+// Moves group resource endpoints
+const (
+	MoveEndpoint            = "/move/"
+	MoveAilmentEndpoint     = "/move-ailment/"
+	MoveBattleStyleEndpoint = "/move-battle-style/"
+	MoveCategoryEndpoint    = "/move-category/"
+	MoveDamageClassEndpoint = "/move-damage-class/"
+	MoveLearnMethodEndpoint = "/move-learn-method/"
+	MoveTargetEndpoint      = "/move-target/"
 )
 
 // Moves group interface
@@ -36,39 +46,23 @@ type IMoves interface {
 
 // Moves group struct
 type Moves struct {
-	MoveURL            string
-	MoveAilmentURL     string
-	MoveBattleStyleURL string
-	MoveCategoryURL    string
-	MoveDamageClassURL string
-	MoveLearnMethodURL string
-	MoveTargetURL      string
-	Cache              *cache.Cache
-}
-
-// Initialize function
-func init() {
-	fmt.Println("Moves resource group initialized")
+	Cache *cache.Cache
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Return an instance of Moves resource group struct
 func NewMovesGroup() Moves {
-	url := endpoints.BaseURL
 	return Moves{
-		MoveURL:            url + endpoints.Move,
-		MoveAilmentURL:     url + endpoints.MoveAilment,
-		MoveBattleStyleURL: url + endpoints.MoveBattleStyle,
-		MoveCategoryURL:    url + endpoints.MoveCategory,
-		MoveDamageClassURL: url + endpoints.MoveDamageClass,
-		MoveLearnMethodURL: url + endpoints.MoveLearnMethod,
-		MoveTargetURL:      url + endpoints.MoveTarget,
-		Cache:              cache.C,
+		Cache: cache.CACHE,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 
 // Return a single Move resource by name or ID
 func (m Moves) GetMove(nameOrId string) (*models.Move, error) {
-	move, err := request.GetResource[models.Move](m.MoveURL + nameOrId)
+	move, err := request.GetResource[models.Move](m.GetMoveURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +71,7 @@ func (m Moves) GetMove(nameOrId string) (*models.Move, error) {
 
 // Return a list of Move resource
 func (m Moves) GetMoveList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveList, err := request.GetResourceList[models.NamedResourceList](m.MoveURL, limit, offset)
+	moveList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -86,12 +80,12 @@ func (m Moves) GetMoveList(limit int, offset int) (*models.NamedResourceList, er
 
 // Return the Move resource url
 func (m Moves) GetMoveURL() string {
-	return m.MoveURL
+	return m.Env.URL() + MoveEndpoint
 }
 
 // Return a single MoveAilment resource by name or ID
 func (m Moves) GetMoveAilment(nameOrId string) (*models.MoveAilment, error) {
-	moveAilment, err := request.GetResource[models.MoveAilment](m.MoveAilmentURL + nameOrId)
+	moveAilment, err := request.GetResource[models.MoveAilment](m.GetMoveAilmentURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +94,7 @@ func (m Moves) GetMoveAilment(nameOrId string) (*models.MoveAilment, error) {
 
 // Return a list of MoveAilment resource
 func (m Moves) GetMoveAilmentList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveAilmentList, err := request.GetResourceList[models.NamedResourceList](m.MoveAilmentURL, limit, offset)
+	moveAilmentList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveAilmentURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -109,12 +103,12 @@ func (m Moves) GetMoveAilmentList(limit int, offset int) (*models.NamedResourceL
 
 // Retunr the MoveAilment resource url
 func (m Moves) GetMoveAilmentURL() string {
-	return m.MoveAilmentURL
+	return m.Env.URL() + MoveAilmentEndpoint
 }
 
 // Return a single MoveBattleStyle resource by name or ID
 func (m Moves) GetMoveBattleStyle(nameOrId string) (*models.MoveBattleStyle, error) {
-	moveBattleStyle, err := request.GetResource[models.MoveBattleStyle](m.MoveBattleStyleURL + nameOrId)
+	moveBattleStyle, err := request.GetResource[models.MoveBattleStyle](m.GetMoveBattleStyleURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +117,7 @@ func (m Moves) GetMoveBattleStyle(nameOrId string) (*models.MoveBattleStyle, err
 
 // Return a list of MoveBattleStyle resource
 func (m Moves) GetMoveBattleStyleList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveBattleStyleList, err := request.GetResourceList[models.NamedResourceList](m.MoveBattleStyleURL, limit, offset)
+	moveBattleStyleList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveBattleStyleURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -132,12 +126,12 @@ func (m Moves) GetMoveBattleStyleList(limit int, offset int) (*models.NamedResou
 
 // Return the MoveBattleStyle resource url
 func (m Moves) GetMoveBattleStyleURL() string {
-	return m.MoveBattleStyleURL
+	return m.Env.URL() + MoveBattleStyleEndpoint
 }
 
 // Return a single MoveCategory resource by name or ID
 func (m Moves) GetMoveCategory(nameOrId string) (*models.MoveCategory, error) {
-	moveCategory, err := request.GetResource[models.MoveCategory](m.MoveCategoryURL + nameOrId)
+	moveCategory, err := request.GetResource[models.MoveCategory](m.GetMoveCategoryURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +140,7 @@ func (m Moves) GetMoveCategory(nameOrId string) (*models.MoveCategory, error) {
 
 // Return a list of MoveCategory resource
 func (m Moves) GetMoveCategoryList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveCategoryList, err := request.GetResourceList[models.NamedResourceList](m.MoveCategoryURL, limit, offset)
+	moveCategoryList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveCategoryURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -155,12 +149,12 @@ func (m Moves) GetMoveCategoryList(limit int, offset int) (*models.NamedResource
 
 // Return the MoveCategory resource url
 func (m Moves) GetMoveCategoryURL() string {
-	return m.MoveCategoryURL
+	return m.Env.URL() + MoveCategoryEndpoint
 }
 
 // Return a single MoveDamageClass resource by name or ID
 func (m Moves) GetMoveDamageClass(nameOrId string) (*models.MoveDamageClass, error) {
-	moveDamageClass, err := request.GetResource[models.MoveDamageClass](m.MoveDamageClassURL + nameOrId)
+	moveDamageClass, err := request.GetResource[models.MoveDamageClass](m.GetMoveDamageClassURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +163,7 @@ func (m Moves) GetMoveDamageClass(nameOrId string) (*models.MoveDamageClass, err
 
 // Return a list of MoveDamageClass resource
 func (m Moves) GetMoveDamageClassList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveDamageClassList, err := request.GetResourceList[models.NamedResourceList](m.MoveDamageClassURL, limit, offset)
+	moveDamageClassList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveDamageClassURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -178,12 +172,12 @@ func (m Moves) GetMoveDamageClassList(limit int, offset int) (*models.NamedResou
 
 // Return the MoveDamageClass resource url
 func (m Moves) GetMoveDamageClassURL() string {
-	return m.MoveDamageClassURL
+	return m.Env.URL() + MoveDamageClassEndpoint
 }
 
 // Return a single MoveLearnMethod resource by name or ID
 func (m Moves) GetMoveLearnMethod(nameOrId string) (*models.MoveLearnMethod, error) {
-	moveLearnMethod, err := request.GetResource[models.MoveLearnMethod](m.MoveLearnMethodURL + nameOrId)
+	moveLearnMethod, err := request.GetResource[models.MoveLearnMethod](m.GetMoveLearnMethodURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -192,7 +186,7 @@ func (m Moves) GetMoveLearnMethod(nameOrId string) (*models.MoveLearnMethod, err
 
 // Return a list of MoveLearnMethod resource
 func (m Moves) GetMoveLearnMethodList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveLearnMethodList, err := request.GetResourceList[models.NamedResourceList](m.MoveLearnMethodURL, limit, offset)
+	moveLearnMethodList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveLearnMethodURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -201,12 +195,12 @@ func (m Moves) GetMoveLearnMethodList(limit int, offset int) (*models.NamedResou
 
 // Return the MoveLearnMethod resource url
 func (m Moves) GetMoveLearnMethodURL() string {
-	return m.MoveLearnMethodURL
+	return m.Env.URL() + MoveLearnMethodEndpoint
 }
 
 // Return a single MoveTarget resource by name or ID
 func (m Moves) GetMoveTarget(nameOrId string) (*models.MoveTarget, error) {
-	moveTarget, err := request.GetResource[models.MoveTarget](m.MoveTargetURL + nameOrId)
+	moveTarget, err := request.GetResource[models.MoveTarget](m.GetMoveTargetURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -215,7 +209,7 @@ func (m Moves) GetMoveTarget(nameOrId string) (*models.MoveTarget, error) {
 
 // Return a list of MoveTarget resource
 func (m Moves) GetMoveTargetList(limit int, offset int) (*models.NamedResourceList, error) {
-	moveTargetList, err := request.GetResourceList[models.NamedResourceList](m.MoveTargetURL, limit, offset)
+	moveTargetList, err := request.GetResourceList[models.NamedResourceList](m.GetMoveTargetURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -224,5 +218,5 @@ func (m Moves) GetMoveTargetList(limit int, offset int) (*models.NamedResourceLi
 
 // Return the MoveTarget resource url
 func (m Moves) GetMoveTargetURL() string {
-	return m.MoveTargetURL
+	return m.Env.URL() + MoveTargetEndpoint
 }

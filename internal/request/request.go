@@ -7,10 +7,17 @@ import (
 	"net/http"
 
 	"github.com/JoshGuarino/PokeGo/internal/cache"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 )
 
+// Logger reference variable
+var log logger.ILogger = logger.LOG
+
+// Cache reference variable
+var ch cache.ICache = cache.CACHE
+
 // Make GET request
-func Get(url string) ([]byte, error) {
+func get(url string) ([]byte, error) {
 	// Create new GET request
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -35,18 +42,18 @@ func Get(url string) ([]byte, error) {
 }
 
 // Get data from URL or cache
-func GetData[T any](url string) (T, error) {
+func getData[T any](url string) (T, error) {
 	// Create new data struct
 	dataStruct := new(T)
 
 	// Check for cached data and return if found
-	data, found := cache.C.Get(url)
+	data, found := ch.Get(url)
 	if found {
 		return data.(T), nil
 	}
 
 	// Make GET request
-	body, errReq := Get(url)
+	body, errReq := get(url)
 	if errReq != nil {
 		return *dataStruct, errReq
 	}
@@ -58,8 +65,8 @@ func GetData[T any](url string) (T, error) {
 	}
 
 	// Cache ResourceList if active and return
-	if cache.C.GetActive() {
-		cache.C.Set(url, *dataStruct)
+	if ch.Active() {
+		ch.Set(url, *dataStruct)
 		return *dataStruct, nil
 	}
 	return *dataStruct, nil
@@ -67,17 +74,37 @@ func GetData[T any](url string) (T, error) {
 
 // Make GET request for list of resource
 func GetResourceList[T any](url string, limit int, offset int) (*T, error) {
-	// Append limit and offset to URL
 	url = fmt.Sprintf("%s?limit=%d&offset=%d", url, limit, offset)
-	return GetData[*T](url)
+	log.Info("Get resource list called", "url", url)
+	data, err := getData[*T](url)
+	if err != nil {
+		log.Error("Error getting resource list", "err", err)
+		return nil, err
+	}
+	log.Debug("Resource list retrieved", "url", url, "data", data)
+	return data, nil
 }
 
 // Make GET request for a specifc resource
 func GetResource[T any](url string) (*T, error) {
-	return GetData[*T](url)
+	log.Info("Get resource called", "url", url)
+	data, err := getData[*T](url)
+	if err != nil {
+		log.Error("Error getting specifc resource", "err", err)
+		return nil, err
+	}
+	log.Debug("Resource retrieved", "url", url, "data", data)
+	return data, nil
 }
 
 // Make GET request for a slice of resources
 func GetResourceSlice[T any](url string) ([]*T, error) {
-	return GetData[[]*T](url)
+	log.Info("Get resource slice called", "url", url)
+	data, err := getData[[]*T](url)
+	if err != nil {
+		log.Error("Error getting resource slice", "err", err)
+		return nil, err
+	}
+	log.Debug("Resource slice retrieved", "url", url, "data", data)
+	return data, nil
 }

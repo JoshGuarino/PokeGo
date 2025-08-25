@@ -1,10 +1,9 @@
 package pokego
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/JoshGuarino/PokeGo/pkg/resources/berries"
@@ -28,9 +27,10 @@ type IPokeGo interface {
 
 // PokeGo API wrapper client
 type PokeGo struct {
-	// base URL and cache
-	BaseURL string
-	Cache   *cache.Cache
+	// Chache and environmen
+	Cache *cache.Cache
+	Env   *environment.Environment
+	Log   *logger.Logger
 
 	// resources
 	Berries    berries.Berries
@@ -46,17 +46,13 @@ type PokeGo struct {
 	Utility    utility.Utility
 }
 
-// Initialize function
-func init() {
-	fmt.Println("PokeGo API wrapper initialized")
-}
-
 // Return an instance of the PokeGo API wrapper client
 func NewClient() PokeGo {
 	return PokeGo{
-		// initialize base URL and cache
-		BaseURL: endpoints.BaseURL,
-		Cache:   cache.C,
+		// initialize cache, environment, and logger
+		Cache: cache.CACHE,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 
 		// initialize resources
 		Berries:    berries.NewBerriesGroup(),
@@ -75,7 +71,7 @@ func NewClient() PokeGo {
 
 // Return an instance of API Root list of available resources
 func (p PokeGo) Root() (*models.Root, error) {
-	root, err := request.GetResource[models.Root](p.BaseURL)
+	root, err := request.GetResource[models.Root](p.GetBaseURL())
 	if err != nil {
 		return nil, err
 	}
@@ -84,5 +80,5 @@ func (p PokeGo) Root() (*models.Root, error) {
 
 // Return the base URL for PokeAPI
 func (p PokeGo) GetBaseURL() string {
-	return p.BaseURL
+	return p.Env.URL()
 }

@@ -3,13 +3,13 @@ package items
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var items IItems = NewItemsGroup()
-var url string = endpoints.BaseURL
+var url string = environment.ENV.URL()
 
 func TestNewItemsGroup(t *testing.T) {
 	items := NewItemsGroup()
@@ -37,7 +37,7 @@ func TestGetItemList(t *testing.T) {
 
 func TestGetItemURL(t *testing.T) {
 	itemURL := items.GetItemURL()
-	assert.Equal(t, url+endpoints.Item, itemURL, "Unexpected Item resource URL")
+	assert.Equal(t, url+ItemEndpoint, itemURL, "Unexpected Item resource URL")
 	assert.IsType(t, "", itemURL, "Expected Item resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetItemAttributeList(t *testing.T) {
 
 func TestGetItemAttributeURL(t *testing.T) {
 	itemAttributeURL := items.GetItemAttributeURL()
-	assert.Equal(t, url+endpoints.ItemAttribute, itemAttributeURL, "Unexpected ItemAttribute resource URL")
+	assert.Equal(t, url+ItemAttributeEndpoint, itemAttributeURL, "Unexpected ItemAttribute resource URL")
 	assert.IsType(t, "", itemAttributeURL, "Expected ItemAttribute resource URL to be a string")
 }
 
@@ -87,7 +87,7 @@ func TestGetItemCategoryList(t *testing.T) {
 
 func TestGetItemCategoryURL(t *testing.T) {
 	itemCategoryURL := items.GetItemCategoryURL()
-	assert.Equal(t, url+endpoints.ItemCategory, itemCategoryURL, "Unexpected ItemCategory resource URL")
+	assert.Equal(t, url+ItemCategoryEndpoint, itemCategoryURL, "Unexpected ItemCategory resource URL")
 	assert.IsType(t, "", itemCategoryURL, "Expected ItemCategory resource URL to be a string")
 }
 
@@ -112,7 +112,7 @@ func TestGetItemFlingEffectList(t *testing.T) {
 
 func TestGetItemFlingEffectURL(t *testing.T) {
 	itemFlingEffectURL := items.GetItemFlingEffectURL()
-	assert.Equal(t, url+endpoints.ItemFlingEffect, itemFlingEffectURL, "Unexpected ItemFlingEffect resource URL")
+	assert.Equal(t, url+ItemFlingEffectEndpoint, itemFlingEffectURL, "Unexpected ItemFlingEffect resource URL")
 	assert.IsType(t, "", itemFlingEffectURL, "Expected ItemFlingEffect resource URL to be a string")
 }
 
@@ -137,6 +137,6 @@ func TestGetItemPocketList(t *testing.T) {
 
 func TestGetItemPocketURL(t *testing.T) {
 	itemPocketURL := items.GetItemPocketURL()
-	assert.Equal(t, url+endpoints.ItemPocket, itemPocketURL, "Unexpected ItemPocket resource URL")
+	assert.Equal(t, url+ItemPocketEndpoint, itemPocketURL, "Unexpected ItemPocket resource URL")
 	assert.IsType(t, "", itemPocketURL, "Expected ItemPocket resource URL to be a string")
 }

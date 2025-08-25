@@ -3,13 +3,13 @@ package games
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var games IGames = NewGamesGroup()
-var url string = endpoints.BaseURL
+var url string = environment.ENV.URL()
 
 func TestNewGamesGroup(t *testing.T) {
 	games := NewGamesGroup()
@@ -37,7 +37,7 @@ func TestGetGenerationList(t *testing.T) {
 
 func TestGetGenerationURL(t *testing.T) {
 	generationURL := games.GetGenerationURL()
-	assert.Equal(t, url+endpoints.Generation, generationURL, "Unexpected Generation resource URL")
+	assert.Equal(t, url+GenerationEndpoint, generationURL, "Unexpected Generation resource URL")
 	assert.IsType(t, "", generationURL, "Expected Generation resource URL to be a string")
 }
 
@@ -62,7 +62,7 @@ func TestGetPokedexList(t *testing.T) {
 
 func TestGetPokedexURL(t *testing.T) {
 	pokedexURL := games.GetPokedexURL()
-	assert.Equal(t, url+endpoints.Pokedex, pokedexURL, "Unexpected Pokedex resource URL")
+	assert.Equal(t, url+PokedexEndpoint, pokedexURL, "Unexpected Pokedex resource URL")
 	assert.IsType(t, "", pokedexURL, "Expected Pokedex resource URL to be a string")
 }
 
@@ -87,7 +87,7 @@ func TestGetVersionList(t *testing.T) {
 
 func TestGetVersionURL(t *testing.T) {
 	versionURL := games.GetVersionURL()
-	assert.Equal(t, url+endpoints.Version, versionURL, "Unexpected Version resource URL")
+	assert.Equal(t, url+VersionEndpoint, versionURL, "Unexpected Version resource URL")
 	assert.IsType(t, "", versionURL, "Expected Version resource URL to be a string")
 }
 
@@ -112,6 +112,6 @@ func TestGetVersionListGroup(t *testing.T) {
 
 func TestGetVersionGroupURL(t *testing.T) {
 	versionGroupURL := games.GetVersionGroupURL()
-	assert.Equal(t, url+endpoints.VersionGroup, versionGroupURL, "Unexpected VersionGroup resource URL")
+	assert.Equal(t, url+VersionGroupEndpoint, versionGroupURL, "Unexpected VersionGroup resource URL")
 	assert.IsType(t, "", versionGroupURL, "Expected VersionGroup resource URL to be a string")
 }

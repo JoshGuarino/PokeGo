@@ -3,13 +3,13 @@ package contests
 import (
 	"testing"
 
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 var contests IContests = NewContestsGroup()
-var url string = endpoints.BaseURL
+var url string = environment.ENV.URL()
 
 func TestNewContestsGroup(t *testing.T) {
 	contests := NewContestsGroup()
@@ -37,7 +37,7 @@ func TestGetContestTypeList(t *testing.T) {
 
 func TestGetContestTypeURL(t *testing.T) {
 	contestTypeURL := contests.GetContestTypeURL()
-	assert.Equal(t, url+endpoints.ContestType, contestTypeURL, "Unexpected ContestType resource URL")
+	assert.Equal(t, url+ContestTypeEndpoint, contestTypeURL, "Unexpected ContestType resource URL")
 	assert.IsType(t, "", contestTypeURL, "Expected ContestType resource URL to be a string")
 }
 
@@ -60,7 +60,7 @@ func TestGetContestEffectList(t *testing.T) {
 
 func TestGetContestEffectURL(t *testing.T) {
 	contestEffectURL := contests.GetContestEffectURL()
-	assert.Equal(t, url+endpoints.ContestEffect, contestEffectURL, "Unexpected ContestEffect resource URL")
+	assert.Equal(t, url+ContestEffectEndpoint, contestEffectURL, "Unexpected ContestEffect resource URL")
 	assert.IsType(t, "", contestEffectURL, "Expected ContestEffect resource URL to be a string")
 }
 
@@ -83,6 +83,6 @@ func TestGetSuperContestEffectList(t *testing.T) {
 
 func TestGetSuperContestEffectURL(t *testing.T) {
 	superContestEffectURL := contests.GetSuperContestEffectURL()
-	assert.Equal(t, url+endpoints.SuperContestEffect, superContestEffectURL, "Unexpected SuperContestEffect resource URL")
+	assert.Equal(t, url+SuperContestEffectEndpoint, superContestEffectURL, "Unexpected SuperContestEffect resource URL")
 	assert.IsType(t, "", superContestEffectURL, "Expected SuperContestEffect resource URL to be a string")
 }

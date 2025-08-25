@@ -1,12 +1,18 @@
 package encounters
 
 import (
-	"fmt"
-
 	"github.com/JoshGuarino/PokeGo/internal/cache"
-	"github.com/JoshGuarino/PokeGo/internal/endpoints"
+	"github.com/JoshGuarino/PokeGo/internal/environment"
+	"github.com/JoshGuarino/PokeGo/internal/logger"
 	"github.com/JoshGuarino/PokeGo/internal/request"
 	"github.com/JoshGuarino/PokeGo/pkg/models"
+)
+
+// Encounters group resource endpoints
+const (
+	EncounterMethodEndpoint         = "/encounter-method/"
+	EncounterConditionEndpoint      = "/encounter-condition/"
+	EncounterConditionValueEndpoint = "/encounter-condition-value/"
 )
 
 // Encounters group interface
@@ -24,31 +30,23 @@ type IEncounters interface {
 
 // Encounters group struct
 type Encounters struct {
-	EncounterMethodURL         string
-	EncounterConditionURL      string
-	EncounterConditionValueURL string
-	Cache                      *cache.Cache
-}
-
-// Initialize function
-func init() {
-	fmt.Println("Encounters resource group initialized")
+	Cache *cache.Cache
+	Env   *environment.Environment
+	Log   *logger.Logger
 }
 
 // Return an instance of Encounters resource group struct
 func NewEncountersGroup() Encounters {
-	url := endpoints.BaseURL
 	return Encounters{
-		EncounterMethodURL:         url + endpoints.EncounterMethod,
-		EncounterConditionURL:      url + endpoints.EncounterCondition,
-		EncounterConditionValueURL: url + endpoints.EncounterConditionValue,
-		Cache:                      cache.C,
+		Cache: cache.CACHE,
+		Env:   environment.ENV,
+		Log:   logger.LOG,
 	}
 }
 
 // Return a single EncounterMethod resource by name or ID
 func (e Encounters) GetEncounterMethod(nameOrId string) (*models.EncounterMethod, error) {
-	encounterMethod, err := request.GetResource[models.EncounterMethod](e.EncounterMethodURL + nameOrId)
+	encounterMethod, err := request.GetResource[models.EncounterMethod](e.GetEncounterMethodURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +55,7 @@ func (e Encounters) GetEncounterMethod(nameOrId string) (*models.EncounterMethod
 
 // Return a list of EncounterMethod resource
 func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.NamedResourceList, error) {
-	encounterMethodList, err := request.GetResourceList[models.NamedResourceList](e.EncounterMethodURL, limit, offest)
+	encounterMethodList, err := request.GetResourceList[models.NamedResourceList](e.GetEncounterMethodURL(), limit, offest)
 	if err != nil {
 		return nil, err
 	}
@@ -66,12 +64,12 @@ func (e Encounters) GetEncounterMethodList(limit int, offest int) (*models.Named
 
 // Return the EncounterMethod resource URL
 func (e Encounters) GetEncounterMethodURL() string {
-	return e.EncounterMethodURL
+	return e.Env.URL() + EncounterMethodEndpoint
 }
 
 // Return a single EncounterCondition resource by name or ID
 func (e Encounters) GetEncounterCondition(nameOrId string) (*models.EncounterCondition, error) {
-	encounterCondition, err := request.GetResource[models.EncounterCondition](e.EncounterConditionURL + nameOrId)
+	encounterCondition, err := request.GetResource[models.EncounterCondition](e.GetEncounterConditionURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +78,7 @@ func (e Encounters) GetEncounterCondition(nameOrId string) (*models.EncounterCon
 
 // Return a list of EncounterCondition resource
 func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.NamedResourceList, error) {
-	encounterConditionList, err := request.GetResourceList[models.NamedResourceList](e.EncounterConditionURL, limit, offset)
+	encounterConditionList, err := request.GetResourceList[models.NamedResourceList](e.GetEncounterConditionURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -89,12 +87,12 @@ func (e Encounters) GetEncounterConditionList(limit int, offset int) (*models.Na
 
 // Return the EncounterCondition resource URL
 func (e Encounters) GetEncounterConditionURL() string {
-	return e.EncounterConditionURL
+	return e.Env.URL() + EncounterConditionEndpoint
 }
 
 // Return a single EncounterConditionValue resource by name or ID
 func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.EncounterConditionValue, error) {
-	encounterConditionValue, err := request.GetResource[models.EncounterConditionValue](e.EncounterConditionValueURL + nameOrId)
+	encounterConditionValue, err := request.GetResource[models.EncounterConditionValue](e.GetEncounterConditionValueURL() + nameOrId)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +101,7 @@ func (e Encounters) GetEncounterConditionValue(nameOrId string) (*models.Encount
 
 // Return a list of EncounterConditionValue resource
 func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*models.NamedResourceList, error) {
-	encounterConditionValueList, err := request.GetResourceList[models.NamedResourceList](e.EncounterConditionValueURL, limit, offset)
+	encounterConditionValueList, err := request.GetResourceList[models.NamedResourceList](e.GetEncounterConditionValueURL(), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -112,5 +110,5 @@ func (e Encounters) GetEncounterConditionValueList(limit int, offset int) (*mode
 
 // Return the EncounterConditionValue resource URL
 func (e Encounters) GetEncounterConditionValueURL() string {
-	return e.EncounterConditionValueURL
+	return e.Env.URL() + EncounterConditionValueEndpoint
 }
