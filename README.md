@@ -84,6 +84,22 @@ limit, offset := 20, 20
 pokemonList, err := pokemonGroup.GetPokemonList(limit, offset)
 ```
 
+## Single Resource 
+
+Single resource endpoints are used to retrieve a single resource from the PokeAPI.
+Named resources can be accessed using the name or ID of the resource.
+Non named resources can be accessed using only the ID of the resource.
+
+##### Single resource endpoint examples:
+
+```go
+// Main client example
+pokemon, err := client.Pokemon.GetPokemon("charmander")
+
+// Individual resource group example
+pokemon, err := pokemonGroup.GetPokemon("charmander")
+```
+
 ## Caching
 
 PokeGo uses a simple in-memory cache to store API responses. This is to reduce the number of requests made to the PokeAPI.
@@ -91,6 +107,18 @@ The cache is set to expire after 24 hours by default, as resources in the PokeAP
 You are able to disable the cache or change the expiration time of a cached resource.
 I would reccommend against disabling it as it will result in a large number of requests to the PokeAPI and may result in rate limiting.
 For more information on the cache, see the [CACHE.md](docs/CACHE.md) documentation.
+
+## Environment
+
+The environment package manages the API base URL and domain. By default, the environment is set to production.
+For more information on the environment, see the [ENVIRONMENT.md](docs/ENVIRONMENT.md) documentation.
+
+## Logger
+
+The logger package provides a simple and flexible logging mechanism for your application. 
+It supports various log levels and allows you to track messages.
+It is a wrapper around the `https://github.com/charmbracelet/log` library.
+For more information on the logger, see the [LOGGER.md](docs/LOGGER.md) documentation.
 
 ## Contributing
 
