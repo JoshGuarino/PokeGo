@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
+
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - skip: true
+
+changelog:
+  sort: asc
+  use: github
+
+release:
+  footer: >-
+
+    ---
+
+    <a href="https://pokeapi.co/api/v2/pokemon/charmander"><img src='https://veekun.com/dex/media/pokemon/global-link/4.png' height=100px/></a>
+    Let me know if you have any questions or suggestions. I'm always open to feedback.
