@@ -27,7 +27,7 @@ type IPokeGo interface {
 
 // PokeGo API wrapper client
 type PokeGo struct {
-	// cache , environment, and logger
+	// cache, environment, and logger
 	Cache *cache.Cache
 	Env   *environment.Environment
 	Log   *logger.Logger
