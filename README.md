@@ -4,6 +4,7 @@
 ![Release](https://img.shields.io/github/v/release/JoshGuarino/PokeGo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/JoshGuarino/PokeGo?style=flat)](https://goreportcard.com/report/github.com/JoshGuarino/PokeGo)
 [![license](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg "license")](https://github.com/JoshGuarino/PokeGo/blob/main/LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/JoshGuarino/PokeGo.svg)](https://pkg.go.dev/github.com/JoshGuarino/PokeGo)
 
 PokeGo is an Golang API wrapper for the [PokéAPI](https://pokeapi.co/) v2.
 
@@ -80,11 +81,11 @@ limit, offset := 20, 0
 pokemonList, err := client.Pokemon.GetPokemonList(limit, offset)
 
 // Individual resource group example returning the second page of 20 results
-limit, offset := 20, 20 
+limit, offset := 20, 20
 pokemonList, err := pokemonGroup.GetPokemonList(limit, offset)
 ```
 
-## Single Resource 
+## Single Resource
 
 Single resource endpoints are used to retrieve a single resource from the PokeAPI.
 Named resources can be accessed using the name or ID of the resource.
@@ -115,7 +116,7 @@ For more information on the environment, see the [ENVIRONMENT.md](docs/ENVIRONME
 
 ## Logger
 
-The logger package provides a simple and flexible logging mechanism for your application. 
+The logger package provides a simple and flexible logging mechanism for your application.
 It supports various log levels and allows you to track messages.
 It is a wrapper around the `https://github.com/charmbracelet/log` library.
 For more information on the logger, see the [LOGGER.md](docs/LOGGER.md) documentation.
