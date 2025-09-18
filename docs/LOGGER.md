@@ -1,10 +1,12 @@
 # Logger
 
-The loggeris initialized when the client is created or when a resource group is created.
+The logger is initialized when the client is created or when a resource group is created.
 Only one instance of the logger is created and shared between the client and all resource groups upon there initialization.
 Any subsequent intializations will not create a new logger but reference the existing logger.
 A pointer reference to the initialized logger is stored in the client and each resource group.
 See singleton pattern [here](https://en.wikipedia.org/wiki/Singleton_pattern).
+By default the logger is inactive and will not log any messages. To activate the logger, call the `SetActive()` method.
+
 
 ## Log Levels
 
@@ -14,6 +16,8 @@ The logger supports the following log levels:
 - `Warn`
 - `Error`
 - `Debug`
+
+It is set to `Info` by default.
 
 ## The following is a set of available methods for the logger used in the PokeGo client.
 

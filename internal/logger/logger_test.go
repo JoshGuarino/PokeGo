@@ -10,6 +10,7 @@ import (
 var logger ILogger = newLogger()
 
 func TestNewLogger(t *testing.T) {
+	logger.SetActive(true)
 	assert.IsType(t, &Logger{}, logger, "Expected Logger instance to be returned")
 }
 

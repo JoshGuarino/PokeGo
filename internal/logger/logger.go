@@ -56,7 +56,7 @@ func newLogger() *Logger {
 		logger:   log.Default(),
 		messages: []message{},
 		settings: settings{
-			active: true,
+			active: false,
 		},
 	}
 }
