@@ -19,8 +19,8 @@ const (
 
 // Environment interface
 type IEnvironment interface {
-	GetDomain() string
-	GetURL() string
+	Domain() string
+	URL() string
 	SetStage()
 	SetProd()
 }

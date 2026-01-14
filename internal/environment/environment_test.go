@@ -22,12 +22,12 @@ func TestProdEnv(t *testing.T) {
 	assert.IsType(t, &Environment{}, prodEnv, "Expected environment struct instance to be returned")
 }
 
-func TestGetDomain(t *testing.T) {
+func TestDomain(t *testing.T) {
 	assert.Equal(t, prodDomain, env.Domain(), "Unexpected environment domain")
 	assert.IsType(t, "", env.Domain(), "Expected environment domain to be a string")
 }
 
-func TestGetURL(t *testing.T) {
+func TestURL(t *testing.T) {
 	assert.Equal(t, prodURL, env.URL(), "Unexpected environment URL")
 	assert.IsType(t, "", env.URL(), "Expected environment URL to be a string")
 }
