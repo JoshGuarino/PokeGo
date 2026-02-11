@@ -29,8 +29,8 @@ func TestGetLanguage(t *testing.T) {
 func TestGetLanguageList(t *testing.T) {
 	rList, _ := utility.GetLanguageList(20, 0)
 	rPage, _ := utility.GetLanguageList(1, 1)
-	assert.Equal(t, "ja-Hrkt", rList.Results[0].Name, "Unexpected Name for Language resource")
-	assert.Equal(t, "roomaji", rPage.Results[0].Name, "Unexpected Name for Language resource")
+	assert.Equal(t, "ja-hrkt", rList.Results[0].Name, "Unexpected Name for Language resource")
+	assert.Equal(t, "ja-roma", rPage.Results[0].Name, "Unexpected Name for Language resource")
 	assert.Equal(t, 1, len(rPage.Results), "Unexpected number of results returned")
 	assert.IsType(t, &models.NamedResourceList{}, rList, "Expected NamedResourceList instance to be returned")
 }
