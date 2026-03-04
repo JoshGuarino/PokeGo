@@ -129,3 +129,11 @@ See the [CONTRIBUTING.md](docs/CONTRIBUTING.md) file for more information.
 ## License
 
 PokeGo is licensed under the [BSD 3-Clause License](LICENSE).
+
+## Support
+
+If you like this project, please consider supporting it on [Buy Me A Coffee](https://www.buymeacoffee.com/JoshGuarino).
+
+<a href="https://www.buymeacoffee.com/JoshGuarino" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174">
+</a>
