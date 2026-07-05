@@ -5,7 +5,7 @@ type Root struct {
 	Ability                 string `json:"ability"`
 	Berry                   string `json:"berry"`
 	BerryFirmness           string `json:"berry-firmness"`
-	BerryFlavor             string `json:"berry-lavor"`
+	BerryFlavor             string `json:"berry-flavor"`
 	Characteristic          string `json:"characteristic"`
 	ContestEffect           string `json:"contest-effect"`
 	ContestType             string `json:"contest-type"`
@@ -110,7 +110,7 @@ type FlavorText struct {
 // Represents a game index reference for a resource
 type GenerationGameIndex struct {
 	GameIndex  int           `json:"game_index"`
-	Gereration NamedResource `json:"generation"`
+	Generation NamedResource `json:"generation"`
 }
 
 // Represents version details about a machine
