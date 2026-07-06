@@ -21,3 +21,6 @@ jobs:
     
     - name: Test
       run: go run gotest.tools/gotestsum@latest
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
